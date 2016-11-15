@@ -112,6 +112,21 @@ a{
     float: right;
     margin-top:10px;
 }
+.my-favorite {
+    margin-top:10px;
+    padding: 6px 12px;
+    background: #e7edf3;
+    color: #7089a9;
+    float: right;
+    margin-left: 10px;
+}
+.my-favorite a{
+    text-decoration: none;
+}
+.my-favorite:hover {
+    background-color: #d7dfea;
+    color: #7089a9;
+}
 .edit-article-btn{
     margin-top:10px;
     float: right;

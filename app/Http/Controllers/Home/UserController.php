@@ -100,7 +100,7 @@ class UserController extends Controller
             'is_confirmed' => 1,
         ],$remember)
         ) {
-            Flashy::message('Welcome ISpace', 'http://your-awesome-link.com');
+            Flashy::message('Welcome ISpace', 'http://kobeman.com');
 //            flash('登录成功', 'success');
             return redirect('/');//重定向到首页
         };

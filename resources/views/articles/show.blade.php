@@ -14,19 +14,29 @@
         <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
             <div class="author-info">
                 @if(\Auth::check())
-                @if($article->user->id===\Auth::user()->id)
-                <div class="btn btn-primary edit-article-btn">
-                    <a href="{{url('/article/'.$article->id.'/edit')}}">
-                        <span>编辑文章</span>
-                    </a>
-                </div>
-                @else
-                <div class="btn btn-success follow">
-                    <a>
-                        <i class="fa fa-star-o"></i><span>关注作者</span>
-                    </a>
-                </div>
-                @endif
+                    @if($article->user->id===\Auth::user()->id)
+                        <div class="btn btn-primary edit-article-btn">
+                            <a href="{{url('/article/'.$article->id.'/edit')}}">
+                                <span>编辑文章</span>
+                            </a>
+                        </div>
+                    @else
+                        <div class="btn btn-default my-favorite" id="favorite">
+                            <a type="button"
+                               @if($isFavorite===2)href="{{url('user/login')}}"@endif>
+                                <i class="fa  fa-star-o" ></i>
+                                @if($isFavorite==1)
+                                    已收藏{{$isFavorite}}
+                                @else添加收藏{{$isFavorite}}
+                                @endif
+                            </a>
+                        </div>
+                        <div class="btn btn-success follow">
+                            <a>
+                                <i class="fa fa-star-o"></i><span>关注作者</span>
+                            </a>
+                        </div>
+                    @endif
                 @endif
                 <a class="article-show_avatar">
                     <img class="img-circle" src="/images/avatar/head.jpg">
@@ -53,5 +63,56 @@
             </div>
         </div>
     </div>
+<script>
+    var isFavorite = {{$isFavorite}};
+    $('#favorite').on('click', function () {
 
+        if (isFavorite===1)//取消收藏
+        {
+            console.log('fav = '+isFavorite);
+            isFavorite = 0;
+            $(this).html('<i class="fa  fa-star-o"></i>' + '添加收藏');
+
+            $.ajax({
+                type: 'POST',
+                url: "/favArticle",
+                data: { 'favoriteable_id': '{{$article->id}}','isFavorite':'0'},
+                headers: {
+                    'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
+                },
+                dataType: 'json',
+                async: false,
+                success: function (json) {
+                    console.log(json);
+                },
+                error: function () {
+                    alert("数据异常");
+                }
+            })
+        }
+        else//添加收藏
+        {
+            console.log('fav = '+isFavorite);
+            isFavorite = 1;
+            $(this).html('<i class="fa  fa-star-o"></i>' + '已收藏');
+
+            $.ajax({
+                type: 'POST',
+                url: "/favArticle",
+                data: { 'favoriteable_id': '{{$article->id}}','isFavorite':'1'},
+                headers: {
+                    'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
+                },
+                dataType: 'json',
+                async: false,
+                success: function (json) {
+                    console.log(json);
+                },
+                error: function () {
+                    alert("数据异常");
+                }
+            })
+        }
+    });
+</script>
 @endsection

@@ -21,17 +21,26 @@
                         <div class="post-author">
                             <a>{{$discussion->user->name}}</a>
                             <span><time>{{$discussion->created_at->diffForHumans()}}</time>提问</span>
-                            <span><em>309</em>&nbsp;浏览</span>
+                            <span><em>{{$discussion->view_count}}</em>&nbsp;浏览</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-4 col-xs-12">
-                    <a type="button" {{--href="/favorite/15"--}} id="favorite" class="btn btn-default my-favorite"><i class="fa  fa-star-o"
-                                                                   style="margin-right: 10px"></i>添加收藏
+                    <a type="button" id="favorite" class="btn btn-default my-favorite"
+                       @if($isFavorite===2)href="{{url('user/login')}}"@endif>
+                        <i class="fa  fa-star-o" style="margin-right: 10px"></i>
+                        @if($isFavorite==1)
+                            已收藏{{$isFavorite}}
+                        @else添加收藏{{$isFavorite}}
+                        @endif
                     </a>
 
-                    <a class="btn edit-discussion-btn" href="{{url('/discussion/'.$discussion->id.'/edit')}}">编辑帖子
-                    </a>
+                    @if(\Auth::check())
+                        @if($discussion->user->id===\Auth::user()->id)
+                            <a class="btn edit-discussion-btn" href="{{url('/discussion/'.$discussion->id.'/edit')}}">编辑帖子
+                            </a>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
@@ -63,7 +72,8 @@
                             </p>
                             <div class="comment-footer">
                                 <span class="share-reply">
-                                <a style="margin-right: 5px">分享</a><i>|</i><a data-content="JellyTest"  style="margin-left: 5px" @click="onreply">回复</a>
+                                <a style="margin-right: 5px">分享</a><i>|</i><a data-content="JellyTest"
+                                                                              style="margin-left: 5px" @click="onreply">回复</a>
                                     </span>
                             </div>
 
@@ -132,51 +142,80 @@
         </div>
     </div>
     <script>
-        $('#favorite').on('click',function(){
-//            alert($('#favorite').text());
-            console.log($(this).text());
-            if($(this).text()=="添加收藏"){
-//                $(this).text('已收藏');
-                alert($(this).text());
+        Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+        var isFavorite = {{$isFavorite}};
+        $('#favorite').on('click', function () {
+
+            if (isFavorite===1)//取消收藏
+            {
+                console.log('fav = '+isFavorite);
+                isFavorite = 0;
+                $(this).html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '添加收藏');
+
+               $.ajax({
+                    type: 'POST',
+                    url: "/favPost",
+                    data: { 'favoriteable_id': '{{$discussion->id}}','isFavorite':'0'},
+                    headers: {
+                        'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
+                    },
+                    dataType: 'json',
+                    async: false,
+                    success: function (json) {
+                        console.log(json);
+                    },
+                    error: function () {
+                        alert("数据异常");
+                    }
+                })
+            }
+            else//添加收藏
+            {
+                console.log('fav = '+isFavorite);
+                isFavorite = 1;
+                $(this).html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '已收藏');
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/favPost",
+                    data: { 'favoriteable_id': '{{$discussion->id}}','isFavorite':'1'},
+                    headers: {
+                        'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
+                    },
+                    dataType: 'json',
+                    async: false,
+                    success: function (json) {
+                        console.log(json);
+                    },
+                    error: function () {
+                        alert("数据异常");
+                    }
+                })
             }
         });
-        var user ;
-        $('.child-comment-reply').on('click',function(){
+
+        $('.child-comment-reply').on('click', function () {
             user = $(this).prev().attr('data-user');
 
 //            alert($(this).prev().attr('data-user'));
         })
 
-        //    Vue.http.headers.common['X-CSRF-TOKEN'] =   document.querySelector('#token').getAttribute('value');
         new Vue({
             el: '#comment-post',
             data: {
-                user_name:'',
-                reply_form:false,
-                show_user:false,
+                user_name: '',
+                reply_form: false,
+                show_user: false,
             },
-            methods:{
-               /* onSubmitForm:function(e){
-                    e.preventDefault();//点击发表评论后不会跳转到路由中
-                    var comment = this.newComment;
-                    var post = this.newPost;
-                    post.body = comment.body;
-                    this.$http.post('/comment',post).then(function(){
-                        this.comments.push(comment)
-                    });
-                    this.newComment =  {
-                        'name':'{{Auth::user()->name}}',
-                        'avatar':'{{Auth::user()->avatar}}',
-                        'body':''
-                    };
-                },*/
-                onreply:function(){
-                    if(this.reply_form){
+            methods: {
+
+                onreply: function () {
+                    if (this.reply_form) {
                         this.reply_form = false;
-                    }else{
+                    } else {
                         this.reply_form = true;
                     }
-                    $('.reply-info').attr('placeholder','回复'+user+' :');
+                    $('.reply-info').attr('placeholder', '回复' + user + ' :');
                 }
             }
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Article;
+use App\Favorite;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Markdown\Markdown;
 use EndaEditor;
@@ -59,7 +60,18 @@ class ArticlesController extends Controller
     public function show($id)
     {
         $article = Article::with('user')->findOrFail($id);
-        return view('articles.show',compact('article'));
+        $favorite = Favorite::where('favoriteable_type','App\Article')->where('favoriteable_id',$article->id)->first();
+        if(\Auth::check()){
+            if($favorite){
+                $isFavorite = \Auth::user()->id==$favorite->user_id;
+                if(!$isFavorite){$isFavorite = 0;}
+            }else{
+                $isFavorite = 0;
+            }
+        }else{
+            $isFavorite = 2;
+        }
+        return view('articles.show',compact('article','isFavorite'));
     }
 
     /**

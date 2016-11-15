@@ -1,6 +1,11 @@
 @extends('common.app')
 @section('header-css')
     <link rel="stylesheet" href="/css/article.css">
+   {{-- <style>
+        body{
+            background-color: #E7F1F5;
+        }
+    </style>--}}
 @endsection
 
 @section('content')

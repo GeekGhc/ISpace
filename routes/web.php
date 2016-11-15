@@ -40,23 +40,20 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
 Route::group(['namespace' => 'Home'],function(){
     Route::get('/logout','UserController@logout');//退出当前用户
-    Route::get('verify/token/{confirm_code}','UserController@confirmEmail');//邮箱的验证
+    Route::get('/u/{user_name}','UserController@profile');//用户的个人主页
+    Route::get('/verify/token/{confirm_code}','UserController@confirmEmail');//邮箱的验证
 
     Route::get('/github/login','LoginController@githubLogin');
 });
 
 Route::group(['namespace' => 'Home'],function(){
     Route::resource('/discussion','DiscussionsController');
+    Route::resource('/article','ArticlesController');
 
-    /*Route::get('/discussion','DiscussionsController@index');
-    Route::get('/discussion/create','DiscussionsController@create');
-    Route::get('/discussion/{id}','DiscussionsController@show');*/
     Route::post('/post/upload','PostController@upload');
 
-    Route::resource('/article','ArticlesController');
-   /* Route::get('/article','ArticlesController@index');
-    Route::get('/articles/create','ArticleController@create');*/
-
-    Route::get('/favorite/{id?}','FavoritesController@favoritePost');
-    Route::get('/favorite/{id}','FavoritesController@favoriteArticle');
+    //用户收藏
+    Route::post('/favPost','FavoritesController@favoritePost');
+    Route::post('/favArticle','FavoritesController@favoriteArticle');
+    Route::post('/favVideo','FavoritesController@favoriteVideo');
 });

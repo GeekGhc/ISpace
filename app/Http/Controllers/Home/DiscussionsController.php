@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Discussion;
+use App\Favorite;
 use App\Markdown\Markdown;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,9 +33,20 @@ class DiscussionsController extends Controller
 
     public function show($id)
     {
+        //判断这个用户是否收藏了这篇帖子
         $discussion = Discussion::with('user')->findOrFail($id);
-//        $user = $discussion->user;
-        return view('discussions.show',compact('discussion'));
+        $favorite = Favorite::where('favoriteable_type','App\Discussion')->where('favoriteable_id',$discussion->id)->first();
+        if(\Auth::check()){
+            if($favorite){
+                $isFavorite = \Auth::user()->id==$favorite->user_id;
+                if(!$isFavorite){$isFavorite = 0;}
+            }else{
+                $isFavorite = 0;
+            }
+        }else{
+            $isFavorite = 2;
+        }
+        return view('discussions.show',compact('discussion','isFavorite'));
     }
 
     //修改帖子

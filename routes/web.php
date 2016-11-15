@@ -56,4 +56,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::resource('/article','ArticlesController');
    /* Route::get('/article','ArticlesController@index');
     Route::get('/articles/create','ArticleController@create');*/
+
+    Route::get('/favorite/{id?}','FavoritesController@favoritePost');
+    Route::get('/favorite/{id}','FavoritesController@favoriteArticle');
 });

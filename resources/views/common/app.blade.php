@@ -5,6 +5,7 @@
     <title>ISpace @yield('title')</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
     <link rel="stylesheet" href="/css/source/bootstrap.css">
     {{--<link rel="stylesheet" href="/css/source/font-awesome.css">--}}

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     protected $fillable = ['user_id'];
+
     //收藏----用户
     public function user()
     {

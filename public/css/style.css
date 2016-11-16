@@ -1,4 +1,5 @@
 /*------------------------------    common.app    ------------------------------*/
+
 .navbar {
     margin: 0px;
     border-radius: 0;
@@ -32,6 +33,7 @@
 
 .footer {
     background: #fafafa;
+    /*background: #2b5464;*/
     padding: 35px 20px;
     border-top: 1px solid #eee;
     margin-top: 50px;
@@ -50,7 +52,7 @@
     margin: 0 18px;
 }
 
-.site-link{
+.site-link {
     margin: 0px 0px 40px;
 }
 
@@ -59,7 +61,8 @@
     color: #343434;
     font-size: 1.4em;
 }
-.site-link dt a{
+
+.site-link dt a {
     text-decoration: none;
 }
 
@@ -68,7 +71,7 @@
     font-size: 14px;
 }
 
-.site-link dd a{
+.site-link dd a {
     color: #888;
     text-decoration: none;
     cursor: pointer;
@@ -81,10 +84,13 @@
     border-top: 1px solid #ddd;
 }
 
-.fa-mr{
+.fa-mr {
     margin-right: 12px;
 }
+
+
 /*------------------------------    users.userLogin    ------------------------------*/
+
 .login-form {
     max-width: 560px;
     margin: 60px auto;
@@ -143,11 +149,13 @@
 .forget-pass:hover {
     color: #747474;
 }
-.captcha-input{
-    width:55%;
+
+.captcha-input {
+    width: 55%;
     margin-right: 40px;
     float: left;
 }
+
 .quick-login {
     color: #777;
     font-size: 18px;
@@ -179,7 +187,9 @@
     background-color: #0098c6;
 }
 
+
 /*------------------------------   index   ------------------------------*/
+
 .fl {
     float: left;
 }
@@ -205,6 +215,7 @@
     font-size: 54px;
     font-weight: 600;
 }
+
 
 /*.img-circle {
     cursor: pointer;

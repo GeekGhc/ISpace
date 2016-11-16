@@ -9,6 +9,7 @@
     <script src="/js/source/vue-resource.min.js"></script>
 @endsection
 @section('content')
+    <i v-show="false"></i>
     <div class="post-topheader">
         <div class="container">
             <div class="row">
@@ -54,69 +55,89 @@
                 </div>
                 <div class="answers-part">
                     <i class="fa fa-fw fa-thumb-tack fa-2x"></i><span>共<em>56</em>条评论</span>
+                    <i v-show="false">{{date_default_timezone_set('PRC')}}</i>
                 </div>
 
-                <div class="comment-list">
-                    <div class="comment-note">
-                        <div class="comment-content">
+                @foreach($comments as $comment)
+                    @if($comment->to_user_id==0&&$comment->to_comment_id==0)
+                    <div class="comment-list">
+                        <div class="comment-note">
+                            <div class="comment-content">
 
-                            <div class="meta-top">
-                                <a class="comment-avatar"><img src="/images/avatar/head.jpg"></a>
-                                <p class="comment-user-name"><a href="">JellyBean</a></p>
+                                <div class="meta-top">
+                                    <a class="comment-avatar"><img src="{{$comment->user->avatar}}"></a>
+                                    <p class="comment-user-name"><a href="">{{\App\User::find($comment->user_id)->name}}</a></p>
                                 <span class="reply-time">
                                     <time>2016.4.15 16:54</time>
                                 </span>
-                            </div>
-                            <p class="reply-content">
-                                还没毕业还没成为程序员呢，坐几个小时腰就困得不行了，毕业了可咋整
-                            </p>
-                            <div class="comment-footer">
+                                </div>
+                                <p class="reply-content">
+                                    {!! $comment->html_body !!}
+                                </p>
+                                <div class="comment-footer">
                                 <span class="share-reply">
-                                <a style="margin-right: 5px">分享</a><i>|</i><a data-content="JellyTest"
-                                                                              style="margin-left: 5px" @click="onreply">回复</a>
+                                <a style="margin-right: 5px">分享</a><i>|</i>
+                                <i v-show="show_user" data-userid="{{$comment->user_id}}" data-username="{{\App\User::find($comment->user_id)->name}}"
+                                   data-commentid="{{$comment->id}}">
+                                </i>
+                                <a class="comment-reply" style="margin-left: 5px" @click="onreply">回复</a>
                                     </span>
-                            </div>
+                                </div>
 
-                            <div class="child-comment-list">
-                                <div class="child-comment">
-                                    <p>
-                                        <a class="main-user">千里马军</a>&nbsp;&nbsp;回复
-                                        <a class="commented-user">我就是王大大</a>:
-                                        现在就开始运动吧 每天运动一小时时间比较很舒服是不是不服是是事实并不是舒不舒服伤风败俗
-                                    </p>
-                                    <div class="child-comment-footer">
+                                @if(\App\Comment::where('to_comment_id',$comment->id)->first()?1:0)
+                                <div class="child-comment-list">
+                                    @foreach($comments as $commentChild)
+                                        @if($commentChild->to_comment_id==$comment->id)
+                                            <div class="child-comment">
+                                                <p>
+                                                    <a class="main-user">{{\App\User::find($commentChild->user_id)->name}}</a>&nbsp;&nbsp;回复
+                                                    <a class="commented-user">{{\App\User::find($commentChild->to_user_id)->name}}</a>:
+                                                    {!! $commentChild->html_body !!}
+                                                </p>
+                                                <div class="child-comment-footer">
                                             <span class="reply-time pull-left">
                                                 <time>2016.5.18 13:58</time>
                                             </span>
-                                        <i v-show="show_user" data-user="Jelly"></i>
-                                        <a class="child-comment-reply" @click="onreply">回复</a>
-                                    </div>
-                                </div>
+                                                    <i v-show="show_user" data-userid="{{$commentChild->user_id}}" data-username="{{\App\User::find($commentChild->user_id)->first()->name}}"
+                                                       data-commentid="{{$commentChild->id}}"></i>
+                                                    <a class="child-comment-reply comment-reply" @click="onreply">回复</a>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
 
-                                <div class="child-comment">
-                                    <p>
-                                        <a>我就是王大</a>&nbsp;&nbsp;回复
-                                        <a class="commented-user">维尼熊</a>:
-                                        好吧 你好像说的对
-                                    </p>
-                                    <div class="child-comment-footer">
+
+                                    <div class="child-comment" v-for="comment in comments">
+                                        <p>
+                                            <a>@{{comment.name}}</a>&nbsp;&nbsp;回复
+                                            <a class="commented-user">@{{comment.user_name}}</a>:
+                                            @{{comment.body}}
+                                        </p>
+                                        <div class="child-comment-footer" style="width: 100%; height: 21px;">
                                             <span class="reply-time pull-left">
-                                                <time>2016.5.19 15:58</time>
+                                                <time>{{date("Y.m.d H:i",time())}}</time>
                                             </span>
-                                        <a class="child-comment-reply">回复</a>
+                                            <i v-show="show_user" data-userid="@{{comment.user_id}}"
+                                               data-username="{{\Auth::user()->name}}"
+                                               data-commentid="@{{comment.comment_id}}"></i>
+                                            <a v-show="false" class="child-comment-reply comment-reply" @click="onreply"
+                                            >
+                                            回复</a>
+                                        </div>
                                     </div>
+
                                 </div>
+                                @endif
 
-                            </div>
-
-                            <div class="reply-form-container" v-show="reply_form">
-                                <div class="reply-form">
-                                    {!! Form::open() !!}
-                                    <div class="reply-field">
-                                        {!! Form::textarea('body',null,['class' => 'form-control reply-info','placeholder'=>'写下你的评论...']) !!}
+                                <div class="reply-form-container" v-show="reply_form">
+                                    <div class="reply-form">
+                                        {!! Form::open(['url'=>'/comment','v-on:submit'=>'onSubmitForm']) !!}
+                                        <div class="reply-field">
+                                            {!! Form::textarea('body',null,['class' => 'form-control reply-info','v-model'=>'newComment.body']) !!}
+                                        </div>
+                                        <div class="btn btn-default reply-button cancel-reply" @click="cancelReply">取消回复
                                     </div>
-                                    <div class="btn btn-default reply-button cancel-reply">取消回复</div>
-                                    <div class="btn btn-primary reply-button">发表回复</div>
+                                    <button type="submit" class="btn btn-primary reply-button">发表回复</button>
                                     {!! Form::close() !!}
                                 </div>
                             </div>
@@ -124,38 +145,80 @@
                         </div>
                     </div>
                 </div>
+                @endif
+            @endforeach
 
-                {{--发表对帖子的评论--}}
-                <div class="reply-form-container reply-yourself">
-                    <div class="reply-form">
-                        {!! Form::open() !!}
-                        <div class="reply-field">
-                            {!! Form::textarea('body',null,['class' => 'form-control','placeholder'=>'写下你的评论...']) !!}
+
+            <div class="comment-list" v-for="commentMain in commentsMain">
+                <div class="comment-note">
+                    <div class="comment-content">
+
+                        <div class="meta-top">
+                            <a class="comment-avatar"><img src="{{\Auth::user()->avatar}}"></a>
+                            <p class="comment-user-name"><a href="">{{\Auth::user()->name}}</a></p>
+                                <span class="reply-time">
+                                    <time>{{date("Y.m.d H:i",time())}}</time>
+                                </span>
                         </div>
-                        <div class="btn btn-primary reply-button pull-right">发表回复</div>
-                        {!! Form::close() !!}
+                        <p class="reply-content">
+                            @{{commentMain.body}}
+                        </p>
+                        <div class="comment-footer">
+                                <span class="share-reply">
+                                <a style="margin-right: 5px">分享</a>
+                                <i v-show="show_user" data-userid="{{\Auth::user()->id}}"
+                                   data-username="@{{commentMain.name}}"
+                                   data-commentid="@{{commentMain.comment_id}}"></i>
+                                <a v-show="false" data-content="JellyTest" class="comment-reply"
+                                   style="margin-left: 5px" @click="onreply">回复</a>
+                                    </span>
+                        </div>
+
                     </div>
                 </div>
-
-
             </div>
+
+            {{--发表对帖子的评论--}}
+            <div class="reply-form-container reply-yourself">
+                <div class="reply-form">
+                    {!! Form::open(['url'=>'/comment','v-on:submit'=>'onSubmitFormMain']) !!}
+                    <div class="reply-field">
+                        {!! Form::textarea('body',null,['class' => 'form-control','placeholder'=>'写下你的评论...','v-model'=>'newCommentMain.body']) !!}
+                    </div>
+                    <button type="submit" class="btn btn-primary reply-button pull-right">发表回复</button>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+
+
         </div>
     </div>
+    </div>
     <script>
+
         Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
         var isFavorite = {{$isFavorite}};
+        var to_user;
+        var comment = {
+            'discussion_id': '{{$discussion->id}}',
+            'user_id': '{{Auth::user()->id}}',
+            'to_user_id': '',
+            'to_user_name': '',
+            'to_comment_id': '',
+            'body': ''
+        }
         $('#favorite').on('click', function () {
 
-            if (isFavorite===1)//取消收藏
+            if (isFavorite === 1)//取消收藏
             {
-                console.log('fav = '+isFavorite);
+                console.log('fav = ' + isFavorite);
                 isFavorite = 0;
                 $(this).html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '添加收藏');
 
-               $.ajax({
+                $.ajax({
                     type: 'POST',
                     url: "/favPost",
-                    data: { 'favoriteable_id': '{{$discussion->id}}','isFavorite':'0'},
+                    data: {'favoriteable_id': '{{$discussion->id}}', 'isFavorite': '0'},
                     headers: {
                         'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
                     },
@@ -171,14 +234,14 @@
             }
             else//添加收藏
             {
-                console.log('fav = '+isFavorite);
+                console.log('fav = ' + isFavorite);
                 isFavorite = 1;
                 $(this).html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '已收藏');
 
                 $.ajax({
                     type: 'POST',
                     url: "/favPost",
-                    data: { 'favoriteable_id': '{{$discussion->id}}','isFavorite':'1'},
+                    data: {'favoriteable_id': '{{$discussion->id}}', 'isFavorite': '1'},
                     headers: {
                         'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
                     },
@@ -194,28 +257,100 @@
             }
         });
 
-        $('.child-comment-reply').on('click', function () {
-            user = $(this).prev().attr('data-user');
-
-//            alert($(this).prev().attr('data-user'));
+        //回复按钮
+        $('.comment-reply').on('click', function () {
+            to_user = $(this).prev().attr('data-username');
+            comment.to_user_id = $(this).prev().attr('data-userid');
+            comment.to_user_name = $(this).prev().attr('data-username');
+            comment.to_comment_id = $(this).prev().attr('data-commentid');
         })
+
 
         new Vue({
             el: '#comment-post',
             data: {
+                comments: [],
+                commentsMain: [],
+                newComment: {
+                    'name': '{{\Auth::user()->name}}',
+                    'user_id': '{{\Auth::user()->id}}',
+                    'comment_id': 0,
+                    'user_name': '',
+                    'comment_id': '',
+                    'body': ''
+                },
+                newCommentMain: {
+                    'name': '{{Auth::user()->name}}',
+                    'comment_id': 0,
+                    'body': ''
+                },
+                PostMain: {
+                    'discussion_id': '{{$discussion->id}}',
+                    'user_id': '{{Auth::user()->id}}',
+                    'to_user_id': '',
+                    'to_user_name': '',
+                    'to_comment_id': '',
+                    'body': ''
+                },
                 user_name: '',
                 reply_form: false,
                 show_user: false,
             },
             methods: {
+                onSubmitForm: function (e) {
+                    e.preventDefault();//点击评论后不会跳转到路由中
+                    var newComment = this.newComment;
+                    newComment.user_name = comment.to_user_name;
+                    var post = comment;
+                    post.body = newComment.body;
+//                    this.comments.push(newComment);
+                    this.$http.post('/commentPost', post).then(function (data, status, request) {
+                        newComment.comment_id = data.body;
+                        this.comments.push(newComment);
+                    });
+                    this.newComment = {
+                        'name': '{{\Auth::user()->name}}',
+                        'user_id': '{{\Auth::user()->id}}',
+                        'user_name': '',
+                        'comment_id': '',
+                        'body': ''
+                    };
+                    comment = {
+                        'discussion_id': '{{$discussion->id}}',
+                        'user_id': '{{Auth::user()->id}}',
+                        'to_user_id': '',
+                        'to_user_name': '',
+                        'to_comment_id': '',
+                        'body': ''
+                    }
 
+                },
+                onSubmitFormMain: function (e) {
+                    e.preventDefault();//点击发表评论后不会跳转到路由中
+                    var comment = this.newCommentMain;
+                    var post = this.PostMain;
+                    post.body = comment.body;
+                    this.commentsMain.push(comment)
+                    this.$http.post('/commentPost', post).then(function (data, status, request) {
+                        console.log(data.body);
+                        comment.comment_id = data.body;
+                        this.commentsMain.push(comment);
+                    });
+                    this.newCommentMain = {
+                        'name': '{{Auth::user()->name}}',
+                        'body': ''
+                    };
+                },
                 onreply: function () {
                     if (this.reply_form) {
                         this.reply_form = false;
                     } else {
                         this.reply_form = true;
                     }
-                    $('.reply-info').attr('placeholder', '回复' + user + ' :');
+                    $('.reply-info').attr('placeholder', '回复' + to_user + ' :');
+                },
+                cancelReply: function () {
+                    this.reply_form = false;
                 }
             }
         });

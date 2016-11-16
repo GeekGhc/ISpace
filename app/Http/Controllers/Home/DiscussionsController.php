@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Comment;
 use App\Discussion;
 use App\Favorite;
 use App\Markdown\Markdown;
@@ -41,12 +42,15 @@ class DiscussionsController extends Controller
                 $isFavorite = \Auth::user()->id==$favorite->user_id;
                 if(!$isFavorite){$isFavorite = 0;}
             }else{
-                $isFavorite = 0;
+                $isFavorite = 0;//未收藏
             }
         }else{
-            $isFavorite = 2;
+            $isFavorite = 2;//游客状态
         }
-        return view('discussions.show',compact('discussion','isFavorite'));
+
+
+        $comments = Comment::with('user')->where('commentable_type','App\Discussion')->where('commentable_id',$id)->get();
+        return view('discussions.show',compact('discussion','isFavorite','comments'));
     }
 
     //修改帖子

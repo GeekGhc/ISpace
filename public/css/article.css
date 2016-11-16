@@ -2,16 +2,20 @@
     background: #f5f5f1;
 }*/
 
+
 /****************** index *****************/
-a{
+
+a {
     text-decoration: none;
     cursor: pointer;
 }
-.article-list{
+
+.article-list {
     list-style: none;
     padding-top: -4px;
 }
-.article-item{
+
+.article-item {
     position: relative;
     width: 100%;
     padding-right: 2px;
@@ -22,21 +26,23 @@ a{
     word-wrap: break-word;
 }
 
-.article-list_top{
+.article-list_top {
     margin: 8px 0;
     font-size: 12px;
     color: #999;
 }
 
-.article-list_top a{
+.article-list_top a {
     text-decoration: none;
     cursor: pointer;
 }
-.author-name{
+
+.author-name {
     font-size: 14px;
     margin-right: 10px;
 }
-.article-item_title{
+
+.article-item_title {
     margin-bottom: 10px;
     margin-left: 0;
     display: inherit;
@@ -45,24 +51,25 @@ a{
     line-height: 1.5;
 }
 
-.article-item_title a{
+.article-item_title a {
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
     line-height: 1.5;
     color: #333;
 }
-.article-item_title a:hover{
+
+.article-item_title a:hover {
     color: #000;
 }
 
-.article-item_footer{
+.article-item_footer {
     font-size: 12px;
     font-weight: normal;
     line-height: 20px;
 }
 
-.article-item_footer span{
+.article-item_footer span {
     color: #999;
     margin-right: 8px;
 }
@@ -90,6 +97,7 @@ a{
 .create-article_title {
     margin-top: 30px;
 }
+
 .publish-article {
     padding: 6px 20px;
     font-size: 18px;
@@ -97,7 +105,8 @@ a{
 
 
 /****************** show *****************/
-.author-info{
+
+.author-info {
     margin-top: 20px;
     padding-bottom: 12px;
     margin-bottom: 20px;
@@ -108,58 +117,68 @@ a{
     padding-top: 4px;
 }
 
-.follow{
+.follow {
     float: right;
-    margin-top:10px;
+    margin-top: 10px;
 }
+
 .my-favorite {
-    margin-top:10px;
+    margin-top: 10px;
     padding: 6px 12px;
     background: #e7edf3;
     color: #7089a9;
     float: right;
     margin-left: 10px;
 }
-.my-favorite a{
+
+.my-favorite a {
     text-decoration: none;
 }
+
 .my-favorite:hover {
     background-color: #d7dfea;
     color: #7089a9;
 }
-.edit-article-btn{
-    margin-top:10px;
+
+.edit-article-btn {
+    margin-top: 10px;
     float: right;
 }
-.edit-article-btn span{
+
+.edit-article-btn span {
     margin-left: 3px;
 }
-.edit-article-btn a{
-    color: #fff;
-    text-decoration: none;
-}
-.follow a{
+
+.edit-article-btn a {
     color: #fff;
     text-decoration: none;
 }
 
-.follow span{
+.follow a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.follow span {
     padding-left: 7px;
     margin-left: 3px;
     border-left: 1px solid #d9d9d9;
 }
-.article-show_avatar{
+
+.article-show_avatar {
     float: left;
     width: 50px;
     height: 50px;
     margin-right: 10px;
 }
-.article-show_avatar img{
+
+.article-show_avatar img {
     width: 50px;
     height: 50px;
 }
-.label{
-    top:2px;
+
+.label {
+    top: 2px;
     border-radius: 3px;
     background: none;
     border: 1px solid #e78170;
@@ -170,46 +189,53 @@ a{
     line-height: 1;
 }
 
-.article-show_author-name{
+.article-show_author-name {
     margin: 0 5px;
     color: #4094c7;
     text-decoration: none;
 }
-.article-show_author-name span{
+
+.article-show_author-name span {
     cursor: pointer;
     font-weight: 300;
 }
-.article-show_publish-time{
+
+.article-show_publish-time {
     font-size: 12px;
     color: #999;
 }
-.article-show_favorite{
-    margin-top:10px;
+
+.article-show_favorite {
+    margin-top: 10px;
 }
-.article-show_favorite span{
+
+.article-show_favorite span {
     font-size: 14px;
     color: #999;
 }
-.article-show_title{
+
+.article-show_title {
     word-break: break-all;
     font-size: 28px;
     font-weight: bold;
     line-height: 1.5;
-    margin-top:0px;
+    margin-top: 0px;
     margin-bottom: 5px;
 }
-.meta-top{
-    margin:5px 0 10px;
+
+.meta-top {
+    margin: 5px 0 10px;
 }
 
-.meta-top span{
+.meta-top span {
     position: relative;
     top: 1px;
     margin-right: 10px;
     font-size: 14px;
     color: #999999;
 }
-.article-show_body{
+
+.article-show_body {
     font-size: 16px;
     line-height: 1.7;
 }

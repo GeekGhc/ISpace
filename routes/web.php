@@ -16,7 +16,8 @@ Route::get('/','Home\UserController@index');
 //主页首页
 Route::get('/mypage',function(){
 
-    return view('welcome');
+//    return view('welcome');
+    dd(\App\Comment::where('to_comment_id',10)->first()?1:0);
 });
 
 //登录验证码
@@ -56,4 +57,10 @@ Route::group(['namespace' => 'Home'],function(){
     Route::post('/favPost','FavoritesController@favoritePost');
     Route::post('/favArticle','FavoritesController@favoriteArticle');
     Route::post('/favVideo','FavoritesController@favoriteVideo');
+
+    //用户评论
+    Route::post('/commentPost','CommentsController@storePost');
+    Route::post('/commentArticle','CommentsController@storeArticle');
+    Route::post('/commentVideo','CommentsController@storeVideo');
+    
 });

@@ -10,9 +10,11 @@
     cursor: pointer;
 }
 
+
 /*body{
     background: #f5f5f1;
 }*/
+
 .stream-list {
     padding: 10px 0 24px;
     border-bottom: solid 1px #e7ecef;
@@ -197,7 +199,9 @@
     font-size: 18px;
 }
 
+
 /***********************  show  ******************/
+
 .post-topheader {
     padding: 20px 0;
     background: #f6f6f6;
@@ -246,14 +250,16 @@
     background: #e7edf3;
     color: #7089a9;
 }
-.edit-discussion-btn{
+
+.edit-discussion-btn {
     /*border-radius: 40px;*/
-    margin-left:10px;
+    margin-left: 10px;
     padding: 10px 16px;
     background: #00adb5;
     color: #fff;
     letter-spacing: 1.5px;
 }
+
 .my-favorite:hover {
     background-color: #d7dfea;
     color: #7089a9;
@@ -276,7 +282,6 @@
     max-width: 680px;
 }
 
-
 .weight-answers {
     margin-top: 10px;
     padding: 10px 5px 0;
@@ -291,18 +296,20 @@
     padding-bottom: 22px;
 }
 
-.answers-part i{
+.answers-part i {
     margin-right: 18px;
 }
-.answers-part span{
+
+.answers-part span {
     font-size: 16px;
 }
+
 .answers-part em {
     margin-right: 3px;
 }
 
 .comment-list {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     border-bottom: 1px solid #eeeeee;
     font-size: 16px;
     line-height: 1.5;
@@ -310,7 +317,7 @@
 
 .meta-top {
     padding-top: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .comment-content {
@@ -362,7 +369,7 @@
 }
 
 .comment-footer {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     text-align: right;
 }
 
@@ -427,42 +434,45 @@
     color: #000;
 }
 
-.reply-form-container{
+.reply-form-container {
     box-sizing: border-box;
 }
 
-.reply-form-container img{
+.reply-form-container img {
     width: 60px;
     height: 60px;
 }
 
-.reply-form{
-    margin-top:10px;
+.reply-form {
+    margin-top: 10px;
     display: block;
 }
-.reply-field{
+
+.reply-field {
     margin-bottom: 10px;
 }
-.reply-field textarea{
+
+.reply-field textarea {
     font-size: 14px;
     height: 6em;
     min-height: 6em;
     padding: 12px 14px;
     width: 100%;
 }
-.reply-button{
+
+.reply-button {
     font-size: 1rem;
     padding: 7px 30px;
     font-weight: 700;
     line-height: 20px;
 }
-.cancel-reply{
- margin-right: 10px;
-}
-.publish-reply{
 
+.cancel-reply {
+    margin-right: 10px;
 }
 
-.reply-yourself{
+.publish-reply {}
+
+.reply-yourself {
     margin-top: 30px;
 }

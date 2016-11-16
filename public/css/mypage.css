@@ -21,15 +21,14 @@ body {
     /*border: 1px solid blue;*/
     width: 280px;
     margin: 20px auto;
-
 }
 
-.my-avatar img{
+.my-avatar img {
     cursor: pointer;
     transition: all 1.5s;
 }
 
-.my-avatar img:hover{
+.my-avatar img:hover {
     transform: rotate(360deg);
 }
 
@@ -53,67 +52,73 @@ body {
     color: #fff;
 }
 
-.my-github{
-    width:360px;
-    margin:40px auto;
+.my-github {
+    width: 360px;
+    margin: 40px auto;
     margin-bottom: 20px;
     text-align: center;
     font-size: 24px;
     text-decoration: none;
     cursor: pointer;
 }
-.my-email{
-    width:360px;
-    margin:20px auto;
+
+.my-email {
+    width: 360px;
+    margin: 20px auto;
     text-align: center;
     font-size: 24px;
     cursor: pointer;
 }
-.my-weibo{
-    width:360px;
-    margin:20px auto;
+
+.my-weibo {
+    width: 360px;
+    margin: 20px auto;
     text-align: center;
     font-size: 24px;
     cursor: pointer;
 }
-.my-github a{
-    text-decoration: none;
-    color: #fff;
-}
-.my-email a{
+
+.my-github a {
     text-decoration: none;
     color: #fff;
 }
 
-.my-weibo a{
+.my-email a {
     text-decoration: none;
     color: #fff;
 }
 
-.right-part{
-    width:340px;
+.my-weibo a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.right-part {
+    width: 340px;
     float: right;
-    margin-right:0;
-    margin-top:80px;
+    margin-right: 0;
+    margin-top: 80px;
     margin-bottom: 80px;
     /*border: 1px solid red;*/
 }
-.right-part ul{
 
-}
-.right-part ul li{
+.right-part ul {}
+
+.right-part ul li {
     list-style-type: none;
     /*display: block;*/
     font-size: 24px;
     padding: 16px 20px;
     border-bottom: 1px solid #fff;
 }
-.right-part ul li a{
+
+.right-part ul li a {
     text-decoration: none;
     cursor: pointer;
     color: #fc0;
 }
-.web-navbar{
+
+.web-navbar {
     width: 100%;
     margin-top: 240px;
 }

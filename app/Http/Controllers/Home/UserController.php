@@ -149,4 +149,9 @@ class UserController extends Controller
 
         return redirect('user/login');
     }
+
+    //用户站内搜索
+    public function  search(){
+            return view('search.index');
+    }
 }

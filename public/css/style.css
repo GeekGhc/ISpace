@@ -32,6 +32,7 @@
 }
 
 .footer {
+   display: block;
     background: #fafafa;
     /*background: #2b5464;*/
     padding: 35px 20px;

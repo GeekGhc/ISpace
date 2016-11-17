@@ -45,7 +45,7 @@
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group search-label">
                     <input type="text" class="form-control search-input" placeholder="关键字搜索">
-                    <button type="submit" class="btn btn-default search-btn"><i class="fa fa-search"></i></button>
+                    <a type="submit" class="btn btn-default search-btn" href="{{url('/search?q=')}}"><i class="fa fa-search"></i></a>
                 </div>
             </form>
 
@@ -110,7 +110,7 @@
 
 @yield('content')
 
-<div class="footer">
+<div class="footer" id="footer">
     <div class="container">
         <div class="row">
             <dl class="col-sm-2 col-md-2 site-link">
@@ -146,8 +146,6 @@
 </div>
 @include('flashy::message')
 {{--@include('flash::message')--}}
-
-
 
 </body>
 </html>

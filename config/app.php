@@ -181,6 +181,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         YuanChao\Editor\EndaEditorServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,

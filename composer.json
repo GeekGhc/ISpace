@@ -16,7 +16,9 @@
         "guzzlehttp/guzzle": "^6.2",
         "mews/captcha": "^2.1",
         "mercuryseries/flashy": "^1.0",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+        "laravel/scout": "^1.1",
+        "algolia/algoliasearch-client-php": "^1.11"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

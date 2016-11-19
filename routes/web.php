@@ -11,12 +11,18 @@
 |
 */
 
+Route::get('/test',function(){
+//    return \App\Article::search('facere')->get();
+    $ar = \App\Article::find(16);
+    $ar->delete();
+});
+
 Route::get('/','Home\UserController@index');
 
 //主页首页
 Route::get('/mypage',function(){
 
-//    return view('welcome');
+    return view('welcome');
     dd(\App\Comment::where('to_comment_id',10)->first()?1:0);
 });
 

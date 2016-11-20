@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Article;
+use App\Discussion;
 use App\Events\UserRegistered;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Mailer\UserMailer;
 use App\User;
+use App\Video;
 use Flashy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -151,7 +154,18 @@ class UserController extends Controller
     }
 
     //用户站内搜索
-    public function  search(){
-            return view('search.index');
+    public function  search(Request $request){
+        //判断是否存在搜索数据
+        if($request->has('q')){
+            $articles = Article::search($request->input('q'))->paginate(10);
+            $discussions = Discussion::search($request->input('q'))->paginate(10);
+            $videos = Video::search($request->input('q'))->paginate(10);
+            return view('search.index',compact('articles','discussions','videos'));
+        }else{
+            $articles = Article::with('user')->orderBy('comment_count','desc')->paginate(10);
+            $discussions = Discussion::with('user')->orderBy('comment_count','desc')->paginate(10);
+            $videos = Video::with('user')->orderBy('comment_count','desc')->paginate(10);
+            return view('search.index',compact('articles','discussions','videos'));
+        }
     }
 }

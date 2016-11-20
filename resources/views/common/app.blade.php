@@ -8,7 +8,6 @@
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
     <link rel="stylesheet" href="/css/source/bootstrap.css">
-    {{--<link rel="stylesheet" href="/css/source/font-awesome.css">--}}
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/discussion.css">
@@ -44,8 +43,8 @@
 
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group search-label">
-                    <input type="text" class="form-control search-input" placeholder="关键字搜索">
-                    <a type="submit" class="btn btn-default search-btn" href="{{url('/search?q=')}}"><i class="fa fa-search"></i></a>
+                    <input type="text" id="search-content" class="form-control search-input" placeholder="关键字搜索">
+                    <a type="submit" id="search" class="btn btn-default search-btn" {{--href="{{url('/search?q=facere')}}"--}}><i class="fa fa-search"></i></a>
                 </div>
             </form>
 
@@ -146,6 +145,7 @@
 </div>
 @include('flashy::message')
 {{--@include('flash::message')--}}
-
+<script src="/js/index.js"></script>
+@yield('header-js')
 </body>
 </html>

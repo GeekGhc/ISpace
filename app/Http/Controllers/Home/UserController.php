@@ -158,9 +158,9 @@ class UserController extends Controller
         //判断是否存在搜索数据
         if($request->has('q')){
             $articles = Article::search($request->input('q'))->paginate(10);
-            $discussions = Discussion::search($request->input('q'))->paginate(10);
-            $videos = Video::search($request->input('q'))->paginate(10);
-            return view('search.index',compact('articles','discussions','videos'));
+//            $discussions = Discussion::search($request->input('q'))->paginate(10);
+//            $videos = Video::search($request->input('q'))->paginate(10);
+            return view('search.index',compact('articles'));
         }else{
             $articles = Article::with('user')->orderBy('comment_count','desc')->paginate(10);
             $discussions = Discussion::with('user')->orderBy('comment_count','desc')->paginate(10);

@@ -16,9 +16,15 @@
 }
 
 .collection-nav li{
+    font-weight: bold;
     float: left;
     line-height: 30px;
     margin-right:10px;
+}
+
+.collections-list li:hover{
+    /*border-bottom: 2px solid #555;*/
+    color: red;
 }
 
 .collection-nav li a{

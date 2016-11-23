@@ -25,8 +25,6 @@ Route::get('/mypage',function(){
 
 //用户组路由
 Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
-    //用户个人档案
-    Route::get('/{username}','UserController@profile');
 
     //用户登录注册
     Route::get('/login','UserController@login');
@@ -82,3 +80,6 @@ Route::group(['namespace' => 'Home'],function(){
 Route::get('/captcha/{config?}',function(\Mews\Captcha\Captcha $captcha,$config='default'){
     return $captcha->create($config);
 });
+
+//用户个人档案
+Route::get('/u/{username}','UserController@profile');

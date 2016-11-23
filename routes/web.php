@@ -12,7 +12,7 @@
 */
 
 Route::get('/test',function(){
-
+  dd('test');
 });
 
 Route::get('/','Home\UserController@index');

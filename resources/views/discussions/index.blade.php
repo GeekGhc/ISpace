@@ -1,4 +1,4 @@
-@extends('common.app')
+@extends('app')
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
 @endsection

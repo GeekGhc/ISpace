@@ -1,4 +1,4 @@
-@extends('common.app')
+@extends('app')
 @section('content')
     <div class="container">
         <div class="row">
@@ -53,9 +53,14 @@
                 </div>
 
                 <!---Password  Field --->
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                     {!! Form::label('password_confirmation', '确认密码 :') !!}
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
                 </div>
                 {!! Form::submit('马上注册',['class'=>'btn btn-primary form-control']) !!}
                 {!! Form::close() !!}

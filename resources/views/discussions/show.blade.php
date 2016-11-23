@@ -1,4 +1,4 @@
-@extends('common.app')
+@extends('app')
 <style>
     body {
         background: #f5f5f1;

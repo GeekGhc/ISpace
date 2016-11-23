@@ -1,0 +1,118 @@
+.profile-header {
+    padding: 40px 0 30px;
+    background: #393E46;
+    box-shadow: 0px 2px 4px #888888;
+}
+
+.profile-user-header{
+    position: relative;
+    /*border-radius: 50%;*/
+    overflow: hidden;
+    text-align: center;
+}
+
+.profile-header-social{
+    margin-top: 16px;
+    text-align: center;
+}
+.profile-header-social ul{
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    vertical-align: text-bottom;
+}
+.profile-header-social ul li a{
+    color: #428bca;
+    width:32px;
+    height: 32px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.profile-header-social ul li{
+    margin-right: 5px;
+    display: inline-block;
+}
+.profile-user-avatar{
+    width:100%;
+    height:142px;
+    width: 142px;;
+    border-radius: 50%;
+}
+
+.profile-other-item{
+    font-size: 14px;
+    color: #fff;
+    line-height: 18px;
+    vertical-align: middle;
+    display: block;
+    margin-top: 10px;
+}
+.profile-head-name h2{
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.profile-head-fa{
+    color: #ccc;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.profile-main{
+    padding: 30px 50px;
+}
+.profile-nav{
+    border-width: 2px;
+}
+.nav-tabs{
+    border-bottom: 1px solid #ddd;
+}
+.profile-nav{
+    list-style: none;
+}
+.profile-nav li{
+    margin-right:12px;
+    margin-bottom: -1px;
+    float: left;
+    line-height: 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.profile-nav li a{
+    cursor: pointer;
+    text-decoration: none;
+}
+.profile-nav li .active a{
+    border-bottom: 2px solid #555555;
+}
+
+.profile-list{
+    margin-top:20px;
+    list-style: none;
+    padding: 0 10px 10px;
+    border-top: none;
+}
+.profile-list a{
+    cursor: pointer;
+    text-decoration: none;
+}
+.profile-list .profile-article-title{
+    color: #333;
+}
+.profile-list .profile-article-time{
+    color: #999;
+}
+.profile-label{
+    font-size: 16px;
+}
+.profile-list li{
+    font-size: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+    margin-top: 0;
+}

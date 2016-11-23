@@ -1,4 +1,4 @@
-@extends('common.app')
+@extends('app')
 @section('title','社区')
 @section('content')
     <div class="hero-header">

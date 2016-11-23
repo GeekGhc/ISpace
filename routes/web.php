@@ -12,38 +12,38 @@
 */
 
 Route::get('/test',function(){
-//    return \App\Article::search('facere')->get();
-    $ar = \App\Article::find(16);
-    $ar->delete();
+
 });
 
 Route::get('/','Home\UserController@index');
 
-//主页首页
+//个人主页首页
 Route::get('/mypage',function(){
-
     return view('welcome');
-    dd(\App\Comment::where('to_comment_id',10)->first()?1:0);
 });
 
-//登录验证码
-Route::get('/captcha/{config?}',function(\Mews\Captcha\Captcha $captcha,$config='default'){
-    return $captcha->create($config);
-});
 
 //用户组路由
 Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
+    //用户个人档案
+    Route::get('/{username}','UserController@profile');
+
     //用户登录注册
     Route::get('/login','UserController@login');
     Route::post('/register','UserController@store');
     Route::get('/register','UserController@register');
     Route::post('/login','UserController@signin');
 
+    //用户密码修改
+    Route::get('/password','UserController@password');
+    Route::post('/password_edit','UserController@passwordEdit');
+
     //用户的第三方登录
     Route::get('/login/{github}','LoginController@driver');
     Route::get('/login/{weibo}','LoginController@driver');
     Route::get('/login/{qq}','LoginController@driver');
     Route::get('/login/{weixin}','LoginController@driver');
+
 });
 
 
@@ -52,6 +52,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('/u/{user_name}','UserController@profile');//用户的个人主页
     Route::get('/verify/token/{confirm_code}','UserController@confirmEmail');//邮箱的验证
 
+    //github登录
     Route::get('/github/login','LoginController@githubLogin');
 });
 
@@ -75,5 +76,9 @@ Route::group(['namespace' => 'Home'],function(){
 
     //站内搜索
     Route::get('/search','UserController@search');
-    
+});
+
+//登录验证码
+Route::get('/captcha/{config?}',function(\Mews\Captcha\Captcha $captcha,$config='default'){
+    return $captcha->create($config);
 });

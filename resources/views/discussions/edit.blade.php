@@ -1,4 +1,4 @@
-@extends('common.app')
+@extends('app')
 @section('content')
     @include('editor::head')
     <style>

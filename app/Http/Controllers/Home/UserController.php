@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Article;
 use App\Discussion;
 use App\Events\UserRegistered;
+use App\Http\Requests\PasswordEditRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Mailer\UserMailer;
@@ -23,10 +24,6 @@ class UserController extends Controller
         $this->userMailer = $userMailer;
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('index');
@@ -40,9 +37,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function profile($username)
     {
-        //
+        $user = User::where('name',$username)->first();
+//        $profile = $user->profile;
+        return view('users.profile');
     }
 
     /**
@@ -68,16 +67,6 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 
     public function login()
@@ -88,6 +77,26 @@ class UserController extends Controller
     public function register()
     {
         return view('users.register');
+    }
+
+    public function password(){
+        return view('users.password');
+    }
+
+    //密码修改
+    public function passwordEdit(PasswordEditRequest $request){
+        $user = \Auth::user();
+//        $user = User::find(11);
+        if(\Hash::check($request->get('old_password'),$user->password)){
+            $user->password = $request->password;
+            $user->save();
+            \Auth::logout();
+            flashy()->success('密码更新成功', 'https://kobeman.com');
+            return redirect('user/login');
+        }
+        \Session::flash('password_edit_failed', '用户密码不正确');
+        return redirect()->action('Home\UserController@password')->withInput();
+
     }
 
     /**
@@ -103,7 +112,7 @@ class UserController extends Controller
             'is_confirmed' => 1,
         ],$remember)
         ) {
-            Flashy::message('Welcome ISpace', 'http://kobeman.com');
+            Flashy::message('Welcome ISpace', 'https://kobeman.com');
 //            flash('登录成功', 'success');
             return redirect('/');//重定向到首页
         };
@@ -130,7 +139,7 @@ class UserController extends Controller
     public function logout()
     {
         \Auth::logout();
-        flashy()->success('You have been logged out!', 'http://ispace.com');
+        flashy()->success('You have been logged out!', 'https://kobeman.com');
         return redirect('/');
     }
 

@@ -40,6 +40,12 @@ class User extends Authenticatable
         return $user;
     }
 
+    //用户----档案
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
+
     //用户----帖子
     public function discussions()
     {

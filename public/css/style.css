@@ -109,6 +109,17 @@
     padding-left: 30px;
     padding-right: 30px;
 }
+.pass-tabs{
+    text-align: center;
+    border-bottom: 0;
+    font-size: 20px;
+    margin: 20px 0px 20px 0px;
+    /*border-bottom: 1px solid #555;*/
+}
+.pass-tabs a{
+    color: #4A90E2;
+    text-decoration: none;
+}
 
 .tabs a {
     text-decoration: none;

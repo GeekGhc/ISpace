@@ -91,7 +91,7 @@ class LoginController extends Controller
         }
         $user = [
             'name' => $githubUser->getNickName(),
-            'email' => $githubUser->getEmail(),
+            'email' =>'example@ispace.com',
             'password' => bcrypt(str_random(16)),
             'social_type' => 'weibo',
             'social_id' => $githubUser->getId()

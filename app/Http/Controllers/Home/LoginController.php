@@ -3,17 +3,25 @@
 namespace App\Http\Controllers\Home;
 
 use App\User;
+use App\UserLogin\OtherLogin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Overtrue\Socialite\SocialiteManager;
 
 class LoginController extends Controller
 {
+    protected $login;
+
+    public function __construct(OtherLogin $login)
+    {
+        $this->login = $login;
+    }
+
     protected $config = [
         'weibo' => [
-            'client_id' => '2323128959',
-            'client_secret' => '37a821a5f62ba5f9b9c8b3583463a5de',
-            'redirect' => 'http://localhost:8000/weibo/login'
+            'client_id' => '2630420162',
+            'client_secret' => 'caa3a434be7ca19afe80197eea1d9db1',
+            'redirect' => 'https://kobeman.com/weibo/login'
         ],
         'qq' => [
             'client_id' => '1105724901',
@@ -40,9 +48,10 @@ class LoginController extends Controller
 
     public function githubLogin()
     {
+//        $this->login->githubLogin($this->config);
+
         $socialite = new SocialiteManager($this->config);
         $githubUser = $socialite->driver('github')->user();//user就可以拿到igthub的公共信息
-
 
         //第一次用户登录
         $loginUser = User::where('social_type', 'github')->where('social_id', $githubUser->getId())->first();
@@ -51,10 +60,6 @@ class LoginController extends Controller
             \Auth::loginUsingId($loginUser->id);
             return redirect('/');
         }
-
-        dd('no');
-
-
         $user = [
             'name' => $githubUser->getNickName(),
             'email' => $githubUser->getEmail(),
@@ -70,5 +75,39 @@ class LoginController extends Controller
         $newUser = User::create(array_merge($user, $data));
         \Auth::loginUsingId($newUser->id);
         return redirect('/');
+    }
+
+    public function weiboLogin()
+    {
+        $socialite = new SocialiteManager($this->config);
+        $githubUser = $socialite->driver('weibo')->user();//user就可以拿到igthub的公共信息
+
+        //第一次用户登录
+        $loginUser = User::where('social_type', 'weibo')->where('social_id', $githubUser->getId())->first();
+        //如果没有查到这个用户 重定向到首页
+        if (!is_null($loginUser)) {
+            \Auth::loginUsingId($loginUser->id);
+            return redirect('/');
+        }
+        $user = [
+            'name' => $githubUser->getNickName(),
+            'email' => $githubUser->getEmail(),
+            'password' => bcrypt(str_random(16)),
+            'social_type' => 'weibo',
+            'social_id' => $githubUser->getId()
+        ];
+        $data = [
+            'is_confirmed' => 1,
+            'confirm_code' => str_random(48),
+            'avatar' => $githubUser->getAvatar(),
+        ];
+        $newUser = User::create(array_merge($user, $data));
+        \Auth::loginUsingId($newUser->id);
+        return redirect('/');
+    }
+
+    public function qqLogin()
+    {
+
     }
 }

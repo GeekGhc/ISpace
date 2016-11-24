@@ -77,7 +77,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dLabel" role="menu">
                                     <li>
-                                        <a href="/user/avatar"><i class="fa fa-user fa-mr"></i>我的主页</a>
+                                        <a href="/u/{{\Auth::user()->name}}"><i class="fa fa-user fa-mr"></i>我的主页</a>
                                     </li>
                                     <li>
                                         <a href="/user/avatar"><i class="fa fa-user fa-mr"></i>更换头像</a>

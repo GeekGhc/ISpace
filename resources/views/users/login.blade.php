@@ -71,9 +71,9 @@
                 <div class="form-group">
                     <p class="pull-left quick-login">快捷登录</p>
                     <a class="btn btn-default icon-login login-github" href="{{url('/user/login/github')}}"><i class="fa fa-github fa-2x"></i></a>
-                    <a class="btn btn-default icon-login login-weibo"><i class="fa fa-weibo fa-2x"></i></a>
-                    <a class="btn btn-default icon-login login-weixin"><i class="fa fa-weixin fa-2x"></i></a>
-                    <a class="btn btn-default icon-login login-qq"><i class="fa fa-qq fa-2x"></i></a>
+                    <a class="btn btn-default icon-login login-weibo"  href="{{url('/user/login/weibo')}}"><i class="fa fa-weibo fa-2x"></i></a>
+                    <a class="btn btn-default icon-login login-weixin" href="{{url('/user/login/weixin')}}"><i class="fa fa-weixin fa-2x"></i></a>
+                    <a class="btn btn-default icon-login login-qq" href="{{url('/user/login/qq')}}"><i class="fa fa-qq fa-2x"></i></a>
                 </div>
                 {!! Form::close() !!}
             </div>

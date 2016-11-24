@@ -52,6 +52,9 @@ Route::group(['namespace' => 'Home'],function(){
 
     //github登录
     Route::get('/github/login','LoginController@githubLogin');
+    Route::get('/weibo/login','LoginController@weiboLogin');
+    Route::get('/weixin/login','LoginController@weixinLogin');
+    Route::get('/qq/login','LoginController@qqLogin');
 });
 
 Route::group(['namespace' => 'Home'],function(){

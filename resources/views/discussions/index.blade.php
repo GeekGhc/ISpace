@@ -1,4 +1,5 @@
 @extends('app')
+<meta id="module" content="post">
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
 @endsection

@@ -19,6 +19,6 @@ class UserMailer extends Mailer
     //忘记密码发送邮件
     public function forgotPassword()
     {
-        
+        $subject = 'ISpace 邮箱确认';
     }
 }

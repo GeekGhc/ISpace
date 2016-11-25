@@ -1,5 +1,6 @@
 @extends('app')
 @section('title','社区')
+<meta id="module" content="ISpace">
 @section('content')
     <div class="hero-header">
         <div class="container">

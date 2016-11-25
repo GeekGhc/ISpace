@@ -30,7 +30,10 @@
     width: 34px !important;
     border-left: 1px solid transparent;
 }
-
+.message-info{
+    cursor: pointer;
+    margin-right: -5px;
+}
 .footer {
    display: block;
     background: #fafafa;

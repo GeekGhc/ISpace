@@ -1,4 +1,5 @@
 @extends('app')
+<meta id="module" content="post">
 <style>
     body {
         background: #f5f5f1;

@@ -1,6 +1,7 @@
 <?php
 namespace App\UserLogin;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Overtrue\Socialite\SocialiteManager;
 class OtherLogin
 {
@@ -13,8 +14,8 @@ class OtherLogin
         $loginUser = User::where('social_type', 'github')->where('social_id', $githubUser->getId())->first();
         //如果没有查到这个用户 重定向到首页
         if (!is_null($loginUser)) {
-            \Auth::loginUsingId($loginUser->id);
-            return redirect('/');
+            Auth::loginUsingId($loginUser->id);
+            return ;
         }
         $user = [
             'name' => $githubUser->getNickName(),
@@ -29,8 +30,8 @@ class OtherLogin
             'avatar' => $githubUser->getAvatar(),
         ];
         $newUser = User::create(array_merge($user, $data));
-        \Auth::loginUsingId($newUser->id);
-        return redirect('/');
+        Auth::loginUsingId($newUser->id);
+        return ;
     }
 
     //qq登录
@@ -38,10 +39,6 @@ class OtherLogin
 
     }
 
-    //微信登录
-    public  function weixinLogin(){
-
-    }
 
     //微博登录
     public function weiboLogin(){
@@ -68,7 +65,6 @@ class OtherLogin
             'avatar' => $weiboUser->getAvatar(),
         ];
         $newUser = User::create(array_merge($user, $data));
-        \Auth::loginUsingId($newUser->id);
-        return redirect('/');
+        Auth::loginUsingId($newUser->id);
     }
 }

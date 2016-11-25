@@ -29,16 +29,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{url('/')}}">ISpace</a>
+            <a class="navbar-brand" id="ISpace" href="{{url('/')}}">ISpace</a>
         </div>
 
         <!-- 内容分类 -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/heart">热门</a></li>
-                <li><a href="/article">文章</a></li>
-                <li><a href="/discussion">问答</a></li>
-                <li><a href="#">活动</a></li>
+                <li id="heart"><a href="#">热门</a></li>
+                <li id="article"><a href="/article">文章</a></li>
+                <li id="post"><a href="/discussion">问答</a></li>
+                <li id="activity"><a href="#">活动</a></li>
             </ul>
 
             <form class="navbar-form navbar-left" role="search">
@@ -64,6 +64,7 @@
                 <li>
                     <ul class="nav navbar-nav navbar-right">
                         @if(\Auth::check())
+                            <li><a class="message-info"><i class="fa fa-bell-o"></i></a></li>
                             <li>
                                 <a id="dLabel" type="button" data-toggle="dropdown" href="#">
                                     {{Auth::user()->name}}

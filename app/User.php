@@ -36,7 +36,7 @@ class User extends Authenticatable
         $user = static::create(array_merge($arr, $data));
 
         //用户信息写入数据库后触发events  比如发送邮件
-//        event(new UserRegistered($user,$data['confirm_code']));
+        event(new UserRegistered($user,$data['confirm_code']));
         return $user;
     }
 

@@ -22,15 +22,13 @@ class UserController extends Controller
     public function __construct(UserMailer $userMailer)
     {
         $this->userMailer = $userMailer;
+        $this->middleware('auth',['only' => ['password']]);
     }
 
     public function index()
     {
         return view('index');
         //第一次用户登录
-        /*if(\Auth::check()){
-            dd(\Auth::user()->name);
-        }*/
     }
 
 

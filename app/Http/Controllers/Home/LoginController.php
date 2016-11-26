@@ -121,7 +121,7 @@ class LoginController extends Controller
             'name' => $User->getNickName(),
             'email' =>'example@ispace.com',
             'password' => bcrypt(str_random(16)),
-            'social_type' => 'qq',
+            'social_type' => 'qq    ',
             'social_id' => $User->getId()
         ];
         $data = [

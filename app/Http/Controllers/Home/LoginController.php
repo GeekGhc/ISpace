@@ -25,8 +25,8 @@ class LoginController extends Controller
             'redirect' => 'https://kobeman.com/weibo/login'
         ],
         'qq' => [
-            'client_id' => '1105724901',
-            'client_secret' => 'w7l38XW12b5ab88r',
+            'client_id' => '101368952',
+            'client_secret' => 'ab9cb9c23461130246ca189f17a86182',
             'redirect' => 'http://localhost:8000/qq/login'
         ],
         'github' => [

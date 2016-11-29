@@ -309,7 +309,7 @@
 }
 
 .comment-list {
-    margin-bottom: 16px;
+    margin-bottom: 6px;
     border-bottom: 1px solid #eeeeee;
     font-size: 16px;
     line-height: 1.5;
@@ -373,6 +373,9 @@
     text-align: right;
 }
 
+.comment{
+    padding-bottom: 10px;
+}
 .comment-footer a {
     color: #999;
     font-size: 14px;
@@ -390,7 +393,7 @@
 
 .child-comment-list {
     margin-left: 60px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     margin-top: 10px;
     border-top: 1px dashed #eeeeee;
 }
@@ -434,9 +437,9 @@
     color: #000;
 }
 
-.reply-form-container {
+/*.reply-form-container {
     box-sizing: border-box;
-}
+}*/
 
 .reply-form-container img {
     width: 60px;

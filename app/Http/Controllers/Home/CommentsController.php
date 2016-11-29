@@ -52,7 +52,18 @@ class CommentsController extends Controller
 
 
     public function storeArticle(ArticleCommentRequest $request){
+        $articleId = $request->get('article_id');
+        $article = Article::findOrFail($articleId);
 
+        $data = [
+            'user_id'=>$request->get('user_id'),
+            'to_user_id'=>$request->get('to_user_id')?$request->get('to_user_id'):0,
+            'to_comment_id'=>$request->get('to_comment_id')?$request->get('to_comment_id'):0,
+            'body'=>$request->get('body'),
+            'html_body'=>$this->markdown->markdown($request->get('body')),
+        ];
+        $comment = $article->comments()->create($data);
+        echo json_encode($comment->id);
     }
 
     public function storeVideo(VideoCommentRequest $request)

@@ -12,7 +12,11 @@
 */
 
 Route::get('/test',function(){
-  dd('test');
+    $ary  = [
+    ['id'=>1,'title'=>'learn thinkphp','completed'=>false],
+    ['id'=>2,'title'=>'learn laravel','completed'=>false],
+    ];
+    return json_encode($ary);
 });
 
 Route::get('/','Home\UserController@index');

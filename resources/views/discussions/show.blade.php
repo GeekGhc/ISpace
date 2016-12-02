@@ -141,12 +141,12 @@
                             </span>
                         </div>
                     </div>
-                {{--@if(\App\Comment::where('to_comment_id',$comment->id)->first()?1:0)--}}
+                {{--@if(\App\Comment::where('to_comment_id',$comment->id)->first()?0:1)--}}
                     <div class="child-comment-list">
                             <div class="child-comment" v-for="commentChild in comments" v-if="commentChild.to_comment_id==comment.id"   >
                                 <p>
                                     <a class="main-user">@{{commentChild.user.name}}</a>&nbsp;&nbsp;回复
-                                    <a class="commented-user">@{{comment.user.name}}</a>:
+                                    <a class="commented-user" v-pre>@{{commentChild.to_user_id}}</a>:
                                     <p v-html="commentChild.html_body"></p>
                                 </p>
                                 <div class="child-comment-footer">
@@ -156,7 +156,7 @@
                                     <i
                                        :data-userid="[commentChild.user_id]"
                                        :data-username="[commentChild.user.name]"
-                                       :data-commentid="[commentChild.id]"></i>
+                                       :data-commentid="[comment.id]"></i>
                                     <a class="child-comment-reply comment-reply"
                                        onclick="clickReply(this)" @click="onreply()">回复</a>
                                 </div>
@@ -174,7 +174,7 @@
                                     </span>
                                    <i
                                            :data-userid="[newComment.user_id]"
-                                           :data-username="[newComment.user.name]"
+                                           :data-username="[newComment.name]"
                                            :data-commentid="[newComment.comment_id]"></i>
                                    <a class="child-comment-reply comment-reply"
                                       onclick="clickReply(this)" @click="onreply()">回复</a>
@@ -285,10 +285,9 @@
                     },
                     postComment: {
                         'discussion_id':'{{$discussion->id}}',
-                        'name': '{{\Auth::user()->name}}',
                         'user_id': '{{\Auth::user()->id}}',
                         'to_user_id': '',
-                        'comment_id': 0,
+                        'to_comment_id': 0,
                         'body': ''
                     },
                 }
@@ -317,7 +316,7 @@
                     post.to_user_id = comment.to_user_id;
                     post.body = commentTemp.body;
                     this.$http.post('/commentPost', post).then(function (data, status, request) {
-                        commentTemp.comment_id = data.body;
+                        commentTemp.comment_id = comment.to_comment_id;
                         this.commentLocal.push(commentTemp);
                     });
                     this.newComment = {

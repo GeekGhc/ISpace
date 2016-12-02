@@ -6,6 +6,7 @@ use App\Article;
 use App\Discussion;
 use App\Events\UserRegistered;
 use App\Http\Requests\PasswordEditRequest;
+use App\Http\Requests\PasswordForgetRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Mailer\UserMailer;
@@ -22,7 +23,7 @@ class UserController extends Controller
     public function __construct(UserMailer $userMailer)
     {
         $this->userMailer = $userMailer;
-        $this->middleware('auth',['only' => ['password']]);
+        $this->middleware('auth', ['only' => ['password']]);
     }
 
     public function index()
@@ -32,39 +33,24 @@ class UserController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
     public function profile($username)
     {
-        $user = User::where('name',$username)->first();
+        $user = User::where('name', $username)->first();
 //        $profile = $user->profile;
         return view('users.profile');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         return view('users.editInfo');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
-    }
 
+    }
 
 
     public function login()
@@ -77,15 +63,17 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    public function password(){
+    public function password()
+    {
         return view('users.password');
     }
 
     //密码修改
-    public function passwordEdit(PasswordEditRequest $request){
+    public function passwordEdit(PasswordEditRequest $request)
+    {
         $user = \Auth::user();
 //        $user = User::find(11);
-        if(\Hash::check($request->get('old_password'),$user->password)){
+        if (\Hash::check($request->get('old_password'), $user->password)) {
             $user->password = $request->password;
             $user->save();
             \Auth::logout();
@@ -94,7 +82,34 @@ class UserController extends Controller
         }
         \Session::flash('password_edit_failed', '用户密码不正确');
         return redirect()->action('Home\UserController@password')->withInput();
+    }
 
+    //密码重置
+    public function passwordForget()
+    {
+        return view('users.password_forget');
+    }
+
+    public function passwordSendEmail(PasswordForgetRequest $request)
+    {
+        flashy()->success('密码重置邮件已发送', 'https://kobeman.com');
+        $user = User::where('email', $request->get('email'))->first();
+        User::password_reset($user);
+        return redirect('/');
+    }
+
+    //用户重置密码
+    public function passwordReset($password_token)
+    {
+        $user = User::where('confirm_code', $password_token)->first();
+        //如果没有查到这个用户 重定向到首页
+        if (is_null($user)) {
+            flashy()->warning('请确保接受到密码重置邮件', 'https://kobeman.com');
+            return redirect('/');
+        }
+
+        //如果查找到这个用户
+        return view('users.password_reset');
     }
 
     /**
@@ -103,12 +118,12 @@ class UserController extends Controller
     public function signin(UserLoginRequest $request)
     {
 
-        $remember = $request->get('remember')?1:0;
+        $remember = $request->get('remember') ? 1 : 0;
         if (\Auth::attempt([
             'email' => $request->get('email'),
             'password' => $request->get('password'),
             'is_confirmed' => 1,
-        ],$remember)
+        ], $remember)
         ) {
             Flashy::message('Welcome ISpace', 'https://kobeman.com');
 //            flash('登录成功', 'success');
@@ -161,18 +176,19 @@ class UserController extends Controller
     }
 
     //用户站内搜索
-    public function  search(Request $request){
+    public function search(Request $request)
+    {
         //判断是否存在搜索数据
-        if($request->has('q')){
+        if ($request->has('q')) {
             $articles = Article::search($request->input('q'))->paginate(10);
 //            $discussions = Discussion::search($request->input('q'))->paginate(10);
 //            $videos = Video::search($request->input('q'))->paginate(10);
-            return view('search.index',compact('articles'));
-        }else{
-            $articles = Article::with('user')->orderBy('comment_count','desc')->paginate(10);
-            $discussions = Discussion::with('user')->orderBy('comment_count','desc')->paginate(10);
-            $videos = Video::with('user')->orderBy('comment_count','desc')->paginate(10);
-            return view('search.index',compact('articles','discussions','videos'));
+            return view('search.index', compact('articles'));
+        } else {
+            $articles = Article::with('user')->orderBy('comment_count', 'desc')->paginate(10);
+            $discussions = Discussion::with('user')->orderBy('comment_count', 'desc')->paginate(10);
+            $videos = Video::with('user')->orderBy('comment_count', 'desc')->paginate(10);
+            return view('search.index', compact('articles', 'discussions', 'videos'));
         }
     }
 }

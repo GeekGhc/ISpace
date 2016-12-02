@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\PasswordReset;
 use App\Events\UserRegistered;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,9 +11,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     */
     protected $fillable = [
         'name', 'email','avatar','password','confirm_code','is_confirmed','social_type','social_id'
     ];
@@ -37,6 +35,14 @@ class User extends Authenticatable
 
         //用户信息写入数据库后触发events  比如发送邮件
         event(new UserRegistered($user,$data['confirm_code']));
+        return $user;
+    }
+
+    //用户密码重置
+    public static function password_reset($user)
+    {
+        //发送用户密码重置邮件
+        event(new PasswordReset($user));
         return $user;
     }
 

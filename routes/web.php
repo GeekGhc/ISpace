@@ -40,6 +40,12 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
     Route::get('/password','UserController@password');
     Route::post('/password_edit','UserController@passwordEdit');
 
+    //用户密码重置
+    Route::get('/password/forget','UserController@passwordForget');
+    Route::post('/password/forget/send_email','UserController@passwordSendEmail');
+    Route::get('/password/reset/{password_token}','UserController@passwordReset');
+
+
     //用户的第三方登录
     Route::get('/login/{github}','LoginController@driver');
     Route::get('/login/{weibo}','LoginController@driver');

@@ -17,8 +17,12 @@ class UserMailer extends Mailer
     }
 
     //忘记密码发送邮件
-    public function forgotPassword()
+    public function passwordReset($user)
     {
-        $subject = 'ISpace 邮箱确认';
+        $subject = 'ISpace 密码重置';
+        $view = 'password_reset';
+        //传入用户名  和token值
+        $data = ['%name%' => [$user->name],'%token%'=>[$user->confirm_code]];
+        $this->sendTo($user, $subject, $view, $data);
     }
 }

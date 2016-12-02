@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="" class="forget-pass"><p>忘记密码?</p></a>
+                    <a href="{{url('user/password/forget')}}" class="forget-pass"><p>忘记密码?</p></a>
                 </div>
                 <div class="form-group">
                     <p class="pull-left quick-login">快捷登录</p>

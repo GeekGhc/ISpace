@@ -60,17 +60,17 @@
                     <i v-show="false">{{date_default_timezone_set('PRC')}}</i>
                 </div>
 
-        <div class="comment-list">
-            <div class="comment-content">
-               @foreach($comments as $comment)
-                    @if($comment->to_user_id==0&&$comment->to_comment_id==0)
-                        <reply-form :comments="{{$comments}}" :comment="{{$comment}}"></reply-form>
-                    @endif
-                @endforeach
-            </div>
-        </div>
+                <div class="comment-list">
+                    <div class="comment-content">
+                       @foreach($comments as $comment)
+                            @if($comment->to_user_id==0&&$comment->to_comment_id==0)
+                                <reply-form :comments="{{$comments}}" :comment="{{$comment}}"></reply-form>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
 
-                 {{--<div class="comment-list" v-for="commentMain in commentsMain">
+                {{-- <div class="comment-list" v-for="commentMain in commentsMain">
                      <div class="comment-note">
                          <div class="comment-content">
 
@@ -103,6 +103,7 @@
 
                 {{--发表对帖子的评论--}}
                 <div class="reply-form-container reply-yourself">
+                    @if(\Auth::check())
                     <div class="reply-form">
                         {!! Form::open(['url'=>'/comment','v-on:submit'=>'onSubmitFormMain']) !!}
                         <div class="reply-field">
@@ -111,98 +112,106 @@
                         <button type="submit" class="btn btn-primary reply-button pull-right">发表回复</button>
                         {!! Form::close() !!}
                     </div>
+                    @else
+                       <a class="btn btn-primary btn-lg" href="/user/login" style="width: 100%;">登录参与评论</a>
+                    @endif
                 </div>
 
             </div>
         </div>
     </div>
+
     {{--reply 模板--}}
     <script type="text/x-template" id="reply-template">
-                <div class="comment">
-                    <div class="parent-comment">
-                        <div class="meta-top">
-                            <a class="comment-avatar"><img :src="[comment.user.avatar]"></a>
-                            <p class="comment-user-name">
-                                <a href="">@{{comment.user.name}}</a></p>
-                                <span class="reply-time">
-                                <time>2016.4.15 16:54</time>
-                                </span>
-                        </div>
-                        <p class="reply-content" v-html="comment.html_body">
-                        </p>
-                        <div class="comment-footer">
-                            <span class="share-reply">
-                            <a style="margin-right: 5px">分享</a> <i>|</i>
-                                <i :data-userid="[comment.user_id]"
-                                   :data-username="[comment.user.name]"
-                                   :data-commentid="[comment.id]">
-                                </i>
-                            <a class="comment-reply" style="margin-left: 5px" onclick="clickReply(this)" @click="onreply()">回复</a>
-                            </span>
-                        </div>
-                    </div>
-                {{--@if(\App\Comment::where('to_comment_id',$comment->id)->first()?0:1)--}}
-                    <div class="child-comment-list">
-                            <div class="child-comment" v-for="commentChild in comments" v-if="commentChild.to_comment_id==comment.id"   >
-                                <p>
-                                    <a class="main-user">@{{commentChild.user.name}}</a>&nbsp;&nbsp;回复
-                                    <a class="commented-user" v-pre>@{{commentChild.to_user_id}}</a>:
-                                    <p v-html="commentChild.html_body"></p>
-                                </p>
-                                <div class="child-comment-footer">
-                                    <span class="reply-time pull-left">
-                                        <time>2016.5.18 13:58</time>
-                                    </span>
-                                    <i
-                                       :data-userid="[commentChild.user_id]"
-                                       :data-username="[commentChild.user.name]"
-                                       :data-commentid="[comment.id]"></i>
-                                    <a class="child-comment-reply comment-reply"
-                                       onclick="clickReply(this)" @click="onreply()">回复</a>
-                                </div>
-                            </div>
-
-                           <div class="child-comment" v-for="newComment in commentLocal">
-                                <p>
-                                    <a>@{{comment.name}}</a>&nbsp;&nbsp;回复
-                                    <a class="commented-user">@{{comment.user_name}}</a>:
-                                    <p v-html="newComment.html_body"></p>
-                                </p>
-                                <div class="child-comment-footer">
-                                    <span class="reply-time pull-left">
-                                        <time>2016.5.18 13:58</time>
-                                    </span>
-                                   <i
-                                           :data-userid="[newComment.user_id]"
-                                           :data-username="[newComment.name]"
-                                           :data-commentid="[newComment.comment_id]"></i>
-                                   <a class="child-comment-reply comment-reply"
-                                      onclick="clickReply(this)" @click="onreply()">回复</a>
-                                </div>
-                            </div>
-                    </div>
-                {{--@endif--}}
-
-                    <div class="reply-form-container" v-if="is_reply">
-                        <div class="reply-form">
-                            {!! Form::open(['url'=>'/comment','v-on:submit'=>'onSubmitForm']) !!}
-                            <div class="reply-field">
-                                {!! Form::textarea('body',null,['class' => 'form-control reply-info',':placeholder'=>'placeholder','v-model'=>'newComment.body']) !!}
-                            </div>
-                            <div class="btn btn-default reply-button cancel-reply" @click="cancelReply">
-                            取消回复
-                        </div>
-                        <button type="submit" class="btn btn-primary reply-button">发表回复</button>
-                        {!! Form::close() !!}
-                    </div>
-
+        <div class="comment">
+            <div class="parent-comment">
+                <div class="meta-top">
+                    <a class="comment-avatar"><img :src="[comment.user.avatar]"></a>
+                    <p class="comment-user-name">
+                        <a href="">@{{comment.user.name}}</a></p>
+                        <span class="reply-time">
+                        <time>2016.4.15 16:54</time>
+                        </span>
                 </div>
+                <p class="reply-content" v-html="comment.html_body">
+                </p>
+                <div class="comment-footer">
+                    <span class="share-reply">
+                    <a style="margin-right: 5px">分享</a> <i>|</i>
+                        <i :data-userid="[comment.user_id]"
+                           :data-username="[comment.user.name]"
+                           :data-commentid="[comment.id]">
+                        </i>
+                    <a class="comment-reply" style="margin-left: 5px" onclick="clickReply(this)" @click="onreply()">回复</a>
+                    </span>
+                </div>
+            </div>
+        {{--@if(\App\Comment::where('to_comment_id',$comment->id)->first()?0:1)--}}
+            <div class="child-comment-list">
+                    <div class="child-comment" v-for="commentChild in comments" v-if="commentChild.to_comment_id==comment.id"   >
+                        <p>
+                            <a class="main-user">@{{commentChild.user.name}}</a>&nbsp;&nbsp;回复
+                            <a class="commented-user">@{{ commentChild.to_user_id }}</a>:
+                            <p v-html="commentChild.html_body"></p>
+                        </p>
+                        <div class="child-comment-footer">
+                            <span class="reply-time pull-left">
+                                <time>2016.5.18 13:58</time>
+                            </span>
+                            <i
+                               :data-userid="[commentChild.user_id]"
+                               :data-username="[commentChild.user.name]"
+                               :data-commentid="[comment.id]"></i>
+                            <a class="child-comment-reply comment-reply"
+                               onclick="clickReply(this)" @click="onreply()">回复</a>
+                        </div>
+                    </div>
+
+                   <div class="child-comment" v-for="newComment in commentLocal">
+                        <p>
+                            <a class="main-user">@{{comment.name}}</a>&nbsp;&nbsp;回复
+                            <a class="commented-user">@{{comment.user_name}}</a>:
+                            <p v-html="newComment.html_body"></p>
+                        </p>
+                        <div class="child-comment-footer">
+                            <span class="reply-time pull-left">
+                                <time>2016.5.18 13:58</time>
+                            </span>
+                           <i
+                                   :data-userid="[newComment.user_id]"
+                                   :data-username="[newComment.name]"
+                                   :data-commentid="[newComment.comment_id]"></i>
+                           <a class="child-comment-reply comment-reply"
+                              onclick="clickReply(this)" @click="onreply()">回复</a>
+                        </div>
+                    </div>
+            </div>
+        {{--@endif--}}
+
+            <div class="reply-form-container" v-if="is_reply">
+                <div class="reply-form">
+                    {!! Form::open(['url'=>'/comment','v-on:submit'=>'onSubmitForm']) !!}
+                    <div class="reply-field">
+                        {!! Form::textarea('body',null,['class' => 'form-control reply-info',':placeholder'=>'placeholder','v-model'=>'newComment.body']) !!}
+                    </div>
+                    <div class="btn btn-default reply-button cancel-reply" @click="cancelReply">
+                    取消回复
+                </div>
+                <button type="submit" class="btn btn-primary reply-button">发表回复</button>
+                {!! Form::close() !!}
+            </div>
+
+        </div>
     </script>
 
+    @if(\Auth::check())
     <script>
+       /* $(function(){
+            $('.commented-user').text($('.commented-user').attr('data-to-user'));
+        })*/
         var comment = {
             'discussion_id': '{{$discussion->id}}',
-            'user_id': '{{Auth::user()->id}}',
+            'user_id':'{{\Auth::user()->id}}',
             'to_user_id': '',
             'to_user_name': '',
             'to_comment_id': '',
@@ -271,7 +280,7 @@
         Vue.component('reply-form', {
             template: '#reply-template',
             props: ['comments','comment'],
-            data(){
+            data:function(){
                 return {
                     is_reply:false,
                     commentLocal:[],
@@ -376,5 +385,39 @@
             }
         });
     </script>
+    @else
+        <script>
+            var comment = {
+                'discussion_id': '{{$discussion->id}}',
+                'user_id':'',
+                'to_user_id': '',
+                'to_user_name': '',
+                'to_comment_id': '',
+            }
+            //点击回复
+            function clickReply(obj){
+                comment.to_user_id = $(obj).prev().attr('data-userid');
+                comment.to_user_name = $(obj).prev().attr('data-username');
+                comment.to_comment_id = $(obj).prev().attr('data-commentid');
+                console.log(comment);
+            }
+           $(function(){
+                   $('.comment-reply').attr('href','/user/login');
+           })
+            Vue.component('reply-form', {
+                template: '#reply-template',
+                props: ['comments','comment'],
+                data:function(){
+                    return {
+                        is_reply:false,
+                        commentLocal:[],
+                    }
+                },
+            })
+            new Vue({
+                el: '#comment-post',
+            })
+        </script>
+    @endif
 @endsection
 

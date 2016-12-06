@@ -185,6 +185,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
 
     ],

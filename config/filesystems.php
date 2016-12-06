@@ -61,6 +61,18 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'ofnp0bg60.bkt.clouddn.com', //你的七牛域名
+                'https'     => 'kobeman',         //你的HTTPS域名
+                'custom'    => '',                //你的自定义域名
+            ],
+            'access_key'=> 'mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg',  //AccessKey
+            'secret_key'=> 'PDsiO4d-BBqTs1v6rsqlmwP9a0vg1SX4wSDR8inM',  //SecretKey
+            'bucket'    => 'jellybean',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+        ],
 
     ],
 

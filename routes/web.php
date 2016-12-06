@@ -12,11 +12,13 @@
 */
 
 Route::get('/test',function(){
-    $ary  = [
-    ['id'=>1,'title'=>'learn thinkphp','completed'=>false],
-    ['id'=>2,'title'=>'learn laravel','completed'=>false],
-    ];
-    return json_encode($ary);
+    $downloadUrl = 'http://78re52.com1.z0.glb.clouddn.com/resource/flower.jpg';
+    $disk = \Storage::disk('qiniu');
+//    $disk->privateDownloadUrl('style.css');
+//    $disk->get('style.css');       //获取文件内容
+    $contents = "/public/css/search.css";
+    $disk->put('search.css',$contents);
+    dd($disk->size('style.css'));
 });
 
 Route::get('/','Home\UserController@index');
@@ -37,13 +39,14 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
     Route::post('/login','UserController@signin');
 
     //用户密码修改
-    Route::get('/password','UserController@password');
-    Route::post('/password_edit','UserController@passwordEdit');
+    Route::get('/password','PasswordController@password');
+    Route::post('/password_edit','PasswordController@passwordEdit');
 
     //用户密码重置
-    Route::get('/password/forget','UserController@passwordForget');
-    Route::post('/password/forget/send_email','UserController@passwordSendEmail');
-    Route::get('/password/reset/{password_token}','UserController@passwordReset');
+    Route::get('/password/forget','PasswordController@passwordForget');
+    Route::post('/password/forget/send_email','PasswordController@passwordSendEmail');
+    Route::get('/password/reset/token/{password_token}','PasswordController@passwordReset');
+    Route::post('/password/reset/edit','PasswordController@passwordResetEdit');
 
 
     //用户的第三方登录

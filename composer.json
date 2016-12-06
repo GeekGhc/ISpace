@@ -18,7 +18,8 @@
         "mercuryseries/flashy": "^1.0",
         "laracasts/flash": "^2.0",
         "laravel/scout": "^1.1",
-        "algolia/algoliasearch-client-php": "^1.11"
+        "algolia/algoliasearch-client-php": "^1.11",
+        "zgldh/qiniu-laravel-storage": "^0.6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

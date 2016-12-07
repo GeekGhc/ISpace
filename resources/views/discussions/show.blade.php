@@ -130,7 +130,7 @@
                     <p class="comment-user-name">
                         <a href="">@{{comment.user.name}}</a></p>
                         <span class="reply-time">
-                        <time>2016.4.15 16:54</time>
+                        <time>@{{comment.created_at}}</time>
                         </span>
                 </div>
                 <p class="reply-content" v-html="comment.html_body">
@@ -151,7 +151,7 @@
                     <div class="child-comment" v-for="commentChild in comments" v-if="commentChild.to_comment_id==comment.id"   >
                         <p>
                             <a class="main-user">@{{commentChild.user.name}}</a>&nbsp;&nbsp;回复
-                            <a class="commented-user">@{{ commentChild.to_user_id }}</a>:
+                            <a class="commented-user">@{{ commentChild.to_user.name }}</a>:
                             <p v-html="commentChild.html_body"></p>
                         </p>
                         <div class="child-comment-footer">
@@ -169,8 +169,8 @@
 
                    <div class="child-comment" v-for="newComment in commentLocal">
                         <p>
-                            <a class="main-user">@{{comment.name}}</a>&nbsp;&nbsp;回复
-                            <a class="commented-user">@{{comment.user_name}}</a>:
+                            <a class="main-user">@{{newComment.name}}</a>&nbsp;&nbsp;回复
+                            <a class="commented-user">@{{newComment.to_user_name}}</a>:
                             <p v-html="newComment.html_body"></p>
                         </p>
                         <div class="child-comment-footer">
@@ -206,9 +206,6 @@
 
     @if(\Auth::check())
     <script>
-       /* $(function(){
-            $('.commented-user').text($('.commented-user').attr('data-to-user'));
-        })*/
         var comment = {
             'discussion_id': '{{$discussion->id}}',
             'user_id':'{{\Auth::user()->id}}',
@@ -288,9 +285,10 @@
                     newComment: {
                         'name': '{{\Auth::user()->name}}',
                         'user_id': '{{\Auth::user()->id}}',
-                        'to_user_id': '',
-                        'comment_id': 0,
-                        'body': ''
+                        'to_user_name':'',
+                        'comment_id': '',
+                        'body': '',
+                        'html_body':''
                     },
                     postComment: {
                         'discussion_id':'{{$discussion->id}}',
@@ -318,22 +316,26 @@
                 //提交回复
                 onSubmitForm: function (e) {
                     e.preventDefault();//点击评论后不会跳转到路由中
+//                    alert('id = '+comment.to_comment_id);
                     var commentTemp = this.newComment;
-                    commentTemp.to_user_id = comment.to_user_id;
+                    commentTemp.to_user_name = comment.to_user_name;
+                    commentTemp.comment_id = comment.to_comment_id;
                     var post = this.postComment;
                     post.to_comment_id = comment.to_comment_id;
                     post.to_user_id = comment.to_user_id;
                     post.body = commentTemp.body;
-                    this.$http.post('/commentPost', post).then(function (data, status, request) {
-                        commentTemp.comment_id = comment.to_comment_id;
+                    this.$http.post('/commentPost', post).then(response => {
+                        console.log('comment_id = '+comment.to_comment_id);
+                        commentTemp.html_body = response.data;
                         this.commentLocal.push(commentTemp);
                     });
                     this.newComment = {
                         'name': '{{\Auth::user()->name}}',
                         'user_id': '{{\Auth::user()->id}}',
-                        'to_user_id': '',
+                        'to_user_name': '',
                         'comment_id': 0,
-                        'body': ''
+                        'body': '',
+                        'html_body':''
                     };
                     comment = {
                         'discussion_id': '{{$discussion->id}}',

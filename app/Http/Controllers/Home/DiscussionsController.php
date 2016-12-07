@@ -49,7 +49,7 @@ class DiscussionsController extends Controller
         }
 
 
-        $comments = Comment::with('user')->where('commentable_type','App\Discussion')->where('commentable_id',$id)->get();
+        $comments = Comment::with('user')->with('to_user')->where('commentable_type','App\Discussion')->where('commentable_id',$id)->get();
         return view('discussions.show',compact('discussion','isFavorite','comments'));
     }
 

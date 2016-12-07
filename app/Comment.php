@@ -13,6 +13,11 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function to_user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     //对应与文章和帖子和视频
     public function commentable()

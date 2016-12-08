@@ -141,7 +141,7 @@
             </dl>
         </div>
         <div class="footer-bottom">
-            <p>Developed By JellyBean</p>
+            <p>ISpace CopyRight @2016    Developed By JellyBean</p>
         </div>
     </div>
 </div>

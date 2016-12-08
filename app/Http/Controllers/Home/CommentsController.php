@@ -32,8 +32,13 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $post->comments()->create($data);
-//        echo json_encode($comment->id);
-        return $comment->html_body;
+        $data = [
+            'html_body' =>$comment->html_body,
+            'comment_id'=>$comment->id,
+            'created_at'=>$comment->created_at
+        ];
+        return $data;
+//        return $comment->html_body;
     }
 
    /* public function storePost()

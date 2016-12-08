@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -18,10 +19,15 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-
     //对应与文章和帖子和视频
     public function commentable()
     {
         return $this->morphTo();
+    }
+
+    public function getCreatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i');
+//        return Carbon::createFromFormat('Y-m-d H:i', $date)->format('F j, Y @ g:i A');
     }
 }

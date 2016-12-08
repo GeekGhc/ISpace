@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Article;
 use App\Discussion;
 use App\Http\Requests\ArticleCommentRequest;
 use App\Http\Requests\DiscussionCommentRequest;
@@ -38,23 +39,7 @@ class CommentsController extends Controller
             'created_at'=>$comment->created_at
         ];
         return $data;
-//        return $comment->html_body;
     }
-
-   /* public function storePost()
-    {
-        $post = Discussion::findOrFail(10);
-
-        $data = [
-            'user_id'=>11,
-            'to_user_id'=>12,
-            'to_comment_id'=>13,
-            'body'=>'yes',
-            'html_body'=>'yes',
-        ];
-        $comment = $post->comments()->create($data);
-        dd($comment->id);
-    }*/
 
 
     public function storeArticle(ArticleCommentRequest $request){
@@ -69,7 +54,12 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $article->comments()->create($data);
-        echo json_encode($comment->id);
+        $data = [
+            'html_body' =>$comment->html_body,
+            'comment_id'=>$comment->id,
+            'created_at'=>$comment->created_at
+        ];
+        return $data;
     }
 
     public function storeVideo(VideoCommentRequest $request)

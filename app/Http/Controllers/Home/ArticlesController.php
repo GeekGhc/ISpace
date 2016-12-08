@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Article;
+use App\Comment;
 use App\Favorite;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Markdown\Markdown;
@@ -71,7 +72,9 @@ class ArticlesController extends Controller
         }else{
             $isFavorite = 2;
         }
-        return view('articles.show',compact('article','isFavorite'));
+
+        $comments = Comment::with('user')->with('to_user')->where('commentable_type','App\Article')->where('commentable_id',$id)->get();
+        return view('articles.show',compact('article','isFavorite','comments'));
     }
 
     /**

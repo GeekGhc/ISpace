@@ -47,8 +47,6 @@ class DiscussionsController extends Controller
         }else{
             $isFavorite = 2;//游客状态
         }
-
-
         $comments = Comment::with('user')->with('to_user')->where('commentable_type','App\Discussion')->where('commentable_id',$id)->get();
         return view('discussions.show',compact('discussion','isFavorite','comments'));
     }

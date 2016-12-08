@@ -15,6 +15,10 @@ a {
     padding-top: -4px;
 }
 
+[v-cloak] {
+    display: none;
+}
+
 .article-item {
     position: relative;
     width: 100%;

@@ -1,5 +1,4 @@
 @extends('app')
-<meta id="module" content="post">
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
 @endsection
@@ -8,6 +7,8 @@
     <script src="/js/source/vue-resource.min.js"></script>
 @endsection
 @section('content')
+
+<div id="app">
     <div class="post-topheader">
         <div class="container">
             <div class="row">
@@ -24,16 +25,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <a type="button" id="favorite" class="btn btn-default my-favorite"
-                       @if($isFavorite===2)href="{{url('user/login')}}"@endif>
-                        <i class="fa  fa-star-o" style="margin-right: 10px"></i>
-                        @if($isFavorite==1)
-                            已收藏{{$isFavorite}}
-                        @else添加收藏{{$isFavorite}}
-                        @endif
-                    </a>
 
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <a type="button" id="favorite" class="btn btn-default my-favorite" @click="favorite()"
+                    @if($isFavorite===2)href="{{url('user/login')}}"@endif>
+                    <i class="fa  fa-star-o" style="margin-right: 10px"></i>
+                    @if($isFavorite==1)
+                        已收藏
+                    @else添加收藏
+                    @endif
+                    </a>
                     {{--是本文作者可编辑文章--}}
                     @if(\Auth::check())
                         @if($discussion->user->id===\Auth::user()->id)
@@ -42,7 +43,6 @@
                         @endif
                     @endif
                 </div>
-
             </div>
         </div>
     </div>
@@ -55,7 +55,6 @@
                 </div>
                 <div class="answers-part">
                     <i class="fa fa-fw fa-thumb-tack fa-2x"></i><span>共<em>56</em>条评论</span>
-                    {{--<i v-show="false">{{date_default_timezone_set('PRC')}}</i>--}}
                 </div>
 
                 <div class="comment-list">
@@ -68,34 +67,25 @@
                     </div>
                 </div>
 
-                <div class="comment-list" v-for="newComment in commentLocalMain" v-cloak>
-                    <div class="comment-content">
-                        <div class="comment">
+                <div class="comment" v-for="newComment in commentLocalMain" v-cloak>
 
-                            <div class="parent-comment">
-                                <div class="meta-top">
-                                    <a class="comment-avatar"><img :src="[newComment.avatar]"></a>
-                                    <p class="comment-user-name">
-                                        <a href="">@{{newComment.name}}</a></p>
-                                    <span class="reply-time">
-                                    <time>@{{newComment.created_at}}</time>
-                                    </span>
-                                </div>
-                                <p class="reply-content" v-html="newComment.html_body"></p>
-                                <div class="comment-footer">
-                                    <span class="share-reply">
-                                        <a style="margin-right: 5px">分享</a> <i>|</i>
-                                        <i :data-userid="[newComment.user_id]"
-                                           :data-username="[newComment.name]"
-                                           :data-commentid="[newComment.comment_id]">
-                                        </i>
-                                        <a class="comment-reply" style="margin-left: 5px" onclick="clickReply(this)" @click="onreply()">回复</a>
-                                    </span>
-                                </div>
-                            </div>
-
+                    <div class="parent-comment">
+                        <div class="meta-top">
+                            <a class="comment-avatar"><img :src="[newComment.avatar]"></a>
+                            <p class="comment-user-name">
+                                <a href="">@{{newComment.name}}</a></p>
+                            <span class="reply-time">
+                            <time>@{{newComment.created_at}}</time>
+                            </span>
+                        </div>
+                        <p class="reply-content" v-html="newComment.html_body"></p>
+                        <div class="comment-footer">
+                            <span class="share-reply">
+                                <a style="margin-right: 5px">分享</a>
+                            </span>
                         </div>
                     </div>
+
                 </div>
 
                 {{--发表对帖子的评论--}}
@@ -117,6 +107,8 @@
             </div>
         </div>
     </div>
+</div>
+
 
     {{--reply 模板--}}
     <script type="text/x-template" id="reply-template">
@@ -153,9 +145,9 @@
                     <p v-html="commentChild.html_body"></p>
                     </p>
                     <div class="child-comment-footer">
-                            <span class="reply-time pull-left">
-                                <time>@{{ commentChild.created_at }}</time>
-                            </span>
+                        <span class="reply-time pull-left">
+                            <time>@{{ commentChild.created_at }}</time>
+                        </span>
                         <i
                                 :data-userid="[commentChild.user_id]"
                                 :data-username="[commentChild.user.name]"
@@ -204,6 +196,8 @@
 
     @if(\Auth::check())
         <script>
+            Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+
             var comment = {
                 'discussion_id': '{{$discussion->id}}',
                 'user_id': '{{\Auth::user()->id}}',
@@ -211,6 +205,7 @@
                 'to_user_name': '',
                 'to_comment_id': '',
             }
+
             //点击回复
             function clickReply(obj) {
                 comment.to_user_id = $(obj).prev().attr('data-userid');
@@ -218,59 +213,6 @@
                 comment.to_comment_id = $(obj).prev().attr('data-commentid');
                 console.log(comment);
             }
-
-            Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
-            var isFavorite = {{$isFavorite}};
-            $('#favorite').on('click', function () {
-
-                if (isFavorite === 1)//取消收藏
-                {
-                    console.log('fav = ' + isFavorite);
-                    isFavorite = 0;
-                    $(this).html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '添加收藏');
-
-                    $.ajax({
-                        type: 'POST',
-                        url: "/favPost",
-                        data: {'favoriteable_id': '{{$discussion->id}}', 'isFavorite': '0'},
-                        headers: {
-                            'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
-                        },
-                        dataType: 'json',
-                        async: false,
-                        success: function (json) {
-                            console.log(json);
-                        },
-                        error: function () {
-                            alert("数据异常");
-                        }
-                    })
-                }
-                else//添加收藏
-                {
-                    console.log('fav = ' + isFavorite);
-                    isFavorite = 1;
-                    $(this).html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '已收藏');
-
-                    $.ajax({
-                        type: 'POST',
-                        url: "/favPost",
-                        data: {'favoriteable_id': '{{$discussion->id}}', 'isFavorite': '1'},
-                        headers: {
-                            'X-CSRF-Token': document.querySelector('#token').getAttribute('value')
-                        },
-                        dataType: 'json',
-                        async: false,
-                        success: function (json) {
-                            console.log(json);
-                        },
-                        error: function () {
-                            alert("数据异常");
-                        }
-                    })
-                }
-            });
-
 
             Vue.component('reply-form', {
                 template: '#reply-template',
@@ -315,7 +257,6 @@
                     //提交回复
                     onSubmitForm: function (e) {
                         e.preventDefault();//点击评论后不会跳转到路由中
-//                    alert('id = '+comment.to_comment_id);
                         var commentTemp = this.newComment;
                         commentTemp.to_user_name = comment.to_user_name;
                         commentTemp.comment_id = comment.to_comment_id;
@@ -327,9 +268,9 @@
                             console.log('comment_id = ' + comment.to_comment_id);
                             commentTemp.html_body = response.data.html_body;
                             commentTemp.created_at = response.data.created_at;
+                            this.is_reply = false;
                             this.commentLocal.push(commentTemp);
-                    })
-                        ;
+                        });
                         this.newComment = {
                             'name': '{{\Auth::user()->name}}',
                             'user_id': '{{\Auth::user()->id}}',
@@ -351,9 +292,13 @@
             })
 
             new Vue({
-                el: '#comment-post',
+                el: '#app',
                 data: {
                     commentLocalMain: [],
+                    postFavorite:{
+                        'favoriteable_id': '{{$discussion->id}}',
+                        'isFavorite':{{$isFavorite}},
+                    },
                     newCommentMain: {
                         'name': '{{Auth::user()->name}}',
                         'avatar': '{{Auth::user()->avatar}}',
@@ -372,6 +317,18 @@
                     },
                 },
                 methods: {
+                    favorite:function(){
+                        this.postFavorite.isFavorite = !this.postFavorite.isFavorite;
+                        console.log('isFavorite = '+this.postFavorite.isFavorite);
+                        if(this.postFavorite.isFavorite){
+                            $('#favorite').html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '取消收藏');
+                        }else{
+                            $('#favorite').html('<i class="fa  fa-star-o" style="margin-right: 10px"></i>' + '添加收藏');
+                        }
+                        this.$http.post('/favPost', this.postFavorite).then(response => {
+                            console.log('response = '+response.data);
+                    });
+                    },
                     onSubmitFormMain: function (e) {
                         e.preventDefault();//点击发表评论后不会跳转到路由中
                         var commentTemp = this.newCommentMain;

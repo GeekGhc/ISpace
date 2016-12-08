@@ -25,7 +25,8 @@ class FavoritesController extends Controller
         } else {
             $discussion->favorites()->delete(['user_id' => $user->id]);
         }
-        echo json_encode($discussion);
+//        echo json_encode($discussion);
+        return $discussion;
     }
 
     public function favoriteArticle(Request $request)
@@ -38,7 +39,7 @@ class FavoritesController extends Controller
         } else {
             $article->favorites()->delete(['user_id' => $user->id]);
         }
-        echo json_encode($article);
+        return $article;
     }
 
     public function favoriteVideo(Request $request)

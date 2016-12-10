@@ -99,7 +99,7 @@
 .login-form {
     max-width: 560px;
     margin: 60px auto;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     border-radius: 3px;
     padding: 34px 24px;
     padding-top: 0px;
@@ -215,7 +215,7 @@
 }
 
 .hero-header {
-    background-image: url("images/mypage/work.jpg");
+    background-image: url("/images/mypage/work.jpg");
     background-size: cover;
     background-position: 20%;
     background-position-x: 20%;
@@ -225,9 +225,23 @@
     max-height: 420px;
     min-height: 300px;
     color: #fff;
+    display: block;
+    position: relative;
 }
-
+.hero-header .hero-bck{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-color: rgba(0,0,0,.5);
+}
+.hero-header-title{
+    text-align: center;
+}
 .hero-header-title > p {
+    margin-top:20px;
     font-size: 54px;
     font-weight: 600;
 }

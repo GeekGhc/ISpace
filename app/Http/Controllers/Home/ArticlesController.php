@@ -7,6 +7,7 @@ use App\Comment;
 use App\Favorite;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Markdown\Markdown;
+use App\Tag;
 use EndaEditor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,7 +38,8 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $tags = Tag::pluck('name','id');
+        return view('articles.create',compact('tags'));
     }
 
     /**
@@ -52,6 +54,7 @@ class ArticlesController extends Controller
 
         //保存用户数据
         $article = Article::create(array_merge($request->all(), $data));
+        $article->tags()->attach($request->get('tag_list'));
         return redirect('/article');
     }
 
@@ -85,11 +88,12 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
+        $tags = Tag::pluck('name','id');
         $article = Article::with('user')->findOrFail($id);
         if(\Auth::user()->id !== $article->user->id){
             return redirect('/');
         }
-        return view('articles.edit', compact('article'));
+        return view('articles.edit', compact('article','tags'));
     }
 
     //更新文章内容
@@ -100,6 +104,7 @@ class ArticlesController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body'))
         ];
         $article->update(array_merge($request->all(), $data));
+        $article->tags()->sync($request->get('tag_list'));
         return redirect()->action('Home\ArticlesController@index');
     }
 

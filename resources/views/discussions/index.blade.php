@@ -31,9 +31,12 @@
                             <div class="discussion-list_footer">
                                 <div class="tagsLabel">
                                     <ul>
-                                        <li class="tagLabel php"><span class="taglabel-text">php</span></li>
+                                        @foreach($discussion->tags as $tag)
+                                            <li class="tagLabel php"><span class="label label-{{$tag->type}}">{{$tag->name}}</span></li>
+                                        @endforeach
+                                        {{--<li class="tagLabel php"><span class="taglabel-text">php</span></li>
                                         <li class="tagLabel php"><span class="taglabel-text">laravel</span></li>
-                                        <li class="tagLabel php"><span class="taglabel-text">mysql</span></li>
+                                        <li class="tagLabel php"><span class="taglabel-text">mysql</span></li>--}}
                                     </ul>
                                 </div>
                                 <div class="others-info fr">

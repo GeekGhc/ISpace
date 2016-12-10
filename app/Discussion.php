@@ -35,4 +35,10 @@ class Discussion extends Model
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
+    //获取帖子标签
+    public function getTagListAttribute()
+    {
+        return $this->tags->pluck('id')->all()  ;
+    }
+
 }

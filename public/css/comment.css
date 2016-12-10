@@ -1,0 +1,231 @@
+.comment-list {
+    margin-bottom: 6px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.meta-top {
+    padding-top: 10px;
+    margin-bottom: 8px;
+}
+
+.comment-content {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.comment-avatar {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 1%;
+    float: left;
+}
+
+.comment-avatar img {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.comment-user-name {
+    word-break: break-all;
+    word-wrap: break-word;
+    margin-bottom: 0;
+}
+
+.comment-user-name a {
+    font-size: 14px;
+    color: #4094c7;
+    text-decoration: none;
+}
+
+.reply-time {
+    margin-top: 4px;
+    margin-right: 10px;
+    font-size: 12px;
+    color: #999;
+}
+
+.reply-content {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.88);
+}
+
+.comment-footer {
+    margin-bottom: 0px;
+    text-align: right;
+}
+
+.comment{
+    padding-bottom: 10px;
+}
+.comment-footer a {
+    color: #999;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.comment-footer a:hover {
+    color: #000;
+}
+
+.comment-footer i {
+    color: #999;
+}
+
+.child-comment-list {
+    margin-left: 60px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    border-top: 1px dashed #eeeeee;
+}
+
+.child-comment {
+    padding: 15px 0 15px 10px;
+    border-bottom: 1px dashed #d9d9d9;
+    border-left: 3px solid #d9d9d9;
+    font-size: 14px;
+}
+
+.child-comment p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555555;
+}
+
+.child-comment p a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.commented-user {
+    margin-right: 6px;
+}
+
+.child-comment-footer {
+    font-size: 14px;
+    text-align: right;
+}
+
+.child-comment-footer a {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: right;
+    font-size: 14px;
+}
+
+.child-comment-footer a:hover {
+    color: #000;
+}
+
+/*.reply-form-container {
+    box-sizing: border-box;
+}*/
+
+.reply-form-container img {
+    width: 60px;
+    height: 60px;
+}
+
+.reply-form {
+    margin-top: 10px;
+    display: block;
+}
+
+.reply-field {
+    margin-bottom: 10px;
+}
+
+.reply-field textarea {
+    font-size: 14px;
+    height: 6em;
+    min-height: 6em;
+    padding: 12px 14px;
+    width: 100%;
+}
+
+.reply-button {
+    font-size: 1rem;
+    padding: 7px 30px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.cancel-reply {
+    margin-right: 10px;
+}
+
+.publish-reply {}
+
+.reply-yourself {
+    margin-top: 30px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=PHP] {
+    background-color: #428bca;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Java] {
+    background-color:  #5bc0de;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Laravel] {
+    background-color:  #d9534f;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title='C++'] {
+    background-color: #777;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=服务器] {
+    background-color: #f0ad4e;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=ThinkPHP] {
+    background-color: #5cb85c;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=JSP] {
+    background-color: #428bca;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Javascript] {
+    background-color: #5bc0de;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Database] {
+    background-color: #5cb85c;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=MAC] {
+    background-color: #d9534f;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Github] {
+    background-color: #777;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Composer] {
+    background-color: #f0ad4e;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=随想] {
+    background-color: #428bca;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove{
+    color: #fff;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border: 1px solid transparent;
+    background-color: #00adb5;
+    color: #fff;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 2px 12px;
+    font-weight: 700;
+}
+
+.select2-container{
+    width:100% !important;
+}

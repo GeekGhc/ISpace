@@ -30,6 +30,13 @@
                                     <span>   阅读 <em>{{$article->view_count}}</em></span>
                                     <span> · 评论 <em>{{$article->comment_count}}</em></span>
                                     <span> · 关注 <em>68</em></span>
+                                    <div class="tagsLabel">
+                                    <ul>
+                                        @foreach($article->tags as $tag)
+                                        <li class="tagLabel"><span class="label label-{{$tag->type}}">{{$tag->name}}</span></li>
+                                        @endforeach
+                                    </ul>
+                                    </div>
                                 </div>
                             </div>
                         </li>

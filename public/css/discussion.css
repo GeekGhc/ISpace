@@ -96,10 +96,10 @@ body{
 }
 
 .tagLabel {
-    padding: 0px 6px;
+    padding: 0px 3px;
     display: inline-block;
-    color: #017e66;
-    background-color: rgba(1, 126, 102, .08);
+    /*color: #017e66;*/
+    /*background-color: rgba(1, 126, 102, .08);*/
 }
 
 .others-info {

@@ -6,10 +6,12 @@
 <meta id="module" content="ISpace">
 @section('content')
     <div class="hero-header">
-        <div class="container">
-            <div class="col-md-6 col-md-offset-3 hero-header-title">
-                <p>Become a Part of  ISpace Community</p>
-                <h3></h3>
+        <div class="hero-bck">
+            <div class="container">
+                <div class="col-md-6 col-md-offset-3 hero-header-title">
+                    <p>ISpace Community</p>
+                    <h3>从这里开启你的梦想</h3>
+                </div>
             </div>
         </div>
     </div>

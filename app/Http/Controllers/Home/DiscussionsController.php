@@ -6,6 +6,7 @@ use App\Comment;
 use App\Discussion;
 use App\Favorite;
 use App\Markdown\Markdown;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use EndaEditor;
@@ -29,7 +30,8 @@ class DiscussionsController extends Controller
 
     public function create()
     {
-        return view('discussions.create');
+        $tags = Tag::pluck('name','id');
+        return view('discussions.create',compact('tags'));
     }
 
     public function show($id)
@@ -54,11 +56,12 @@ class DiscussionsController extends Controller
     //修改帖子
     public function edit($id)
     {
+        $tags = Tag::pluck('name','id');
         $discussion = Discussion::with('user')->findOrFail($id);
         if(\Auth::user()->id !== $discussion->user->id){
             return redirect('/');
         }
-        return view('discussions.edit', compact('discussion'));
+        return view('discussions.edit', compact('discussion','tags'));
     }
 
     //更新帖子
@@ -69,6 +72,8 @@ class DiscussionsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body'))
         ];
         $discussion->update(array_merge($request->all(), $data));
+        //更新帖子标签
+        $discussion->tags()->sync($request->get('tag_list'));
         return redirect()->action('Home\DiscussionsController@index');
     }
 
@@ -82,6 +87,7 @@ class DiscussionsController extends Controller
 
         //保存用户数据
         $discussion = Discussion::create(array_merge($request->all(), $data));
+        $discussion->tags()->attach($request->get('tag_list'));
         return redirect('/discussion');
     }
 }

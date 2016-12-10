@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     protected $fillable = [
-        'name',
+        'name','type'
     ];
 
     //标签与文章
@@ -17,7 +17,7 @@ class Tag extends Model
     }
 
     //标签与帖子(问答)
-    public function discussion()
+    public function discussions()
     {
         return $this->morphedByMany('App\Discussion', 'taggable');
     }

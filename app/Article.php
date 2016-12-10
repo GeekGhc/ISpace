@@ -36,4 +36,10 @@ class Article extends Model
     {
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+    //获取文章标签
+    public function getTagListAttribute()
+    {
+        return $this->tags->pluck('id')->all()  ;
+    }
 }

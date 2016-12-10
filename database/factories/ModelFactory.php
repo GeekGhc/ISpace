@@ -14,7 +14,6 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
-
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -54,13 +53,11 @@ $factory->define(App\Discussion::class, function (Faker\Generator $faker) {
     ];
 });
 
-/*$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+    $name = array('PHP','Laravel','Java','C++','C','JSP','Python','C#','Javascript','NodeJs','MySQL','HTML');
+    $type = array('default','success','primary','warning','danger','info');
     return [
-        'title' => $faker->sentence,
-        'body' => $faker->paragraph,
-        'user_id' => $faker->randomElement($userId),
-        'last_user_id' => $faker->randomElement($userId),
-        'comment_count' => $faker->numberBetween(1,999),
-        'view_count' => $faker->numberBetween(1,999),
+        'name' => $faker->randomElement($name),
+        'type' => $faker->randomElement($type),
     ];
-});*/
+});

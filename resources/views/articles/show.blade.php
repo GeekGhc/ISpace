@@ -2,6 +2,7 @@
 <meta id="module" content="article">
 @section('header-css')
     <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/comment.css">
 @endsection
 @section('header-js')
     <script src="/js/source/vue.js"></script>
@@ -40,7 +41,6 @@
                 <a class="article-show_avatar">
                     <img class="img-circle" src="/images/avatar/head.jpg">
                 </a>
-                <label class="label">作者</label>
                 <a class="article-show_author-name" href="">
                     <span>{{$article->user->name}}</span>
                 </a>

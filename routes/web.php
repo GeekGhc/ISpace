@@ -22,6 +22,13 @@ Route::get('/test',function(){
     dd($disk->privateDownloadUrl('images/avatar/pexels.jpeg'));
 });
 
+Route::get('/show',function(){
+    $discussion = \App\Discussion::find(17);
+    foreach ($discussion->tags as $tag) {
+         return $tag->type;
+    }
+});
+
 Route::get('/','Home\UserController@index');
 
 //个人主页首页

@@ -1,6 +1,7 @@
 @extends('app')
 @section('header-css')
     <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/comment.css">
 @endsection
 
 @section('content')
@@ -21,11 +22,17 @@
             @endif
             <div class="col-md-10 col-md-offset-1">
                 {!! Form::open(['url'=>'/article']) !!}
-                        <!--- Name Field --->
+                <!--- Name Field --->
                 <div class="form-group create-article_title">
                     {{--{!! Form::label('title', '帖子标题 :') !!}--}}
                     {!! Form::text('title', null, ['class' => 'form-control','placeholder'=>'标题: 最好一句话说清楚']) !!}
                 </div>
+
+                <!--- Tags Field --->
+                <div class="form-group">
+                    {!! Form::select('tag_list[]',$tags, null, ['class' => 'form-control js-example-basic-multiple','multiple'=>'multiple']) !!}
+                </div>
+
                 <!--- Name Field --->
                 <div class="form-group">
                     <div class="editor">
@@ -40,4 +47,10 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(".js-example-basic-multiple").select2({
+            placeholder: "标签:  选择文章的相关标签",
+            maximumSelectionLength: 5
+        });
+    </script>
 @endsection

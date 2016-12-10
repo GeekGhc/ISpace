@@ -19,7 +19,8 @@
         "laracasts/flash": "^2.0",
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.11",
-        "zgldh/qiniu-laravel-storage": "^0.6.0"
+        "zgldh/qiniu-laravel-storage": "^0.6.0",
+        "qiniu/php-sdk": "^7.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -1,0 +1,35 @@
+.video-list{
+    margin-top: 36px;
+}
+
+.episode-wrap>td{
+    padding: 14px 20px !important;
+    vertical-align: middle;
+    color: #3a3a3a;
+}
+
+.episode-wrap .icon-type{
+    position: relative;
+    margin-right: 5px;
+}
+.episode-outline .episode-index{
+    width: 80px;
+    text-align: center;
+    float: left;
+    display: block;
+}
+
+.episode-outline .episode-title{
+    font-weight: 700;
+    /*padding: 0 !important;*/
+}
+.episode-outline .episode-title a{
+    color: #3a3a3a;
+    padding: 15px 20px !important;
+}
+
+.episode-outline .episode-date{
+    width: 200px;
+    text-align: center;
+    font-weight: 700;
+}

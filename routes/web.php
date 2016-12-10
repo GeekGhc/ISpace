@@ -12,13 +12,14 @@
 */
 
 Route::get('/test',function(){
-    $downloadUrl = 'http://78re52.com1.z0.glb.clouddn.com/resource/flower.jpg';
+
     $disk = \Storage::disk('qiniu');
+    $disk->put('images/file.jpg',fopen('images/avatar/head.jpg','r+'));
 //    $disk->privateDownloadUrl('style.css');
 //    $disk->get('style.css');       //获取文件内容
-    $contents = "/public/css/search.css";
-    $disk->put('search.css',$contents);
-    dd($disk->size('style.css'));
+//    $contents = "/public/css/search.css";
+//    $disk->put('search.css',$contents);
+    dd($disk->privateDownloadUrl('images/avatar/pexels.jpeg'));
 });
 
 Route::get('/','Home\UserController@index');
@@ -71,6 +72,8 @@ Route::group(['namespace' => 'Home'],function(){
 });
 
 Route::group(['namespace' => 'Home'],function(){
+    //视频系列
+    Route::get('/series/{series_name}','SeriesController@videoSeriesList');
     //帖子文章
     Route::resource('/discussion','DiscussionsController');
     Route::resource('/article','ArticlesController');
@@ -96,6 +99,3 @@ Route::group(['namespace' => 'Home'],function(){
 Route::get('/captcha/{config?}',function(\Mews\Captcha\Captcha $captcha,$config='default'){
     return $captcha->create($config);
 });
-
-//用户个人档案
-Route::get('/u/{username}','UserController@profile');

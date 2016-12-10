@@ -35,9 +35,10 @@
     margin-right: -5px;
 }
 .footer {
-   display: block;
+    display: block;
     background: #fafafa;
     /*background: #2b5464;*/
+    /*background-color: #373D41;*/
     padding: 35px 20px;
     border-top: 1px solid #eee;
     margin-top: 50px;
@@ -214,7 +215,7 @@
 }
 
 .hero-header {
-    background-image: url(https://static.pexels.com/assets/page-headers/submit-photos-e05b25f733b30ab716c86a845755901e35c093abd476a01e394fc2c76c95acb0.jpg);
+    background-image: url("images/mypage/work.jpg");
     background-size: cover;
     background-position: 20%;
     background-position-x: 20%;

@@ -56,11 +56,11 @@
                 <span>关注<em>353</em></span>
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
+        {{--<div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
             <div class="article-show_body">
                 {!! $article->html_body !!}
             </div>
-        </div>
+        </div>--}}
     </div>
 
     <div class="container" id="comment-post">

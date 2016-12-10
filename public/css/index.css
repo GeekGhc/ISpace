@@ -1,0 +1,96 @@
+.pexels{
+    margin-top: 32px;
+}
+.my-video{
+    margin-bottom: 26px;
+    overflow: hidden;
+}
+
+.my-video .series-tag{
+    background: #99c93d;
+    color: #fff;
+    position: absolute;
+    z-index: 5;
+    left: 20px;
+    top: 5px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 3px;
+    border-radius: 3px;
+}
+
+.my-video .thumbnail-link{
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+.my-video .thumbnail-link:hover .play-button{
+    display: block;
+    background-color: rgba(0,0,0,.7);
+}
+.my-video a{
+    cursor: pointer;
+}
+
+.thumbnail-link .play-button{
+    display: none;
+    z-index: 1;
+    font-size: 80px;
+    background-color: transparent;
+    -webkit-transition: background-color .4s;
+    transition: background-color .4s;
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.play-button .video-icon{
+    font-size: 10rem;
+    display: table-cell;
+    vertical-align: middle;
+    color: #ddd;
+}
+.thumbnail-link .play-button .arrow{
+    width:100%;
+    height:100%;
+    display: table;
+}
+.thumbnail-link .ispace-video-theme{
+    margin-bottom: 0;
+    padding: 0px;
+}
+.thumbnail-link>img{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+img{
+    vertical-align: middle;
+}
+
+.my-video .video-info{
+    background-color: #fff;
+    padding: 12px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
+    border-top-width: 0;
+}
+.my-video .video-info h3{
+    margin:0 0 6px;
+    line-height: 1.3;
+    font-weight: bold;
+}
+
+.video-info span{
+    color: #555;
+    font-size: 14px;
+}

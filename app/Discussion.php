@@ -9,12 +9,19 @@ class Discussion extends Model
 {
     use Searchable;
     protected $fillable = [
-        'title', 'body','html_body','user_id','last_user_id','view_count','comment_count'
+        'title', 'body', 'html_body', 'user_id', 'last_user_id', 'view_count', 'comment_count'
     ];
+
     //帖子----用户
     public function user()
     {
         return $this->belongsTo(User::class);//$discussion->user()
+    }
+
+    //帖子----最后更新用户
+    public function last_user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     //帖子----评论
@@ -23,7 +30,7 @@ class Discussion extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
-    //文章----收藏
+    //帖子----收藏
     public function favorites()
     {
         return $this->morphMany(Favorite::class, 'favoriteable');
@@ -38,7 +45,7 @@ class Discussion extends Model
     //获取帖子标签
     public function getTagListAttribute()
     {
-        return $this->tags->pluck('id')->all()  ;
+        return $this->tags->pluck('id')->all();
     }
 
 }

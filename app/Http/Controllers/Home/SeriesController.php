@@ -11,4 +11,10 @@ class SeriesController extends Controller
     {
         return view('video.index');
     }
+
+    public function videoPlay($series_name,$video_index)
+    {
+        $video = [];
+        return view('video.play');
+    }
 }

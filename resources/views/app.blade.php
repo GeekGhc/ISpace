@@ -149,6 +149,6 @@
 @include('flashy::message')
 {{--@include('flash::message')--}}
 <script src="/js/index.js"></script>
-@yield('header-js')
+@yield('footer-js')
 </body>
 </html>

@@ -1,35 +1,146 @@
-.video-list{
+.video-list {
     margin-top: 36px;
 }
 
-.episode-wrap>td{
+
+.episode-wrap > td {
     padding: 14px 20px !important;
     vertical-align: middle;
     color: #3a3a3a;
 }
-
-.episode-wrap .icon-type{
+.episode-wrap .episode-index > i {
+    padding-right: 10px;
+    color: #93999f;
+    font-size: 16px;
     position: relative;
-    margin-right: 5px;
-}
-.episode-outline .episode-index{
-    width: 80px;
-    text-align: center;
-    float: left;
-    display: block;
 }
 
-.episode-outline .episode-title{
-    font-weight: 700;
-    /*padding: 0 !important;*/
+.episode-wrap .episode-index span {
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
 }
-.episode-outline .episode-title a{
+
+.episode-outline .episode-index {
+    width: 10%;
+    text-align: center;
+}
+
+.episode-outline .episode-title {
+    width: 60%;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.episode-wrap .episode-title i {
+    margin-right: 10px;
+}
+
+.episode-outline .episode-title a {
     color: #3a3a3a;
     padding: 15px 20px !important;
 }
-
-.episode-outline .episode-date{
-    width: 200px;
+.episode-outline .episode-title a:hover{
+    color: #428bca;;
+}
+.episode-outline .episode-date {
+    width: 30%;
     text-align: center;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.episode-wrap .episode-date time {
+    float: right;
+    margin-right: 24px;
+}
+
+.episode-wrap .episode-date span {
+    float: right;
+}
+
+.table-hover tbody .episode-wrap td:hover{
+    cursor: pointer;
+}
+
+.video-info{
+    width:100%;
+    background-color: #222;
+}
+
+.video-info .video-series-name{
+    width:100%;
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+.video-info .series-description{
+    color: #ddd;
+    margin-bottom: 12px;
+}
+
+.video-info .video-clearfix{
+    float: right;
+    color: #fff;
+}
+.video-clearfix ul{
+    padding-left: 0px;
+}
+.video-info .video-clearfix li{
+    position: relative;
+    display: inline-block;
+    padding:0 36px;
+    height: 48px;
+    font-size: 12px;
+    top: 6px;
+}
+.video-clearfix li .video-item-meta{
+    opacity: .7;
+    line-height: 12px;
+    font-size: 14px;
+}
+.video-clearfix li .video-item-value{
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    opacity: .7;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.video-lesson{
+    background: #393E46;
+}
+.video-lesson .video-wrap{
+    padding: 20px 15px 40px;
+    width: 88%;
+    max-width: 1200px;
+}
+.video-wrap .video-container{
+    background-color: #393E46;
+    padding: 15px 16px;
+    border-radius: 5px;
+}
+.video-container .video-show{
+    display: block;
+}
+.video-wrap .video-title{
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.video-js .vjs-tech{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+#ispace-video:focus{
+    cursor: pointer;
+}
+.video-js{
+    padding-top: 56.36%!important;
 }

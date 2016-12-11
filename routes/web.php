@@ -81,6 +81,7 @@ Route::group(['namespace' => 'Home'],function(){
 Route::group(['namespace' => 'Home'],function(){
     //视频系列
     Route::get('/series/{series_name}','SeriesController@videoSeriesList');
+    Route::get('/series/{series_name}/{video_index}','SeriesController@videoPlay');
     //帖子文章
     Route::resource('/discussion','DiscussionsController');
     Route::resource('/article','ArticlesController');

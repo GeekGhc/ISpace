@@ -9,8 +9,14 @@ class Video extends Model
 {
     use Searchable;
     protected $fillable = [
-        'url','intro'
+        'url','intro','video_series_id'
     ];
+
+    //视频----视频系列
+    public function video_series()
+    {
+        return $this->belongsTo('App\VideoSeries');
+    }
 
     //视频----评论
     public function comments()

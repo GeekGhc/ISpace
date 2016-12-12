@@ -126,6 +126,12 @@
 .video-container .video-show{
     display: block;
 }
+.video-show .video-catalog{
+    margin-top:16px;
+}
+.video-catalog .video-button-list{
+    float: right;
+}
 .video-wrap .video-title{
     font-size: 20px;
     color: #fff;

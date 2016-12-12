@@ -13,6 +13,7 @@ use App\Http\Requests\UserRegisterRequest;
 use App\Mailer\UserMailer;
 use App\User;
 use App\Video;
+use App\VideoSerie;
 use Flashy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,16 +29,24 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('index');
+        $video_series = VideoSerie::all();
+        return view('index',compact('video_series'));
         //第一次用户登录
     }
 
 
+    //用户的个人主页
     public function profile($username)
     {
         $user = User::where('name', $username)->first();
 //        $profile = $user->profile;
         return view('users.profile');
+    }
+
+    //用户的账户设置
+    public function userAccount()
+    {
+
     }
 
 
@@ -138,7 +147,7 @@ class UserController extends Controller
         } else {
             $articles = Article::with('user')->orderBy('comment_count', 'desc')->paginate(10);
             $discussions = Discussion::with('user')->orderBy('comment_count', 'desc')->paginate(10);
-            $videos = Video::with('user')->orderBy('comment_count', 'desc')->paginate(10);
+//            $videos = Video::with('user')->orderBy('comment_count', 'desc')->paginate(10);
             return view('search.index', compact('articles', 'discussions', 'videos'));
         }
     }

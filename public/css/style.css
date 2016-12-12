@@ -63,12 +63,12 @@
 
 .site-link dt {
     margin-bottom: 20px;
-    color: #343434;
     font-size: 1.4em;
 }
 
 .site-link dt a {
     text-decoration: none;
+    color: #343434;
 }
 
 .site-link dd {

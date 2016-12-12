@@ -7,6 +7,7 @@ use App\Discussion;
 use App\Http\Requests\ArticleCommentRequest;
 use App\Http\Requests\DiscussionCommentRequest;
 use App\Http\Requests\VideoCommentRequest;
+use App\Video;
 use Illuminate\Http\Request;
 use App\Markdown\Markdown;
 use EndaEditor;
@@ -64,7 +65,23 @@ class CommentsController extends Controller
 
     public function storeVideo(VideoCommentRequest $request)
     {
+        $videoId = $request->get('video_id');
+        $article = Video::findOrFail($videoId);
 
+        $data = [
+            'user_id'=>$request->get('user_id'),
+            'to_user_id'=>$request->get('to_user_id')?$request->get('to_user_id'):0,
+            'to_comment_id'=>$request->get('to_comment_id')?$request->get('to_comment_id'):0,
+            'body'=>$request->get('body'),
+            'html_body'=>$this->markdown->markdown($request->get('body')),
+        ];
+        $comment = $article->comments()->create($data);
+        $data = [
+            'html_body' =>$comment->html_body,
+            'comment_id'=>$comment->id,
+            'created_at'=>$comment->created_at
+        ];
+        return $data;
     }
 
 

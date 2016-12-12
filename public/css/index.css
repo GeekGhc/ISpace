@@ -77,14 +77,14 @@ img{
 
 .my-video .video-info{
     background-color: #fff;
-    padding: 12px;
+    padding: 4px 12px 12px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     border: 1px solid #eee;
     border-bottom: 1px solid #ddd;
     border-top-width: 0;
 }
-.my-video .video-info h3{
+.my-video .video-info h4{
     margin:0 0 6px;
     line-height: 1.3;
     font-weight: bold;

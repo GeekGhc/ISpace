@@ -46,9 +46,9 @@
         <div class="container">
             <div class="profile-main">
                 <ul class="nav profile-nav nav-tabs">
-                    <li class="active"><a>我的文章</a></li>
-                    <li><a>我的帖子</a></li>
-                    <li><a>我的回答</a></li>
+                    <li id="profile-article" class="active"><a>我的文章</a></li>
+                    <li id="profile-post"><a>我的帖子</a></li>
+                    <li id="profile-note"><a>我的笔记</a></li>
                 </ul>
                 <div class="profile-articles">
                     <ul class="profile-list">
@@ -58,72 +58,7 @@
                                     <span class="label label-success profile-label">8回复</span>
                                 </div>
                                 <div class="col-md-7">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <a>代码不日记</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="label label-success profile-label">8回复</span>
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <a>代码不日记</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="label label-success profile-label">8回复</span>
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <a>代码不日记</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="label label-success profile-label">8回复</span>
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <a>代码不日记</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="label label-success profile-label">8回复</span>
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程</a>
+                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程(文章)</a>
                                 </div>
                                 <div class="col-md-2">
                                     <a>代码不日记</a>
@@ -135,7 +70,66 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="profile-posts" style="display: none">
+                    <ul class="profile-list">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <span class="label label-success profile-label">9回复</span>
+                                </div>
+                                <div class="col-md-9">
+                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程(帖子)</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="profile-article-time">2016年8月8号</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="profile-notes" style="display: none">
+                    <ul class="profile-list">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <span class="label label-success profile-label">8回复</span>
+                                </div>
+                                <div class="col-md-9">
+                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程(笔记)</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="profile-article-time">2016年8月8号</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        $("#profile-article").on('click',function(){
+            $(this).siblings().removeClass("active");
+            $(this).addClass('active');
+            $('.profile-articles').css('display','block');
+            $('.profile-posts').css('display','none');
+            $('.profile-notes').css('display','none');
+        })
+        $("#profile-post").on('click',function(){
+            $(this).siblings().removeClass("active");
+            $(this).addClass('active');
+            $('.profile-articles').css('display','none');
+            $('.profile-posts').css('display','block');
+            $('.profile-notes').css('display','none');
+        })
+        $("#profile-note").on('click',function(){
+            $(this).siblings().removeClass("active");
+            $(this).addClass('active');
+            $('.profile-articles').css('display','none');
+            $('.profile-posts').css('display','none');
+            $('.profile-notes').css('display','block');
+        })
+    </script>
 @endsection

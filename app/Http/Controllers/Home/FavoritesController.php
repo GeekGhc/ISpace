@@ -48,12 +48,12 @@ class FavoritesController extends Controller
         $video = Video::findOrFail($id);
         $user = \Auth::user();
         if($request->get('isFavorite')){
-            Flashy::success('收藏成功', 'http://kobeman.com');
+//            Flashy::success('收藏成功', 'http://kobeman.com');
             $video->favorites()->create(['user_id'=>$user->id]);
         }else{
-            Flashy::message('已取消收藏', 'http://kobeman.com');
             $video->favorites()->delete(['user_id'=>$user->id]);
         }
-        echo json_encode($video);
+//        echo json_encode($video);
+        return $video;
     }
 }

@@ -31,7 +31,7 @@
                                 <a href="#">开发团队管理系统</a>
                                 <span style="font-weight: bold;"> &gt;&gt; </span>
                                 <a href="#">Laravel 开始使用VueJs</a>
-                                <span><i></i>2016-11-17</span>
+                                <span style="margin-left: 14px"><i></i>2016-11-17</span>
                                 <div class="video-button-list">
                                     <a class="btn btn-default"><i class="fa fa-star"></i>收藏</a>
                                     <a class="btn btn-default"><i class="fa fa-download"></i>下载视频</a>
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="color: #fff;font-size: 14px">
+                        <div style="color: #fff;font-size: 16px">
                             Laravel结合vueJs实现实时评论
                         </div>
                         <div class="video-share"></div>
@@ -57,17 +57,19 @@
             "playbackRates":[0.5,1,1.25,1.5,1.75,2],
             controls: true,
             bigPlayButton: true,
-            LoadingSpinner:true,
+            LoadingSpinner:false,
             textTrackDisplay: true,
             posterImage: false,
             errorDisplay: true,
             controlBar : {
-                volumeMenuButton: false,
-                currentTimeDisplay:false,
-                TimeDivider:true,
+                LiveDisplay:false,
+                VolumeMenuButton:false
+//                VolumeMenuButton:true,
+
+                /*TimeDivider:true,
                 ProgressControl:false,
                 RemainingTimeDisplay:false,
-                /*DurationDisplay:true,
+                DurationDisplay:true,
                 captionsButton : false,
                 chaptersButton: false,
                 subtitlesButton:false,

@@ -18,59 +18,26 @@
     <div class="pexels">
     <div class="container">
         <div class="row">
+            @foreach($video_series as $video_serie)
             <div class="col-md-4">
                 <div class="my-video">
                     <span class="series-tag">最近更新</span>
-                    <a class="thumbnail-link" href="/series/php-laravel">
+                    <a class="thumbnail-link" href="/series/{{$video_serie->name}}">
                         <div class="play-button">
                             <span class="arrow"><i class="fa fa-play-circle-o video-icon"></i></span>
                         </div>
                         <div class="thumbnail ispace-video-theme">
-                            <img style="height: 224px" src="/images/video/back.jpg">
+                            <img style="height: 224px" src="{{$video_serie->thumbnail}}">
                         </div>
                     </a>
                     <div class="video-info">
-                        <h3>开发任务管理系统</h3>
-                        <span>采用laravel框架开发</span>
+                        <h4>{{$video_serie->name}}</h4>
+                        {{--<span>{{$video_serie->intro}}</span>--}}
                     </div>
                 </div>
             </div>
+            @endforeach
 
-            <div class="col-md-4">
-                <div class="my-video">
-                    <span class="series-tag">最近更新</span>
-                    <a class="thumbnail-link">
-                        <div class="play-button">
-                            <span class="arrow"><i class="fa fa-play-circle-o video-icon"></i></span>
-                        </div>
-                        <div class="thumbnail ispace-video-theme">
-                            <img style="height: 224px" src="/images/video/back.jpg">
-                        </div>
-                    </a>
-                    <div class="video-info">
-                        <h3>开发任务管理系统</h3>
-                        <span>采用laravel框架开发</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="my-video">
-                    <span class="series-tag">最近更新</span>
-                    <a class="thumbnail-link">
-                        <div class="play-button">
-                            <span class="arrow"><i class="fa fa-play-circle-o video-icon"></i></span>
-                        </div>
-                        <div class="thumbnail ispace-video-theme">
-                            <img style="height: 224px" src="/images/video/back.jpg">
-                        </div>
-                    </a>
-                    <div class="video-info">
-                        <h3>开发任务管理系统</h3>
-                        <span>采用laravel框架开发</span>
-                    </div>
-                </div>
-            </div>
             {{--<div class="col-md-3 col-xs-12">
                 <div class="weight-messages">
                     <a class="weight-messages_item">我的主页</a>

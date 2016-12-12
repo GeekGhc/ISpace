@@ -35,7 +35,7 @@
                                     </div>
                                     <div>
                                         <div class="publish-info"><a>{{$article->user->name}}</a>
-                                            {{$article->created_at->diffForHumans()}}发表
+                                            <span>{{$article->created_at->diffForHumans()}}发表</span>
                                         </div>
                                         <div class="tags">
                                             <span class="label label-success">Laravel</span>

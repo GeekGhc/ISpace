@@ -39,7 +39,6 @@ Route::get('/mypage',function(){
 
 //用户组路由
 Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
-
     //用户登录注册
     Route::get('/login','UserController@login');
     Route::post('/register','UserController@store');
@@ -55,6 +54,9 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
     Route::post('/password/forget/send_email','PasswordController@passwordSendEmail');
     Route::get('/password/reset/token/{password_token}','PasswordController@passwordReset');
     Route::post('/password/reset/edit','PasswordController@passwordResetEdit');
+
+    //用户账户设置
+    Route::get('/account','UserController@userAccount');
 
 
     //用户的第三方登录

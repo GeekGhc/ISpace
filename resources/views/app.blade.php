@@ -37,7 +37,7 @@
         <!-- 内容分类 -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li id="heart"><a href="#">热门</a></li>
+                <li id="heart"><a href="#">视频</a></li>
                 <li id="article"><a href="/article">文章</a></li>
                 <li id="post"><a href="/discussion">问答</a></li>
                 <li id="activity"><a href="#">活动</a></li>
@@ -83,13 +83,16 @@
                                         <a href="/u/{{\Auth::user()->name}}"><i class="fa fa-user fa-mr"></i>我的主页</a>
                                     </li>
                                     <li>
-                                        <a href="/user/avatar"><i class="fa fa-user fa-mr"></i>更换头像</a>
+                                        <a href="/user/account"><i class="fa  fa-cog fa-mr"></i>账户设置</a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/avatar"><i class="fa fa-user-circle fa-mr"></i>更换头像</a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/avatar"><i class="fa fa-heart fa-mr"></i>我的收藏</a>
                                     </li>
                                     <li>
                                         <a href="/user/password"><i class="fa fa-cog fa-mr"></i>修改密码</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-heart fa-mr"></i>特别感谢</a>
                                     </li>
                                     <li role="separator" class="divider fa-mr"></li>
                                     <li>
@@ -116,29 +119,29 @@
     <div class="container">
         <div class="row">
             <dl class="col-sm-2 col-md-2 site-link">
-                <dt><a>学习资料</a></dt>
+                <dt><a>网站相关</a></dt>
                 <dd><a>文章教程</a></dd>
                 <dd><a>个人博客</a></dd>
                 <dd><a>资源网站</a></dd>
-                <dd><a>论坛帖子</a></dd>
+                <dd><a>社区规则</a></dd>
+            </dl>
+            <dl class="col-sm-2 col-md-2 site-link">
+                <dt><a>学习资料</a></dt>
+                <dd><a>域名注册</a></dd>
+                <dd><a>笔记插件</a></dd>
+                <dd><a>Laravel官网</a></dd>
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>常用链接</a></dt>
                 <dd><a>域名注册</a></dd>
-                <dd><a>Github</a></dd>
-                <dd><a>社区规则</a></dd>
+                <dd><a>图片资源</a></dd>
+                <dd><a>Composer镜像</a></dd>
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
-                <dt><a>网站相关</a></dt>
-                <dd><a>域名注册</a></dd>
+                <dt><a>个人相关</a></dt>
+                <dd><a>个人博客</a></dd>
                 <dd><a>Github</a></dd>
-                <dd><a>社区规则</a></dd>
-            </dl>
-            <dl class="col-sm-2 col-md-2 site-link">
-                <dt><a>常用链接</a></dt>
-                <dd><a>域名注册</a></dd>
-                <dd><a>Github</a></dd>
-                <dd><a>社区规则</a></dd>
+                <dd><a>Segmentfault</a></dd>
             </dl>
         </div>
         <div class="footer-bottom">

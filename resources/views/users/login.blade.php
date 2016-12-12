@@ -16,7 +16,7 @@
                 </div>
 
                 <!---Email  Field --->
-                <div class="form-group input-group-lg{{ $errors->has('email') ? ' has-error' : '' }}"
+                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}"
                      style="margin-bottom: 26px">
                     {!! Form::label('email', '邮箱 :') !!}
                     {{--<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>--}}
@@ -28,7 +28,7 @@
                     @endif
                 </div>
                 <!---Password  Field --->
-                <div class="form-group input-group-lg{{ $errors->has('password') ? ' has-error' : '' }}"
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}"
                      style="margin-bottom: 26px">
                     {!! Form::label('password', '密码 :') !!}
                     {{--<span class="input-group-addon"><i class="fa fa-key"></i></span>--}}
@@ -40,7 +40,7 @@
                     @endif
                 </div>
 
-                <div class="form-group input-group-lg{{ $errors->has('captcha') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('captcha') ? ' has-error' : '' }}">
                     <input type="text" name="captcha" class="form-control col-md-4 captcha-input">
                     <a id="refresh-captcha">
                         <img src="{{captcha_src()}}"

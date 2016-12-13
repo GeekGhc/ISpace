@@ -46,7 +46,7 @@ class UserController extends Controller
     //用户的账户设置
     public function userAccount()
     {
-
+        return view('users.account');
     }
 
 

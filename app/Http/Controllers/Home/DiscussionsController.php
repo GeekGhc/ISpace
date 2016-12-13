@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Comment;
 use App\Discussion;
+use App\Events\PostView;
 use App\Favorite;
 use App\Markdown\Markdown;
 use App\Tag;
@@ -38,6 +39,7 @@ class DiscussionsController extends Controller
     {
         //判断这个用户是否收藏了这篇帖子
         $discussion = Discussion::with('user')->findOrFail($id);
+        event(new PostView($discussion));
         $favorite = Favorite::where('favoriteable_type','App\Discussion')->where('favoriteable_id',$discussion->id)->first();
         if(\Auth::check()){
             if($favorite){

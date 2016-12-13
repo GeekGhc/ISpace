@@ -14,13 +14,15 @@
 Route::get('/test',function(){
 
     $disk = \Storage::disk('qiniu');
-    $disk->put('images/file.jpg',fopen('images/avatar/head.jpg','r+'));
+//    $disk->put('images/file.jpg',fopen('images/avatar/head.jpg','r+'));
 //    $disk->privateDownloadUrl('style.css');
 //    $disk->get('style.css');       //获取文件内容
 //    $contents = "/public/css/search.css";
 //    $disk->put('search.css',$contents);
-    dd($disk->privateDownloadUrl('images/avatar/pexels.jpeg'));
+
+    dd($disk->privateDownloadUrl('/css/style.css'));
 });
+Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
     $discussion = \App\Discussion::find(17);
@@ -83,7 +85,7 @@ Route::group(['namespace' => 'Home'],function(){
 Route::group(['namespace' => 'Home'],function(){
     //视频系列
     Route::get('/series/{series_name}','SeriesController@videoSeriesList');
-    Route::get('/series/{series_name}/{video_index}','SeriesController@videoPlay');
+    Route::get('/series/{series_name}/video/{video_index}','SeriesController@videoPlay');
     //帖子文章
     Route::resource('/discussion','DiscussionsController');
     Route::resource('/article','ArticlesController');

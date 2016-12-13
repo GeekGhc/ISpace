@@ -48,11 +48,11 @@
                 <div class="col-md-10 col-md-offset-1">
                     <table class="episode-outline table table-hover" style="background: #fff">
                         <tbody>
-                        @foreach($videos as $video)
+                        @foreach($videos as $key=>$video)
                             <tr class="episode-wrap">
-                                <td class="episode-index"><i class="fa fa-code icon-type"></i><span>1</span></td>
+                                <td class="episode-index"><i class="fa fa-code icon-type"></i><span>{{$key+1}}</span></td>
                                 <td class="episode-title">
-                                    <a href="/series/{{$video_serie->name}}/1">
+                                    <a href="/series/{{$video_serie->name}}/video/{{$key+1}}">
                                         <i class="fa fa-play-circle"></i>
                                         <span>{{$video->title}}</span>
                                     </a>

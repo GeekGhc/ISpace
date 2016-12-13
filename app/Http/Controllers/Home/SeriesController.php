@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Home;
 
+//require  'path_to_sdk/vendor/autoload.php';
+
+use Qiniu\Auth;
 use App\VideoSerie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,15 +13,42 @@ class SeriesController extends Controller
 {
     public function videoSeriesList($series_name)
     {
-        $video_serie = VideoSerie::where('name',$series_name)->first();
+        $video_serie = VideoSerie::where('name', $series_name)->first();
         $videos = $video_serie->videos;
-        return view('video.index',compact('video_serie','videos'));
+        return view('video.index', compact('video_serie', 'videos'));
     }
 
-    public function videoPlay($series_name,$video_index)
+    public function videoPlay($series_name, $video_index)
     {
-        $video_serie = VideoSerie::where('name',$series_name)->first();
-        $video = [];
-        return view('video.play');
+        $video_series = VideoSerie::where('name', $series_name)->first();
+        $video = $video_series->videos->get($video_index-1);
+        return view('video.play',compact('video','video_index','video_series'));
+    }
+
+    public function videoDownload()
+    {
+        ob_start();
+//        $filename='http://gehuachun.com/css/style.css?e=1481607652&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:X3D_NGE64GtBVu8kydajwS23dvE=';
+//        $filename='http://gehuachun.com/images/page/work.jpg?e=1481616312&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:IQIxatTV_7VF5EuNUp-NRZNU15M=';
+        $filename='http://gehuachun.com/1554.mp4?e=1481626596&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:iJeXZrFuPwgb9vYaK4WQbxADuKU=';
+        $date=date("Ymd-H:i:m");
+        header( "Content-type:   application/octet-stream ");
+        header( "Accept-Ranges:   bytes ");
+        header( "Content-Disposition:   attachment;   filename= {$date}.mp4");
+        $size=readfile($filename);
+        header( "Accept-Length: " .$size);
+
+
+        // 需要填写你的 Access Key 和 Secret Key
+       /* $accessKey = 'mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg';
+        $secretKey = 'PDsiO4d-BBqTs1v6rsqlmwP9a0vg1SX4wSDR8inM';
+
+        // 构建鉴权对象
+        $auth = new Auth($accessKey, $secretKey);
+
+        //baseUrl构造成私有空间的域名/key的形式
+        $baseUrl = 'http://gehuachun.com/1554.mp4';
+        $authUrl = $auth->privateDownloadUrl($baseUrl);
+        echo $authUrl;*/
     }
 }

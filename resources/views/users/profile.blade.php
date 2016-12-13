@@ -48,7 +48,7 @@
                 <ul class="nav profile-nav nav-tabs">
                     <li id="profile-article" class="active"><a>我的文章</a></li>
                     <li id="profile-post"><a>我的帖子</a></li>
-                    <li id="profile-note"><a>我的笔记</a></li>
+                    <li id="profile-note"><a>我的收藏</a></li>
                 </ul>
                 <div class="profile-articles">
                     <ul class="profile-list">

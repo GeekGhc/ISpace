@@ -19,6 +19,7 @@ class CreateProfilesTable extends Migration
             $table->string('city');
             $table->string('github');
             $table->string('weibo');
+            $table->string('qq');
             $table->string('website');
             $table->string('description');
             $table->string('experience_count');

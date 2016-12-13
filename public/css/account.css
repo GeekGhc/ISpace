@@ -1,0 +1,31 @@
+.user-account{
+    margin-top:2em;
+}
+.avatar-change .btn-change-avatar{
+    margin-top:0.9em;
+}
+.account-avatar img{
+    width:138px;
+    height:138px;
+}
+.avatar-change p{
+    color: #777;
+    margin-top:12px;
+}
+
+.user-setting-general{
+    padding-bottom: 20px;
+}
+.user-setting-general h3{
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+}
+.user-setting-general ul{
+    list-style: none;
+}
+.user-setting-general .user-setting-list{
+    padding: 0 12px;
+}
+.user-setting-general .user-setting-item{
+    padding: 5px 0;
+}

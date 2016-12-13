@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Article;
 use App\Comment;
+use App\Events\ArticleView;
 use App\Favorite;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Markdown\Markdown;
@@ -63,7 +64,9 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
+
         $article = Article::with('user')->findOrFail($id);
+        event(new ArticleView($article));
         $favorite = Favorite::where('favoriteable_type','App\Article')->where('favoriteable_id',$article->id)->first();
         if(\Auth::check()){
             if($favorite){

@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="/css/source/bootstrap.css">
     <link href="//cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    {{--<link href="http://ofnp0bg60.bkt.clouddn.com/style.css?e=1480938541&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:_c2lwUM-RSo1y84t1Tw5OxqZzTk=" rel="stylesheet">--}}
-    {{--<link href=" http://gehuachun.com/style.css" rel="stylesheet">--}}
+    {{--<link rel="stylesheet" href="/css/style.css">--}}
+    <link href="http://gehuachun.com/css/style.css?e=1481602090&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:Bt20NvFvlJ9yFjMhDC8LkKtDhcM=" rel="stylesheet">
     @yield('header-css')
     <script src="/js/source/jquery-2.1.4.min.js"></script>
     <script src="/js/source/bootstrap.min.js"></script>
@@ -84,9 +83,6 @@
                                     </li>
                                     <li>
                                         <a href="/user/account"><i class="fa  fa-cog fa-mr"></i>账户设置</a>
-                                    </li>
-                                    <li>
-                                        <a href="/user/avatar"><i class="fa fa-user-circle fa-mr"></i>更换头像</a>
                                     </li>
                                     <li>
                                         <a href="/user/avatar"><i class="fa fa-heart fa-mr"></i>我的收藏</a>

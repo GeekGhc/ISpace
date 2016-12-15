@@ -21,8 +21,9 @@ class SeriesController extends Controller
     public function videoPlay($series_name, $video_index)
     {
         $video_series = VideoSerie::where('name', $series_name)->first();
+        $video_count = $video_series->videos->count();
         $video = $video_series->videos->get($video_index-1);
-        return view('video.play',compact('video','video_index','video_series'));
+        return view('video.play',compact('video','video_index','video_count','video_series'));
     }
 
     public function videoDownload()

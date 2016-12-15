@@ -63,6 +63,7 @@
     cursor: pointer;
 }
 
+/************************************/
 .video-info{
     width:100%;
     background-color: #222;
@@ -132,11 +133,16 @@
 .video-catalog .video-button-list{
     float: right;
 }
+.video-button-list .ifPrev{
+    display: none;
+}
+.video-button-list .ifNext{
+    display: none;
+}
 .video-show .video-intro{
     color: #eee;
     font-size: 16px;
     margin-top:5px;
-
 }
 .video-wrap .video-title{
     font-size: 20px;
@@ -144,24 +150,30 @@
     font-weight: bold;
 }
 .video-js .vjs-tech{
-    position: absolute;
+  /*  position: absolute;
     top: 0;
-    left: 0;
+    left: 0;*/
     width: 100% !important;
     height: 100% !important;
 }
+
 #ispace-video:focus{
     cursor: pointer;
 }
 .video-js{
-    padding-top: 56.36%!important;
+    vertical-align: middle;
+    padding-top: 56.46%!important;
     position: relative;
+}
+
+.vjs-has-started .vjs-control-bar {
+    display: block;
 }
 /*.video-js .vjs-current-time, .vjs-no-flex .vjs-current-time {
     display: block;
 }*/
+
 .vjs-time-divider {
-    display: block;
     float: left;
     font-size: 1.2em;
     line-height: 2.6em;
@@ -180,7 +192,7 @@
     padding-left: 1px;
     padding-right: 1px;
 }
-.vjs-default-skin .vjs-current-time, .vjs-default-skin .vjs-duration {
+.vjs-default-skin .vjs-current-time, .vjs-default-skin .vjs-duration,.vjs-time-divider {
     display: block;
     float: left;
 }
@@ -200,11 +212,18 @@
     transition: all .4s;
 }
 .video-js .vjs-playback-rate{
-   float: right;
-}
-.video-js .vjs-fullscreen-control{
+    display: inline-block !important;
+    /*position: relative;*/
     float: right;
 }
+.video-js .vjs-custom-control-spacer {
+    /*display: block;*/
+}
+.video-js .vjs-fullscreen-control{
+    position: relative;
+    float: right;
+}
+
 .vjs-default-skin  .vjs-load-process{
     position: absolute;
     display: block;
@@ -258,13 +277,11 @@
     top: 0;
 }
 .vjs-default-skin .vjs-mute-control, .vjs-default-skin .vjs-volume-menu-button {
-    display: block;
+    /*position: relative;*/
+    /*display: inline-block;*/
     cursor: pointer;
-    float: right;
+    float: left;
     margin-right:20px;
-}
-.vjs-has-started .vjs-control-bar {
-    display: block;
 }
 .vjs-default-skin .vjs-play-control {
     float: left;

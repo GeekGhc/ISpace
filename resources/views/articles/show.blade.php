@@ -398,7 +398,7 @@
             },
         })
         new Vue({
-            el: '#comment-post',
+            el: '#app',
         })
     </script>
 @endif

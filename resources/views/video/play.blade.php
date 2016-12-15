@@ -3,6 +3,10 @@
     <link href="http://vjs.zencdn.net/5.12.6/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/video.css">
 @endsection
+@section('header-js')
+    <script src="/js/source/vue.js"></script>
+    <script src="/js/source/vue-resource.min.js"></script>
+@endsection
 @section('content')
     <div class="video-lesson">
         <div class="container video-wrap">
@@ -10,13 +14,14 @@
                 <div class="col-md-12 video-title">
                     <span>{{$video->title}}</span>
                 </div>
-                <div class="col-md-12 video-container">
+                <div  class="col-md-12 video-container">
                     <div class="video-show">
-                        <video id="ispace-video" style="outline: none;width: 1170px;height: 490px;"
-                               class="video-js vjs-default-skin vjs-big-play-centered"
+                        <video id="ispace-video" style="outline: none;width: 1170px;height: 490px;outline: none"
+                               class="video-js vjs-default-skin vjs-big-play-centered
+                               vjs-user-inactive vjs-has-started vjs-paused"
                                preload="auto"
-                               {{--tabindex="-1"--}}
                                controls
+                               tabindex="-1"
                                poster="/images/video/back.jpg"
                                data-setup='{"example_option":true}'
                         >
@@ -35,8 +40,8 @@
                                 <div class="video-button-list">
                                     <a class="btn btn-default"><i class="fa fa-star"></i>收藏</a>
                                     <a class="btn btn-default" id="video-download"><i class="fa fa-download"></i>下载视频</a>
-                                    <a class="btn btn-default" href="/series/{{$video_series->name}}/video/{{$video_index-1}}"><i class="fa fa-arrow-left"></i>上一节</a>
-                                    <a class="btn btn-default" href="/series/{{$video_series->name}}/video/{{$video_index+1}}"><i class="fa fa-arrow-right"></i>下一节</a>
+                                    <a class="btn btn-default" :class="ifPrev" href="/series/{{$video_series->name}}/video/{{$video_index-1}}"><i class="fa fa-arrow-left"></i>上一节</a>
+                                    <a class="btn btn-default" :class="ifNext" href="/series/{{$video_series->name}}/video/{{$video_index+1}}"><i class="fa fa-arrow-right"></i>下一节</a>
                                 </div>
                             </div>
                         </div>
@@ -53,21 +58,55 @@
         </div>
     </div>
     <script>
+        new Vue({
+            el: '.video-lesson',
+            data:{
+                videoIndex:'{{$video_index}}',
+                ifPrev:'',
+                ifNext:'',
+            },
+            computed:{
+                ifPrev:function(){
+                    if(this.videoIndex==="1"){
+                        return 'ifPrev';
+                    }
+                },
+                ifNext:function(){
+                    if(this.videoIndex==="{{$video_count}}"){
+                        return 'ifNext';
+                    }
+                }
+            }
+        })
+    </script>
+    <script>
         var options = {
             fluid: true,
             preload: 'metadata',
-           /* "playbackRates":[0.5,1,1.25,1.5,1.75,2],
+            "playbackRates":[0.5,1,1.25,1.5,1.75,2],
             controls: true,
             bigPlayButton: true,
             LoadingSpinner:false,
             textTrackDisplay: true,
             posterImage: false,
             errorDisplay: true,
+            VolumeMenuButton:false,
             controlBar : {
-                LiveDisplay:false,
-                VolumeMenuButton:false
-            }*/
+                CustomControlSpacer:true,
+                /*CurrentTimeDisplay:true,
+                TimeDivider:true,
+                DurationDisplay:true,
+                VolumeMenuButton:{
+                    VolumeBar:true,
+                    VolumeLevel:true,
+                    VolumeHandle:true
+                },
+                FullscreenToggle:false,*/
+            }
         };
-        var player = videojs('ispace-video', options)
+        var player = videojs('ispace-video', options);
+        player.removeChild('BigPlayButton');
+    </script>
+    <script>
     </script>
 @endsection

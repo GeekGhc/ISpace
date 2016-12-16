@@ -30,6 +30,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 //文章
 $factory->define(App\Article::class, function (Faker\Generator $faker) {
     $userId = \App\User::pluck('id')->toArray();
+
     return [
         'title' => $faker->sentence,
         'body' => $faker->paragraph,

@@ -42,7 +42,8 @@
                         </li>
                     </ul>
                 @endforeach
-                    {{$articles->links()}}
+                    {{--{{$articles->links()}}--}}
+                    {!! PaginateRoute::renderPageList($articles,false,'pagination',true) !!}
             </div>
 
 

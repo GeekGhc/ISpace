@@ -186,6 +186,7 @@ return [
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        Spatie\PaginateRoute\PaginateRouteServiceProvider::class,
 
 
     ],
@@ -242,6 +243,7 @@ return [
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
+        'PaginateRoute' => Spatie\PaginateRoute\PaginateRouteFacade::class,
 
     ],
 

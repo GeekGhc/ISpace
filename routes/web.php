@@ -89,6 +89,9 @@ Route::group(['namespace' => 'Home'],function(){
     //帖子文章
     Route::resource('/discussion','DiscussionsController');
     Route::resource('/article','ArticlesController');
+    Route::paginate('discussion', 'DiscussionsController@index');
+    Route::paginate('article', 'ArticlesController@index');
+
 
     //文本图片上传
     Route::post('/post/upload','PostController@upload');

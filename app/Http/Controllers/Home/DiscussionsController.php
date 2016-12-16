@@ -24,7 +24,7 @@ class DiscussionsController extends Controller
     public function index()
     {
         $discussions = Discussion::with('user')->latest()->paginate(10);
-//        dd($discussions);
+
 //        $body = $this->markdown->markdown($discussions->body);
         return view('discussions.index',compact('discussions'));
     }

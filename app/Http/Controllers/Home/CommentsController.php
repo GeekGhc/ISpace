@@ -21,10 +21,13 @@ class CommentsController extends Controller
         $this->markdown = $markdown;
     }
 
+    //帖子评论
     public function storePost(DiscussionCommentRequest $request)
     {
         $postId = $request->get('discussion_id');
         $post = Discussion::findOrFail($postId);
+        $post->comment_count = $post->comment_count+1;
+        $post->save();
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -43,9 +46,12 @@ class CommentsController extends Controller
     }
 
 
+    //文章评论
     public function storeArticle(ArticleCommentRequest $request){
         $articleId = $request->get('article_id');
         $article = Article::findOrFail($articleId);
+        $article->comment_count = $article->comment_count+1;
+        $article->save();
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -63,10 +69,13 @@ class CommentsController extends Controller
         return $data;
     }
 
+    //视频评论
     public function storeVideo(VideoCommentRequest $request)
     {
         $videoId = $request->get('video_id');
-        $article = Video::findOrFail($videoId);
+        $video = Video::findOrFail($videoId);
+        $video->comment_count = $video->comment_count+1;
+        $video->save();
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -75,7 +84,7 @@ class CommentsController extends Controller
             'body'=>$request->get('body'),
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
-        $comment = $article->comments()->create($data);
+        $comment = $video->comments()->create($data);
         $data = [
             'html_body' =>$comment->html_body,
             'comment_id'=>$comment->id,
@@ -83,7 +92,4 @@ class CommentsController extends Controller
         ];
         return $data;
     }
-
-
-
 }

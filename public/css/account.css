@@ -29,3 +29,6 @@
 .user-setting-general .user-setting-item{
     padding: 5px 0;
 }
+.user-setting-item textarea.form-control{
+    min-height:80px;
+}

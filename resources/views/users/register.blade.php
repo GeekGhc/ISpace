@@ -62,7 +62,7 @@
                         </span>
                     @endif
                 </div>
-                {!! Form::submit('马上注册',['class'=>'btn btn-primary form-control']) !!}
+                {!! Form::submit('马上注册',['class'=>'btn btn-primary btn-lg register-submit']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

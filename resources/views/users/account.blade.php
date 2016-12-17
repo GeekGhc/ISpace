@@ -51,7 +51,7 @@
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">学校:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="school" value="{{$profile->city}}">
+                                <input class="form-control" name="school" value="{{$profile->school}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">

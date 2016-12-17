@@ -22,7 +22,11 @@ class CreateDiscussionsTable extends Migration
             $table->integer('last_user_id')->unsigned();
             $table->integer('view_count')->default(0);
             $table->integer('comment_count')->default(0);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

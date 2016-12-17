@@ -32,7 +32,7 @@
                             </div>
                             <div class="profile-other-item">
                                 <i class="fa fa-graduation-cap profile-head-fa"></i>
-                                <span>金陵科技学院</span>
+                                <span>{{$profile->school}}</span>
                             </div>
                             <div class="profile-other-item">
                                 <i class="fa fa-chrome profile-head-fa"></i>

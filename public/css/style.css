@@ -159,45 +159,91 @@
 }
 
 .forget-pass {
+    margin-top: 6px;
     color: #999;
 }
 
 .forget-pass:hover {
     color: #747474;
 }
-
+.login-submit{
+    width:100%;
+}
+.register-submit{
+    width:100%;
+}
 .captcha-input {
     width: 55%;
     margin-right: 40px;
     float: left;
 }
 
+.quick-login-div{
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+    text-align: center;
+}
 .quick-login {
+    width:100%;
     color: #777;
     font-size: 18px;
+    margin-bottom: 8px;
 }
-
+.login-sns{
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+.login-sns li{
+    display: inline-block;
+    line-height: 20px;
+}
+.login-sns li>a{
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 44px;
+    font-size: 20px;
+    border:none;
+    /*background: #eeeeee;*/
+}
+.login-sns li.weibo a{
+    color: #fff;
+    background-color: #f57e42;
+}
+.login-sns li.weixin a{
+    color: #fff;
+    background-color: #5cb85c;;
+}
+.login-sns li.github a{
+    color: #fff;
+    background-color: #000;
+}
+.login-sns li.google a{
+    color: #fff;
+    background-color: #e03d37;
+}
+.login-sns li.google a:hover{
+    color: #fff;
+    background-color: #e90d24;
+}
+.login-sns li.qq a{
+    color: #fff;
+    background-color: #15a7f0;
+}
 .icon-login {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 14px;
     padding: 2px 4px;
 }
-
 .login-github {
     color: #fff;
     background-color: #000;
 }
-
 .login-weibo {
     color: #fff;
     background-color: #e90d24;
 }
-
-.login-weixin {
-    color: #fff;
-    background-color: #00b500;
-}
-
 .login-qq {
     color: #fff;
     background-color: #0098c6;

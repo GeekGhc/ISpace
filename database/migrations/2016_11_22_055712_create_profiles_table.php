@@ -24,7 +24,11 @@ class CreateProfilesTable extends Migration
             $table->string('weibo')->nullable();
             $table->string('qq')->nullable();
             $table->integer('experience_count')->default(0);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdte('cascade');
             $table->timestamps();
         });
     }

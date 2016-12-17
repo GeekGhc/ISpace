@@ -61,27 +61,46 @@
                 </div>
 
                 <div class="form-group remember-login">
-                    <label class="pull-left login-check">
+                    <label class="pull-right login-check">
                         <input id="remember" name="remember" value="0" type="checkbox" style="display: inline-block">
                         记住登录状态
                     </label>
                     {{--{!! Form::hidden('remember',1) !!}--}}
-                    {!! Form::submit('马上登录',['class'=>'btn btn-primary pull-right']) !!}
-                </div>
-
-                <div class="form-group">
-                    <a href="{{url('user/password/forget')}}" class="forget-pass"><p>忘记密码?</p></a>
+                    <a href="{{url('user/password/forget')}}" class="forget-pass pull-left"><p>忘记密码?</p></a>
                 </div>
                 <div class="form-group">
+                    {!! Form::submit('马上登录',['class'=>'btn btn-primary btn-lg login-submit']) !!}
+                </div>
+                <div class="form-group quick-login-div">
                     <p class="pull-left quick-login">快捷登录</p>
-                    <a class="btn btn-default icon-login login-github" href="{{url('/user/login/github')}}"><i
-                                class="fa fa-github fa-2x"></i></a>
-                    <a class="btn btn-default icon-login login-weibo" href="{{url('/user/login/weibo')}}"><i
-                                class="fa fa-weibo fa-2x"></i></a>
-                    <a class="btn btn-default icon-login login-weixin" href="{{url('/user/login/weixin')}}"><i
-                                class="fa fa-weixin fa-2x"></i></a>
-                    <a class="btn btn-default icon-login login-qq" href="{{url('/user/login/qq')}}"><i
-                                class="fa fa-qq fa-2x"></i></a>
+
+                    <ul class="login-sns">
+                        <li class="github">
+                            <a class="icon-login" href="{{url('/user/login/github')}}">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </li>
+                        <li class="weixin">
+                            <a class="icon-login" href="{{url('/user/login/weixin')}}">
+                                <i class="fa fa-weixin"></i>
+                            </a>
+                        </li>
+                        <li class="weibo">
+                            <a class="icon-login" href="{{url('/user/login/weibo')}}">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                        </li>
+                        <li class="google">
+                            <a class="icon-login" href="{{url('/user/login/google')}}">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="qq">
+                            <a class="icon-login" href="{{url('/user/login/qq')}}">
+                                <i class="fa fa-qq"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 {!! Form::close() !!}
             </div>

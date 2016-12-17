@@ -22,7 +22,10 @@ class TagsTableSeeder extends Seeder
         \App\Tag::create(['name'=>"Javascript",'type'=>"info"]);
         \App\Tag::create(['name'=>"Database",'type'=>"success"]);
         \App\Tag::create(['name'=>"MAC",'type'=>"danger"]);
+        \App\Tag::create(['name'=>"Windows",'type'=>"danger"]);
+        \App\Tag::create(['name'=>"Linux",'type'=>"danger"]);
         \App\Tag::create(['name'=>"Github",'type'=>"default"]);
+        \App\Tag::create(['name'=>"Git",'type'=>"default"]);
         \App\Tag::create(['name'=>"Composer",'type'=>"warning"]);
         \App\Tag::create(['name'=>"随想",'type'=>"primary"]);
 

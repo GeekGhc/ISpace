@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 //require  'path_to_sdk/vendor/autoload.php';
 
+use App\Comment;
 use Qiniu\Auth;
 use App\VideoSerie;
 use Illuminate\Http\Request;
@@ -23,7 +24,21 @@ class SeriesController extends Controller
         $video_series = VideoSerie::where('name', $series_name)->first();
         $video_count = $video_series->videos->count();
         $video = $video_series->videos->get($video_index-1);
-        return view('video.play',compact('video','video_index','video_count','video_series'));
+
+        $favorite = Favorite::where('favoriteable_type','App\Discussion')->where('favoriteable_id',$video->id)->first();
+        if(\Auth::check()){
+            if($favorite){
+                $isFavorite = \Auth::user()->id==$favorite->user_id;
+                if(!$isFavorite){$isFavorite = 0;}
+            }else{
+                $isFavorite = 0;//未收藏
+            }
+        }else{
+            $isFavorite = 2;//游客状态
+        }
+
+        $comments = Comment::with('user')->with('to_user')->where('commentable_type','App\Video')->where('commentable_id',$id)->get();
+        return view('video.play',compact('video','video_index','video_count','video_series','isFavorite','comments'));
     }
 
     public function videoDownload()

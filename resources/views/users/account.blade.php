@@ -15,7 +15,7 @@
                 <div class="account-avatar">
                     <div id="validation-errors"></div>
                     {!! Form::open(['url'=>'/user/avatar','files'=>true,'id'=>'avatar']) !!}
-                    <img src="{{\Auth::user()->avatar}}" class="img-circle" id="user-avatar">
+                    <img src="{{$profile->user->avatar}}" class="img-circle" id="user-avatar">
                     <div class="avatar-change">
                         <button class="btn btn-primary btn-change-avatar" id="upload-avatar" type="submit">修改头像</button>
                         {{--<input type="file" id="account-avatar" name="avatar" class="file">--}}
@@ -31,31 +31,39 @@
             </div>
 
             <div class="col-md-7 col-md-offset-1">
+                {!! Form::open(['method'=>'PATCH','url'=>'/user/account/'.$profile->id]) !!}
                 <div class="user-setting-general">
                     <h3 style="margin-top: 0;">常规设置</h3>
                     <div class="user-setting-list row form-horizontal">
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3 control-label">用户名:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" value="Jelly" disabled>
+                                <input class="form-control" value="{{$profile->user->name}}" disabled>
+                                <span class="help-block bg-warning">用户名建议无需修改,如需修改请联系管理员</span>
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">居住地:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="city">
+                                <input class="form-control" name="city" value="{{$profile->city}}">
+                            </div>
+                        </div>
+                        <div class="user-setting-item form-group">
+                            <label class="col-sm-3  control-label">学校:</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" name="school" value="{{$profile->city}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">个人网站:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="website" placeholder="www.example.com">
+                                <input class="form-control" name="website" placeholder="www.example.com" value="{{$profile->website}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">个人简介:</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="description" rows="5" cols="56" placeholder="介绍下你自己吧..."></textarea>
+                                <textarea class="form-control" name="description" rows="5" cols="50" placeholder="介绍下自己吧...">{{$profile->description}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -65,26 +73,30 @@
                     <h3>个人账号</h3>
                     <div class="user-setting-list">
                         <div class="user-setting-item form-group">
-                            <label class="col-sm-3  control-label" data-placement="https://github.com/XXX">Github:</label>
+                            <label class="col-sm-3  control-label" data-placement="https://github.com/XXph">Github:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="github">
+                                <input class="form-control" name="github" placeholder="https://github.com/name" value="{{$profile->github}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">新浪微博:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="weibo">
+                                <input class="form-control" name="weibo" value="{{$profile->weibo}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">腾讯QQ:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="qq">
+                                <input class="form-control" name="qq" value="{{$profile->qq}}">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::submit('更新我的资料',['class'=>'btn btn-primary pull-right btn-lg','style'=>'width:100%']) !!}
                         </div>
                     </div>
                 </div>
             </div>
+            {!! Form::close() !!}
 
         </div>
 

@@ -6,7 +6,7 @@
             <div class="reply-field">
                 {!! Form::textarea('body',null,['class' => 'form-control','placeholder'=>'写下你的评论...','v-model'=>'newCommentMain.body']) !!}
             </div>
-            <button type="submit" class="btn btn-primary reply-button pull-right">发表回复</button>
+            <button type="submit" class="ui blue     button reply-button pull-right">发表回复</button>
             {!! Form::close() !!}
         </div>
     @else

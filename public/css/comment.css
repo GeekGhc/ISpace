@@ -91,7 +91,7 @@
 .child-comment {
     padding: 15px 0 15px 10px;
     border-bottom: 1px dashed #d9d9d9;
-    border-left: 3px solid #d9d9d9;
+    border-left: 3px solid #00adb5;
     font-size: 14px;
 }
 
@@ -200,7 +200,16 @@
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=MAC] {
     background-color: #d9534f;
 }
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Windows] {
+    background-color: #d9534f;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Linux] {
+    background-color: #d9534f;
+}
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Github] {
+    background-color: #777;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Git] {
     background-color: #777;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Composer] {

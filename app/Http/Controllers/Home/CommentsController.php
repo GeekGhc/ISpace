@@ -74,7 +74,7 @@ class CommentsController extends Controller
     {
         $videoId = $request->get('video_id');
         $video = Video::findOrFail($videoId);
-        $video->comment_count = $video->comment_count+1;
+//        $video->comment_count = $video->comment_count+1;
         $video->save();
 
         $data = [

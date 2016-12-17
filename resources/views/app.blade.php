@@ -8,6 +8,7 @@
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
     <link rel="stylesheet" href="/css/source/bootstrap.css">
+    <link rel="stylesheet" href="/css/source/semantic.min.css">
     <link href="//cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     {{--<link rel="stylesheet" href="/css/style.css">--}}
@@ -15,6 +16,7 @@
     @yield('header-css')
     <script src="/js/source/jquery-2.1.4.min.js"></script>
     <script src="/js/source/bootstrap.min.js"></script>
+    <script src="/js/source/semantic.min.js"></script>
     <script src="//cdn.bootcss.com/select2/4.0.3/js/select2.full.min.js"></script>
     @yield('header-js')
 </head>
@@ -72,7 +74,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a id="dLabel" type="button" data-toggle="dropdown" style="padding: 0px 0px 2px">
+                                <a id="dLabel" type="button" data-toggle="dropdown" style="padding: 0px 0px 2px;cursor: pointer">
                                     <img src="{{\Auth::User()->avatar}}" class="img-circle" width="44px" height="44px"
                                          style="margin-top: 3px;border: 1px solid #fff"
                                          alt="">

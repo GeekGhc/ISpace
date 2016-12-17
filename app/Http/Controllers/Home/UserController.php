@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Favorite;
+use App\Profile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Image;
@@ -43,8 +46,14 @@ class UserController extends Controller
     public function profile($username)
     {
         $user = User::where('name', $username)->first();
-//        $profile = $user->profile;
-        return view('users.profile');
+        $profile = Profile::with('user')->where('user_id',$user->id)->first();
+        $articles = $user->articles;
+        $posts = $user->discussions;
+        $favorites = Favorite::where('user_id',$user->id)->get();
+       /* foreach ($favorites as $fav){
+            return $fav->favoriteable;
+        }*/
+        return view('users.profile',compact('profile','articles','posts','favorites'));
     }
 
     public function login()
@@ -125,14 +134,18 @@ class UserController extends Controller
     //用户的账户设置
     public function userAccount()
     {
-        return view('users.account');
+        $user = Auth::user();
+        $profile = Profile::with('user')->where('user_id',$user->id)->first();
+        return view('users.account',compact('profile'));
     }
 
 
     //用户账户资料更新
-    public function update(Request $request, $id)
+    public function userUpdate(Request $request,$id)
     {
-
+        $profile = Profile::findOrFail($id);
+        $profile->update($request->all());
+        return redirect('user/account');
     }
 
     //修改用户头像
@@ -168,13 +181,11 @@ class UserController extends Controller
             'avatar' => asset($destinationPath . $filename),
             'image' =>  $destinationPath . $filename,
         ]);
-//        return redirect('user/account');
     }
 
     //用户头像的裁剪
     public function cropAvatar(Request $request)
     {
-//        dd($request->all());
         $photo =$request->get('photo');
         $height = (int)$request->get('h');
         $width = (int)$request->get('w');
@@ -183,6 +194,7 @@ class UserController extends Controller
 
         Image::make($photo)->crop($width, $height, $xAlign, $yAlign)->save();
         $user = \Auth::user();
+//        $result = unlink($user->avatar);
         $user->avatar = asset($photo);
         $user->save();
         return redirect('user/account');

@@ -49,11 +49,17 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);//$user->comments()
     }
 
+    //用户----收藏
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 
     //新用户注册
     public static function register(array $arr,$data)
     {
         $user = static::create(array_merge($arr, $data));
+        Profile::create(['user_id'=>$user->id]);
 
         //用户信息写入数据库后触发events  比如发送邮件
         event(new UserRegistered($user,$data['confirm_code']));

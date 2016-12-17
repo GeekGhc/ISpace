@@ -46,7 +46,10 @@
     line-height: 18px;
     vertical-align: middle;
     display: block;
-    margin-top: 10px;
+    margin-top: 18px;
+}
+.profile-other-item span{
+    font-size: 16px;
 }
 .profile-head-name h2{
     font-weight: bold;

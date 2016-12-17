@@ -10,24 +10,25 @@
                     <div class="col-md-2">
                         <div class="profile-user-header">
                             <a href="#">
-                                <img class="profile-user-avatar" src="/images/avatar/head.jpg">
+                                <img class="profile-user-avatar" src="{{$profile->user->avatar}}">
                             </a>
                         </div>
                         <div class="profile-header-social">
                             <ul>
                                 <li><a class="fa fa-github fa-2x"></a></li>
                                 <li><a class="fa fa-weibo fa-2x"></a></li>
+                                <li><a class="fa fa-qq fa-2x"></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="profile-head-name">
-                            <h2>JellyBean</h2>
+                            <h2>{{$profile->user->name}}</h2>
                         </div>
                         <div class="profile-head-other">
                             <div class="profile-other-item">
                                 <i class="fa fa-map-marker profile-head-fa"></i>
-                                <span>南京</span>
+                                <span>{{$profile->city}}</span>
                             </div>
                             <div class="profile-other-item">
                                 <i class="fa fa-graduation-cap profile-head-fa"></i>
@@ -35,7 +36,15 @@
                             </div>
                             <div class="profile-other-item">
                                 <i class="fa fa-chrome profile-head-fa"></i>
-                                <span>www.kobeman.com</span>
+                                <span><a href="http://{{$profile->website}}" target="_blank">{{$profile->website}}</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="font-size: 20px;font-weight: bold">个人简介</div>
+                            <div class="panel-body" style="min-height: 120px;font-size: 16px">
+                                {{$profile->description}}
                             </div>
                         </div>
                     </div>
@@ -52,58 +61,67 @@
                 </ul>
                 <div class="profile-articles">
                     <ul class="profile-list">
+                        @foreach($articles as $article)
                         <li>
                             <div class="row">
                                 <div class="col-md-1">
-                                    <span class="label label-success profile-label">8回复</span>
+                                    <span class="label label-success profile-label">{{$article->comment_count}}回复</span>
                                 </div>
-                                <div class="col-md-7">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程(文章)</a>
+                                <div class="col-md-8">
+                                    <a class="profile-article-title" href="/article/{{$article->id}}">{{$article->title}}</a>
                                 </div>
-                                <div class="col-md-2">
-                                    <a>代码不日记</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
+                                <div class="col-md-3" style="font-size: 16px">
+                                    <span class="profile-article-time">文章发表于{{$article->created_at->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="profile-posts" style="display: none">
                     <ul class="profile-list">
+                        @foreach($posts as $post)
                         <li>
                             <div class="row">
                                 <div class="col-md-1">
-                                    <span class="label label-success profile-label">9回复</span>
+                                    <span class="label label-success profile-label">{{$post->comment_count}}回复</span>
                                 </div>
-                                <div class="col-md-9">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程(帖子)</a>
+                                <div class="col-md-8">
+                                    <a class="profile-article-title" href="/discussion/{{$post->id}}">{{$post->title}}</a>
                                 </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
+                                <div class="col-md-3" style="font-size: 16px">
+                                    <span class="profile-article-time">帖子发表于{{$post->created_at->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="profile-notes" style="display: none">
                     <ul class="profile-list">
+                        @foreach($favorites as $favorite)
                         <li>
                             <div class="row">
                                 <div class="col-md-1">
-                                    <span class="label label-success profile-label">8回复</span>
+                                    <span class="label label-success profile-label">{{$favorite->favoriteable->comment_count}}回复</span>
                                 </div>
-                                <div class="col-md-9">
-                                    <a class="profile-article-title">Laravel 5 系列教程二：路由，视图，控制器工作流程(笔记)</a>
+                                <div class="col-md-8">
+                                    <a class="profile-article-title"
+                                    @if($favorite->favoriteable_type==="App\Article")
+                                        href="/article/{{$favorite->favoriteable->id}}"
+                                    @else
+                                       href="/discussion/{{$favorite->favoriteable->id}}"
+                                    @endif
+                                    >{{$favorite->favoriteable->title}}</a>
                                 </div>
-                                <div class="col-md-2">
-                                    <span class="profile-article-time">2016年8月8号</span>
+                                <div class="col-md-3" style="font-size: 16px">
+                                    <span class="profile-article-time">最近更新于{{$favorite->favoriteable->updated_at->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

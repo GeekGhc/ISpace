@@ -297,7 +297,7 @@ body{
     color: #7089a9;
     padding-left: 20px;
     padding-top: 10px;
-    padding-bottom: 22px;
+    padding-bottom: 8px;
 }
 
 .answers-part i {
@@ -312,7 +312,7 @@ body{
     margin-right: 3px;
 }
 
-.comment-list {
+/*.comment-list {
     margin-bottom: 6px;
     border-bottom: 1px solid #eeeeee;
     font-size: 16px;
@@ -441,9 +441,9 @@ body{
     color: #000;
 }
 
-/*.reply-form-container {
+!*.reply-form-container {
     box-sizing: border-box;
-}*/
+}*!
 
 .reply-form-container img {
     width: 60px;
@@ -482,4 +482,4 @@ body{
 
 .reply-yourself {
     margin-top: 30px;
-}
+}*/

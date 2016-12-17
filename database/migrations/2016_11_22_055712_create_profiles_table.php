@@ -16,12 +16,13 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('city');
-            $table->string('github');
-            $table->string('weibo');
-            $table->string('qq');
-            $table->string('website');
-            $table->string('description');
+            $table->string('city')->nullable();
+            $table->string('school')->nullable();
+            $table->string('website')->nullable();
+            $table->string('description')->nullable();
+            $table->string('github')->nullable();
+            $table->string('weibo')->nullable();
+            $table->string('qq')->nullable();
             $table->integer('experience_count')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

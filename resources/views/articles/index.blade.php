@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="main col-md-9 col-xs-12">
+            <div class="main col-md-9 col-xs-12" style="padding-top: 10px">
                 @foreach($articles as $article)
                     <ul class="article-list">
                         <li class="article-item">

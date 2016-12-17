@@ -13,6 +13,7 @@
 
 Route::get('/test',function(){
 
+
     $disk = \Storage::disk('qiniu');
 //    $disk->put('images/file.jpg',fopen('images/avatar/head.jpg','r+'));
 //    $disk->privateDownloadUrl('style.css');
@@ -25,10 +26,8 @@ Route::get('/test',function(){
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
-    $discussion = \App\Discussion::find(17);
-    foreach ($discussion->tags as $tag) {
-         return $tag->type;
-    }
+    $profile =\App\Profile::create(['user_id'=>12]);
+    dd($profile);
 });
 
 Route::get('/','Home\UserController@index');
@@ -59,6 +58,7 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
     //用户账户设置
     Route::get('/account','UserController@userAccount');
+    Route::patch('/account/{id}','UserController@userUpdate');
     //头像上传修改
     Route::post('/avatar','UserController@changeAvatar');
     Route::post('/crop/api','UserController@cropAvatar');
@@ -87,8 +87,8 @@ Route::group(['namespace' => 'Home'],function(){
 
 Route::group(['namespace' => 'Home'],function(){
     //视频系列
-    Route::get('/series/{series_name}','SeriesController@videoSeriesList');
-    Route::get('/series/{series_name}/video/{video_index}','SeriesController@videoPlay');
+    Route::get('/series/{series_name}','VideosController@videoSeriesList');
+    Route::get('/series/{series_name}/video/{video_index}','VideosController@videoPlay');
     //帖子文章
     Route::resource('/discussion','DiscussionsController');
     Route::resource('/article','ArticlesController');

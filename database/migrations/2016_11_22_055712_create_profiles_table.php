@@ -22,7 +22,7 @@ class CreateProfilesTable extends Migration
             $table->string('qq');
             $table->string('website');
             $table->string('description');
-            $table->string('experience_count');
+            $table->integer('experience_count')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

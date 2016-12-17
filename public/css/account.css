@@ -4,6 +4,9 @@
 .avatar-change .btn-change-avatar{
     margin-top:0.9em;
 }
+.avatar-change,.account-avatar{
+    text-align: center;
+}
 .account-avatar img{
     width:138px;
     height:138px;
@@ -29,6 +32,11 @@
 .user-setting-general .user-setting-item{
     padding: 5px 0;
 }
-.user-setting-item textarea.form-control{
-    min-height:80px;
+#avatar .avatar {
+    margin: 2px auto;
+    width: 80px;
+    z-index: 6;
+    margin-top: -90px;
+    opacity: 0;
+    height: 32px;
 }

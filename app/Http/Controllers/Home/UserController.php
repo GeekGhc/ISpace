@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Home;
 
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
+use Image;
 use App\Article;
 use App\Discussion;
 use App\Events\UserRegistered;
@@ -16,6 +19,7 @@ use App\Video;
 use App\VideoSerie;
 use Flashy;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -30,7 +34,7 @@ class UserController extends Controller
     public function index()
     {
         $video_series = VideoSerie::all();
-        return view('index',compact('video_series'));
+        return view('index', compact('video_series'));
         //第一次用户登录
     }
 
@@ -41,24 +45,6 @@ class UserController extends Controller
         $user = User::where('name', $username)->first();
 //        $profile = $user->profile;
         return view('users.profile');
-    }
-
-    //用户的账户设置
-    public function userAccount()
-    {
-        return view('users.account');
-    }
-
-
-    public function edit($id)
-    {
-        return view('users.editInfo');
-    }
-
-
-    public function update(Request $request, $id)
-    {
-
     }
 
     public function login()
@@ -134,6 +120,74 @@ class UserController extends Controller
 
         return redirect('user/login');
     }
+
+
+    //用户的账户设置
+    public function userAccount()
+    {
+        return view('users.account');
+    }
+
+
+    //用户账户资料更新
+    public function update(Request $request, $id)
+    {
+
+    }
+
+    //修改用户头像
+    public function changeAvatar(Request $request)
+    {
+        $file = $request->file("avatar");
+
+        //请求验证 (检查是否是image类型)
+        $input = array('image' => $file);
+        $rules = array(
+            'image' => 'image'
+        );
+        $validator = \Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return \Response::json([
+                'success' => false,
+                'errors' => $validator->getMessageBag()->toArray()
+            ]);
+        }
+
+        $destinationPath = 'uploads/avatar/';
+        $filename = \Auth::user()->id . '_' . time() . $file->getClientOriginalName();
+        $file->move($destinationPath, $filename);
+        Image::make($destinationPath . $filename)->fit(400)->save();
+
+        //更新数据库中用户头像的字段
+      /*   $user = User::find(\Auth::user()->id);
+         $user->avatar = '/' . $destinationPath . $filename;
+         $user->save();*/
+
+        return \Response::json([
+            'success' => true,
+            'avatar' => asset($destinationPath . $filename),
+            'image' =>  $destinationPath . $filename,
+        ]);
+//        return redirect('user/account');
+    }
+
+    //用户头像的裁剪
+    public function cropAvatar(Request $request)
+    {
+//        dd($request->all());
+        $photo =$request->get('photo');
+        $height = (int)$request->get('h');
+        $width = (int)$request->get('w');
+        $xAlign = (int)$request->get('x');
+        $yAlign = (int)$request->get('y');
+
+        Image::make($photo)->crop($width, $height, $xAlign, $yAlign)->save();
+        $user = \Auth::user();
+        $user->avatar = asset($photo);
+        $user->save();
+        return redirect('user/account');
+    }
+
 
     //用户站内搜索
     public function search(Request $request)

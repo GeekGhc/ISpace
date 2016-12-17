@@ -13,7 +13,7 @@ class PostController extends Controller
     public function upload()
     {
         //设置上传图片存放的路径
-        $data = EndaEditor::uploadImgFile('uploads');
+        $data = EndaEditor::uploadImgFile('uploads/markdown');
 
         return json_encode($data);
     }

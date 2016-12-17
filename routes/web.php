@@ -59,6 +59,9 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
     //用户账户设置
     Route::get('/account','UserController@userAccount');
+    //头像上传修改
+    Route::post('/avatar','UserController@changeAvatar');
+    Route::post('/crop/api','UserController@cropAvatar');
 
 
     //用户的第三方登录
@@ -92,8 +95,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::paginate('discussion', 'DiscussionsController@index');
     Route::paginate('article', 'ArticlesController@index');
 
-
-    //文本图片上传
+    //markdown文本图片上传
     Route::post('/post/upload','PostController@upload');
 
     //用户收藏

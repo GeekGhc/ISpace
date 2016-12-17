@@ -15,9 +15,6 @@ class User extends Authenticatable
         'name', 'email','avatar','password','confirm_code','is_confirmed','social_type','social_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -26,24 +23,6 @@ class User extends Authenticatable
     //在数据保存到数据库之前会对密码进行一个预处理
     public function setPasswordAttribute($password){
         $this->attributes['password'] = \Hash::make($password);
-    }
-
-    //新用户注册
-    public static function register(array $arr,$data)
-    {
-        $user = static::create(array_merge($arr, $data));
-
-        //用户信息写入数据库后触发events  比如发送邮件
-        event(new UserRegistered($user,$data['confirm_code']));
-        return $user;
-    }
-
-    //用户密码重置
-    public static function password_reset($user)
-    {
-        //发送用户密码重置邮件
-        event(new PasswordReset($user));
-        return $user;
     }
 
     //用户----档案
@@ -70,4 +49,22 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);//$user->comments()
     }
 
+
+    //新用户注册
+    public static function register(array $arr,$data)
+    {
+        $user = static::create(array_merge($arr, $data));
+
+        //用户信息写入数据库后触发events  比如发送邮件
+        event(new UserRegistered($user,$data['confirm_code']));
+        return $user;
+    }
+
+    //用户密码重置
+    public static function password_reset($user)
+    {
+        //发送用户密码重置邮件
+        event(new PasswordReset($user));
+        return $user;
+    }
 }

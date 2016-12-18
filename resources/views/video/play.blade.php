@@ -51,7 +51,7 @@
                                     </a>
                                     <a class="ui inverted green basic button" id="video-download"><i class="fa fa-download"></i>下载视频</a>
                                     <a class="ui inverted brown basic button" :class="ifPrev" href="/series/{{$video_series->name}}/video/{{$video_index-1}}"><i class="fa fa-arrow-left"></i>上一节</a>
-                                    <a class="ui inverted brown basic button" :class="ifNext" href="/series/{{$video_series->name}}/video/{{$video_index+1}}"><i class="fa fa-arrow-right"></i>下一节</a>
+                                    <a class="ui inverted brown basic button" :class="ifNext" href="/series/{{$video_series->name}}/video/{{$video_index+1}}">下一节<i class="fa fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -288,7 +288,7 @@
         });
     </script>
 @else
-    @include('comments.reply_not_login')
+    @include('comments.video_reply_not_login')
 @endif
 
 <script>

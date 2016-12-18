@@ -16,7 +16,7 @@ class Video extends Model
     //视频----视频系列
     public function video_series()
     {
-        return $this->belongsTo('App\VideoSeries');
+        return $this->belongsTo('App\VideoSeries','video_series_id');
     }
 
     //视频----评论

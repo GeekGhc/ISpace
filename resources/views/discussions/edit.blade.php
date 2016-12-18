@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','修改帖子-ISpace Community')
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
     <link rel="stylesheet" href="/css/comment.css">

@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','修改文章')
 @section('header-css')
     <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/comment.css">

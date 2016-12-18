@@ -2,7 +2,7 @@
 @section('header-css')
     <link rel="stylesheet" href="/css/index.css">
 @endsection
-@section('title','社区')
+@section('title','ISpace Community')
 <meta id="module" content="ISpace">
 @section('content')
     <div class="hero-header">

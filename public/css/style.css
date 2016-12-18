@@ -208,16 +208,28 @@
     /*background: #eeeeee;*/
 }
 .login-sns li.weibo a{
+     color: #fff;
+     background-color: #F2711C;
+ }
+.login-sns li.weibo a:hover{
     color: #fff;
-    background-color: #f57e42;
+    background-color: #f26202;
 }
 .login-sns li.weixin a{
+     color: #fff;
+    background-color: #21BA45;
+ }
+.login-sns li.weixin a:hover{
     color: #fff;
-    background-color: #5cb85c;;
+    background-color: #16ab39;
 }
 .login-sns li.github a{
     color: #fff;
-    background-color: #000;
+    background-color: #1B1C1D;
+}
+.login-sns li.github a:hover{
+    color: #fff;
+    background-color: #27292a;
 }
 .login-sns li.google a{
     color: #fff;
@@ -225,11 +237,15 @@
 }
 .login-sns li.google a:hover{
     color: #fff;
-    background-color: #e90d24;
+    background-color: #d01919;
 }
 .login-sns li.qq a{
     color: #fff;
     background-color: #15a7f0;
+}
+.login-sns li.qq a:hover{
+    color: #fff;
+    background-color: #1678c2;
 }
 .icon-login {
     display: inline-block;
@@ -239,14 +255,6 @@
 .login-github {
     color: #fff;
     background-color: #000;
-}
-.login-weibo {
-    color: #fff;
-    background-color: #e90d24;
-}
-.login-qq {
-    color: #fff;
-    background-color: #0098c6;
 }
 
 

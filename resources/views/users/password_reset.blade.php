@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','密码重置-ISpace Community')
 @section('content')
     <div class="container">
         <div class="row">

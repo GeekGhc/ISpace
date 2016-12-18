@@ -1,5 +1,5 @@
 @extends('app')
-<meta id="module" content="post">
+@section('title','帖子-ISpace Community')
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
 @endsection

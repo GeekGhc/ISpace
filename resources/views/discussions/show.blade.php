@@ -1,4 +1,5 @@
 @extends('app')
+@section('title',$discussion->title)
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
     <link rel="stylesheet" href="/css/comment.css">
@@ -28,15 +29,6 @@
                 </div>
 
                 <div class="col-md-3 col-sm-4 col-xs-12">
-                   {{-- <a type="button" id="favorite" class="btn btn-default my-favorite" @click="favorite()"
-                    @if($isFavorite===2)href="{{url('user/login')}}"@endif>
-                    <i class="fa  fa-star-o" style="margin-right: 10px"></i>
-                    @if($isFavorite==1)
-                        已收藏
-                    @else添加收藏
-                    @endif
-                    </a>--}}
-
                     @if($isFavorite===2)
                         <a class="ui inverted orange button" type="button" id="favorite" href="{{url('user/login')}}"><i class="fa fa-star"></i>添加收藏</a>
                     @elseif($isFavorite==1)
@@ -64,6 +56,21 @@
                 </div>
                 <div class="answers-part">
                     <i class="fa fa-fw fa-thumb-tack fa-2x"></i><span>共<em>{{$discussion->comment_count}}</em>条评论</span>
+                    <div
+                            class="social-share share-component"
+                            data-descritioin="一键分享"
+                            data-disabled="diandian"
+                            data-wechat-qrcode-title="请打开微信扫一扫"
+                            data-wechat-qrcode-helper="<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈</p>"
+                            data-mobile-sites="weibo,qq,qzone,tencent"
+                            data-title="ISpace Community {{$discussion->title}}"
+                            style="display: inline-block;margin-left: 14px"
+
+                    >                      {{--<a class="social-share-icon icon-weibo" target="_blank"></a>--}}
+                        {{--<a href="#" class="social-share-icon icon-weibo"></a>
+                        <a href="#" class="social-share-icon icon-qq"></a>
+                        <a href="#" class="social-share-icon icon-qzone"></a>--}}
+                    </div>
                 </div>
 
                 <div class="comment-list">

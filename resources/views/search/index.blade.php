@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','ISpace Community')
 @section('header-css')
     <link rel="stylesheet" href="/css/search.css">
     <style>

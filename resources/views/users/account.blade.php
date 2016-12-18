@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','ISpace 个人主页设置')
 @section('header-css')
     <link href="http://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/account.css">

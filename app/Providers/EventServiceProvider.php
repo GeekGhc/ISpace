@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\PasswordReset' => [
             'App\Listeners\SendPasswordResetEmail',
         ],
+        'App\Events\AskReply' => [
+            'App\Listeners\SendAskReplyEmail',
+        ],
         'App\Events\ArticleView' => [
             'App\Listeners\ArticleViewListener',
         ],

@@ -1,4 +1,5 @@
 @extends('app')
+@section('title',$video->title)
 @section('header-css')
     <link href="http://vjs.zencdn.net/5.12.6/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/video.css">
@@ -25,7 +26,7 @@
                                preload="auto"
                                controls
                                tabindex="-1"
-                               poster="/images/video/back.jpg"
+                               poster="{{$video->poster}}"
                                data-setup='{"example_option":true}'
                         >
                             <source id="sourceBox" src="{{$video->url}}" type='video/mp4'>
@@ -58,7 +59,21 @@
                         <div  class="video-intro">
                             {{$video->intro}}
                         </div>
-                        <div class="video-share"></div>
+                        <div class="video-share">
+                            <div
+                                    class="social-share share-component"
+                                    data-descritioin="一键分享"
+                                    data-disabled="diandian"
+                                    data-wechat-qrcode-title="请打开微信扫一扫"
+                                    data-wechat-qrcode-helper="<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈</p>"
+                                    data-mobile-sites="weibo,qq,qzone,tencent"
+                                    data-title="ISpace Community {{$video->intro}}"
+                                    date-image="{{$video->poster}}"
+                                    style="display: inline-block;"
+
+                            >
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

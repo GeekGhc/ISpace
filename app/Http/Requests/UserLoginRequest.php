@@ -36,6 +36,7 @@ class UserLoginRequest extends FormRequest
             'email.email'=>'请填写正确的邮箱格式',
             'password.required'=>'用户密码不能为空',
             'password.min'=>'用户密码长度太短',
+            'captcha.required'=>'验证码不能为空'
         ];
     }
 }

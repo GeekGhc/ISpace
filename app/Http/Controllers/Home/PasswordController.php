@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordEditRequest;

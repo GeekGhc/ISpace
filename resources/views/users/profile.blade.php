@@ -1,4 +1,5 @@
 @extends('app')
+@section('title',$profile->user->name.'的主页')
 @section('header-css')
     <link rel="stylesheet" href="/css/profile.css">
 @endsection

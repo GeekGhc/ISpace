@@ -1,5 +1,5 @@
 @extends('app')
-<meta id="module" content="article">
+@section('title',$article->title)
 @section('header-css')
     <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/discussion.css">
@@ -76,6 +76,18 @@
                     </div>
                     <div class="answers-part">
                         <i class="fa fa-fw fa-thumb-tack fa-2x"></i><span>共<em>{{$article->comment_count}}</em>条评论</span>
+                        <div
+                                class="social-share share-component"
+                                data-descritioin="一键分享"
+                                data-disabled="diandian"
+                                data-wechat-qrcode-title="请打开微信扫一扫"
+                                data-wechat-qrcode-helper="<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈</p>"
+                                data-mobile-sites="weibo,qq,qzone,tencent"
+                                data-title="ISpace Community {{$article->title}}"
+                                style="display: inline-block;margin-left: 14px"
+
+                        >
+                        </div>
                     </div>
 
                     <div class="comment-list">

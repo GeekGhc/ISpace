@@ -20,11 +20,11 @@ class CreateVideosTable extends Migration
             $table->string('intro');
             $table->string('poster');
             $table->string('url');
-            $table->foreign('video_series_id')
+          /*  $table->foreign('video_series_id')
                   ->references('id')
                   ->on('video_series')
                   ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                  ->onUpdate('cascade');*/
             $table->timestamps();
         });
     }

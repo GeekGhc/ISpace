@@ -18,7 +18,7 @@ class LoginController extends Controller
         $this->login = $login;
     }
 
-    protected $config = [
+    public $config = [
         'weibo' => [
             'client_id' => '2630420162',
             'client_secret' => 'caa3a434be7ca19afe80197eea1d9db1',
@@ -106,7 +106,11 @@ class LoginController extends Controller
 
     public function qqLogin()
     {
-        $socialite = new SocialiteManager($this->config);
+        $this->login->githubLogin($this->config);
+        return redirect('/');
+
+
+        /*$socialite = new SocialiteManager($this->config);
         $User = $socialite->driver('qq')->user();//user就可以拿到igthub的公共信息
 
         //第一次用户登录
@@ -132,6 +136,6 @@ class LoginController extends Controller
         $newUser = User::create(array_merge($user, $data));
         \Auth::loginUsingId($newUser->id);
         Flashy::message('Welcome ISpace', 'https://kobeman.com');
-        return redirect('/');
+        return redirect('/');*/
     }
 }

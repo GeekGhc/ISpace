@@ -134,7 +134,7 @@ class UserController extends Controller
     //用户的账户设置
     public function userAccount()
     {
-        $user = Auth::user();
+        $user = \Auth::user();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
         return view('users.account',compact('profile'));
     }
@@ -144,7 +144,7 @@ class UserController extends Controller
     public function userUpdate(Request $request,$id)
     {
         $profile = Profile::findOrFail($id);
-        $profile->update($request->all());
+        $profile-> update($request->all());
         return redirect('user/account');
     }
 

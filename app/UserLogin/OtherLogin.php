@@ -8,7 +8,7 @@ class OtherLogin
     //github登录
     public function githubLogin($config){
         $socialite = new SocialiteManager($config);
-        $githubUser = $socialite->driver('github')->user();//user就可以拿到igthub的公共信息
+        $githubUser = $socialite->driver('github')->user();//user就可以拿到github的公共信息
 
         //第一次用户登录
         $loginUser = User::where('social_type', 'github')->where('social_id', $githubUser->getId())->first();
@@ -35,8 +35,10 @@ class OtherLogin
     }
 
     //qq登录
-    public function qqLogin(){
-
+    public function qqLogin($config){
+        $socialite = new SocialiteManager($config);
+        $qqUser = $socialite->driver('qq')->user();//user就可以拿到github的公共信息
+        dd($qqUser->getNickName());
     }
 
 

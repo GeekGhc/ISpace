@@ -65,10 +65,11 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
 
     //用户的第三方登录
-    Route::get('/login/{github}','LoginController@driver');
+    Route::get('/login/{style}','LoginController@driver');
+   /* Route::get('/login/{github}','LoginController@driver');
     Route::get('/login/{weibo}','LoginController@driver');
     Route::get('/login/{qq}','LoginController@driver');
-    Route::get('/login/{weixin}','LoginController@driver');
+    Route::get('/login/{weixin}','LoginController@driver');*/
 
 });
 

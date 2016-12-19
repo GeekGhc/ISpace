@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('avatar');//保存用户头像
             $table->string('confirm_code',64);//邮箱确认激活code
-            $table->integer('is_confirmed')->default(0);//判断用户呢是否已经激活他的邮箱
+            $table->smallInteger('is_confirmed')->default(0);//判断用户呢是否已经激活他的邮箱
             $table->string('social_type');//登录类型
             $table->integer('social_id')->default(0);//第三方登录的id
             $table->string('password');

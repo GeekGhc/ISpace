@@ -208,10 +208,11 @@ body{
 .post-topheader {
     padding: 20px 0;
     /*background: #f6f6f6;*/
-    background: #e2e4e7;
+    /*background: #e2e4e7;*/
+    background-color: #3C454C;
 }
 
-.post-title_info {
+.post-title_info{
     color: #999;
     margin-left: 38px;
     margin-bottom: -5px;
@@ -219,6 +220,7 @@ body{
 
 .post-author_avatar {
     /*display: inline-block;*/
+    color: #fff;
     float: left;
     margin-right: 18px;
 }
@@ -230,7 +232,8 @@ body{
 
 .post-show_title {
     margin: 0 0 15px;
-    color: #000;
+    /*color: #000;*/
+    color: #fff;
     font-weight: 500;
 }
 

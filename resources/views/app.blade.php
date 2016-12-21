@@ -5,6 +5,7 @@
     <title>@yield('title')</title>
     <!-- CSRF Token -->
     <meta id="token" name="token" value="{{ csrf_token() }}">
+    <meta name="google-signin-client_id" content="794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com">
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
     <link rel="stylesheet" href="/css/source/bootstrap.css">
@@ -21,6 +22,7 @@
     <script src="/js/source/semantic.min.js"></script>
     <script src="/js/source/social-share.min.js"></script>
     <script src="http://cdn.bootcss.com/select2/4.0.3/js/select2.full.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     @yield('header-js')
 </head>
 <body>

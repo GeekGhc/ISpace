@@ -34,6 +34,11 @@ class LoginController extends Controller
             'client_secret' => '8c429e4f6b3fa50b1c555d66a72206e5039e533e',
             'redirect' => 'http://localhost:8000/github/login'
         ],
+        'google'=>[
+            'client_id'=>'794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com',
+            'client_secret'=>'jivItp5exFo5olYhQO0AZa11',
+            'redirect'=>'http://localhost:8000/google/login',
+        ],
     ];
 
     public function driver($style)
@@ -46,61 +51,11 @@ class LoginController extends Controller
     {
         $this->login->githubLogin($this->config);
         return redirect('/');
-       /* $socialite = new SocialiteManager($this->config);
-        $githubUser = $socialite->driver('github')->user();//user就可以拿到igthub的公共信息
-
-        //第一次用户登录
-        $loginUser = User::where('social_type', 'github')->where('social_id', $githubUser->getId())->first();
-        //如果没有查到这个用户 重定向到首页
-        if (!is_null($loginUser)) {
-            \Auth::loginUsingId($loginUser->id);
-            return redirect('/');
-        }
-        $user = [
-            'name' => $githubUser->getNickName(),
-            'email' => $githubUser->getEmail(),
-            'password' => bcrypt(str_random(16)),
-            'social_type' => 'github',
-            'social_id' => $githubUser->getId()
-        ];
-        $data = [
-            'is_confirmed' => 1,
-            'confirm_code' => str_random(48),
-            'avatar' => $githubUser->getAvatar(),
-        ];
-        $newUser = User::create(array_merge($user, $data));
-        \Auth::loginUsingId($newUser->id);
-        return redirect('/');*/
     }
 
     public function weiboLogin()
     {
-        $socialite = new SocialiteManager($this->config);
-        $User = $socialite->driver('weibo')->user();//user就可以拿到igthub的公共信息
-
-        //第一次用户登录
-        $loginUser = User::where('social_type', 'weibo')->where('social_id', $User->getId())->first();
-        //如果没有查到这个用户 重定向到首页
-        if (!is_null($loginUser)) {
-            \Auth::loginUsingId($loginUser->id);
-            return redirect('/');
-        }
-
-        $user = [
-            'name' => $User->getNickName(),
-            'email' =>'example@ispace.com',
-            'password' => bcrypt(str_random(16)),
-            'social_type' => 'weibo',
-            'social_id' => $User->getId()
-        ];
-        $data = [
-            'is_confirmed' => 1,
-            'confirm_code' => str_random(48),
-            'avatar' => $User->getAvatar(),
-        ];
-        $newUser = User::create(array_merge($user, $data));
-        \Auth::loginUsingId($newUser->id);
-        Flashy::message('Welcome ISpace', 'https://kobeman.com');
+        $this->login->weiboLogin($this->config);
         return redirect('/');
     }
 
@@ -108,34 +63,11 @@ class LoginController extends Controller
     {
         $this->login->githubLogin($this->config);
         return redirect('/');
+    }
 
-
-        /*$socialite = new SocialiteManager($this->config);
-        $User = $socialite->driver('qq')->user();//user就可以拿到igthub的公共信息
-
-        //第一次用户登录
-        $loginUser = User::where('social_type', 'qq')->where('social_id', $User->getId())->first();
-        //如果没有查到这个用户 重定向到首页
-        if (!is_null($loginUser)) {
-            \Auth::loginUsingId($loginUser->id);
-            return redirect('/');
-        }
-
-        $user = [
-            'name' => $User->getNickName(),
-            'email' =>'example@ispace.com',
-            'password' => bcrypt(str_random(16)),
-            'social_type' => 'qq    ',
-            'social_id' => $User->getId()
-        ];
-        $data = [
-            'is_confirmed' => 1,
-            'confirm_code' => str_random(48),
-            'avatar' => $User->getAvatar(),
-        ];
-        $newUser = User::create(array_merge($user, $data));
-        \Auth::loginUsingId($newUser->id);
-        Flashy::message('Welcome ISpace', 'https://kobeman.com');
-        return redirect('/');*/
+    public function googleLogin()
+    {
+        $this->login->googleLogin($this->config);
+        return redirect('/');
     }
 }

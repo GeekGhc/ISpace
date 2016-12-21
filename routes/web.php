@@ -66,10 +66,6 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
     //用户的第三方登录
     Route::get('/login/{style}','LoginController@driver');
-   /* Route::get('/login/{github}','LoginController@driver');
-    Route::get('/login/{weibo}','LoginController@driver');
-    Route::get('/login/{qq}','LoginController@driver');
-    Route::get('/login/{weixin}','LoginController@driver');*/
 
 });
 
@@ -84,6 +80,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('/weibo/login','LoginController@weiboLogin');
     Route::get('/weixin/login','LoginController@weixinLogin');
     Route::get('/qq/login','LoginController@qqLogin');
+    Route::get('/google/login','LoginController@googleLogin');
 });
 
 Route::group(['namespace' => 'Home'],function(){

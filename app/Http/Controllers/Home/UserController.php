@@ -50,9 +50,6 @@ class UserController extends Controller
         $articles = $user->articles;
         $posts = $user->discussions;
         $favorites = Favorite::where('user_id',$user->id)->get();
-       /* foreach ($favorites as $fav){
-            return $fav->favoriteable;
-        }*/
         return view('users.profile',compact('profile','articles','posts','favorites'));
     }
 

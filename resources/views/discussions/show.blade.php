@@ -3,6 +3,11 @@
 @section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
     <link rel="stylesheet" href="/css/comment.css">
+    <style>
+        body{
+            background: #f5f5f1;
+        }
+    </style>
 @endsection
 @section('header-js')
     <script src="/js/source/vue.js"></script>

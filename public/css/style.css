@@ -34,6 +34,9 @@
     cursor: pointer;
     margin-right: -5px;
 }
+.message-info .badge{
+    background-color: #DB2828;
+}
 .footer {
     display: block;
     background: #fafafa;

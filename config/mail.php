@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => 'ghcz10@outlook.com',
-        'name' => 'JellyBean',
+        'name' => 'ISpace',
     ],
 
     /*

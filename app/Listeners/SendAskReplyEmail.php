@@ -3,19 +3,16 @@
 namespace App\Listeners;
 
 use App\Events\AskReply;
+use App\Mailer\UserMailer;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendAskReplyEmail
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $mailer;
+    public function __construct(UserMailer $mailer)
     {
-        //
+        $this->mailer = $mailer;
     }
 
     /**
@@ -26,6 +23,6 @@ class SendAskReplyEmail
      */
     public function handle(AskReply $event)
     {
-        //
+        $this->mailer->askReply($event->user,$event->data);
     }
 }

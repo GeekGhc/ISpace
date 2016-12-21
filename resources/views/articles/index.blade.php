@@ -3,12 +3,6 @@
 <meta id="module" content="article">
 @section('header-css')
     <link rel="stylesheet" href="/css/article.css">
-    <meta>
-   {{-- <style>
-        body{
-            background-color: #E7F1F5;
-        }
-    </style>--}}
 @endsection
 
 @section('content')

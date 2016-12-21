@@ -72,7 +72,7 @@
                 <li>
                     <ul class="nav navbar-nav navbar-right">
                         @if(\Auth::check())
-                            <li><a class="message-info"><i class="fa fa-bell-o"></i></a></li>
+                            <li><a href="/user/notifications" class="message-info"><i class="fa fa-bell-o"><span class="badge">3</span></i></a></li>
                             <li>
                                 <a id="dLabel" type="button" data-toggle="dropdown" href="#">
                                     {{Auth::user()->name}}

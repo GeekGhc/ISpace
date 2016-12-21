@@ -13,7 +13,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class AskReply
 {
     use InteractsWithSockets, SerializesModels;
-    public  $user,$data;
+    public $user,$data;
 
     /**
      * Create a new event instance.

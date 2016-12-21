@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Home;
 
 use App\Article;
 use App\Discussion;
+use App\Events\AskReply;
 use App\Http\Requests\ArticleCommentRequest;
 use App\Http\Requests\DiscussionCommentRequest;
 use App\Http\Requests\VideoCommentRequest;
+use App\User;
 use App\Video;
 use Illuminate\Http\Request;
 use App\Markdown\Markdown;
@@ -27,7 +29,6 @@ class CommentsController extends Controller
         $postId = $request->get('discussion_id');
         $post = Discussion::findOrFail($postId);
         $post->comment_count = $post->comment_count+1;
-        $post->save();
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -37,6 +38,19 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $post->comments()->create($data);
+
+        //如果帖子下产生评论
+        if($data['to_user_id']===0){
+            $askReply = [
+                'name'=>$post->user->name,
+                'reply_user'=>User::find($request->get('user_id'))->name,
+                'post_title'=>$post->title,
+                'post_body'=>mb_substr(strip_tags($post->html_body),0,70,"utf-8"),
+                'post_id'=>$post->id
+            ];
+            event(new AskReply($post->user,$askReply));
+        }
+        $post->save();
         $data = [
             'html_body' =>$comment->html_body,
             'comment_id'=>$comment->id,

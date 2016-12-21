@@ -26,7 +26,7 @@
                                 </li>
                             </ul>
                             <div class="discussion-list_content">
-                                {{substr(strip_tags($discussion->html_body),0,200)}}
+                                {{mb_substr(strip_tags($discussion->html_body),0,100,"utf-8")}}
                             </div>
                             <div class="discussion-list_footer">
                                 <div class="tagsLabel">
@@ -34,9 +34,6 @@
                                         @foreach($discussion->tags as $tag)
                                             <li class="tagLabel php"><span class="label label-{{$tag->type}}">{{$tag->name}}</span></li>
                                         @endforeach
-                                        {{--<li class="tagLabel php"><span class="taglabel-text">php</span></li>
-                                        <li class="tagLabel php"><span class="taglabel-text">laravel</span></li>
-                                        <li class="tagLabel php"><span class="taglabel-text">mysql</span></li>--}}
                                     </ul>
                                 </div>
                                 <div class="others-info fr">

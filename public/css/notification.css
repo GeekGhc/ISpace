@@ -1,0 +1,49 @@
+.notify-main{
+    padding: 14px 12px 18px;
+}
+
+.notify-main .menu{
+    font-size: 1.2em;
+}
+.notify-main .menu>a{
+    color: #4b4b4b;
+    font-weight: 700;
+}
+.notify-main .menu>a>i{
+    margin-right: 5px;
+}
+.ui.secondary.pointing.menu {
+    border-bottom: 2px solid rgba(34,36,38,.15);
+}
+.ui.secondary.pointing.menu .active.item {
+    border-bottom-width: 3px;
+    font-weight: 900;
+    color: rgba(0,0,0,.95);
+    border-color: #428bca;
+}
+.ui.secondary.pointing.menu .active.item:hover {
+    border-color: #357ebd;;
+    color: rgba(0,0,0,.95);
+}
+
+.notify-main .notify-weight{
+    display: block;
+}
+.notify-weight .notify-weight-item{
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+.notify-weight-item .notify-weight-left{
+    float: left;
+    color: #4b4b4b;
+    font-size: 16px;
+}
+.notify-weight-item .notify-weight-right{
+    margin-left: 28px;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+.notify-weight-item .notify-weight-right a{
+    cursor: pointer;
+}

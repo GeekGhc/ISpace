@@ -12,6 +12,9 @@
 .notify-main .menu>a>i{
     margin-right: 5px;
 }
+.ui.menu{
+    display: block;
+}
 .ui.secondary.pointing.menu {
     border-bottom: 2px solid rgba(34,36,38,.15);
 }
@@ -24,6 +27,9 @@
 .ui.secondary.pointing.menu .active.item:hover {
     border-color: #357ebd;;
     color: rgba(0,0,0,.95);
+}
+.ui.secondary.pointing.menu .item {
+    display: inline-block;
 }
 
 .notify-main .notify-weight{

@@ -16,20 +16,11 @@
                         <a class="item"  data-tab="first" href="/user/notifications"><i class="fa fa-comment"></i>未读消息</a>
                         <a class="item" data-tab="second" href="/user/notifications/all"><i class="fa fa-comments"></i>所有消息通知</a>
                         <a class="item active" data-tab="third" href="/user/notifications/message"><i class="fa fa-commenting"></i>私信消息</a>
+                        <a href="/user/notifications/read" style="float: right;padding-top:5px "><button class="ui teal button">全部标记为已读</button></a>
                     </div>
 
                     <div class="notify-weight">
-                        <section class="notify-weight-item">
-                            <div class="notify-weight-left">
-                                <i class="fa fa-commenting-o"></i>
-                            </div>
-                            <div class="notify-weight-right">
-                                <p class="notify-weight-info">
-                                    3小时前
-                                </p>
-                                <p><a>JellyBean</a>回复了你的评论<a>关于七牛云上传</a></p>
-                            </div>
-                        </section>
+
                     </div>
 
                 </div>

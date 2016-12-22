@@ -22,8 +22,9 @@ class NotificationController extends Controller
     }
 
     //标志消息已读
-    public function makeAsRead()
+    public function markAsRead()
     {
         Auth::user()->unreadNotifications->markAsRead();
+        return redirect('/user/notifications/all');
     }
 }

@@ -27,17 +27,6 @@
                                 </a>
                             </div>
                         @else
-                            {{--<div class="btn btn-default my-favorite">--}}
-
-                                {{--<a type="button" id="favorite" @click="favorite()"
-                                @if($isFavorite===2)href="{{url('user/login')}}"@endif>
-                                <i class="fa fa-star-o"></i>
-                                @if($isFavorite==1)
-                                    已收藏
-                                @else添加收藏
-                                @endif
-                                </a>--}}
-
                                 @if($isFavorite===2)
                                     <a style="float: right" class="ui inverted orange button" type="button" id="favorite" href="{{url('user/login')}}"><i class="fa fa-star"></i>添加收藏</a>
                                 @elseif($isFavorite==1)
@@ -54,7 +43,7 @@
                         @endif
                     @endif
                     <a class="article-show_avatar">
-                        <img class="img-circle" src="/images/avatar/head.jpg">
+                        <img class="img-circle" src="{{$article->user->avatar}}">
                     </a>
                     <a class="article-show_author-name" href="">
                         <span>{{$article->user->name}}</span>

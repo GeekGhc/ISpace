@@ -8,6 +8,8 @@ use App\Events\AskReply;
 use App\Http\Requests\ArticleCommentRequest;
 use App\Http\Requests\DiscussionCommentRequest;
 use App\Http\Requests\VideoCommentRequest;
+use App\Notifications\PostComment;
+use App\Notifications\PostReply;
 use App\User;
 use App\Video;
 use Illuminate\Http\Request;
@@ -39,16 +41,20 @@ class CommentsController extends Controller
         ];
         $comment = $post->comments()->create($data);
 
+        $askReply = [
+            'name'=>$post->user->name,
+            'to_user_id'=>$data['to_user_id'],
+            'reply_user'=>User::find($request->get('user_id'))->name,
+            'post_title'=>$post->title,
+            'post_body'=>mb_substr(strip_tags($post->html_body),0,70,"utf-8"),
+            'post_id'=>$post->id
+        ];
         //如果帖子下产生评论
         if($data['to_user_id']===0){
-            $askReply = [
-                'name'=>$post->user->name,
-                'reply_user'=>User::find($request->get('user_id'))->name,
-                'post_title'=>$post->title,
-                'post_body'=>mb_substr(strip_tags($post->html_body),0,70,"utf-8"),
-                'post_id'=>$post->id
-            ];
+            $post->user->notify(new PostComment($askReply));
             event(new AskReply($post->user,$askReply));
+        }else{
+            User::find($data['to_user_id'])->notify(new PostReply($askReply));
         }
         $post->save();
         $data = [
@@ -75,6 +81,20 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $article->comments()->create($data);
+
+        //如果帖子下产生评论
+        if($data['to_user_id']===0){
+            $askReply = [
+                'name'=>$article->user->name,
+                'reply_user'=>User::find($request->get('user_id'))->name,
+                'post_title'=>$article->title,
+                'post_body'=>mb_substr(strip_tags($article->html_body),0,70,"utf-8"),
+                'post_id'=>$article->id
+            ];
+            $article->user->notify(new PostComment($askReply));
+        }
+        $article->save();
+
         $data = [
             'html_body' =>$comment->html_body,
             'comment_id'=>$comment->id,

@@ -15,11 +15,7 @@ class PostView
     use InteractsWithSockets, SerializesModels;
     public $post;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
+
     public function __construct(Discussion $discussion)
     {
         $this->post = $discussion;

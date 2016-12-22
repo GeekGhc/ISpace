@@ -25,10 +25,10 @@ class CreateProfilesTable extends Migration
             $table->string('qq')->nullable();
             $table->integer('experience_count')->default(0);
             $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade')
-                ->onUpdte('cascade');
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -76,7 +76,7 @@
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label" data-placement="https://github.com/XXph">Github:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="github" placeholder="https://github.com/name" value="{{$profile->github}}">
+                                <input class="form-control" name="github" placeholder="Your github name" value="{{$profile->github}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">

@@ -26,15 +26,7 @@ Route::get('/test',function(){
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
-    $post = \App\Discussion::find(18);
-    $askReply = [
-        'name'=>$post->user->name,
-        'reply_user'=>\App\User::find(11)->name,
-        'post_title'=>$post->title,
-        'post_body'=>mb_substr(strip_tags($post->html_body),0,70,"utf-8"),
-        'post_id'=>$post->id
-    ];
-    event(new \App\Events\AskReply($post->user,$askReply));
+    dd(\Auth::user()->unreadNotifications->count());
 });
 
 Route::get('/','Home\UserController@index');
@@ -77,7 +69,7 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
     Route::get('/notifications','NotificationController@index');
     Route::get('/notifications/all','NotificationController@allInfo');
     Route::get('/notifications/message','NotificationController@message');
-    Route::delete('/notifications','NotificationController@markAsRead');
+    Route::get('/notifications/read','NotificationController@markAsRead');
 });
 
 

@@ -15,11 +15,7 @@ class ArticleView
     use InteractsWithSockets, SerializesModels;
     public $article;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
+
     public function __construct(Article $article)
     {
         $this->article = $article;

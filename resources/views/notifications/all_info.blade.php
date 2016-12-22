@@ -16,20 +16,27 @@
                         <a class="item" data-tab="first" href="/user/notifications"><i class="fa fa-comment"></i>未读消息</a>
                         <a class="item active" data-tab="second" href="/user/notifications/all"><i class="fa fa-comments"></i>所有消息通知</a>
                         <a class="item" data-tab="third" href="/user/notifications/message"><i class="fa fa-commenting"></i>私信消息</a>
+                        <a href="/user/notifications/read" style="float: right;padding-top:5px "><button class="ui teal button">全部标记为已读</button></a>
                     </div>
 
                     <div class="notify-weight">
-                        <section class="notify-weight-item">
-                            <div class="notify-weight-left">
-                                <i class="fa fa-comments-o"></i>
-                            </div>
-                            <div class="notify-weight-right">
-                                <p class="notify-weight-info">
-                                    3小时前
-                                </p>
-                                <p><a>JellyBean</a>回复了你的评论<a>关于七牛云上传</a></p>
-                            </div>
-                        </section>
+                        @foreach(\Auth::user()->notifications as $notification)
+                            <section class="notify-weight-item">
+                                <div class="notify-weight-left">
+                                    <i class="fa fa-comments-o"></i>
+                                </div>
+                                <div class="notify-weight-right">
+                                    <p class="notify-weight-info">
+                                        {{$notification->created_at->diffForHumans()}}
+                                    </p>
+                                    @if($notification->data['to_user_id']==0)
+                                        <p><a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回答了你的问题 <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a></p>
+                                    @else
+                                        <p><a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回复了你的评论 <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a></p>
+                                    @endif
+                                </div>
+                            </section>
+                        @endforeach
                     </div>
 
                 </div>

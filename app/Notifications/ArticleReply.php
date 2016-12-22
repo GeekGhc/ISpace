@@ -2,13 +2,12 @@
 
 namespace App\Notifications;
 
-use App\Events\AskReply;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ArticleComment extends Notification
+class ArticleReply extends Notification
 {
     use Queueable;
     public $notifyInfo;
@@ -44,7 +43,12 @@ class ArticleComment extends Notification
                     ->line('Thank you for using our application!');
     }
 
-
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function toDatabase($notifiable)
     {
         return $this->notifyInfo;

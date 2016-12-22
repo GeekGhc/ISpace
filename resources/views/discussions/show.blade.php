@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-9 col-sm-8 col-xs-12">
                     <div class="post-author_avatar">
-                        <a><img src="/images/avatar/default.png"></a>
+                        <a><img src="{{$discussion->user->avatar}}"></a>
                     </div>
                     <div class="post-title_info">
                         <h3 class="post-show_title">{{$discussion->title}}</h3>

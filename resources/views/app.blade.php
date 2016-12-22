@@ -19,7 +19,7 @@
     @yield('header-css')
     <script src="/js/source/jquery-2.1.4.min.js"></script>
     <script src="/js/source/bootstrap.min.js"></script>
-    <script src="/js/source/semantic.min.js"></script>
+    {{--<script src="/js/source/semantic.min.js"></script>--}}
     <script src="/js/source/social-share.min.js"></script>
     <script src="http://cdn.bootcss.com/select2/4.0.3/js/select2.full.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -72,7 +72,14 @@
                 <li>
                     <ul class="nav navbar-nav navbar-right">
                         @if(\Auth::check())
-                            <li><a href="/user/notifications" class="message-info"><i class="fa fa-bell-o"><span class="badge">3</span></i></a></li>
+                            <li><a href="/user/notifications" class="message-info">
+                                    <i class="fa fa-bell-o">
+                                        @if(Auth::user()->unreadNotifications->count()!==0)
+                                        <span class="badge">{{\Auth::user()->unreadNotifications->count()}}</span>
+                                        @endif
+                                    </i>
+                                </a>
+                            </li>
                             <li>
                                 <a id="dLabel" type="button" data-toggle="dropdown" href="#">
                                     {{Auth::user()->name}}

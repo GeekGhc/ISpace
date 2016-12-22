@@ -65,6 +65,19 @@
     font-size: 16px;
     text-align: center;
 }
+.profile-des-title{
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 14px;
+}
+.profile-des-content{
+    margin-top: 22px;
+    color: #eee;
+    min-height: 120px;
+    font-size: 16px;
+}
 
 .profile-main{
     padding: 30px 50px;

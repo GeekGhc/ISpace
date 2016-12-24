@@ -1,7 +1,7 @@
 @extends('app')
 @section('title',$video->title)
 @section('header-css')
-    <link href="http://vjs.zencdn.net/5.12.6/video-js.css" rel="stylesheet">
+    <link href="/css/source/video-js.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/video.css">
     <link rel="stylesheet" href="/css/comment.css">
 @endsection
@@ -122,8 +122,8 @@
     </div>
 </div>
 <!-- If you'd like to support IE8 -->
-<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-<script src="http://vjs.zencdn.net/5.12.6/video.js"></script>
+{{--<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>--}}
+<script src="/js/source/video.min.js"></script>
 @include('comments.reply_content')
 
 @if(\Auth::check())

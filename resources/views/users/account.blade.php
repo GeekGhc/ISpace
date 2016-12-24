@@ -1,12 +1,12 @@
 @extends('app')
 @section('title','ISpace 个人主页设置')
 @section('header-css')
-    <link href="http://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/jquery.Jcrop.css">
     <link rel="stylesheet" href="/css/account.css">
 @endsection
 @section('header-js')
-    <script src="http://cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
-    <script src="http://cdn.bootcss.com/jquery-jcrop/2.0.4/js/Jcrop.min.js"></script>
+    <script src="/js/source/jquery.form.js"></script>
+    <script src="/js/source/jquery.Jcrop.min.js"></script>
 @endsection
 @section('content')
     <div class="container">

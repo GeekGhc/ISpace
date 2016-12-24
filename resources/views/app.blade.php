@@ -7,21 +7,18 @@
     <meta id="token" name="token" value="{{ csrf_token() }}">
     <meta name="google-signin-client_id" content="794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com">
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-
     <link rel="stylesheet" href="/css/source/bootstrap.css">
     <link rel="stylesheet" href="/css/source/semantic.min.css">
-    {{--<link href="http://cdn.bootcss.com/semantic-ui/2.2.6/semantic.min.css" rel="stylesheet">--}}
-    <link href="http://cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/source/select2.min.css">
+    <link rel="stylesheet" href="/css/source/font-awesome.min.css">
     <link rel="stylesheet" href="/css/source/share.min.css">
     <link rel="stylesheet" href="/css/style.css">
     {{--<link href="http://gehuachun.com/css/style.css?e=1481602090&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:Bt20NvFvlJ9yFjMhDC8LkKtDhcM=" rel="stylesheet">--}}
     @yield('header-css')
     <script src="/js/source/jquery-2.1.4.min.js"></script>
     <script src="/js/source/bootstrap.min.js"></script>
-    {{--<script src="/js/source/semantic.min.js"></script>--}}
     <script src="/js/source/social-share.min.js"></script>
-    <script src="http://cdn.bootcss.com/select2/4.0.3/js/select2.full.min.js"></script>
+    <script src="/js/source/select2.full.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     @yield('header-js')
 </head>
@@ -144,18 +141,19 @@
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>常用链接</a></dt>
                 <dd><a>域名注册</a></dd>
-                <dd><a>图片资源</a></dd>
-                <dd><a>Composer镜像</a></dd>
+                <dd><a href="https://unsplash.com/" target="_blank">图片资源</a></dd>
+                <dd><a href="http://pkg.phpcomposer.com/" target="_blank">Composer镜像</a></dd>
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>个人相关</a></dt>
                 <dd><a>个人博客</a></dd>
-                <dd><a>Github</a></dd>
-                <dd><a>Segmentfault</a></dd>
+                <dd><a href="https://github.com/GeekGhc" target="_blank">Github</a></dd>
+                <dd><a href="https://segmentfault.com/u/jellygavin" target="_blank">Segmentfault</a></dd>
             </dl>
         </div>
         <div class="footer-bottom">
-            <p>ISpace CopyRight @2016    Developed By JellyBean</p>
+            <p>ISpace CopyRight @2016&nbsp;&nbsp;Developed By <span style="font-weight: bold">JellyBean</span></p>
+            <span style="font-weight: bold">苏ICP备16045385号-2</span>
         </div>
     </div>
 </div>

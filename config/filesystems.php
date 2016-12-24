@@ -64,7 +64,7 @@ return [
         'qiniu' => [
             'driver'  => 'qiniu',
             'domains' => [
-                'default'   => 'gehuachun.com', //你的七牛域名
+                'default'   => 'oin1h5zcv.qnssl.com', //你的七牛域名
                 'https'     => '',         //你的HTTPS域名
                 'custom'    => 'gehuachun.com',                //你的自定义域名
             ],

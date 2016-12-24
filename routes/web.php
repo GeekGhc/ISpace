@@ -16,12 +16,12 @@ Route::get('/test',function(){
 
     $disk = \Storage::disk('qiniu');
 //    $disk->put('images/file.jpg',fopen('images/avatar/head.jpg','r+'));
-//    $disk->privateDownloadUrl('style.css');
+    dd($disk->privateDownloadUrl('images/page/work.jpg'));
 //    $disk->get('style.css');       //获取文件内容
 //    $contents = "/public/css/search.css";
 //    $disk->put('search.css',$contents);
 
-    dd($disk->privateDownloadUrl('/css/style.css'));
+//    dd($disk->privateDownloadUrl('/css/style.css'));
 });
 Route::get('/download','Home\SeriesController@videoDownload');
 

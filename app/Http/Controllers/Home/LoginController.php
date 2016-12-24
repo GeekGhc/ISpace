@@ -27,17 +27,17 @@ class LoginController extends Controller
         'qq' => [
             'client_id' => '101368952',
             'client_secret' => 'ab9cb9c23461130246ca189f17a86182',
-            'redirect' => 'http://localhost:8000/qq/login'
+            'redirect' => 'https://kobeman.com/qq/login'
         ],
         'github' => [
             'client_id' => '81ef36deca1d9eb5298b',
             'client_secret' => '8c429e4f6b3fa50b1c555d66a72206e5039e533e',
-            'redirect' => 'http://localhost:8000/github/login'
+            'redirect' => 'https://kobeman.com/github/login'
         ],
         'google'=>[
             'client_id'=>'794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com',
             'client_secret'=>'jivItp5exFo5olYhQO0AZa11',
-            'redirect'=>'http://localhost:8000/google/login',
+            'redirect'=>'https://kobeman.com/google/login',
         ],
     ];
 
@@ -62,6 +62,11 @@ class LoginController extends Controller
     public function qqLogin()
     {
         $this->login->githubLogin($this->config);
+        return redirect('/');
+    }
+
+    public function weixin(){
+        $this->login->weiboLogin($this->config);
         return redirect('/');
     }
 

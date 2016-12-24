@@ -28,22 +28,5 @@ class TagsTableSeeder extends Seeder
         \App\Tag::create(['name'=>"Git",'type'=>"default"]);
         \App\Tag::create(['name'=>"Composer",'type'=>"warning"]);
         \App\Tag::create(['name'=>"随想",'type'=>"primary"]);
-
-        /*array(
-            array('name'=>"PHP",'type'=>"primary"),
-            array('name'=>"Java",'type'=>"info"),
-            array('name'=>"Laravel",'type'=>"danger"),
-            array('name'=>"C++",'type'=>"default"),
-            array('name'=>"服务器",'type'=>"warning"),
-            array('name'=>"ThinkPHP",'type'=>"success"),
-            array('name'=>"JSP",'type'=>"primary"),
-            array('name'=>"Javascript",'type'=>"info"),
-            array('name'=>"HTML",'type'=>"warning"),
-            array('name'=>"Database",'type'=>"success"),
-            array('name'=>"MAC",'type'=>"danger"),
-            array('name'=>"Github",'type'=>"default"),
-            array('name'=>"Composer",'type'=>"warning"),
-            array('name'=>"随想",'type'=>"primary"),
-        )*/
     }
 }

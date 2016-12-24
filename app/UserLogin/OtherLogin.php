@@ -47,18 +47,41 @@ class OtherLogin
         $socialite = new SocialiteManager($config);
         $qqUser = $socialite->driver('qq')->user();//user就可以拿到github的公共信息
         dd($qqUser->getNickName());
+
+        //第一次用户登录
+        $loginUser = User::where('social_type', 'qq')->where('social_id', $qqUser->getId())->first();
+        //如果没有查到这个用户 重定向到首页
+        if (!is_null($loginUser)) {
+            Auth::loginUsingId($loginUser->id);
+            return;
+        }
+        $user = [
+            'name' => $qqUser->getNickName(),
+            'email' => $qqUser->getEmail(),
+            'password' => bcrypt(str_random(16)),
+            'social_type' => 'qq',
+            'social_id' => $qqUser->getId()
+        ];
+        $data = [
+            'is_confirmed' => 1,
+            'confirm_code' => str_random(48),
+            'avatar' => $qqUser->getAvatar(),
+        ];
+        $newUser = User::create(array_merge($user, $data));
+        Profile::create(['user_id'=>$newUser->id]);
+        Auth::loginUsingId($newUser->id);
+        Flashy::message('Welcome ISpace', 'https://kobeman.com');
+        return;
     }
 
 
     //微博登录
-    public function weiboLogin()
+    public function weiboLogin($config)
     {
-        $socialite = new SocialiteManager($this->config);
+        $socialite = new SocialiteManager($config);
         $weiboUser = $socialite->driver('weibo')->user();//user就可以拿到weibo的公共信息
-
-        dd($weiboUser->getName());
         //第一次用户登录
-       /* $loginUser = User::where('social_type', 'weibo')->where('social_id', $weiboUser->getId())->first();
+        $loginUser = User::where('social_type', 'weibo')->where('social_id', $weiboUser->getId())->first();
         //如果没有查到这个用户 重定向到首页
         if (!is_null($loginUser)) {
             \Auth::loginUsingId($loginUser->id);
@@ -77,7 +100,7 @@ class OtherLogin
             'avatar' => $weiboUser->getAvatar(),
         ];
         $newUser = User::create(array_merge($user, $data));
-        Auth::loginUsingId($newUser->id);*/
+        Auth::loginUsingId($newUser->id);
     }
 
 

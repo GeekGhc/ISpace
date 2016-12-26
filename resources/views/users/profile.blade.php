@@ -100,23 +100,11 @@
                                         还未填写
                                     @endif
                                 </td>
+                                <td></td>
                             </tr>
                             </tbody>
                         </table>
 
-
-                       {{-- <div class="ui grid">
-                            <div class="four wide column" style="text-align: right">
-                                <i class="fa fa-github fa-2x"></i>Github
-                            </div>
-                            <div class="twelve wide column" style="text-align: center;vertical-align: middle    ">
-                                2438462863
-                            </div>
-                        </div>
-                        <div class="profile-des-title">个人简介</div>
-                        <div class="profile-des-content">
-                            {{$profile->description}}
-                        </div>--}}
                     </div>
                 </div>
             </div>

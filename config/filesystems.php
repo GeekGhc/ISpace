@@ -64,8 +64,8 @@ return [
         'qiniu' => [
             'driver'  => 'qiniu',
             'domains' => [
-                'default'   => 'oin1h5zcv.qnssl.com', //你的七牛域名
-                'https'     => '',         //你的HTTPS域名
+                'default'   => 'www.kobeman.com', //你的七牛域名
+                'https'     => 'www.kobeman.com',         //你的HTTPS域名
                 'custom'    => 'gehuachun.com',                //你的自定义域名
             ],
             'access_key'=> env('QINIU_ACCESS_KEY',''),  //AccessKey

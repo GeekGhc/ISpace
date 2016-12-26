@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="/css/index.css">
 @endsection
 @section('title','ISpace Community')
-<meta id="module" content="ISpace">
 @section('content')
     <div class="hero-header">
         <div class="hero-bck">

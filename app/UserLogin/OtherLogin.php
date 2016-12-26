@@ -35,7 +35,7 @@ class OtherLogin
             'avatar' => $githubUser->getAvatar(),
         ];
         $newUser = User::create(array_merge($user, $data));
-        Profile::create(['user_id'=>$newUser->id]);
+        Profile::create(['user_id' => $newUser->id]);
         Auth::loginUsingId($newUser->id);
         Flashy::message('Welcome ISpace', 'https://kobeman.com');
         return;
@@ -46,7 +46,7 @@ class OtherLogin
     {
         $socialite = new SocialiteManager($config);
         $qqUser = $socialite->driver('qq')->user();//user就可以拿到github的公共信息
-        dd($qqUser->getNickName());
+        dd($qqUser);
 
         //第一次用户登录
         $loginUser = User::where('social_type', 'qq')->where('social_id', $qqUser->getId())->first();
@@ -68,7 +68,7 @@ class OtherLogin
             'avatar' => $qqUser->getAvatar(),
         ];
         $newUser = User::create(array_merge($user, $data));
-        Profile::create(['user_id'=>$newUser->id]);
+        Profile::create(['user_id' => $newUser->id]);
         Auth::loginUsingId($newUser->id);
         Flashy::message('Welcome ISpace', 'https://kobeman.com');
         return;
@@ -89,7 +89,7 @@ class OtherLogin
         }
         $user = [
             'name' => $weiboUser->getNickName(),
-            'email' => $weiboUser->getEmail(),
+            'email' => $weiboUser->getNickName.'@weibo.com',
             'password' => bcrypt(str_random(16)),
             'social_type' => 'weibo',
             'social_id' => $weiboUser->getId()
@@ -130,7 +130,13 @@ class OtherLogin
             'avatar' => $googleUser->getAvatar(),
         ];
         $newUser = User::create(array_merge($user, $data));
-        Profile::create(['user_id'=>$newUser->id]);
+        Profile::create(['user_id' => $newUser->id]);
         Auth::loginUsingId($newUser->id);
+    }
+
+    //微信登录
+    public function weixinLogin()
+    {
+
     }
 }

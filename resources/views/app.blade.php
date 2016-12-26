@@ -47,10 +47,16 @@
             </ul>
 
             <form class="navbar-form navbar-left" role="search">
-                <div class="form-group search-label">
+                {{--<div class="form-group search-label">
                     <input type="text" id="search-content" class="form-control search-input" placeholder="关键字搜索">
-                    <a type="submit" id="search" class="btn btn-default search-btn" {{--href="{{url('/search?q=facere')}}"--}}><i class="fa fa-search"></i></a>
-                </div>
+                    <a type="submit" id="search" class="btn btn-default search-btn"><i class="search icon"></i></a>
+                </div>--}}
+                <div class="ui search">
+                   <div class="ui icon input  form-group">
+                       <input id="search-content" class="prompt form-control" type="text" placeholder="输入关键字搜索...">
+                       <i class="search icon search-icon" style="color: #007f80;"></i>
+                   </div>
+               </div>
             </form>
 
             {{--用户登录 信息展示--}}
@@ -66,58 +72,53 @@
                     </ul>
                 </li>
 
-                <li>
-                    <ul class="nav navbar-nav navbar-right">
-                        @if(\Auth::check())
-                            <li><a href="/user/notifications" class="message-info">
-                                    <i class="fa fa-bell-o">
-                                        @if(Auth::user()->unreadNotifications->count()!==0)
-                                        <span class="badge">{{\Auth::user()->unreadNotifications->count()}}</span>
-                                        @endif
-                                    </i>
-                                </a>
+                @if(\Auth::check())
+                    <li><a href="/user/notifications" class="message-info">
+                            <i class="fa fa-bell-o">
+                                @if(Auth::user()->unreadNotifications->count()!==0)
+                                <span class="badge">{{\Auth::user()->unreadNotifications->count()}}</span>
+                                @endif
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="dLabel" type="button" data-toggle="dropdown" href="#">
+                            {{Auth::user()->name}}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a id="dLabel" type="button" data-toggle="dropdown" style="padding: 0px 0px 2px;cursor: pointer">
+                            <img src="{{\Auth::User()->avatar}}" class="img-circle" width="44px" height="44px"
+                                 style="margin-top: 3px;border: 1px solid #fff;cursor: pointer"
+                                 alt="">
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="/u/{{\Auth::user()->name}}"><i class="fa fa-user fa-mr"></i>我的主页</a>
                             </li>
                             <li>
-                                <a id="dLabel" type="button" data-toggle="dropdown" href="#">
-                                    {{Auth::user()->name}}
-                                </a>
+                                <a href="/user/account"><i class="fa  fa-cog fa-mr"></i>账户设置</a>
                             </li>
                             <li>
-                                <a id="dLabel" type="button" data-toggle="dropdown" style="padding: 0px 0px 2px;cursor: pointer">
-                                    <img src="{{\Auth::User()->avatar}}" class="img-circle" width="44px" height="44px"
-                                         style="margin-top: 3px;border: 1px solid #fff"
-                                         alt="">
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dLabel" role="menu">
-                                    <li>
-                                        <a href="/u/{{\Auth::user()->name}}"><i class="fa fa-user fa-mr"></i>我的主页</a>
-                                    </li>
-                                    <li>
-                                        <a href="/user/account"><i class="fa  fa-cog fa-mr"></i>账户设置</a>
-                                    </li>
-                                    <li>
-                                        <a href="/user/avatar"><i class="fa fa-heart fa-mr"></i>我的收藏</a>
-                                    </li>
-                                    <li>
-                                        <a href="/user/password"><i class="fa fa-cog fa-mr"></i>修改密码</a>
-                                    </li>
-                                    <li role="separator" class="divider fa-mr"></li>
-                                    <li>
-                                        <a href="/logout"><i class="fa fa-sign-out fa-mr"></i>退出登录</a>
-                                    </li>
-                                </ul>
+                                <a href="/user/avatar"><i class="fa fa-heart fa-mr"></i>我的收藏</a>
                             </li>
-
-                        @else
-                            <li><a href="/user/login">登录</a></li>
-                            <li><a href="/user/register">注册</a></li>
-                        @endif
-                    </ul>
-                </li>
+                            <li>
+                                <a href="/user/password"><i class="fa fa-cog fa-mr"></i>修改密码</a>
+                            </li>
+                            <li role="separator" class="divider fa-mr"></li>
+                            <li>
+                                <a href="/logout"><i class="fa fa-sign-out fa-mr"></i>退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li><a href="/user/login">登录</a></li>
+                    <li><a href="/user/register">注册</a></li>
+                @endif
 
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container- -->
+        </div>
+    </div>
 </nav>
 
 @yield('content')

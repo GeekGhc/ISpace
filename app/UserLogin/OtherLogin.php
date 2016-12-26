@@ -46,7 +46,6 @@ class OtherLogin
     {
         $socialite = new SocialiteManager($config);
         $qqUser = $socialite->driver('qq')->user();//user就可以拿到github的公共信息
-        dd($qqUser);
 
         //第一次用户登录
         $loginUser = User::where('social_type', 'qq')->where('social_id', $qqUser->getId())->first();
@@ -57,7 +56,7 @@ class OtherLogin
         }
         $user = [
             'name' => $qqUser->getNickName(),
-            'email' => $qqUser->getEmail(),
+            'email' => $qqUser->getNickName().'qq.com',
             'password' => bcrypt(str_random(16)),
             'social_type' => 'qq',
             'social_id' => $qqUser->getId()

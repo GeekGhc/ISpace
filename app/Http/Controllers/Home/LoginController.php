@@ -66,7 +66,7 @@ class LoginController extends Controller
     }
 
     public function weixin(){
-        $this->login->weiboLogin($this->config);
+        $this->login->weixinLogin($this->config);
         return redirect('/');
     }
 

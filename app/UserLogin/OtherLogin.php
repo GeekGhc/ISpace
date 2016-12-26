@@ -89,7 +89,7 @@ class OtherLogin
         }
         $user = [
             'name' => $weiboUser->getNickName(),
-            'email' => $weiboUser->getNickName.'@weibo.com',
+            'email' => $weiboUser->getNickName().'@weibo.com',
             'password' => bcrypt(str_random(16)),
             'social_type' => 'weibo',
             'social_id' => $weiboUser->getId()

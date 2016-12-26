@@ -61,7 +61,7 @@ class LoginController extends Controller
 
     public function qqLogin()
     {
-        $this->login->githubLogin($this->config);
+        $this->login->qqLogin($this->config);
         return redirect('/');
     }
 

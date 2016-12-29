@@ -135,9 +135,10 @@
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>学习资料</a></dt>
-                <dd><a>域名注册</a></dd>
-                <dd><a>笔记插件</a></dd>
-                <dd><a>Laravel官网</a></dd>
+                <dd><a href="https://laravel.com/" target="_blank">Laravel官网</a></dd>
+                <dd><a href="http://laravelacademy.org/" target="_blank">Laravel学院</a></dd>
+                <dd><a href="https://laravel-china.org/" target="_blank">PHPHub</a></dd>
+                <dd><a href="https://easywechat.org/" target="_blank">EasyWechat</a></dd>
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>常用链接</a></dt>
@@ -148,6 +149,7 @@
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>个人相关</a></dt>
                 <dd><a>个人博客</a></dd>
+                <dd><a href="http://weibo.com/2721760737/profile?topnav=1&wvr=6&is_all=1" target="_blank">个人微博</a></dd>
                 <dd><a href="https://github.com/GeekGhc" target="_blank">Github</a></dd>
                 <dd><a href="https://segmentfault.com/u/jellygavin" target="_blank">Segmentfault</a></dd>
             </dl>

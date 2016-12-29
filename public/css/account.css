@@ -29,6 +29,7 @@
 .user-setting-general .user-setting-list{
     padding: 0 12px;
 }
+
 .user-setting-general .user-setting-item{
     padding: 5px 0;
 }
@@ -39,4 +40,23 @@
     margin-top: -90px;
     opacity: 0;
     height: 32px;
+}
+.ac-github{
+    margin-right: 12px;
+    font-size: 22px;
+}
+.ac-google{
+    color: #e03d37;
+    margin-right: 12px;
+    font-size: 22px;
+}
+.ac-weibo{
+    color: #F2711C;
+    margin-right: 12px;
+    font-size: 22px;
+}
+.ac-qq{
+    color: #15a7f0;
+    margin-right: 12px;
+    font-size: 22px;
 }

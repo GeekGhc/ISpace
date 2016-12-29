@@ -39,8 +39,8 @@
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3 control-label">用户名:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" value="{{$profile->user->name}}" disabled>
-                                <span class="help-block bg-warning">用户名建议无需修改,如需修改请联系管理员</span>
+                                <input class="form-control" value="{{$profile->user->name}}">
+                                {{--<span class="help-block bg-warning">用户名建议无需修改,如需修改请联系管理员</span>--}}
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
@@ -73,8 +73,53 @@
                 <div class="user-setting-general form-horizontal">
                     <h3>个人账号</h3>
                     <div class="user-setting-list">
-                        <div class="user-setting-item form-group">
+
+                        <table class="ui single line table">
+                            <thead>
+                            <tr>
+                                <th>社交网络</th>
+                                <th>用户操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><i class="fa fa-github ac-github"></i>Github</td>
+                                <td>
+                                    <a href="#">点击绑定Github账户</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-google-plus ac-google"></i>Google</td>
+                                <td>
+                                    <a href="">点击绑定Google账户</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-weibo ac-weibo"></i>Weibo</td>
+                                <td>
+                                    <a href="#">点击绑定微博账户</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-qq ac-qq"></i>QQ</td>
+                                <td>
+                                    <a href="#">点击绑定QQ账户</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+
+                       {{-- <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label" data-placement="https://github.com/XXph">Github:</label>
+                            <div class="col-sm-9">
+                                <a href="#">点击绑定Github账号</a>
+                                --}}{{--<input class="form-control" name="github" placeholder="Your github name" value="{{$profile->github}}">--}}{{--
+                            </div>
+                        </div>
+                        <div class="user-setting-item form-group">
+                            <label class="col-sm-3  control-label" data-placement="https://github.com/XXph">Google:</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="github" placeholder="Your github name" value="{{$profile->github}}">
                             </div>
@@ -90,7 +135,7 @@
                             <div class="col-sm-9">
                                 <input class="form-control" name="qq" value="{{$profile->qq}}">
                             </div>
-                        </div>
+                        </div>--}}
                         <div class="form-group">
                             {!! Form::submit('更新我的资料',['class'=>'btn btn-primary pull-right btn-lg','style'=>'width:100%']) !!}
                         </div>

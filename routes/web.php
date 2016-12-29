@@ -13,6 +13,7 @@
 
 Route::get('/test',function(){
 
+    return time();
 
     $disk = \Storage::disk('qiniu');
 //    $disk->put('images/file.jpg',fopen('images/avatar/head.jpg','r+'));
@@ -79,11 +80,11 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('/verify/token/{confirm_code}','UserController@confirmEmail');//邮箱的验证
 
     //github登录
-    Route::get('/github/login','LoginController@githubLogin');
-    Route::get('/weibo/login','LoginController@weiboLogin');
-    Route::get('/weixin/login','LoginController@weixinLogin');
-    Route::get('/qq/login','LoginController@qqLogin');
-    Route::get('/google/login','LoginController@googleLogin');
+    Route::get('/github/callback','LoginController@githubLogin');
+    Route::get('/weibo/callback','LoginController@weiboLogin');
+    Route::get('/wechat/callback','LoginController@wechatLogin');
+    Route::get('/qq/callback','LoginController@qqLogin');
+    Route::get('/google/callback','LoginController@googleLogin');
 });
 
 Route::group(['namespace' => 'Home'],function(){

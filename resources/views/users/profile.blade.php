@@ -44,7 +44,7 @@
                                 @endif
                             </div>
                             <div class="profile-other-item">
-                                <i class="fa fa-chrome profile-head-fa"></i>
+                                <i class="fa fa-link profile-head-fa"></i>
                                 @if($profile->city)
                                     <span>
                                         <a href="http://{{$profile->website}}" target="_blank">{{$profile->website}}</a>
@@ -71,6 +71,17 @@
                             </tr>
                             <tr>
                                 <td>QQ</td>
+                                <td class="right aligned">
+                                    @if($profile->qq)
+                                        {{$profile->qq}}
+                                    @else
+                                        还未填写
+                                    @endif
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Google</td>
                                 <td class="right aligned">
                                     @if($profile->qq)
                                         {{$profile->qq}}

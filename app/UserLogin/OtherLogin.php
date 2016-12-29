@@ -12,6 +12,11 @@ class OtherLogin
     //github登录
     public function githubLogin($config)
     {
+        //账号进行绑定
+        if(Auth::check()){
+
+        }
+        //账号注册登录
         $socialite = new SocialiteManager($config);
         $githubUser = $socialite->driver('github')->user();//user就可以拿到github的公共信息
 
@@ -34,6 +39,17 @@ class OtherLogin
             'confirm_code' => str_random(48),
             'avatar' => $githubUser->getAvatar(),
         ];
+
+        $loginUser = User::where('email',$user['email'])->first();
+        if (!is_null($loginUser)) {
+            Auth::loginUsingId($loginUser->id);
+            return;
+        }
+        $loginUser = User::where('name',$user['name'])->first();
+        if(!is_null($loginUser)){
+            $user['name'] = 'sp'.time();
+        }
+
         $newUser = User::create(array_merge($user, $data));
         Profile::create(['user_id' => $newUser->id]);
         Auth::loginUsingId($newUser->id);
@@ -56,7 +72,7 @@ class OtherLogin
         }
         $user = [
             'name' => $qqUser->getNickName(),
-            'email' => $qqUser->getNickName().'qq.com',
+            'email' => $qqUser->getNickName().'@qq.com',
             'password' => bcrypt(str_random(16)),
             'social_type' => 'qq',
             'social_id' => $qqUser->getId()
@@ -134,8 +150,32 @@ class OtherLogin
     }
 
     //微信登录
-    public function weixinLogin()
+    public function wechatLogin($config)
     {
+        $socialite = new SocialiteManager($config);
+        $wechatUser = $socialite->driver('wechat')->user();//user就可以拿到google的公共信息
 
+        //第一次用户登录
+        $loginUser = User::where('social_type', 'wechat')->where('social_id', $wechatUser->getId())->first();
+        //如果没有查到这个用户 重定向到首页
+        if (!is_null($loginUser)) {
+            \Auth::loginUsingId($loginUser->id);
+            return redirect('/');
+        }
+        $user = [
+            'name' => $wechatUser->getName(),
+            'email' => $wechatUser->getEmail(),
+            'password' => bcrypt(str_random(16)),
+            'social_type' => 'wechat',
+            'social_id' => $wechatUser->getId()
+        ];
+        $data = [
+            'is_confirmed' => 1,
+            'confirm_code' => str_random(48),
+            'avatar' => $wechatUser->getAvatar(),
+        ];
+        $newUser = User::create(array_merge($user, $data));
+        Profile::create(['user_id' => $newUser->id]);
+        Auth::loginUsingId($newUser->id);
     }
 }

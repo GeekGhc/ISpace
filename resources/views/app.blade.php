@@ -46,7 +46,7 @@
                 <li id="activity"><a href="#">活动</a></li>
             </ul>
 
-            <form class="navbar-form navbar-left" role="search">
+            <div class="navbar-form navbar-left" role="search">
                 {{--<div class="form-group search-label">
                     <input type="text" id="search-content" class="form-control search-input" placeholder="关键字搜索">
                     <a type="submit" id="search" class="btn btn-default search-btn"><i class="search icon"></i></a>
@@ -57,7 +57,7 @@
                        <i class="search icon search-icon" style="color: #007f80;"></i>
                    </div>
                </div>
-            </form>
+            </div>
 
             {{--用户登录 信息展示--}}
             <ul class="nav navbar-nav navbar-right">

@@ -27,6 +27,10 @@ Route::get('/test',function(){
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
+    $discussion = \App\Discussion::find(18);
+    dd($discussion);
+//    $discussion->delete();
+    return "delete done";
     dd(\Auth::user()->unreadNotifications->count());
 });
 
@@ -65,6 +69,7 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
     //用户的第三方登录
     Route::get('/login/{style}','LoginController@driver');
+    Route::delete('/socialite/relieve/{id}','LoginController@SocialiteRelieve');
 
     //站内通知
     Route::get('/notifications','NotificationController@index');
@@ -111,7 +116,12 @@ Route::group(['namespace' => 'Home'],function(){
     Route::post('/commentVideo','CommentsController@storeVideo');
 
     //站内搜索
-    Route::get('/search','UserController@search');
+    Route::get('/search/post','SearchController@searchPost');
+    Route::get('/search/article','SearchController@searchArticle');
+    Route::get('/search/video','SearchController@searchVideo');
+    Route::post('/search/loadPost','SearchController@loadPost');
+    Route::post('/search/loadArticle','SearchController@loadArticle');
+    Route::post('/search/loadVideo','SearchController@loadVideo');
 });
 
 //登录验证码

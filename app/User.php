@@ -31,6 +31,12 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
+    //用户----第三方账户
+    public function socialites()
+    {
+        return $this->hasMany('App\Socialite');
+    }
+
     //用户----帖子
     public function discussions()
     {
@@ -62,7 +68,7 @@ class User extends Authenticatable
         Profile::create(['user_id'=>$user->id]);
 
         //用户信息写入数据库后触发events  比如发送邮件
-        event(new UserRegistered($user,$data['confirm_code']));
+//        event(new UserRegistered($user,$data['confirm_code']));
         return $user;
     }
 

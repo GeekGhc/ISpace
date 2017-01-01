@@ -16,6 +16,7 @@
     </div>
     <div class="pexels">
     <div class="container">
+        @include('flash::message')
         <div class="row">
             @foreach($video_series as $video_serie)
             <div class="col-md-4">
@@ -49,8 +50,8 @@
         </div>
     </div>
     </div>
-   {{-- <script>
+    <script>
         $('#flash-overlay-modal').modal();
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-    </script>--}}
+    </script>
 @endsection

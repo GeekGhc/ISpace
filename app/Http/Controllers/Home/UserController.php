@@ -16,13 +16,13 @@ use App\Http\Requests\PasswordForgetRequest;
 use App\Http\Requests\PasswordResetEditRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\AccountUpdateRequest;
 use App\Mailer\UserMailer;
 use App\User;
 use App\Video;
 use App\VideoSerie;
 use Flashy;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -92,10 +92,8 @@ class UserController extends Controller
         $data = [
             'avatar' => '/images/avatar/default.png',
             'confirm_code' => str_random(48),
-            'social_type' => 'local',
             'user_name' => $request->get('name'),
         ];
-
         User::register($request->all(), $data);
         return redirect('/user/login');
     }
@@ -132,16 +130,19 @@ class UserController extends Controller
     public function userAccount()
     {
         $user = \Auth::user();
+        $socialites = $user->socialites->pluck('social_type','id');
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
-        return view('users.account',compact('profile'));
+        return view('users.account',compact('profile','socialites'));
     }
 
-
     //用户账户资料更新
-    public function userUpdate(Request $request,$id)
+    public function userUpdate(AccountUpdateRequest $request,$id)
     {
         $profile = Profile::findOrFail($id);
         $profile-> update($request->all());
+        $user = User::find($profile->user_id);
+        $user->name = $request->get('name');
+        $user->save();
         return redirect('user/account');
     }
 
@@ -197,21 +198,4 @@ class UserController extends Controller
         return redirect('user/account');
     }
 
-
-    //用户站内搜索
-    public function search(Request $request)
-    {
-        //判断是否存在搜索数据
-        if ($request->has('q')) {
-            $articles = Article::search($request->input('q'))->paginate(10);
-//            $discussions = Discussion::search($request->input('q'))->paginate(10);
-//            $videos = Video::search($request->input('q'))->paginate(10);
-            return view('search.index', compact('articles'));
-        } else {
-            $articles = Article::with('user')->orderBy('comment_count', 'desc')->paginate(10);
-            $discussions = Discussion::with('user')->orderBy('comment_count', 'desc')->paginate(10);
-//            $videos = Video::with('user')->orderBy('comment_count', 'desc')->paginate(10);
-            return view('search.index', compact('articles', 'discussions', 'videos'));
-        }
-    }
 }

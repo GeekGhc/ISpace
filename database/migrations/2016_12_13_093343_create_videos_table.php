@@ -19,6 +19,7 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->string('intro');
             $table->string('poster');
+            $table->integer('comment_count')->default(0);
             $table->string('url');
             $table->foreign('video_series_id')
                   ->references('id')

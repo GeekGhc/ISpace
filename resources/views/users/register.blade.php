@@ -3,13 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if($errors->any())
-                <ul class="list-group">
-                    @foreach($errors->all() as $error)
-                        <li class="list-group-item list-group-item-danger">{{$error}}</li>
-                    @endforeach
-                </ul>
-            @endif
             @if(Session::has('user_login_failed'))
                 <div class="alert alert-danger" role="alert">
                     {{Session::get('user_login_failed')}}

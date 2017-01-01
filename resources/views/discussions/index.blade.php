@@ -20,7 +20,7 @@
                                 <a href="{{url('/discussion/'.$discussion->id)}}">{{$discussion->title}}</a>
                             </h3>
                             <ul class="discussion-list_inline">
-                                <li><a href="#">{{\App\User::find($discussion->last_user_id)->name}}</a></li>
+                                <li><a href="/u/{{\App\User::find($discussion->last_user_id)->name}}" style="color: #00b1b3;font-weight: 800;font-size: 14px">{{\App\User::find($discussion->last_user_id)->name}}</a></li>
                                 <li>
                                     <time>{{$discussion->updated_at->diffForHumans()}}更新</time>
                                 </li>

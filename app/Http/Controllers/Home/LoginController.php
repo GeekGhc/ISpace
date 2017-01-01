@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Socialite;
 use App\User;
 use App\UserLogin\OtherLogin;
 use Illuminate\Http\Request;
@@ -32,12 +33,12 @@ class LoginController extends Controller
         'github' => [
             'client_id' => '81ef36deca1d9eb5298b',
             'client_secret' => '8c429e4f6b3fa50b1c555d66a72206e5039e533e',
-            'redirect' => 'https://kobeman.com/github/callback'
+            'redirect' => 'http://localhost:8000/github/callback'
         ],
-        'google'=>[
-            'client_id'=>'794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com',
-            'client_secret'=>'jivItp5exFo5olYhQO0AZa11',
-            'redirect'=>'https://kobeman.com/google/callback',
+        'google' => [
+            'client_id' => '794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com',
+            'client_secret' => 'jivItp5exFo5olYhQO0AZa11',
+            'redirect' => 'https://kobeman.com/google/callback',
         ],
     ];
 
@@ -49,30 +50,69 @@ class LoginController extends Controller
 
     public function githubLogin()
     {
-        $this->login->githubLogin($this->config);
+        $flag = $this->login->githubLogin($this->config);
+        if ($flag) {
+            if($flag==2){
+                flash('该账号已经被绑定到其他注册账号下', 'warning');
+            }
+            return back();
+        }
         return redirect('/');
     }
 
     public function weiboLogin()
     {
-        $this->login->weiboLogin($this->config);
+        $flag = $this->login->weiboLogin($this->config);
+        if ($flag) {
+            if($flag==2){
+                flash('该账号已经被绑定到其他注册账号下', 'warning');
+            }
+            return back();
+        }
         return redirect('/');
     }
 
     public function qqLogin()
     {
-        $this->login->qqLogin($this->config);
+        $flag = $this->login->qqLogin($this->config);
+        if ($flag) {
+            if($flag==2){
+                flash('该账号已经被绑定到其他注册账号下', 'warning');
+            }
+            return back();
+        }
         return redirect('/');
     }
 
-    public function wechat(){
-        $this->login->wechatLogin($this->config);
+    public function wechat()
+    {
+        $flag = $this->login->wechatLogin($this->config);
+        if ($flag) {
+            if($flag==2){
+                flash('该账号已经被绑定到其他注册账号下', 'warning');
+            }
+            return back();
+        }
         return redirect('/');
     }
 
     public function googleLogin()
     {
-        $this->login->googleLogin($this->config);
+        $flag = $this->login->googleLogin($this->config);
+        if ($flag) {
+            if($flag==2){
+                flash('该账号已经被绑定到其他注册账号下', 'warning');
+            }
+            return back();
+        }
         return redirect('/');
+    }
+
+    //解除用户绑定
+    public function SocialiteRelieve($id)
+    {
+        $socialite = Socialite::find($id);
+        $socialite->delete();
+        return redirect()->back();
     }
 }

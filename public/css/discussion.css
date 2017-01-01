@@ -214,7 +214,7 @@ body{
 
 .post-title_info{
     color: #999;
-    margin-left: 38px;
+    margin-left: 74px;
     margin-bottom: -5px;
 }
 
@@ -223,6 +223,7 @@ body{
     color: #fff;
     float: left;
     margin-right: 18px;
+    height:100%;
 }
 
 .post-author_avatar img {

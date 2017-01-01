@@ -1,7 +1,7 @@
 @extends('app')
 @section('title','ISpace 个人主页设置')
 @section('header-css')
-    <link rel="stylesheet" href="/css/jquery.Jcrop.css">
+    <link rel="stylesheet" href="/css/source/jquery.Jcrop.css">
     <link rel="stylesheet" href="/css/account.css">
 @endsection
 @section('header-js')
@@ -10,6 +10,7 @@
 @endsection
 @section('content')
     <div class="container">
+        @include('flash::message')
         <div class="row user-account">
 
             <div class="col-md-2 col-md-offset-1">
@@ -38,8 +39,13 @@
                     <div class="user-setting-list row form-horizontal">
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3 control-label">用户名:</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" value="{{$profile->user->name}}">
+                            <div class="col-sm-9 {{ $errors->has('name') ? ' has-error' : '' }}">
+                                <input class="form-control" name="name" value="{{$profile->user->name}}">
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
                                 {{--<span class="help-block bg-warning">用户名建议无需修改,如需修改请联系管理员</span>--}}
                             </div>
                         </div>
@@ -58,15 +64,22 @@
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">个人网站:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="website" placeholder="www.example.com" value="{{$profile->website}}">
+                                <input class="form-control" name="website" placeholder="www.example.com"
+                                       value="{{$profile->website}}">
                             </div>
                         </div>
                         <div class="user-setting-item form-group">
                             <label class="col-sm-3  control-label">个人简介:</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="description" rows="5" cols="50" placeholder="介绍下自己吧...">{{$profile->description}}</textarea>
+                                <textarea class="form-control" name="description" rows="5" cols="50"
+                                          placeholder="介绍下自己吧...">{{$profile->description}}</textarea>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('更新我的资料',['class'=>'btn btn-primary pull-right btn-lg','style'=>'width:100%']) !!}
+                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
 
@@ -82,67 +95,67 @@
                             </tr>
                             </thead>
                             <tbody>
+
+
                             <tr>
                                 <td><i class="fa fa-github ac-github"></i>Github</td>
                                 <td>
-                                    <a href="#">点击绑定Github账户</a>
+                                    @if($socialites->contains('github'))
+                                        {!! Form::open(['url'=>'/user/socialite/relieve/'.$socialites->search('github'),'method'=>'delete']) !!}
+                                        <button type="submit" class="btn btn-success">解除绑定</button>
+                                        {!! Form::close() !!}
+                                    @else
+                                        <a href="{{url('/user/login/github')}}">点击绑定Github账户</a>
+                                    @endif
                                 </td>
                             </tr>
+
+
                             <tr>
-                                <td><i class="fa fa-google-plus ac-google"></i>Google</td>
+                                <td><i class="fa fa-google ac-google"></i>Google</td>
                                 <td>
-                                    <a href="">点击绑定Google账户</a>
+                                    @if($socialites->contains('google'))
+                                        {!! Form::open(['url'=>'/user/socialite/relieve/'.$socialites->search('google'),'method'=>'delete']) !!}
+                                        <button class="btn btn-success">解除绑定</button>
+                                        {!! Form::close() !!}
+                                    @else
+                                        <a href="{{url('/user/login/google')}}">点击绑定Google账户</a>
+                                    @endif
                                 </td>
                             </tr>
+
                             <tr>
                                 <td><i class="fa fa-weibo ac-weibo"></i>Weibo</td>
                                 <td>
-                                    <a href="#">点击绑定微博账户</a>
+                                    @if($socialites->contains('weibo'))
+                                        {!! Form::open(['url'=>'/user/socialite/relieve/'.$socialites->search('weibo'),'method'=>'delete']) !!}
+                                        <button class="btn btn-success">解除绑定</button>
+                                        {!! Form::close() !!}
+                                    @else
+                                        <a href="{{url('/user/login/weibo')}}">点击绑定微博账户</a>
+                                    @endif
                                 </td>
                             </tr>
+
                             <tr>
                                 <td><i class="fa fa-qq ac-qq"></i>QQ</td>
                                 <td>
-                                    <a href="#">点击绑定QQ账户</a>
+                                    @if($socialites->contains('qq'))
+                                        {!! Form::open(['url'=>'/user/socialite/relieve/'.$socialites->search('qq'),'method'=>'DELETE']) !!}
+                                        <button class="btn btn-success">解除绑定</button>
+                                        {!! Form::close() !!}
+                                    @else
+                                        <a href="{{url('/user/login/qq')}}">点击绑定QQ账户</a>
+                                    @endif
                                 </td>
                             </tr>
+
                             </tbody>
                         </table>
-
-
-
-                       {{-- <div class="user-setting-item form-group">
-                            <label class="col-sm-3  control-label" data-placement="https://github.com/XXph">Github:</label>
-                            <div class="col-sm-9">
-                                <a href="#">点击绑定Github账号</a>
-                                --}}{{--<input class="form-control" name="github" placeholder="Your github name" value="{{$profile->github}}">--}}{{--
-                            </div>
-                        </div>
-                        <div class="user-setting-item form-group">
-                            <label class="col-sm-3  control-label" data-placement="https://github.com/XXph">Google:</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" name="github" placeholder="Your github name" value="{{$profile->github}}">
-                            </div>
-                        </div>
-                        <div class="user-setting-item form-group">
-                            <label class="col-sm-3  control-label">新浪微博:</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" name="weibo" value="{{$profile->weibo}}">
-                            </div>
-                        </div>
-                        <div class="user-setting-item form-group">
-                            <label class="col-sm-3  control-label">腾讯QQ:</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" name="qq" value="{{$profile->qq}}">
-                            </div>
-                        </div>--}}
-                        <div class="form-group">
-                            {!! Form::submit('更新我的资料',['class'=>'btn btn-primary pull-right btn-lg','style'=>'width:100%']) !!}
-                        </div>
                     </div>
                 </div>
+
             </div>
-            {!! Form::close() !!}
 
         </div>
 
@@ -152,7 +165,8 @@
                 <div class="modal-content">
                     {!! Form::open( [ 'url' => ['/user/crop/api'], 'method' => 'POST', 'onsubmit'=>'return checkCoords();','files' => true ] ) !!}
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: #ffffff">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true" style="color: #ffffff">&times;</span></button>
                         <h4 class="modal-title" id="exampleModalLabel">裁剪头像</h4>
                     </div>
                     <div class="modal-body">
@@ -161,11 +175,11 @@
                                 <img
                                         src="{{Auth::user()->avatar}}"
                                         class="ui centered image" id="cropbox" style="width: 460px;height: 460px;">
-                                <input type="hidden" id="photo" name="photo" />
-                                <input type="hidden" id="x" name="x" />
-                                <input type="hidden" id="y" name="y" />
-                                <input type="hidden" id="w" name="w" />
-                                <input type="hidden" id="h" name="h" />
+                                <input type="hidden" id="photo" name="photo"/>
+                                <input type="hidden" id="x" name="x"/>
+                                <input type="hidden" id="y" name="y"/>
+                                <input type="hidden" id="w" name="w"/>
+                                <input type="hidden" id="h" name="h"/>
                             </div>
                         </div>
 
@@ -180,6 +194,10 @@
         </div>
 
     </div>
+    <script>
+        $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
     <script>
         $(document).ready(function () {
             var options = {

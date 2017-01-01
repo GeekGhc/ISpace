@@ -24,10 +24,10 @@ class UserRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:3',
+            'name'=>'required|min:3|unique:users',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6|confirmed',
-            'password_confirmation'=>'required|min:6'
+            'password_confirmation'=>'required'
         ];
     }
 
@@ -35,6 +35,7 @@ class UserRegisterRequest extends FormRequest
         return[
             'name.required'=>'用户名不能为空',
             'name.min'=>'用户名长度需要大于3',
+            'name.unique'=>'用户名已经被占用',
             'email.required'=>'用户邮箱不能为空',
             'email.unique'=>'此邮箱已经被注册',
             'email.email'=>'请填写正确的邮箱格式',

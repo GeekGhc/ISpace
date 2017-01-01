@@ -11,6 +11,10 @@
     text-align: center;
 }
 
+.search-row {
+    padding-top: 12px;
+}
+
 .search-title > ul .active {
     /*margin-bottom: -2px;*/
     border-bottom: 2px solid #555;
@@ -38,8 +42,8 @@
     list-style: none;
 }
 
-.collections-list > ul li {
-    padding: 15px 80px 10px 0px;
+.collection-list-ul li {
+    padding: 15px 10px 10px 0px;
     border-bottom: 1px dashed #d9d9d9;
 }
 
@@ -56,6 +60,7 @@
 
 .collections-list .collection-info {
     margin-left: 54px;
+    margin-right: 44px;
     display: block;
 }
 
@@ -67,17 +72,19 @@
 }
 
 .collection-info .title {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .collection-info .publish-info {
     display: inline-block;
 }
-.collection-info .publish-info a{
+
+.collection-info .publish-info a {
     cursor: pointer;
     text-decoration: none;
     margin-right: 10px;
 }
+
 .collection-info .title a {
     color: #4b4b4b;
 }
@@ -90,6 +97,8 @@
 .collections-list .reply-media {
     display: block;
     float: right;
+    padding-left: 12px;
+    height: 100%;
 }
 
 .collections-list .reply-info {
@@ -105,8 +114,79 @@
     display: block;
     text-align: center;
     color: #4b4b4b;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1;
     margin-bottom: -1px;
     font-weight: 700;
+}
+
+.search-menu-list {
+    padding: 10px;
+}
+
+.search-menu-list .dropDown-menu {
+    list-style: none;
+}
+
+.dropDown-menu .item-allCategory {
+    margin-top: 1.2em;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -.5px;
+    margin-bottom: 1em;
+    color: #cacaca;
+    font-size: 18px;
+}
+
+.dropDown-menu .item-allCategory p i {
+    margin-right: 12px;
+}
+
+.dropDown-menu .item-category a {
+    cursor: pointer;
+    border-bottom: 1px dotted #d7d7d7;
+    padding: 14px 0;
+    color: #7088a9;
+    font-weight: 400;
+    font-size: 18px;
+    transition: padding-left .4s;
+    transition-property: padding-left;
+    transition-duration: 0.4s;
+    transition-timing-function: initial;
+    transition-delay: initial;
+    letter-spacing: -.5px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.dropDown-menu .item-category a.active {
+    color: #00b1b3;
+    font-weight: 800;
+}
+
+.dropDown-menu .item-category a span i {
+    margin-right: 10px;
+}
+
+.collections-list thead tr th {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 8px !important;
+}
+
+.collections-list .search-video-tr {
+    color: #3a3a3a;
+    font-size: 16px;
+}
+
+.collections-list .search-video-tr td a {
+    cursor: pointer;
+    color: #3a3a3a;
+    font-weight: bold;
+}
+.collections-list .discussion-loadMore{
+    width:100%;
+    text-align: center;
+    padding-top: 18px;
 }

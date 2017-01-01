@@ -10,7 +10,6 @@
             @endif
             <div class="login-form" role="main">
                 {!! Form::open(['url'=>'/user/login']) !!}
-                {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
                 <div class="form-group tabs">
                     <a class="tabs_tab tabs_tab_active" href="/user/login">登录</a>
                     <a class="tabs_tab" href="/user/register">注册</a>
@@ -28,6 +27,7 @@
                                     </span>
                     @endif
                 </div>
+
                 <!---Password  Field --->
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}"
                      style="margin-bottom: 26px">

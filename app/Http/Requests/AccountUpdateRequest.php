@@ -23,8 +23,9 @@ class AccountUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $id = \Auth::user()->id;
         return [
-            'name'=>'required|min:3|unique:users'
+            'name'=>'required|min:3|unique:users,name,'.$id,
         ];
     }
 

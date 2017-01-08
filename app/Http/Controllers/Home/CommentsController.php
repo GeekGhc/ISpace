@@ -31,6 +31,7 @@ class CommentsController extends Controller
         $postId = $request->get('discussion_id');
         $post = Discussion::findOrFail($postId);
         $post->comment_count = $post->comment_count+1;
+        $post->last_user_id = $request->get('user_id');
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -52,7 +53,7 @@ class CommentsController extends Controller
         //如果帖子下产生评论
         if($data['to_user_id']===0){
             $post->user->notify(new PostComment($askReply));
-            event(new AskReply($post->user,$askReply));
+//            event(new AskReply($post->user,$askReply));
         }else{
             User::find($data['to_user_id'])->notify(new PostReply($askReply));
         }
@@ -71,7 +72,6 @@ class CommentsController extends Controller
         $articleId = $request->get('article_id');
         $article = Article::findOrFail($articleId);
         $article->comment_count = $article->comment_count+1;
-        $article->save();
 
         $data = [
             'user_id'=>$request->get('user_id'),

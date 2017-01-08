@@ -9,10 +9,6 @@
         }
     </style>
 @endsection
-@section('header-js')
-    <script src="/js/source/vue.js"></script>
-    <script src="/js/source/vue-resource.min.js"></script>
-@endsection
 @section('content')
     <div class="container" id="app">
         <div class="row search-row">
@@ -44,12 +40,12 @@
                                 @endforeach
                                 </tbody>
                         </table>
-                        <div class="discussion-loadMore">
+                       {{-- <div class="discussion-loadMore">
                             <button class="ui orange button">
                                 <span class="btn-load">Load More</span>
                             </button>
-                        </div>
-{{--                        {{$videos->links()}}--}}
+                        </div>--}}
+                        {{$videos->links()}}
                     </div>
 
                 </div>

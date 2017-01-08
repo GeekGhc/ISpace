@@ -5,10 +5,10 @@
             <div class="meta-top">
                 <a class="comment-avatar"><img :src="[comment.user.avatar]"></a>
                 <p class="comment-user-name">
-                    <a href="">@{{comment.user.name}}</a></p>
+                    <a :href="nameUrl(comment.user.name)">@{{comment.user.name}}</a></p>
                 <span class="reply-time">
                         <time>@{{comment.created_at}}</time>
-                        </span>
+                </span>
             </div>
             <p class="reply-content" v-html="comment.html_body">
             </p>
@@ -28,9 +28,9 @@
             <div class="child-comment" v-for="commentChild in comments"
                  v-if="commentChild.to_comment_id==comment.id">
                 <p>
-                    <a class="main-user">@{{commentChild.user.name}}</a>&nbsp;&nbsp;回复
-                    <a class="commented-user">@{{ commentChild.to_user.name }}</a>:
-                <p v-html="commentChild.html_body"></p>
+                    <a class="main-user" :href="nameUrl(commentChild.user.name)">@{{commentChild.user.name}}</a>&nbsp;&nbsp;回复
+                    <a class="commented-user" :href="nameUrl(commentChild.to_user.name)">@{{ commentChild.to_user.name }}</a>:
+                    <p v-html="commentChild.html_body"></p>
                 </p>
                 <div class="child-comment-footer">
                         <span class="reply-time pull-left">

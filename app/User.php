@@ -19,11 +19,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //所有者判断
+    public function owns(Model $model)
+    {
+        return $this->id == $model->user_id;
+    }
 
     //在数据保存到数据库之前会对密码进行一个预处理
     public function setPasswordAttribute($password){
         $this->attributes['password'] = \Hash::make($password);
     }
+
 
     //用户----档案
     public function profile()
@@ -31,11 +37,22 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
+
     //用户----第三方账户
     public function socialites()
     {
         return $this->hasMany('App\Socialite');
     }
+
+    //用户之间互相关注
+    /*public function follows()
+    {
+        return $this->belongsToMany(User::class,'follow_user')->withTimestamps();
+    }
+    public function followThis($user_id)
+    {
+        return $this->follows()->toggle($user_id);
+    }*/
 
     //用户----帖子
     public function discussions()

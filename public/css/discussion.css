@@ -298,6 +298,7 @@ body{
 
 .answers-part {
     border-top: 1px solid #e7edf3;
+    border-bottom: 1px solid #e7edf3;
     color: #7089a9;
     padding-left: 20px;
     padding-top: 10px;
@@ -305,7 +306,7 @@ body{
 }
 
 .answers-part i {
-    margin-right: 18px;
+    margin-right: 8px;
 }
 
 .answers-part span {

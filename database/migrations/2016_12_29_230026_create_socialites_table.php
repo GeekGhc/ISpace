@@ -17,6 +17,7 @@ class CreateSocialitesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('social_type');//登录类型
+            $table->string('social_name')->default('');//第三方的姓名
             $table->string('social_id')->nullable();//第三方登录的id
             $table->foreign('user_id')
                   ->references('id')

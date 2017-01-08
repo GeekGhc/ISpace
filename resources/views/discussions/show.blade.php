@@ -44,7 +44,7 @@
                     {{--是本文作者可编辑文章--}}
                     @if(\Auth::check())
                         @if($discussion->user->id===\Auth::user()->id)
-                            <a class="btn edit-discussion-btn" href="{{url('/discussion/'.$discussion->id.'/edit')}}">编辑帖子
+                            <a class="ui button teal" href="{{url('/discussion/'.$discussion->id.'/edit')}}">编辑帖子
                             </a>
                         @endif
                     @endif
@@ -165,6 +165,10 @@
                     }
                 },
                 methods: {
+                    //名字Url
+                    nameUrl:function (value) {
+                        return "/u/"+value;
+                    },
                     //回复
                     cancelReply: function () {
                         this.is_reply = false;
@@ -241,6 +245,9 @@
                     },
                 },
                 methods: {
+                    nameUrl:function (value) {
+                        return "/u/"+value;
+                    },
                     favorite:function(){
                         this.postFavorite.isFavorite = !this.postFavorite.isFavorite;
                         console.log('isFavorite = '+this.postFavorite.isFavorite);

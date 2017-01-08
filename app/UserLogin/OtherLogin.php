@@ -24,6 +24,7 @@ class OtherLogin
             Socialite::create([
                 'social_type'=>'github',
                 'social_id'=>$githubUser->getId(),
+                'social_name'=>$githubUser->getNickname(),
                 'user_id'=>Auth::user()->id
             ]);
             return 1;
@@ -80,6 +81,7 @@ class OtherLogin
             Socialite::create([
                 'social_type'=>'qq',
                 'social_id'=>$qqUser->getId(),
+                'social_name'=>$qqUser->getNickname(),
                 'user_id'=>Auth::user()->id
             ]);
             return 1;
@@ -130,6 +132,7 @@ class OtherLogin
             Socialite::create([
                 'social_type'=>'weibo',
                 'social_id'=>$weiboUser->getId(),
+                'social_name'=>$weiboUser->getNickname(),
                 'user_id'=>Auth::user()->id
             ]);
             return 1;
@@ -179,6 +182,7 @@ class OtherLogin
             Socialite::create([
                 'social_type'=>'google',
                 'social_id'=>$googleUser->getId(),
+                'social_name'=>$googleUser->getNickname(),
                 'user_id'=>Auth::user()->id
             ]);
             return 1;

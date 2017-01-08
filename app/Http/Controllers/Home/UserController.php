@@ -41,18 +41,6 @@ class UserController extends Controller
         //第一次用户登录
     }
 
-
-    //用户的个人主页
-    public function profile($username)
-    {
-        $user = User::where('name', $username)->first();
-        $profile = Profile::with('user')->where('user_id',$user->id)->first();
-        $articles = $user->articles;
-        $posts = $user->discussions;
-        $favorites = Favorite::where('user_id',$user->id)->get();
-        return view('users.profile',compact('profile','articles','posts','favorites'));
-    }
-
     public function login()
     {
         return view('users.login');

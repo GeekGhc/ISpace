@@ -77,7 +77,7 @@ img{
 
 .my-video .video-info{
     background-color: #fff;
-    padding: 4px 12px 12px;
+    padding: 6px 12px 12px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     border: 1px solid #eee;
@@ -91,6 +91,14 @@ img{
 }
 
 .video-info span{
-    color: #555;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.video-info .video-series-count{
     font-size: 14px;
+    color: #999;
+    font-weight: bolder;
+    float: right;
 }

@@ -31,7 +31,9 @@
                         </div>
                     </a>
                     <div class="video-info">
-                        <h4>{{$video_serie->name}}</h4>
+                        <span>{{$video_serie->name}}
+                            <p class="video-series-count">12 LESSONS</p>
+                        </span>
                         {{--<span>{{$video_serie->intro}}</span>--}}
                     </div>
                 </div>

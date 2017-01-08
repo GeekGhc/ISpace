@@ -58,7 +58,7 @@ a {
 
 .article-item_title a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 1.5;
     color: #333;
@@ -278,4 +278,28 @@ a {
 
 .answers-part em {
     margin-right: 3px;
+}
+
+.page-turning ul{
+    list-style: none;
+}
+.page-turning{
+    padding-bottom: 8px;
+    /*margin-bottom: 22px;*/
+    margin-top:2px;
+}
+.page-turning ul .article-pre{
+    float: left;
+    display: inline-block;
+}
+.page-turning ul .article-next{
+    float: right;
+    display: inline-block;
+}
+.page-turning ul li p{
+    display: inline-block;
+    font-weight: bold;
+    /*color: #4183C4;*/
+    font-size: 14px;
+    padding: 0 4px;
 }

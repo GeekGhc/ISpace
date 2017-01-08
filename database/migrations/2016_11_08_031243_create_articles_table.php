@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('body');
             $table->text('html_body');
             $table->integer('user_id')->unsigned();
+            $table->integer('last_user_id')->unsigned();
             $table->integer('view_count')->default(0);
             $table->integer('comment_count')->default(0);
             $table->foreign('user_id')

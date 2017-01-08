@@ -22,6 +22,7 @@ class CreateDiscussionsTable extends Migration
             $table->integer('last_user_id')->unsigned();
             $table->integer('view_count')->default(0);
             $table->integer('comment_count')->default(0);
+            $table->string('is_first',8)->default('F');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

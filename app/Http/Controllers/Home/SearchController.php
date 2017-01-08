@@ -15,11 +15,11 @@ class SearchController extends Controller
     {
         //判断是否存在搜索数据
         if ($request->has('q')) {
-            $discussions = Discussion::search($request->input('q'))->orderBy('comment_count', 'desc')->paginate(4);
+            $discussions = Discussion::search($request->input('q'))->orderBy('comment_count', 'desc')->paginate(6);
             $query = $request->get('q');
             return view('search.post', compact('discussions', 'query'));
         }
-        $discussions = Discussion::with('user')->orderBy('comment_count', 'desc')->paginate(4);
+        $discussions = Discussion::with('user')->orderBy('comment_count', 'desc')->paginate(6);
         $query = '';
         return view('search.post', compact('discussions', 'query'));
     }
@@ -28,11 +28,11 @@ class SearchController extends Controller
     {
         //判断是否存在搜索数据
         if ($request->has('q')) {
-            $articles = Article::search($request->input('q'))->orderBy('comment_count', 'desc')->paginate(8);
+            $articles = Article::search($request->input('q'))->orderBy('comment_count', 'desc')->paginate(6);
             $query = $request->get('q');
             return view('search.article', compact('articles', 'query'));
         }
-        $articles = Article::with('user')->orderBy('comment_count', 'desc')->paginate(4);
+        $articles = Article::with('user')->orderBy('comment_count', 'desc')->paginate(6);
         $query = '';
         return view('search.article', compact('articles', 'query'));
     }
@@ -54,7 +54,7 @@ class SearchController extends Controller
     {
         if ($request->has('q')) {
             $step = $request->get('step');
-            $posts = Discussion::search($request->get('q'))->with(['user', 'last_user'])->orderBy('comment_count', 'desc')->skip($step)->take(4)->get();
+            $posts = Discussion::search($request->get('q'))->orderBy('comment_count', 'desc')->limit(4,$step)->get();
             return $posts->toArray();
         }
         $step = $request->get('step');

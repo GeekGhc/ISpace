@@ -182,7 +182,6 @@
                                 <input type="hidden" id="h" name="h"/>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -194,10 +193,6 @@
         </div>
 
     </div>
-    <script>
-        $('#flash-overlay-modal').modal();
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-    </script>
     <script>
         $(document).ready(function () {
             var options = {
@@ -255,5 +250,9 @@
                 return false;
             }
         }
+    </script>
+    <script>
+        $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
 @endsection

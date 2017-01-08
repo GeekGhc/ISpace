@@ -12,11 +12,30 @@ class Article extends Model
         'title', 'body','html_body','user_id','view_count','comment_count'
     ];
 
+    //获得上一篇文章的id
+    public function getPrevArticleId($id)
+    {
+        return Article::where('id','<',$id)->max('id');
+    }
+
+    //获得下一篇文章的id
+    public function getNextArticleId($id)
+    {
+        return Article::where('id','>',$id)->min('id');
+    }
+
     //文章----用户
     public function user()
     {
         return $this->belongsTo(User::class);//$discussion->user()
     }
+
+    //文章----最后更新用户
+    public function last_user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     //文章----评论
     public function comments()

@@ -63,6 +63,7 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
     //用户账户设置
     Route::get('/account','UserController@userAccount');
     Route::patch('/account/{id}','UserController@userUpdate');
+
     //头像上传修改
     Route::post('/avatar','UserController@changeAvatar');
     Route::post('/crop/api','UserController@cropAvatar');
@@ -81,8 +82,14 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 
 Route::group(['namespace' => 'Home'],function(){
     Route::get('/logout','UserController@logout');//退出当前用户
-    Route::get('/u/{user_name}','UserController@profile');//用户的个人主页
     Route::get('/verify/token/{confirm_code}','UserController@confirmEmail');//邮箱的验证
+    Route::get('/u/{user_name}','ProfileController@profile');//用户的个人主页
+    Route::get('/u/{user_name}/posts','ProfileController@post');
+    Route::get('/u/{user_name}/articles','ProfileController@article');
+    Route::get('/u/{user_name}/answers','ProfileController@answer');
+    Route::get('/u/{user_name}/followers','ProfileController@follower');
+    Route::get('/u/{user_name}/following','ProfileController@following');
+    Route::get('/u/{user_name}/timeLine','ProfileController@timeLine');
 
     //github登录
     Route::get('/github/callback','LoginController@githubLogin');

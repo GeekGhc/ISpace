@@ -64,9 +64,10 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-
         $article = Article::with('user')->findOrFail($id);
         event(new ArticleView($article));
+        $prevArticle = Article::find($article->getPrevArticleId($id));
+        $nextArticle = Article::find($article->getNextArticleId($id));
         $favorite = Favorite::where('favoriteable_type','App\Article')->where('favoriteable_id',$article->id)->first();
         if(\Auth::check()){
             if($favorite){
@@ -80,7 +81,7 @@ class ArticlesController extends Controller
         }
 
         $comments = Comment::with('user')->with('to_user')->where('commentable_type','App\Article')->where('commentable_id',$id)->get();
-        return view('articles.show',compact('article','isFavorite','comments'));
+        return view('articles.show',compact('article','prevArticle','nextArticle','isFavorite','comments'));
     }
 
     /**

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/discussion.css">
     <link rel="stylesheet" href="/css/comment.css">
     <style>
-        body{
+        body {
             background: #f5f5f1;
         }
     </style>
@@ -27,13 +27,16 @@
                                 </a>
                             </div>
                         @else
-                                @if($isFavorite===2)
-                                    <a style="float: right" class="ui inverted orange button" type="button" id="favorite" href="{{url('user/login')}}"><i class="fa fa-star"></i>添加收藏</a>
-                                @elseif($isFavorite==1)
-                                    <a style="float: right" class="ui  orange button" type="button" id="favorite" @click="favorite()"><i class="fa fa-star"></i>已收藏</a>
-                                @else
-                                    <a style="float: right" class="ui inverted orange button" type="button" id="favorite" @click="favorite()"><i class="fa fa-star"></i>添加收藏</a>
-                                @endif
+                            @if($isFavorite===2)
+                                <a style="float: right" class="ui inverted orange button" type="button" id="favorite"
+                                   href="{{url('user/login')}}"><i class="fa fa-star"></i>添加收藏</a>
+                            @elseif($isFavorite==1)
+                                <a style="float: right" class="ui  orange button" type="button" id="favorite" @click="
+                                favorite()"><i class="fa fa-star"></i>已收藏</a>
+                            @else
+                                <a style="float: right" class="ui inverted orange button" type="button"
+                                   id="favorite" @click="favorite()"><i class="fa fa-star"></i>添加收藏</a>
+                            @endif
                             {{--</div>--}}
                             <div class="button ui green follow">
                                 <a>
@@ -45,7 +48,7 @@
                     <a class="article-show_avatar">
                         <img class="img-circle" src="{{$article->user->avatar}}">
                     </a>
-                    <a class="article-show_author-name" href="">
+                    <a class="article-show_author-name" href="/u/{{$article->user->name}}">
                         <span>{{$article->user->name}}</span>
                     </a>
                     <span class="article-show_publish-time">2016.5.12 13:58</span>
@@ -68,6 +71,41 @@
                     <div class="post-show_content">
                         {!! $article->html_body !!}
                     </div>
+                    {{-- <div class="page-turning">
+                         <div class="ui buttons">
+                             <a>
+                                 <button class="ui labeled icon button"><i class="left chevron icon"></i> Back</button>
+                                 <span>Laravel 路由的使用</span>
+                             </a>
+                             <a>
+                                 <span>VueJs结合Laravel</span>
+                                 <button class="ui right labeled icon button">Forward <i class="right chevron icon"></i></button>
+                             </a>
+                         </div>
+                     </div>--}}
+                    <div class="page-turning ui equal width center aligned padded grid">
+                        <ul class="row">
+                            <li class="article-pre column">
+                                <a href="/article/{{$prevArticle->id}}">
+                                    <button class="ui inverted red button col-md-4" style="display: inline-block;float: left">
+                                        <i class="long arrow left icon"></i>
+                                        Prev
+                                    </button>
+                                    <p class="col-md-7">{{$prevArticle->title}}</p>
+                                </a>
+                            </li>
+                            <li class="article-next column">
+                                <a href="/article/{{$nextArticle->id}}">
+                                    <button class="pull-right ui inverted red button col-md-4">
+                                        Next
+                                        <i class="long arrow right icon"></i>
+                                    </button>
+                                    <p class="col-md-7" style="margin-bottom: 0;float: right">{{$nextArticle->title}}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="answers-part">
                         <i class="fa fa-fw fa-thumb-tack fa-2x"></i><span>共<em>{{$article->comment_count}}</em>条评论</span>
                         <div
@@ -170,6 +208,10 @@
                     }
                 },
                 methods: {
+                    //名字Url
+                    nameUrl: function (value) {
+                        return "/u/" + value;
+                    },
                     //回复
                     cancelReply: function () {
                         this.is_reply = false;
@@ -195,11 +237,11 @@
                         post.body = commentTemp.body;
                         this.$http.post('/commentArticle', post).then(response => {
                             console.log('comment_id = ' + comment.to_comment_id);
-                        commentTemp.html_body = response.data.html_body;
-                        commentTemp.created_at = response.data.created_at;
-                        this.is_reply = false;
-                        this.commentLocal.push(commentTemp);
-                    })
+                            commentTemp.html_body = response.data.html_body;
+                            commentTemp.created_at = response.data.created_at;
+                            this.is_reply = false;
+                            this.commentLocal.push(commentTemp);
+                        })
                         ;
                         this.newComment = {
                             'name': '{{\Auth::user()->name}}',
@@ -248,19 +290,23 @@
                     },
                 },
                 methods: {
-                    //回复
-                    cancelReply: function () {
-                        this.is_reply = false;
+                    //名字Url
+                    nameUrl: function (value) {
+                        return "/u/" + value;
                     },
-                    //取消回复
-                    onreply: function () {
-                        if (this.is_reply) {
-                            this.is_reply = false;
-                        } else {
-                            this.placeholder = '回复' + comment.to_user_name + ' :';
-                            this.is_reply = true;
-                        }
-                    },
+                    /*//回复
+                     cancelReply: function () {
+                     this.is_reply = false;
+                     },
+                     //取消回复
+                     onreply: function () {
+                     if (this.is_reply) {
+                     this.is_reply = false;
+                     } else {
+                     this.placeholder = '回复' + comment.to_user_name + ' :';
+                     this.is_reply = true;
+                     }
+                     },*/
                     favorite: function () {
                         this.postFavorite.isFavorite = !this.postFavorite.isFavorite;
                         console.log('isFavorite = ' + this.postFavorite.isFavorite);
@@ -273,7 +319,7 @@
                         }
                         this.$http.post('/favArticle', this.postFavorite).then(response => {
                             console.log('response = ' + response.data);
-                    })
+                        })
                         ;
                     },
                     onSubmitFormMain: function (e) {
@@ -283,11 +329,11 @@
                         post.body = commentTemp.body;
                         this.$http.post('/commentArticle', post).then(response => {
                             console.log('response = ' + response.data.created_at);
-                        commentTemp.html_body = response.data.html_body;
-                        commentTemp.comment_id = response.data.comment_id;
-                        commentTemp.created_at = response.data.created_at;
-                        this.commentLocalMain.push(commentTemp);
-                    })
+                            commentTemp.html_body = response.data.html_body;
+                            commentTemp.comment_id = response.data.comment_id;
+                            commentTemp.created_at = response.data.created_at;
+                            this.commentLocalMain.push(commentTemp);
+                        })
                         ;
                         this.newCommentMain = {
                             'name': '{{Auth::user()->name}}',
@@ -303,6 +349,6 @@
             });
         </script>
     @else
-       @include('comments.reply_not_login')
+        @include('comments.reply_not_login')
     @endif
 @endsection

@@ -2,6 +2,7 @@
 @section('title','ISpace Community')
 @section('header-css')
     <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/discussion.css">
     <link rel="stylesheet" href="/css/video.css">
     <style>
         body {
@@ -49,15 +50,16 @@
                                                 </span>
                                             </div>
                                             <div class="tags">
-                                                <span class="label label-success">Laravel</span>
-                                                <span class="label label-warning">PHP</span>
+                                                @foreach($discussion->tags as $tag)
+                                                   <span class="label label-{{$tag->type}}">{{$tag->name}}</span>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             @endforeach
 
-                             <li v-for="newPost in postLocal">
+                            {{-- <li v-for="newPost in postLocal">
                                  <div class="reply-media">
                                      <div class="reply-info">
                                          <a>@{{newPost.comment_count}}</a>回复
@@ -87,14 +89,15 @@
                                          </div>
                                      </div>
                                  </div>
-                             </li>
+                             </li>--}}
 
                         </ul>
-                        <div class="discussion-loadMore">
+                        {{$discussions->links()}}
+                       {{-- <div class="discussion-loadMore">
                             <button class="ui orange button" id="loadMore">
                                 <span class="btn-load" v-on:click="loadData">Load More</span>
                             </button>
-                        </div>
+                        </div>--}}
                     </div>
 
                 </div>
@@ -112,7 +115,7 @@
             $('#search-video-list').removeClass('active');
         })
     </script>
-    <script>
+    {{--<script>
         Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
         new Vue({
             el: '#app',
@@ -149,11 +152,6 @@
                     return "/discussion/"+value;
                 }
             },
-            /*computed:{
-                request:function () {
-
-                }
-            }*/
         })
-    </script>
+    </script>--}}
 @endsection

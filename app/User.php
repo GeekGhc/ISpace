@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
+    //用户----时光轴
+    public function tineLime()
+    {
+        return $this->hasOne('App\Timeline');//$user->timeLime()
+    }
 
     //用户----第三方账户
     public function socialites()

@@ -83,7 +83,7 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
 Route::group(['namespace' => 'Home'],function(){
     Route::get('/logout','UserController@logout');//退出当前用户
     Route::get('/verify/token/{confirm_code}','UserController@confirmEmail');//邮箱的验证
-    Route::get('/u/{user_name}','ProfileController@profile');//用户的个人主页
+    Route::get('/u/{user_name}','ProfileController@post');//用户的个人主页
     Route::get('/u/{user_name}/posts','ProfileController@post');
     Route::get('/u/{user_name}/articles','ProfileController@article');
     Route::get('/u/{user_name}/answers','ProfileController@answer');
@@ -101,6 +101,7 @@ Route::group(['namespace' => 'Home'],function(){
 
 Route::group(['namespace' => 'Home'],function(){
     //视频系列
+    Route::get('/lessons    ','VideosController@videos');
     Route::get('/series/{series_name}','VideosController@videoSeriesList');
     Route::get('/series/{series_name}/video/{video_index}','VideosController@videoPlay');
     //帖子文章

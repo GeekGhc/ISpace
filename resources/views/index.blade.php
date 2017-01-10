@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="col-md-6 col-md-offset-3 hero-header-title">
                     <p>ISpace Community</p>
-                    <h3>从这里开启你的梦想</h3>
+                    <h2>从这里开启你的梦想</h2>
                 </div>
             </div>
         </div>

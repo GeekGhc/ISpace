@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Comment;
 use App\Favorite;
+use App\Video;
 use Qiniu\Auth;
 use App\VideoSerie;
 use Illuminate\Http\Request;
@@ -11,6 +12,13 @@ use App\Http\Controllers\Controller;
 
 class VideosController extends Controller
 {
+    public function videos()
+    {
+        $videos = Video::latest()->paginate(10);
+        return view('video.video',compact('videos'));
+    }
+
+
     public function videoSeriesList($series_name)
     {
         $video_serie = VideoSerie::where('name', $series_name)->first();

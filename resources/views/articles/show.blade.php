@@ -61,6 +61,11 @@
                     <span>阅读<em>{{$article->view_count}}</em></span>
                     <span>评论<em>{{$article->comment_count}}</em></span>
                     <span>关注<em>353</em></span>
+                    <div style="float: right">
+                        <a class="ui tag label">New</a>
+                        <a class="ui red tag label">Upcoming</a>
+                        <a class="ui teal tag label">Featured</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,42 +73,38 @@
         <div class="container" id="comment-post">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
-                    <div class="post-show_content">
+                    <div class="post-show_content article-content">
                         {!! $article->html_body !!}
                     </div>
-                    {{-- <div class="page-turning">
-                         <div class="ui buttons">
-                             <a>
-                                 <button class="ui labeled icon button"><i class="left chevron icon"></i> Back</button>
-                                 <span>Laravel 路由的使用</span>
-                             </a>
-                             <a>
-                                 <span>VueJs结合Laravel</span>
-                                 <button class="ui right labeled icon button">Forward <i class="right chevron icon"></i></button>
-                             </a>
-                         </div>
-                     </div>--}}
-                    <div class="page-turning ui equal width center aligned padded grid">
-                        <ul class="row">
-                            <li class="article-pre column">
-                                <a href="/article/{{$prevArticle->id}}">
-                                    <button class="ui inverted red button col-md-4" style="display: inline-block;float: left">
-                                        <i class="long arrow left icon"></i>
-                                        Prev
-                                    </button>
-                                    <p class="col-md-7">{{$prevArticle->title}}</p>
-                                </a>
-                            </li>
-                            <li class="article-next column">
-                                <a href="/article/{{$nextArticle->id}}">
-                                    <button class="pull-right ui inverted red button col-md-4">
-                                        Next
-                                        <i class="long arrow right icon"></i>
-                                    </button>
-                                    <p class="col-md-7" style="margin-bottom: 0;float: right">{{$nextArticle->title}}</p>
-                                </a>
-                            </li>
-                        </ul>
+
+                    <div class="page-turning  ui internally celled grid">
+
+                        <div class="row">
+                            @if($prevArticle)
+                                <div class="article-pre eight wide column">
+                                    <a href="/article/{{$prevArticle->id}}">
+                                        <button class="ui inverted red button col-md-3"
+                                                style="display: inline-block;float: left;padding: 10px 14px;">
+                                            <i class="long arrow left icon"></i>
+                                            Prev
+                                        </button>
+                                        <p class="col-md-8">{{$prevArticle->title}}</p>
+                                    </a>
+                                </div>
+                            @endif
+                            @if($nextArticle)
+                                <div class="article-next eight wide column">
+                                    <a href="/article/{{$nextArticle->id}}">
+                                        <button class="pull-right ui inverted red button col-md-3" style="padding: 10px 14px;">
+                                            Next
+                                            <i class="long arrow right icon"></i>
+                                        </button>
+                                        <p class="col-md-8"
+                                           style="margin-bottom: 0;float: right">{{$nextArticle->title}}</p>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="answers-part">
@@ -117,7 +118,6 @@
                                 data-mobile-sites="weibo,qq,qzone,tencent"
                                 data-title="ISpace Community {{$article->title}}"
                                 style="display: inline-block;margin-left: 14px"
-
                         >
                         </div>
                     </div>
@@ -294,19 +294,6 @@
                     nameUrl: function (value) {
                         return "/u/" + value;
                     },
-                    /*//回复
-                     cancelReply: function () {
-                     this.is_reply = false;
-                     },
-                     //取消回复
-                     onreply: function () {
-                     if (this.is_reply) {
-                     this.is_reply = false;
-                     } else {
-                     this.placeholder = '回复' + comment.to_user_name + ' :';
-                     this.is_reply = true;
-                     }
-                     },*/
                     favorite: function () {
                         this.postFavorite.isFavorite = !this.postFavorite.isFavorite;
                         console.log('isFavorite = ' + this.postFavorite.isFavorite);

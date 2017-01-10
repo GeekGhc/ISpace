@@ -19,15 +19,14 @@
                         @foreach($posts as $post)
                             <li>
                                 <div class="row">
-                                    <div class="col-md-1">
-                                        <span class="label label-success profile-label">{{$post->comment_count}}
-                                            回复</span>
+                                    <div class="col-md-1 col-xs-1">
+                                        <span class="label label-success profile-label">{{$post->comment_count}}回复</span>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-8 col-xs-8">
                                         <a class="profile-article-title"
                                            href="/discussion/{{$post->id}}">{{$post->title}}</a>
                                     </div>
-                                    <div class="col-md-3" style="font-size: 16px">
+                                    <div class="col-md-3 col-xs-3" style="font-size: 16px">
                                         <span class="profile-article-time">帖子发表于{{$post->created_at->diffForHumans()}}</span>
                                     </div>
                                 </div>

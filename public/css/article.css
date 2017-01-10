@@ -129,7 +129,7 @@ a {
     margin-top: 20px;
     padding-bottom: 12px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #ccc;
     overflow: hidden;
     font-size: 12px;
     color: #999999;
@@ -284,9 +284,7 @@ a {
     list-style: none;
 }
 .page-turning{
-    padding-bottom: 8px;
-    /*margin-bottom: 22px;*/
-    margin-top:2px;
+    padding: 12px 0 !important;
 }
 .page-turning ul .article-pre{
     float: left;

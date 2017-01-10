@@ -77,7 +77,6 @@ class ProfileController extends Controller
     {
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
-        $articles = $user->articles;
-        return view('profile.article',compact('profile','articles'));
+        return view('profile.timeLine',compact('profile'));
     }
 }

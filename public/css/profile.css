@@ -143,7 +143,7 @@
 }
 
 .profile-label {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .profile-list li {
@@ -162,7 +162,7 @@ Primary style
 -------------------------------- */
 
 body {
-    font-size: 100%;
+    /*font-size: 100%;*/
     color: #7f8c97;
     /*background-color: #494a5f;*/
     background-color: #e9f0f5;
@@ -187,11 +187,6 @@ Modules - reusable parts of our design
     clear: both;
 }
 
-/* --------------------------------
-
-Main components
-
--------------------------------- */
 
 #cd-timeline {
     position: relative;
@@ -283,7 +278,6 @@ Main components
 
 .cd-timeline-img.cd-movie {
     background: #c03b44;
-    /*color:#fff;*/
 }
 
 .cd-timeline-img.cd-comment {

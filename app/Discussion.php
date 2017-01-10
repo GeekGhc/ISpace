@@ -15,25 +15,25 @@ class Discussion extends Model
     //帖子----用户
     public function user()
     {
-        return $this->belongsTo(User::class);//$discussion->user()
+        return $this->belongsTo('App\User');//$discussion->user()
     }
 
     //帖子----最后更新用户
     public function last_user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User');
     }
 
     //帖子----评论
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany('App\Comment', 'commentable');
     }
 
     //帖子----收藏
     public function favorites()
     {
-        return $this->morphMany(Favorite::class, 'favoriteable');
+        return $this->morphMany('App\Favorite', 'favoriteable');
     }
 
     //帖子----标签

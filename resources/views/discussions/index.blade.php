@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container section-content">
         <div class="row">
             <div class="main col-md-9 col-xs-12">
 
@@ -26,15 +26,15 @@
                                 </li>
                             </ul>
                             <div class="discussion-list_content">
-                                {{mb_substr(strip_tags($discussion->html_body),0,100,"utf-8")}}
+                                {{mb_substr(strip_tags($discussion->html_body),0,88,"utf-8")}}
                             </div>
                             <div class="discussion-list_footer">
                                 <div class="tagsLabel">
-                                    <ul>
+
                                         @foreach($discussion->tags as $tag)
-                                            <li class="tagLabel php"><span class="label label-{{$tag->type}}">{{$tag->name}}</span></li>
+                                            <a class="tagLabel php"><span class="ui label {{$tag->type}}">{{$tag->name}}</span></a>
                                         @endforeach
-                                    </ul>
+
                                 </div>
                                 <div class="others-info fr">
                                     <div class="discussion_published_at"><label>发表于{{$discussion->created_at->diffForHumans()}}</label></div>

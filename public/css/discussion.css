@@ -19,7 +19,7 @@ body{
     display: none;
 }
 .stream-list {
-    padding: 10px 0 24px;
+    padding: 10px 0 28px;
     border-bottom: solid 1px #e7ecef;
     width: 100%;
 }
@@ -84,16 +84,13 @@ body{
 }
 
 .discussion-list_footer {
-    padding-top: 15px;
+    padding-top: 8px;
 }
 
 .tagsLabel {
     float: left;
 }
 
-.tagsLabel ul {
-    padding-left: 0px;
-}
 
 .tagLabel {
     padding: 0px 3px;
@@ -275,13 +272,16 @@ body{
 
 .post-show_content{
     padding: 14px 18px;
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 16px;
     color: #111;
     font-family: Open Sans, Helvetica, Arial, sans-serif;
     letter-spacing: .4px;
     overflow: auto;
     box-sizing: border-box;
+}
+.post-show_content p{
+    line-height: 1.6285em;
+    word-wrap: break-word;
 }
 
 .post-show_content.article-content{

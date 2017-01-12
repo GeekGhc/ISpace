@@ -5,4 +5,6 @@ $(function(){
            location.href="/search/post?q="+content;
         }
     })
+
+    $('.section-content').css('min-height',"480px");
 });

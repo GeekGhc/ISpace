@@ -81,6 +81,7 @@ class UserController extends Controller
             'avatar' => '/images/avatar/default.png',
             'confirm_code' => str_random(48),
             'user_name' => $request->get('name'),
+            'api_token' => str_random(60),
         ];
         User::register($request->all(), $data);
         return redirect('/user/login');

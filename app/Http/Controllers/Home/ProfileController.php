@@ -7,6 +7,7 @@ use App\Comment;
 use App\Discussion;
 use App\Favorite;
 use App\Profile;
+use App\Timeline;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -77,6 +78,8 @@ class ProfileController extends Controller
     {
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
-        return view('profile.timeLine',compact('profile'));
+
+        $timeLines = $user->timeLines;
+        return view('profile.timeLine',compact('profile','timeLines'));
     }
 }

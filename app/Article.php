@@ -9,7 +9,7 @@ class Article extends Model
 {
     use Searchable;
     protected $fillable = [
-        'title', 'body','html_body','user_id','view_count','comment_count'
+        'title', 'body','html_body','user_id','last_user_id','view_count','comment_count'
     ];
 
     //获得上一篇文章的id

@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container section-content">
         <div class="row">
 
             <div class="main col-md-9 col-xs-12" style="padding-top: 10px">
@@ -28,7 +28,7 @@
                                     <div class="tagsLabel">
                                     <ul>
                                         @foreach($article->tags as $tag)
-                                        <li class="tagLabel"><span class="label label-{{$tag->type}}">{{$tag->name}}</span></li>
+                                        <li class="tagLabel"><span class="ui label {{$tag->type}}">{{$tag->name}}</span></li>
                                         @endforeach
                                     </ul>
                                     </div>

@@ -15,7 +15,7 @@
 @endsection
 @section('content')
 
-<div id="app">
+<div id="app" class="section-content">
     <div class="post-topheader">
         <div class="container">
             <div class="row">

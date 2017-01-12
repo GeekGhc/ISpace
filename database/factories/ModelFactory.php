@@ -22,6 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'confirm_code' => str_random(48),
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'api_token' => str_random(60)
     ];
 });
 
@@ -35,6 +36,7 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
         'body' => $faker->paragraph,
         'html_body'=>$faker->paragraph,
         'user_id' => $faker->randomElement($userId),
+        'last_user_id' => $faker->randomElement($userId),
         'comment_count' => $faker->numberBetween(1,999),
         'view_count' => $faker->numberBetween(1,999),
     ];
@@ -47,6 +49,7 @@ $factory->define(App\Discussion::class, function (Faker\Generator $faker) {
         'title' => $faker->sentence,
         'body' => $faker->paragraph,
         'html_body' => $faker->paragraph,
+        'is_first'  => 'F',
         'user_id' => $faker->randomElement($userId),
         'last_user_id' => $faker->randomElement($userId),
         'comment_count' => $faker->numberBetween(1,999),
@@ -54,15 +57,6 @@ $factory->define(App\Discussion::class, function (Faker\Generator $faker) {
     ];
 });
 
-//标签
-$factory->define(App\Tag::class, function (Faker\Generator $faker) {
-    $name = array('PHP','Laravel','Java','C++','C','JSP','Python','C#','Javascript','NodeJs','MySQL','HTML');
-    $type = array('default','success','primary','warning','danger','info');
-    return [
-        'name' => $faker->randomElement($name),
-        'type' => $faker->randomElement($type),
-    ];
-});
 
 //视频系列
 $factory->define(App\VideoSerie::class, function (Faker\Generator $faker) {
@@ -74,7 +68,9 @@ $factory->define(App\VideoSerie::class, function (Faker\Generator $faker) {
         'Laravel结合VueJs',
         'VueJs2.0过渡',
         '邮件发送服务',
-        '实现菜单多级管理'
+        '实现菜单多级管理',
+        'Laravel 5 开发 API 教程',
+        '不容错过的Composer'
         );
 
     return [
@@ -95,6 +91,10 @@ $factory->define(App\Video::class, function (Faker\Generator $faker) {
         'Eloquent的使用',
         '使用factory生成测试数据',
         'Laravel Model使用',
+        'Composer自动解析',
+        '发布自己的Package',
+        'Webpack的热加载',
+        'Laravel Collection 格式化登机口',
     );
 
     return [

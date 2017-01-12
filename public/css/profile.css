@@ -240,7 +240,7 @@ Modules - reusable parts of our design
 
 @media only screen and (min-width: 1170px) {
     .cd-timeline-block {
-        margin: 4em 0;
+        margin: 0.8em 0;
     }
 
     .cd-timeline-block:first-child {
@@ -288,7 +288,7 @@ Modules - reusable parts of our design
     background: #f26202;
 }
 
-.cd-timeline-img.cd-post {
+.cd-timeline-img.cd-discussion{
     background: #00B5AD;
 }
 

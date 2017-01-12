@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Home;
 
+use Auth;
 use App\Comment;
 use App\Discussion;
 use App\Events\PostView;
 use App\Favorite;
 use App\Markdown\Markdown;
 use App\Tag;
+use App\Timeline;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use EndaEditor;
@@ -82,14 +84,20 @@ class DiscussionsController extends Controller
     public function store(Requests\DiscussionStoreRequest $request)
     {
         $data = [
-            'user_id'=>\Auth::user()->id,
-            'last_user_id'=>\Auth::user()->id,
+            'user_id'=>Auth::user()->id,
+            'last_user_id'=>Auth::user()->id,
             'html_body'=>$this->markdown->markdown($request->get('body'))
         ];
 
-        //保存用户数据
+        //保存帖子
         $discussion = Discussion::create(array_merge($request->all(), $data));
         $discussion->tags()->attach($request->get('tag_list'));
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$discussion->id,
+            'operation_type'=>'post',
+            'operation_class'=>'App\Discussion'
+        ]);
         return redirect('/discussion');
     }
 }

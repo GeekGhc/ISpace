@@ -12,7 +12,7 @@
             width:100%;
         }
     </style>
-    <div class="container-fluid">
+    <div class="container-fluid" id="section-content">
         <div class="row">
             @if($errors->any())
                 <ul class="list-group">

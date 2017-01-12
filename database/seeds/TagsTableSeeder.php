@@ -31,7 +31,7 @@ class TagsTableSeeder extends Seeder
 
         \App\Tag::create(['name'=>"PHP",'type'=>"red"]);
         \App\Tag::create(['name'=>"Laravel",'type'=>"orange"]);
-        \App\Tag::create(['name'=>"C++",'type'=>"yellow"]);
+        \App\Tag::create(['name'=>"Lumen",'type'=>"yellow"]);
         \App\Tag::create(['name'=>"JSP",'type'=>"olive"]);
         \App\Tag::create(['name'=>"Javascript",'type'=>"green"]);
         \App\Tag::create(['name'=>"Html5",'type'=>"teal"]);

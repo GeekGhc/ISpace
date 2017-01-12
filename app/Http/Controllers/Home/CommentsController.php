@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use Auth;
 use App\Article;
 use App\Discussion;
 use App\Events\AskReply;
@@ -10,6 +11,7 @@ use App\Http\Requests\DiscussionCommentRequest;
 use App\Http\Requests\VideoCommentRequest;
 use App\Notifications\PostComment;
 use App\Notifications\PostReply;
+use App\Timeline;
 use App\User;
 use App\Video;
 use Illuminate\Http\Request;
@@ -30,7 +32,7 @@ class CommentsController extends Controller
     {
         $postId = $request->get('discussion_id');
         $post = Discussion::findOrFail($postId);
-        $post->comment_count = $post->comment_count+1;
+        $post->increment('comment_count');
         $post->last_user_id = $request->get('user_id');
 
         $data = [
@@ -41,6 +43,12 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $post->comments()->create($data);
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$post->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Discussion'
+        ]);
 
         $askReply = [
             'name'=>$post->user->name,
@@ -71,7 +79,8 @@ class CommentsController extends Controller
     public function storeArticle(ArticleCommentRequest $request){
         $articleId = $request->get('article_id');
         $article = Article::findOrFail($articleId);
-        $article->comment_count = $article->comment_count+1;
+        $article->increment('comment_count');
+//        $article->comment_count = $article->comment_count+1;
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -81,8 +90,14 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $article->comments()->create($data);
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$article->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Article'
+        ]);
 
-        //如果帖子下产生评论
+        //如果文章下产生评论
         if($data['to_user_id']===0){
             $askReply = [
                 'name'=>$article->user->name,
@@ -108,7 +123,7 @@ class CommentsController extends Controller
     {
         $videoId = $request->get('video_id');
         $video = Video::findOrFail($videoId);
-//        $video->comment_count = $video->comment_count+1;
+        $video->comment_count = $video->comment_count+1;
         $video->save();
 
         $data = [

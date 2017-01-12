@@ -8,5 +8,5 @@ class FollowUser extends Model
 {
     protected $table = 'follow_user';
 
-    protected $fillable = ['user_id','followed_user_id'];
+    protected $fillable = ['follower_user_id','followed_user_id'];
 }

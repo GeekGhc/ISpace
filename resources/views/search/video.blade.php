@@ -10,7 +10,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="container" id="app">
+    <div class="container section-content" id="app">
         <div class="row search-row">
             <div class="col-md-12 col-sm-12">
 

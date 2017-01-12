@@ -10,7 +10,7 @@ class Video extends Model
 {
     use Searchable;
     protected $fillable = [
-        'title','url','intro','video_series_id'
+        'title','url','intro','poster','series_index','video_series_id','comment_count'
     ];
 
     //视频----视频系列

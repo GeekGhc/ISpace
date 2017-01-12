@@ -1,5 +1,9 @@
 /*------------------------------    common.app    ------------------------------*/
-
+body {
+    /*font-family: Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;*/
+    line-height: 1.5;
+    overflow-y: scroll;
+}
 .navbar {
     margin: 0px;
     border-radius: 0;
@@ -63,7 +67,7 @@
     /*background-color: #373D41;*/
     padding: 35px 20px;
     border-top: 1px solid #eee;
-    margin-top: 50px;
+    margin-top: 12px;
     text-align: center;
     min-height: 360px;
 }

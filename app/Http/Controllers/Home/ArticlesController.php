@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use Auth;
 use App\Article;
 use App\Comment;
 use App\Events\ArticleView;
@@ -9,6 +10,7 @@ use App\Favorite;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Markdown\Markdown;
 use App\Tag;
+use App\Timeline;
 use EndaEditor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,13 +51,20 @@ class ArticlesController extends Controller
     public function store(ArticleStoreRequest $request)
     {
         $data = [
-            'user_id'=>\Auth::user()->id,
+            'user_id'=>Auth::user()->id,
+            'last_user_id'=>Auth::user()->id,
             'html_body'=>$this->markdown->markdown($request->get('body'))
         ];
 
         //保存用户数据
         $article = Article::create(array_merge($request->all(), $data));
         $article->tags()->attach($request->get('tag_list'));
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$article->id,
+            'operation_type'=>'article',
+            'operation_class'=>'App\Article'
+        ]);
         return redirect('/article');
     }
 

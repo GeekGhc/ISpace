@@ -7,7 +7,7 @@
 
 .meta-top {
     padding-top: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 8px;
 }
 .meta-top span{
     font-size: 14px;
@@ -177,52 +177,79 @@
 
 /***************************  tags  color  ************************************/
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=PHP] {
-    background-color: #428bca;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Java] {
-    background-color:  #5bc0de;
+    background-color: #DB2828;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Laravel] {
-    background-color:  #d9534f;
+    background-color: #F2711C;
 }
-.select2-container--default .select2-selection--multiple .select2-selection__choice[title='C++'] {
-    background-color: #777;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice[title=服务器] {
-    background-color: #f0ad4e;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice[title=ThinkPHP] {
-    background-color: #5cb85c;
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Lumen] {
+     background-color: #FBBD08;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=JSP] {
-    background-color: #428bca;
+    background-color: #B5CC18;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Javascript] {
-    background-color: #5bc0de;
+    background-color: #21BA45;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Html5] {
+    background-color: #00B5AD;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Css] {
+    background-color:  #2185D0;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Web] {
+    background-color: #6435C9;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=ThinkPHP] {
+    background-color: #A333C8;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=YII] {
+    background-color: #E03997;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=VueJs] {
+    background-color: #A5673F;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Markdown] {
+    background-color: #1B1C1D;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=command] {
+    background-color: #A333C8;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=Session] {
+    background-color: #E03997;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=PHPUnit] {
+    background-color: #A5673F;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=nodeJs] {
+    background-color: #F2711C;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice[title=服务器] {
+    background-color: #767676;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Database] {
-    background-color: #5cb85c;
+    background-color: #1B1C1D;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=MAC] {
-    background-color: #d9534f;
+    background-color: #DB2828;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Windows] {
-    background-color: #d9534f;
+    background-color: #F2711C;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Linux] {
-    background-color: #d9534f;
+    background-color: #FBBD08;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Github] {
-    background-color: #777;
+    background-color: #21BA45;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Git] {
-    background-color: #777;
+    background-color: #00B5AD;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=Composer] {
-    background-color: #f0ad4e;
+    background-color: #2185D0;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice[title=随想] {
-    background-color: #428bca;
+    background-color: #B5CC18;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove{

@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email','avatar','password','confirm_code','is_confirmed','social_type','social_id'
+        'name', 'email','avatar','password','confirm_code','is_confirmed','social_type','social_id','api_token'
     ];
 
     protected $hidden = [
@@ -38,9 +38,9 @@ class User extends Authenticatable
     }
 
     //用户----时光轴
-    public function tineLime()
+    public function timeLines()
     {
-        return $this->hasOne('App\Timeline');//$user->timeLime()
+        return $this->hasMany('App\TimeLine');//$user->timeLime()
     }
 
     //用户----第三方账户
@@ -50,14 +50,18 @@ class User extends Authenticatable
     }
 
     //用户之间互相关注
-    /*public function follows()
+    public function followerUser()
     {
-        return $this->belongsToMany(User::class,'follow_user')->withTimestamps();
+        return $this->belongsToMany(self::class,'follow_user','follower_user_id','followed_user_id')->withTimestamps();
     }
-    public function followThis($user_id)
+    public function followedUser()
     {
-        return $this->follows()->toggle($user_id);
-    }*/
+        return $this->belongsToMany(self::class,'follow_user','followed_user_id','follower_user_id')->withTimestamps();
+    }
+    public function followThisUser($user_id)
+    {
+        return $this->followerUser()->toggle($user_id);
+    }
 
     //用户----帖子
     public function discussions()

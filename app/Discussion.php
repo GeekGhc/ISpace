@@ -9,7 +9,7 @@ class Discussion extends Model
 {
     use Searchable;
     protected $fillable = [
-        'title', 'body', 'html_body', 'user_id', 'last_user_id', 'view_count', 'comment_count'
+        'title', 'body', 'html_body', 'user_id', 'last_user_id', 'view_count', 'comment_count','is_first'
     ];
 
     //帖子----用户

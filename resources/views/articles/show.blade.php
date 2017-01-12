@@ -15,7 +15,7 @@
     <script src="/js/source/vue-resource.min.js"></script>
 @endsection
 @section('content')
-    <div id="app">
+    <div id="app" class="section-content">
         <div class="container">
             <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
                 <div class="author-info">
@@ -62,9 +62,9 @@
                     <span>评论<em>{{$article->comment_count}}</em></span>
                     <span>关注<em>353</em></span>
                     <div style="float: right">
-                        <a class="ui tag label">New</a>
-                        <a class="ui red tag label">Upcoming</a>
-                        <a class="ui teal tag label">Featured</a>
+                        @foreach($article->tags as $tag)
+                            <a class="ui tag label {{$tag->type}}">{{$tag->name}}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -95,7 +95,8 @@
                             @if($nextArticle)
                                 <div class="article-next eight wide column">
                                     <a href="/article/{{$nextArticle->id}}">
-                                        <button class="pull-right ui inverted red button col-md-3" style="padding: 10px 14px;">
+                                        <button class="pull-right ui inverted red button col-md-3"
+                                                style="padding: 10px 14px;">
                                             Next
                                             <i class="long arrow right icon"></i>
                                         </button>

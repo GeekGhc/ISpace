@@ -38,11 +38,10 @@
                                    id="favorite" @click="favorite()"><i class="fa fa-star"></i>添加收藏</a>
                             @endif
                             {{--</div>--}}
-                            <div class="button ui green follow">
-                                <a>
-                                    <i class="fa fa-heart"></i><span>关注作者</span>
-                                </a>
-                            </div>
+                            <article-follow-user-button user_id="{{$article->user->id}}"></article-follow-user-button>
+                            {{--<div class="button ui linkedin follow">
+                                    <i class="fa fa-plus"></i><span>关注作者</span>
+                            </div>--}}
                         @endif
                     @endif
                     <a class="article-show_avatar">
@@ -51,16 +50,16 @@
                     <a class="article-show_author-name" href="/u/{{$article->user->name}}">
                         <span>{{$article->user->name}}</span>
                     </a>
-                    <span class="article-show_publish-time">2016.5.12 13:58</span>
+                    <span class="article-show_publish-time">发表于 {{$article->created_at->diffForHumans()}}</span>
                     <div class="article-show_favorite">
-                        <span><em>67</em>人关注</span>
+                        <span><em>{{$article->user->followers_count}}</em>人关注</span>
                     </div>
                 </div>
                 <h2 class="article-show_title">{{$article->title}}</h2>
                 <div class="meta-top">
                     <span>阅读<em>{{$article->view_count}}</em></span>
                     <span>评论<em>{{$article->comment_count}}</em></span>
-                    <span>关注<em>353</em></span>
+                    {{--<span>关注<em>353</em></span>--}}
                     <div style="float: right">
                         @foreach($article->tags as $tag)
                             <a class="ui tag label {{$tag->type}}">{{$tag->name}}</a>
@@ -163,6 +162,7 @@
 
     {{--reply模板--}}
     @include('comments.reply_content')
+    @include('common.article_follow_user')
 
     @if(\Auth::check())
         <script>
@@ -181,6 +181,7 @@
                 comment.to_comment_id = $(obj).prev().attr('data-commentid');
                 console.log(comment);
             }
+
 
             Vue.component('reply-form', {
                 template: '#reply-template',

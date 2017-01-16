@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="notify-main">
+                <div class="notify-main notify-section-content">
                     <div class="ui pointing secondary menu">
                         <a class="item"  data-tab="first" href="/user/notifications"><i class="fa fa-comment"></i>未读消息</a>
                         <a class="item" data-tab="second" href="/user/notifications/all"><i class="fa fa-comments"></i>所有消息通知</a>

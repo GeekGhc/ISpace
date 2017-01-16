@@ -1,21 +1,41 @@
+@inject('social','App\UserProfile\SocialAccount')
 <div class="profile-header">
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="profile-user-header">
                     <a href="#">
                         <img class="profile-user-avatar" src="{{$profile->user->avatar}}">
                     </a>
                 </div>
-                {{--<div class="profile-header-social">
-                    <ul>
-                        <li><a href="{{$profile->github}}"><i class="fa fa-github fa-2x"></i></a></li>
-                        <li><a><i class="fa fa-weibo fa-2x"></i></a></li>
-                        <li><a><i class="fa fa-qq fa-2x"></i></a></li>
-                    </ul>
-                </div>--}}
+                <div class="profile-header-social">
+                    @if($social->github($profile->user->id))
+                        <a class="ui circular icon button" target="_blank"
+                           href="https://github.com/{{$social->github($profile->user->id)}}">
+                            <i class="github icon"></i>
+                        </a>
+                    @endif
+                    @if($social->weibo($profile->user->id))
+                        <a class="ui circular orange icon button"
+                           href="http://weibo.com/u/{{$social->weibo($profile->user->id)}}">
+                            <i class="weibo icon"></i>
+                        </a>
+                    @endif
+                    @if($social->qq($profile->user->id))
+                        <a class="ui circular  blue icon button">
+                            <i class="qq icon"></i>
+                        </a>
+                    @endif
+                    @if($social->google($profile->user->id))
+                        <a class="ui circular red icon button"
+                           href="https://plus.google.com/{{$social->google($profile->user->id)}}">
+                            <i class="google plus icon"></i>
+                        </a>
+                    @endif
+
+                </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="profile-head-name">
                     <h2>{{$profile->user->name}}</h2>
                 </div>
@@ -40,8 +60,8 @@
                         <i class="fa fa-link profile-head-fa"></i>
                         @if($profile->city)
                             <span>
-                                        <a href="http://{{$profile->website}}" target="_blank">{{$profile->website}}</a>
-                                    </span>
+                                 <a href="http://{{$profile->website}}" target="_blank">{{$profile->website}}</a>
+                            </span>
                         @else
                             <span>还未填写</span>
                         @endif
@@ -49,7 +69,17 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <table class="ui selectable inverted table">
+
+                <h2 class="ui grey inverted header">简介</h2>
+
+                <div class="ui grey inverted description-content">
+                    @if($profile->description)
+                        {{$profile->description}}
+                    @else
+                        简单介绍你自己吧...
+                    @endif
+                </div>
+                {{--<table class="ui selectable inverted table">
                     <tbody>
                     <tr>
                         <td>Github</td>
@@ -107,7 +137,7 @@
                         <td></td>
                     </tr>
                     </tbody>
-                </table>
+                </table>--}}
 
             </div>
         </div>

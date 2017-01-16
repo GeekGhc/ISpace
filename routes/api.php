@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::group(['namespace' => 'Home'], function () {
+   /* Route::get('/user/followers/{id}', 'FollowersController@isFollow');
+    Route::post('user/follow', 'FollowersController@follow');*/
+});

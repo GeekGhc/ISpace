@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Redirect;
 
 class FavoritesController extends Controller
 {
+    //收藏的帖子
+    public function posts()
+    {
+        return view('favorites.post');
+    }
+
+    //收藏的文章
+    public function articles()
+    {
+        return view('favorites.article');
+    }
+
+    //收藏的视频
+    public function videos()
+    {
+        return view('favorites.video');
+    }
+
     //收藏帖子
     public function favoritePost(Request $request)
     {
@@ -47,13 +65,13 @@ class FavoritesController extends Controller
         $id = $request->get('favoriteable_id');
         $video = Video::findOrFail($id);
         $user = \Auth::user();
-        if($request->get('isFavorite')){
+        if ($request->get('isFavorite')) {
 //            Flashy::success('收藏成功', 'http://kobeman.com');
-            $video->favorites()->create(['user_id'=>$user->id]);
-        }else{
-            $video->favorites()->delete(['user_id'=>$user->id]);
+            $video->favorites()->create(['user_id' => $user->id]);
+        } else {
+            $video->favorites()->delete(['user_id' => $user->id]);
         }
-//        echo json_encode($video);
         return $video;
     }
+
 }

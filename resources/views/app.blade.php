@@ -15,12 +15,18 @@
     <link rel="stylesheet" href="/css/style.css">
     {{--<link href="http://gehuachun.com/css/style.css?e=1481602090&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:Bt20NvFvlJ9yFjMhDC8LkKtDhcM=" rel="stylesheet">--}}
     @yield('header-css')
-    <script src="/js/source/jquery-2.1.4.min.js"></script>
-    <script src="/js/source/bootstrap.min.js"></script>
-    <script src="/js/source/social-share.min.js"></script>
-    <script src="/js/source/select2.full.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    @yield('header-js')
+        <script src="/js/source/jquery-2.1.4.min.js"></script>
+        <script src="/js/source/bootstrap.min.js"></script>
+        <script src="/js/source/social-share.min.js"></script>
+        <script src="/js/source/select2.full.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        @yield('header-js')
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>;
+        window.Laravel.apiToken = "{{Auth::check()?'Bearer '.Auth::user()->api_token:'Bearer '}}";
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -100,10 +106,13 @@
                                 <a href="/user/account"><i class="fa  fa-cog fa-mr"></i>账户设置</a>
                             </li>
                             <li>
-                                <a href="/user/avatar"><i class="fa fa-heart fa-mr"></i>我的收藏</a>
+                                <a href="/user/favorites"><i class="fa fa-heart fa-mr"></i>我的收藏</a>
                             </li>
                             <li>
-                                <a href="/user/password"><i class="fa fa-cog fa-mr"></i>修改密码</a>
+                                <a href="/broadcasts/music"><i class="fa fa-microphone fa-mr"></i>音乐电台</a>
+                            </li>
+                            <li>
+                                <a href="/user/password"><i class="fa fa-lock fa-mr"></i>修改密码</a>
                             </li>
                             <li role="separator" class="divider fa-mr"></li>
                             <li>
@@ -130,7 +139,7 @@
                 <dt><a>网站相关</a></dt>
                 <dd><a>文章教程</a></dd>
                 <dd><a>个人博客</a></dd>
-                <dd><a>资源网站</a></dd>
+                <dd><a href="http://hao.shejidaren.com/" target="_blank">资源网站</a></dd>
                 <dd><a>社区规则</a></dd>
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
@@ -162,6 +171,7 @@
 </div>
 @include('flashy::message')
 {{--@include('flash::message')--}}
+{{--<script src="{{elixir('/js/app.js')}}"></script>--}}
 <script src="/js/index.js"></script>
 @yield('footer-js')
 </body>

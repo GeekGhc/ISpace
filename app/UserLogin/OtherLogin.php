@@ -15,6 +15,7 @@ class OtherLogin
     {
         $socialite = new SocialiteManager($config);
         $githubUser = $socialite->driver('github')->user();//user就可以拿到github的公共信息
+
         //账号进行绑定
         if(Auth::check()){
             $isBind = Socialite::where('social_id',$githubUser->getId())->first();
@@ -58,9 +59,10 @@ class OtherLogin
         Socialite::create([
             'social_type'=>'github',
             'social_id'=>$githubUser->getId(),
+            'social_name'=>$githubUser->getNickname(),
             'user_id'=>$newUser->id
         ]);
-        Profile::create(['user_id' => $newUser->id]);
+        Profile::create(['user_id' => $newUser->id,'github'=>$githubUser->getName()]);
         Auth::loginUsingId($newUser->id);
         Flashy::message('Welcome ISpace', 'https://kobeman.com');
         return 0;
@@ -108,9 +110,10 @@ class OtherLogin
         Socialite::create([
             'social_type'=>'qq',
             'social_id'=>$qqUser->getId(),
+            'social_name'=>$qqUser->getNickname(),
             'user_id'=>$newUser->id
         ]);
-        Profile::create(['user_id' => $newUser->id]);
+        Profile::create(['user_id' => $newUser->id,'qq'=>$qqUser->getNickname()]);
         Auth::loginUsingId($newUser->id);
         Flashy::message('Welcome ISpace', 'https://kobeman.com');
         return 0;
@@ -158,9 +161,10 @@ class OtherLogin
         Socialite::create([
             'social_type'=>'weibo',
             'social_id'=>$weiboUser->getId(),
+            'social_name'=>$weiboUser->getNickname(),
             'user_id'=>$newUser->id
         ]);
-        Profile::create(['user_id' => $newUser->id]);
+        Profile::create(['user_id' => $newUser->id,'weibo'=>$weiboUser->getNickname()]);
         Auth::loginUsingId($newUser->id);
         Flashy::message('Welcome ISpace', 'https://kobeman.com');
         return 0;
@@ -216,6 +220,7 @@ class OtherLogin
         Socialite::create([
             'social_type'=>'google',
             'social_id'=>$googleUser->getId(),
+            'social_name'=>$googleUser->getNickname(),
             'user_id'=>$newUser->id
         ]);
         Profile::create(['user_id' => $newUser->id]);

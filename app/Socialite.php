@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Socialite extends Model
 {
-    protected $fillable = ['user_id','social_type','social_id'];
+    protected $fillable = ['user_id','social_type','social_id','social_name'];
     //用户----第三方账户
     public function user()
     {

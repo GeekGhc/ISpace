@@ -7,4 +7,6 @@ $(function(){
     })
 
     $('.section-content').css('min-height',"480px");
+    $('.notify-section-content').css('min-height',"480px")
+    $('.favorite-section-content').css('min-height',"440px")
 });

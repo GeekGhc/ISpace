@@ -60,8 +60,8 @@ class ProfileController extends Controller
     {
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
-        $articles = $user->articles;
-        return view('profile.article',compact('profile','articles'));
+        $followers = $user->followedUser;
+        return view('profile.follower',compact('profile','followers'));
     }
 
     //用户的粉丝
@@ -69,8 +69,10 @@ class ProfileController extends Controller
     {
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
-        $articles = $user->articles;
-        return view('profile.article',compact('profile','articles'));
+        $followings = $user->followerUser;
+//        dd($followings);
+//        $posts = $user->discussions;
+        return view('profile.following',compact('profile','followings'));
     }
 
     //用户的时光轴

@@ -27,6 +27,7 @@ Route::get('/test',function(){
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
+    dd(\Auth::id());
     $discussion = \App\Discussion::find(18);
     dd($discussion);
 //    $discussion->delete();
@@ -77,6 +78,10 @@ Route::group(['namespace' => 'Home','prefix'=>'user'], function () {
     Route::get('/notifications/all','NotificationController@allInfo');
     Route::get('/notifications/message','NotificationController@message');
     Route::get('/notifications/read','NotificationController@markAsRead');
+
+    Route::get('/favorites','FavoritesController@posts');
+    Route::get('/favorites/articles','FavoritesController@articles');
+    Route::get('/favorites/videos','FavoritesController@videos');
 });
 
 
@@ -88,7 +93,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('/u/{user_name}/articles','ProfileController@article');
     Route::get('/u/{user_name}/answers','ProfileController@answer');
     Route::get('/u/{user_name}/followers','ProfileController@follower');
-    Route::get('/u/{user_name}/following','ProfileController@following');
+    Route::get('/u/{user_name}/followings','ProfileController@following');
     Route::get('/u/{user_name}/timeLine','ProfileController@timeLine');
 
     //github登录
@@ -131,6 +136,17 @@ Route::group(['namespace' => 'Home'],function(){
     Route::post('/search/loadArticle','SearchController@loadArticle');
     Route::post('/search/loadVideo','SearchController@loadVideo');
 });
+
+Route::group(['namespace' => 'Home'],function(){
+
+    //音乐电台
+    Route::get('/broadcasts/music','BroadcastsController@musicIndex');
+
+    //用户之间关注
+    Route::get('/api/user/followers/{id}', 'FollowersController@isFollow');
+    Route::post('/api/user/follow', 'FollowersController@follow');
+});
+
 
 //登录验证码
 Route::get('/captcha/{config?}',function(\Mews\Captcha\Captcha $captcha,$config='default'){

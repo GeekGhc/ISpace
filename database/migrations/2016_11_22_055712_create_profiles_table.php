@@ -23,6 +23,7 @@ class CreateProfilesTable extends Migration
             $table->string('github')->nullable();
             $table->string('weibo')->nullable();
             $table->string('qq')->nullable();
+            $table->string('google')->nullable();
             $table->integer('experience_count')->default(0);
             $table->foreign('user_id')
                   ->references('id')

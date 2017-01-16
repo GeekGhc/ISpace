@@ -15,7 +15,7 @@
                         <li class="article-item">
                             <div>
                                 <p class="article-list_top">
-                                    <a href="" class="author-name">{{$article->user->name}}</a>
+                                    <a href="{{url('/u/'.$article->user->name)}}" class="author-name">{{$article->user->name}}</a>
                                     <span><time>{{$article->created_at->diffForHumans()}}</time>发表</span>
                                 </p>
                                 <div class="article-item_title">

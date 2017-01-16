@@ -51,6 +51,7 @@ class CommentsController extends Controller
         ]);
 
         $askReply = [
+            'type'=>'discussion',
             'name'=>$post->user->name,
             'to_user_id'=>$data['to_user_id'],
             'reply_user'=>User::find($request->get('user_id'))->name,
@@ -100,7 +101,9 @@ class CommentsController extends Controller
         //如果文章下产生评论
         if($data['to_user_id']===0){
             $askReply = [
+                'type'=>'article',
                 'name'=>$article->user->name,
+                'to_user_id'=>$data['to_user_id'],
                 'reply_user'=>User::find($request->get('user_id'))->name,
                 'post_title'=>$article->title,
                 'post_body'=>mb_substr(strip_tags($article->html_body),0,70,"utf-8"),
@@ -123,7 +126,8 @@ class CommentsController extends Controller
     {
         $videoId = $request->get('video_id');
         $video = Video::findOrFail($videoId);
-        $video->comment_count = $video->comment_count+1;
+        $video->increment('comment_count');
+//        $video->comment_count = $video->comment_count+1;
         $video->save();
 
         $data = [

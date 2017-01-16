@@ -128,37 +128,11 @@
             </div>
         </div>
     </div>
-
-    {{-- <script>
-         $("#profile-article").on('click', function () {
-             $(this).siblings().removeClass("active");
-             $(this).addClass('active');
-             $('.profile-articles').css('display', 'block');
-             $('.profile-posts').css('display', 'none');
-             $('.profile-notes').css('display', 'none');
-         })
-         $("#profile-post").on('click', function () {
-             $(this).siblings().removeClass("active");
-             $(this).addClass('active');
-             $('.profile-articles').css('display', 'none');
-             $('.profile-posts').css('display', 'block');
-             $('.profile-notes').css('display', 'none');
-         })
-         $("#profile-note").on('click', function () {
-             $(this).siblings().removeClass("active");
-             $(this).addClass('active');
-             $('.profile-articles').css('display', 'none');
-             $('.profile-posts').css('display', 'none');
-             $('.profile-notes').css('display', 'block');
-         })
-     </script>--}}
 @endsection
 @section('footer-js')
     <script>
         $(document).ready(function () {
             $('.tooltip-pro').tooltip('hide');
-//            $('.VivaTimeline').vivaTimeline();
-//            $.timeliner({});
         });
     </script>
 @endsection

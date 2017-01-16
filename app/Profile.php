@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable = [
-        'user_id', 'city','school','website','description','github','qq','weibo','experience_count'
+        'user_id', 'city','school','website','description','github','qq','weibo','google','experience_count'
     ];
 
     //档案----用户

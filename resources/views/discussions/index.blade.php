@@ -13,7 +13,7 @@
                     <div class="stream-list">
                         <dt>
                             <a><img class="user-header" src="{{$discussion->user->avatar}}"></a>
-                            <a class="nickname">{{$discussion->user->name}}</a>
+                            <a class="nickname" href="/u/{{$discussion->user->name}}">{{$discussion->user->name}}</a>
                         </dt>
                         <dd>
                             <h3 class="discussion-list_title">

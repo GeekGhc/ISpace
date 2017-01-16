@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="notify-main">
+                <div class="notify-main notify-section-content">
                     <div class="ui pointing secondary menu">
                         <a class="item" data-tab="first" href="/user/notifications"><i class="fa fa-comment"></i>未读消息</a>
                         <a class="item active" data-tab="second" href="/user/notifications/all"><i class="fa fa-comments"></i>所有消息通知</a>
@@ -29,11 +29,38 @@
                                     <p class="notify-weight-info">
                                         {{$notification->created_at->diffForHumans()}}
                                     </p>
-                                    @if($notification->data['to_user_id']==0)
+                                    @if($notification->data['type']=='article')
+                                        @if($notification->data['to_user_id']==0)
+                                            <p>
+                                                <a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>评论了你的文章
+                                                <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a>
+                                            </p>
+                                        @else
+                                            <p>
+                                                <a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回复了你的评论
+                                                <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a>
+                                            </p>
+                                        @endif
+                                    @elseif($notification->data['type']=='discussion')
+                                        @if($notification->data['to_user_id']==0)
+                                            <p>
+                                                <a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回答了你的问题
+                                                <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a>
+                                            </p>
+                                        @else
+                                            <p>
+                                                <a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回复了你的评论
+                                                <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a>
+                                            </p>
+                                        @endif
+                                    @elseif($notification->data['type']=='follow')
+                                        <P>用户<a href="/u/{{$notification->data['user_name']}}">{{$notification->data['user_name']}}</a>关注了你</P>
+                                    @endif
+                                   {{-- @if($notification->data['to_user_id']==0)
                                         <p><a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回答了你的问题 <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a></p>
                                     @else
                                         <p><a href="/u/{{$notification->data['reply_user']}}">{{$notification->data['reply_user']}}</a>回复了你的评论 <a href="/discussion/{{$notification->data['post_id']}}">{{$notification->data['post_title']}}</a></p>
-                                    @endif
+                                    @endif--}}
                                 </div>
                             </section>
                         @endforeach

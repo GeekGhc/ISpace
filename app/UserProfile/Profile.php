@@ -30,13 +30,15 @@ class Profile
         return $posts->count();
     }
 
-    public function FollowersCount()
+    public function followersCount($username)
     {
-        $user = User::where('name', $this->username)->first();
+        $user = User::where('name',$username)->first();
+        return $user->followers_count;
     }
 
-    public function FollowingsCount()
+    public function followingsCount($username)
     {
-        $user = User::where('name', $this->username)->first();
+        $user = User::where('name',$username)->first();
+        return $user->followings_count;
     }
 }

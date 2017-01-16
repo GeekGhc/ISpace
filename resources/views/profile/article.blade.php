@@ -4,8 +4,12 @@
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/search.css">
 @endsection
+@section('header-js')
+    <script src="/js/source/vue.js"></script>
+    <script src="/js/source/vue-resource.min.js"></script>
+@endsection
 @section('content')
-    <div class="profile">
+    <div class="profile" id="app">
         @include('common.profile_header')
 
         <div class="container">
@@ -14,7 +18,14 @@
 
 
                 <div class="profile-posts col-md-9 profile-my-content">
-                    <h3 class="ui horizontal divider header"><i class="bar chart icon"></i> 我的文章 </h3>
+                    <h3 class="ui horizontal divider header">
+                        <i class="bar chart icon"></i>
+                        @if(\Auth::user()->owns($profile))
+                            我的文章
+                        @else
+                            他的文章
+                        @endif
+                    </h3>
                     <ul class="profile-list">
                         @foreach($articles as $article)
                             <li>
@@ -46,4 +57,5 @@
             $('#profile-articles-list').addClass('active');
         });
     </script>
+    @include('common.profile_follow_user')
 @endsection

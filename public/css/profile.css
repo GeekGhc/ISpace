@@ -37,11 +37,6 @@
     display: inline-block;
 }
 
-/*.profile-header-social .ui.circular.button>.icon{
-    width:1.2em;
-}*/
-
-
 .profile-user-avatar {
     width: 100%;
     height: 142px;
@@ -166,24 +161,14 @@
 
 /******************** timeline  ************************/
 
-/* --------------------------------
-
-Primary style
-
--------------------------------- */
 
 body {
     /*font-size: 100%;*/
     color: #7f8c97;
     /*background-color: #494a5f;*/
-    background-color: #e9f0f5;
+    background-color: #fff;
 }
 
-/* --------------------------------
-
-Modules - reusable parts of our design
-
--------------------------------- */
 .cd-container {
     /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
     width: 90%;
@@ -274,38 +259,38 @@ Modules - reusable parts of our design
     /*box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);*/
 }
 
-.cd-timeline-img i {
+.cd-timeline-img>i{
     /*color: #fff;*/
+    color: #fff;
     display: block;
     width: 12px;
     height: 12px;
-    position: relative;
-    left: 50%;
-    top: 50%;
-    margin-left: -12px;
-    margin-top: -14px;
+    position: absolute;
+    left: 22%;
+    top: 22%;
 }
 
-
-.cd-timeline-img.cd-movie {
-    background: #c03b44;
-}
 
 .cd-timeline-img.cd-comment {
-    background: #d01919;
+     background: #d01919;
+}
+
+.cd-timeline-img.cd-reply {
+    background: #008080;
 }
 
 .cd-timeline-img.cd-favorite {
-    background: #f26202;
+    background: #FE9A76;
 }
 
 .cd-timeline-img.cd-discussion{
-    background: #00B5AD;
+    background: #0E6EB8;
 }
 
 .cd-timeline-img.cd-article {
     background: #16ab39;
 }
+
 
 @media only screen and (min-width: 1170px) {
     .cd-timeline-img {

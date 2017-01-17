@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TimeLine extends Model
 {
     protected $table = 'timelines';
-    protected $fillable = ['user_id','operation_id','operation_type','operation_class'];
+    protected $fillable = ['user_id','operation_id','operation_type','operation_class','operation_text','operation_icon'];
 
     //时光轴----用户
     public function user()

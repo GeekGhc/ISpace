@@ -1,11 +1,14 @@
 <script type="text/x-template" id="follow_user_button">
-    <button class="btn btn-success"
-            {{--v-bind:class="{'btn-success':followed}"--}}
-            v-text="text"
-            v-on:click="follow"
-            style="margin-right: 10px"
+    <a class="btn btn-success"
+       {{--v-bind:class="{'btn-success':followed}"--}}
+       v-text="text"
+       v-on:click="follow"
+       style="margin-right: 10px"
+           @if(!\Auth::check())
+               href="/user/login"
+            @endif
     >
-    </button>
+    </a>
 </script>
 
 <script>

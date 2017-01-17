@@ -43,12 +43,6 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $post->comments()->create($data);
-        $timeLine = Timeline::create([
-            'user_id'=>Auth::user()->id,
-            'operation_id'=>$post->id,
-            'operation_type'=>'comment',
-            'operation_class'=>'App\Discussion'
-        ]);
 
         $askReply = [
             'type'=>'discussion',
@@ -63,8 +57,26 @@ class CommentsController extends Controller
         if($data['to_user_id']===0){
             $post->user->notify(new PostComment($askReply));
 //            event(new AskReply($post->user,$askReply));
+
+            $timeLine = Timeline::create([
+                'user_id'=>Auth::user()->id,
+                'operation_id'=>$post->id,
+                'operation_type'=>'comment',
+                'operation_class'=>'App\Discussion',
+                'operation_text'=>'发表评论',
+                'operation_icon'=>'fa-send'
+            ]);
         }else{
             User::find($data['to_user_id'])->notify(new PostReply($askReply));
+
+            $timeLine = Timeline::create([
+                'user_id'=>Auth::user()->id,
+                'operation_id'=>$post->id,
+                'operation_type'=>'comment',
+                'operation_class'=>'App\Discussion',
+                'operation_text'=>'回复评论',
+                'operation_icon'=>'fa-glass'
+            ]);
         }
         $post->save();
         $data = [
@@ -81,7 +93,6 @@ class CommentsController extends Controller
         $articleId = $request->get('article_id');
         $article = Article::findOrFail($articleId);
         $article->increment('comment_count');
-//        $article->comment_count = $article->comment_count+1;
 
         $data = [
             'user_id'=>$request->get('user_id'),
@@ -91,12 +102,6 @@ class CommentsController extends Controller
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
         $comment = $article->comments()->create($data);
-        $timeLine = Timeline::create([
-            'user_id'=>Auth::user()->id,
-            'operation_id'=>$article->id,
-            'operation_type'=>'comment',
-            'operation_class'=>'App\Article'
-        ]);
 
         //如果文章下产生评论
         if($data['to_user_id']===0){
@@ -110,7 +115,24 @@ class CommentsController extends Controller
                 'post_id'=>$article->id
             ];
             $article->user->notify(new PostComment($askReply));
+
+            $timeLine = Timeline::create([
+                'user_id'=>Auth::user()->id,
+                'operation_id'=>$article->id,
+                'operation_type'=>'comment',
+                'operation_class'=>'App\Article',
+                'operation_text'=>'发表评论',
+                'operation_icon'=>'fa-send'
+            ]);
         }
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$article->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Article',
+            'operation_text'=>'回复评论',
+            'operation_icon'=>'fa-glass'
+        ]);
         $article->save();
 
         $data = [
@@ -127,7 +149,6 @@ class CommentsController extends Controller
         $videoId = $request->get('video_id');
         $video = Video::findOrFail($videoId);
         $video->increment('comment_count');
-//        $video->comment_count = $video->comment_count+1;
         $video->save();
 
         $data = [
@@ -137,6 +158,24 @@ class CommentsController extends Controller
             'body'=>$request->get('body'),
             'html_body'=>$this->markdown->markdown($request->get('body')),
         ];
+        if($data['to_user_id']===0){
+            $timeLine = Timeline::create([
+                'user_id'=>Auth::user()->id,
+                'operation_id'=>$video->id,
+                'operation_type'=>'comment',
+                'operation_class'=>'App\Video',
+                'operation_text'=>'发表评论',
+                'operation_icon'=>'fa-send'
+            ]);
+        }
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$video->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Video',
+            'operation_text'=>'回复评论',
+            'operation_icon'=>'fa-glass'
+        ]);
         $comment = $video->comments()->create($data);
         $data = [
             'html_body' =>$comment->html_body,

@@ -19,6 +19,8 @@ class CreateTimelinesTable extends Migration
             $table->integer('operation_id')->unsigned();
             $table->string('operation_type')->nullable();
             $table->string('operation_class')->nullable();
+            $table->string('operation_text')->nullable();
+            $table->string('operation_icon')->nullable();
             $table->timestamps();
         });
     }

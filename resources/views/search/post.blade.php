@@ -51,7 +51,7 @@
                                             </div>
                                             <div class="tags">
                                                 @foreach($discussion->tags as $tag)
-                                                   <span class="label label-{{$tag->type}}">{{$tag->name}}</span>
+                                                   <span class="ui label {{$tag->type}}">{{$tag->name}}</span>
                                                 @endforeach
                                             </div>
                                         </div>

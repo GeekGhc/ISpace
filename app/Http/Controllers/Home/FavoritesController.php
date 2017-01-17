@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\TimeLine;
+use Auth;
 use App\Article;
 use App\Discussion;
 use App\Video;
@@ -14,22 +16,38 @@ use Illuminate\Support\Facades\Redirect;
 
 class FavoritesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //收藏的帖子
     public function posts()
     {
-        return view('favorites.post');
+        $user = Auth::user();
+        $discussions_id = $user->favorites->where('favoriteable_type','App\Discussion')->pluck('favoriteable_id')->toArray();
+//        dd($discussions_id);
+        $discussions = Discussion::with('user')->find($discussions_id);
+//        dd($discussions);
+        return view('favorites.post',compact('discussions'));
     }
 
     //收藏的文章
     public function articles()
     {
-        return view('favorites.article');
+        $user = Auth::user();
+        $articles_id = $user->favorites->where('favoriteable_type','App\Article')->pluck('favoriteable_id')->toArray();
+        $articles = Article::with('user')->find($articles_id);
+        return view('favorites.article',compact('articles'));
     }
 
     //收藏的视频
     public function videos()
     {
-        return view('favorites.video');
+        $user = Auth::user();
+        $videos_id = $user->favorites->where('favoriteable_type','App\Video')->pluck('favoriteable_id')->toArray();
+        $videos = Video::find($videos_id);
+        return view('favorites.video',compact('videos'));
     }
 
     //收藏帖子
@@ -43,6 +61,14 @@ class FavoritesController extends Controller
         } else {
             $discussion->favorites()->delete(['user_id' => $user->id]);
         }
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$discussion->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Discussion',
+            'operation_text'=>'收藏帖子',
+            'operation_icon'=>'fa-star'
+        ]);
 //        echo json_encode($discussion);
         return $discussion;
     }
@@ -57,6 +83,14 @@ class FavoritesController extends Controller
         } else {
             $article->favorites()->delete(['user_id' => $user->id]);
         }
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$article->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Article',
+            'operation_text'=>'收藏文章',
+            'operation_icon'=>'fa-star'
+        ]);
         return $article;
     }
 
@@ -71,6 +105,14 @@ class FavoritesController extends Controller
         } else {
             $video->favorites()->delete(['user_id' => $user->id]);
         }
+        $timeLine = Timeline::create([
+            'user_id'=>Auth::user()->id,
+            'operation_id'=>$video->id,
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Video',
+            'operation_text'=>'收藏视频',
+            'operation_icon'=>'fa-star'
+        ]);
         return $video;
     }
 

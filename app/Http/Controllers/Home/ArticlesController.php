@@ -21,6 +21,7 @@ class ArticlesController extends Controller
     public function __construct(Markdown $markdown)
     {
         $this->markdown = $markdown;
+        $this->middleware('auth',['except'=>['index','show']]);
     }
 
     /**
@@ -58,13 +59,15 @@ class ArticlesController extends Controller
 
         //保存用户数据
         $article = Article::create(array_merge($request->all(), $data));
-        $article->tags()->attach($request->get('tag_list'));
         $timeLine = Timeline::create([
             'user_id'=>Auth::user()->id,
             'operation_id'=>$article->id,
-            'operation_type'=>'article',
-            'operation_class'=>'App\Article'
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Article',
+            'operation_text'=>'发表文章',
+            'operation_icon'=>'fa-coffee'
         ]);
+        $article->tags()->attach($request->get('tag_list'));
         return redirect('/article');
     }
 

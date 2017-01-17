@@ -32,7 +32,8 @@ class ProfileController extends Controller
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
         $posts = $user->discussions;
-        return view('profile.post',compact('profile','posts'));
+//        dd($user);
+        return view('profile.post',compact('user','profile','posts'));
     }
 
     //用户的文章
@@ -41,7 +42,7 @@ class ProfileController extends Controller
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
         $articles = $user->articles;
-        return view('profile.article',compact('profile','articles'));
+        return view('profile.article',compact('user','profile','articles'));
     }
 
     //用户的回答
@@ -52,7 +53,7 @@ class ProfileController extends Controller
         $posts_id = Comment::where('commentable_type','App\Discussion')
                           ->where('user_id',$user->id)->pluck('commentable_id')->unique();
         $posts = Discussion::find($posts_id->toArray());
-        return view('profile.answer',compact('profile','posts'));
+        return view('profile.answer',compact('user','profile','posts'));
     }
 
     //用户关注的人
@@ -61,7 +62,7 @@ class ProfileController extends Controller
         $user = User::where('name', $username)->first();
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
         $followers = $user->followedUser;
-        return view('profile.follower',compact('profile','followers'));
+        return view('profile.follower',compact('user','profile','followers'));
     }
 
     //用户的粉丝
@@ -72,7 +73,7 @@ class ProfileController extends Controller
         $followings = $user->followerUser;
 //        dd($followings);
 //        $posts = $user->discussions;
-        return view('profile.following',compact('profile','followings'));
+        return view('profile.following',compact('user','profile','followings'));
     }
 
     //用户的时光轴
@@ -82,6 +83,6 @@ class ProfileController extends Controller
         $profile = Profile::with('user')->where('user_id',$user->id)->first();
 
         $timeLines = $user->timeLines;
-        return view('profile.timeLine',compact('profile','timeLines'));
+        return view('profile.timeLine',compact('user','profile','timeLines'));
     }
 }

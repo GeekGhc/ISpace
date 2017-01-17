@@ -17,11 +17,10 @@
             <div class="profile-main row">
                 @include('common.profile_left_navbar')
 
-
                 <div class="profile-posts col-md-9 profile-my-content">
                     <h3 class="ui horizontal divider header">
                         <i class="bar chart icon"></i>
-                        @if(\Auth::user()->owns($profile))
+                        @if($user->owns($profile)&&\Auth::check())
                             我的帖子
                         @else
                             他的帖子

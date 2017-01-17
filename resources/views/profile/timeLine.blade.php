@@ -17,7 +17,8 @@
                             <div class="cd-timeline-block">
                                 <div class="cd-timeline-img cd-{{$timeLine->operation_type}} tooltip-pro"
                                      data-toggle="tooltip"
-                                     data-placement="left" title="收藏文章">
+                                     data-placement="left" title="{{$timeLine->operation_text}}">
+                                    <i class="fa {{$timeLine->operation_icon}}"></i>
                                 </div>
                                 <div class="cd-timeline-content panel panel-default">
                                     <div class="panel-heading">

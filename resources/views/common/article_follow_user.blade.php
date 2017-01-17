@@ -3,6 +3,9 @@
             v-bind:class="{'linkedin':followed}"
             v-html="text"
             v-on:click="follow"
+            @if(!\Auth::check())
+            href="/user/login"
+            @endif
     >
     </button>
 

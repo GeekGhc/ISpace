@@ -21,6 +21,10 @@
     border-left: 1px solid #d7d7d7;
     border-right: 1px solid transparent;
 }
+.nav-header .favorite-nav-menu>li:hover{
+    border-right: 1px solid #00989a;
+    border-left: 1px solid #00989a;
+}
 
 .nav-header .favorite-nav-menu .favorite-nav-header-link{
     text-decoration: none;
@@ -41,13 +45,18 @@
 .nav-header .favorite-nav-menu .favorite-nav-header-link i{
     margin-right: 12px;
 }
-.nav-header .favorite-nav-menu>li .active{
+.nav-header .favorite-nav-menu>li.active{
     background:  #00b1b3;
+    border-right: 1px solid #00989a;
+    border-left: 1px solid #00989a;
+}
+.nav-header .favorite-nav-menu>li.active a{
     color: #fff;
 }
 
 .nav-header .favorite-nav-menu>li a:hover{
-    border:  #00b1b3;
+       /* border-right: 1px solid #00989a;
+        border-left: 1px solid #00989a;*/
     background:  #00b1b3;
     color: #fff;
 }

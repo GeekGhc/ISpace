@@ -21,6 +21,7 @@ class DiscussionsController extends Controller
     public function __construct(Markdown $markdown)
     {
         $this->markdown = $markdown;
+        $this->middleware('auth',['except'=>['index','show']]);
     }
 
     public function index()
@@ -95,8 +96,10 @@ class DiscussionsController extends Controller
         $timeLine = Timeline::create([
             'user_id'=>Auth::user()->id,
             'operation_id'=>$discussion->id,
-            'operation_type'=>'post',
-            'operation_class'=>'App\Discussion'
+            'operation_type'=>'comment',
+            'operation_class'=>'App\Discussion',
+            'operation_text'=>'发表帖子',
+            'operation_icon'=>'fa-cloud'
         ]);
         return redirect('/discussion');
     }

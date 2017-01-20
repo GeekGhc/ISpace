@@ -54,6 +54,7 @@ class OtherLogin
             'is_confirmed' => 1,
             'confirm_code' => str_random(48),
             'avatar' => $githubUser->getAvatar(),
+            'api_token' => str_random(60),
         ];
         $newUser = User::create($user);
         Socialite::create([
@@ -105,6 +106,7 @@ class OtherLogin
             'is_confirmed' => 1,
             'confirm_code' => str_random(48),
             'avatar' => $qqUser->getAvatar(),
+            'api_token' => str_random(60),
         ];
         $newUser = User::create($user);
         Socialite::create([
@@ -156,6 +158,7 @@ class OtherLogin
             'is_confirmed' => 1,
             'confirm_code' => str_random(48),
             'avatar' => $weiboUser->getAvatar(),
+            'api_token' => str_random(60),
         ];
         $newUser = User::create($user);
         Socialite::create([
@@ -215,6 +218,7 @@ class OtherLogin
             'is_confirmed' => 1,
             'confirm_code' => str_random(48),
             'avatar' => $googleUser->getAvatar(),
+            'api_token' => str_random(60),
         ];
         $newUser = User::create($user);
         Socialite::create([

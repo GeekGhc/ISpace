@@ -33,7 +33,7 @@ class LoginController extends Controller
         'github' => [
             'client_id' => '81ef36deca1d9eb5298b',
             'client_secret' => '8c429e4f6b3fa50b1c555d66a72206e5039e533e',
-            'redirect' => 'http://localhost:8000/github/callback'
+            'redirect' => 'https://kobeman.com/github/callback'
         ],
         'google' => [
             'client_id' => '794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com',

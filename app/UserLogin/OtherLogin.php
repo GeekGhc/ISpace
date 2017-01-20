@@ -100,7 +100,7 @@ class OtherLogin
         }
 
         $user = [
-            'name' => $qqUser->getNickName(),
+            'name' => 'sp'.time(),
             'email' => $qqUser->getNickName().'@qq.com',
             'password' => bcrypt(str_random(16)),
             'is_confirmed' => 1,
@@ -152,7 +152,7 @@ class OtherLogin
         }
 
         $user = [
-            'name' => $weiboUser->getNickName(),
+            'name' => 'sp'.time(),
             'email' => $weiboUser->getNickName().'@weibo.com',
             'password' => bcrypt(str_random(16)),
             'is_confirmed' => 1,
@@ -212,7 +212,7 @@ class OtherLogin
 
 
         $user = [
-            'name' => $googleUser->getName(),
+            'name' => 'sp'.time(),
             'email' => $googleUser->getEmail(),
             'password' => bcrypt(str_random(16)),
             'is_confirmed' => 1,
@@ -247,7 +247,7 @@ class OtherLogin
             return redirect('/');
         }
         $user = [
-            'name' => $wechatUser->getName(),
+            'name' => 'sp'.time(),
             'email' => $wechatUser->getEmail(),
             'password' => bcrypt(str_random(16)),
             'social_type' => 'wechat',

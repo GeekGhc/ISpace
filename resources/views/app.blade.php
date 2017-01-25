@@ -165,7 +165,7 @@
         </div>
         <div class="footer-bottom">
             <p>ISpace CopyRight @2016&nbsp;&nbsp;Developed By <span style="font-weight: bold">JellyBean</span></p>
-            <span style="font-weight: bold">苏ICP备16045385号-2</span>
+            <a style="font-weight: bold" href="http://www.miitbeian.gov.cn" target="_blank">苏ICP备16045385号-2</a>
         </div>
     </div>
 </div>

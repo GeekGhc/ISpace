@@ -45,8 +45,28 @@ body {
     border-color: transparent;
 }
 .search .form-group{
-    width:324px;
+    width:240px;
+    transition:width 0.5s ease-in;
 }
+.search .form-group:hover{
+    width:320px;
+}
+
+.navbar-form{
+    padding-right: 0;
+}
+@media (max-width: 980px){
+    .search .form-group{
+        display: none;
+    }
+    .footer{
+        /*position: absolute;
+        bottom: 0;
+        width:100%;*/
+    }
+}
+
+
 /*@media screen and (max-width: 1300px){
     .search >.form-group {
         width:200px !important;
@@ -113,6 +133,9 @@ body {
     padding-top: 10px;
     color: #111;
     border-top: 1px solid #ddd;
+}
+.footer-bottom>a{
+    color: #000;
 }
 
 .fa-mr {

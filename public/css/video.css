@@ -162,7 +162,8 @@
 }
 .video-js{
     vertical-align: middle;
-    padding-top: 56.46%!important;
+    /*padding-top: 56.46%!important;*/
+    padding-top: 56.23%!important;
     position: relative;
 }
 
@@ -212,16 +213,58 @@
     transition: all .4s;
 }
 .video-js .vjs-playback-rate{
-    display: inline-block !important;
+    position: absolute;
+    right: 3em;
+    /*display: inline-block !important;*/
     /*position: relative;*/
-    float: right;
+    /*float: right;*/
 }
+.vjs-default-skin .vjs-menu-button ul li {
+    background: #383e4c;
+    list-style: none;
+    margin: 0;
+    padding: .3em 0;
+    line-height: 1.4em;
+    font-size: 1.2em;
+    text-align: center;
+    text-transform: lowercase;
+}
+.vjs-menu-content li.aria-selected {
+    background-color: #00adb5 !important;
+}
+.video-js .vjs-control:before {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
 .video-js .vjs-custom-control-spacer {
     /*display: block;*/
 }
 .video-js .vjs-fullscreen-control{
-    position: relative;
+    /*position: relative;*/
     float: right;
+}
+.vjs-volume-bar.vjs-slider-horizontal {
+    margin-top:12px;
+    width: 7em;
+    height: 0.5em;
+}
+.vjs-slider-horizontal .vjs-volume-level {
+    height: 0.5em;
+    margin-top:12px;
+}
+.vjs-slider-horizontal .vjs-volume-level:before {
+     top: -0.2em;
+     right: -0.5em;
+ }
+/*.vjs-menu-button-inline .vjs-menu,  .vjs-menu-button-inline.vjs-slider-active .vjs-menu {
+    display: block !important;
+    opacity: 1;
+}*/
+
+horizontal .vjs-menu-content, .vjs-volume-menu-button-horizontal .vjs-menu-content, .vjs-volume-menu-button-horizontal .vjs-slider-active .vjs-menu-content, .vjs-volume-menu-button-horizontal .vjs-lock-showing .vjs-menu-content {
+    height: 2.9em;
+    width: 8em;
 }
 
 .vjs-default-skin  .vjs-load-process{
@@ -289,7 +332,9 @@
     cursor: pointer;
 }
 
+/*
 .vjs-menu-button-inline .vjs-menu, .vjs-menu-button-inline:focus .vjs-menu, .vjs-menu-button-inline.vjs-slider-active .vjs-menu {
     display: block;
     opacity: 1 !important;
 }
+*/

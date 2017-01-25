@@ -20,9 +20,9 @@
                 </div>
                 <div  class="col-md-12 video-container">
                     <div class="video-show">
-                        <video id="ispace-video" style="outline: none;width: 1170px;height: 490px;outline: none"
-                               class="video-js vjs-default-skin vjs-big-play-centered
-                               vjs-user-inactive vjs-has-started vjs-paused"
+                        <video id="ispace-video" style="outline: none;width: 1170px;outline: none"
+                               class="video-js vjs-default-skin vjs-big-play-centered  vjs-fluid
+                               vjs-paused"
                                preload="auto"
                                controls
                                tabindex="-1"
@@ -311,7 +311,27 @@
         fluid: true,
         preload: 'metadata',
         "playbackRates":[0.5,1,1.25,1.5,1.75,2],
-        controls: true,
+        controlBar:{
+            captionsButton : false,
+            chaptersButton: false,
+            subtitlesButton:false,
+            liveDisplay:false,
+            PlaybackRate:false,
+        }
+        /*children : {
+            bigPlayButton : false,
+            textTrackDisplay : false,
+            posterImage: false,
+            errorDisplay : false,
+            controlBar : {
+                captionsButton : false,
+                chaptersButton: false,
+                subtitlesButton:false,
+                liveDisplay:false,
+                playbackRateMenuButton:false
+            }
+        }*/
+      /*  controls: true,
         bigPlayButton: true,
         LoadingSpinner:false,
         textTrackDisplay: true,
@@ -320,9 +340,8 @@
         VolumeMenuButton:false,
         controlBar : {
             CustomControlSpacer:true,
-        }
+        }*/
     };
     var player = videojs('ispace-video', options);
-    player.removeChild('BigPlayButton');
 </script>
 @endsection

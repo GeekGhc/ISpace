@@ -6,7 +6,12 @@ $(function(){
         }
     })
 
-    $('.section-content').css('min-height',"480px");
-    $('.notify-section-content').css('min-height',"480px")
-    $('.favorite-section-content').css('min-height',"440px")
+    $('.section-content').css('min-height',"580px");
+    $('.notify-section-content').css('min-height',"480px");
+    $('.favorite-section-content').css('min-height',"440px");
+
+    $('.vjs-menu-item').on('click',function () {
+        $('.vjs-menu-item').removeClass('aria-selected');
+        $(this).addClass('aria-selected');
+    })
 });

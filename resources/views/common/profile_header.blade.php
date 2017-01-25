@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-5">
 
-                <h2 class="ui grey inverted header">简介</h2>
+                <h2 class="ui grey inverted header" style="padding-top: 12px">简介</h2>
 
                 <div class="ui grey inverted description-content">
                     @if($profile->description)

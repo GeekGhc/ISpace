@@ -20,6 +20,7 @@
 }
 
 .user-setting-general{
+    margin-top:12px;
     padding-bottom: 20px;
 }
 .user-setting-general h3{
@@ -40,7 +41,7 @@
     margin: 2px auto;
     width: 80px;
     z-index: 6;
-    margin-top: -90px;
+    margin-top: -80px;
     opacity: 0;
     height: 32px;
 }

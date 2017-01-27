@@ -133,6 +133,9 @@
 @yield('content')
 
 <div class="footer" id="footer">
+    <div id="backToTop" class="scroll-back-to-top" style="display: none">
+        <button class="ui black button"><i class="chevron up icon" style="margin: 0px -0.214286em;"></i></button>
+    </div>
     <div class="container">
         <div class="row">
             <dl class="col-sm-2 col-md-2 site-link">

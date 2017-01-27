@@ -91,7 +91,16 @@ body {
     text-align: center;
     min-height: 360px;
 }
-
+.footer .scroll-back-to-top{
+    position: fixed;
+    bottom: 60px;
+    right:40px;
+}
+.footer .scroll-back-to-top button{
+    padding: 10px 18px 12px;
+    font-size: 20px;
+    font-weight:bold;
+}
 .footer ul {
     font-size: 16px;
     color: #343434;

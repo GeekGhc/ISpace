@@ -24,6 +24,7 @@ Route::get('/test',function(){
 
 //    dd($disk->privateDownloadUrl('/css/style.css'));
 });
+Route::get('/happy-new-year','Home\LoginController@happy');
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){

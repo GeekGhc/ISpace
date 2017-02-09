@@ -1,0 +1,35 @@
+.broad-body{
+    background: #000;
+    width: 100%;
+    min-height: 600px;
+    padding: 30px 10px;
+}
+
+.broad-body .broad-header{
+    color: #fff;
+    font-weight:bolder;
+    text-align: center;
+    padding-bottom: 32px;
+}
+.broad-music-list-item .broad-music-page{
+    background: #333;
+}
+
+.broad-music-list-item .broad-music-des{
+    background: #333;
+}
+
+.broad-album-pic .broad-outer-pic {
+    width: 180px;
+    height: 180px;
+}
+
+.broad-outer-pic img{
+    border-radius: 50%;
+    min-width: 180px;
+    min-height: 180px;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #282828;
+}

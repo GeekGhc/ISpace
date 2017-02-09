@@ -141,7 +141,8 @@ Route::group(['namespace' => 'Home'],function(){
 Route::group(['namespace' => 'Home'],function(){
 
     //音乐电台
-    Route::get('/broadcasts/music','BroadcastsController@musicIndex');
+    Route::get('/broadcasts','BroadcastsController@musicIndex');
+    Route::get('/broadcasts/{id}','BroadcastsController@musicPlay');
 
     //用户之间关注
     Route::get('/api/user/followers/{id}', 'FollowersController@isFollow');

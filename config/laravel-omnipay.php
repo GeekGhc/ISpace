@@ -22,7 +22,7 @@ return [
                 'key' => ' 2017020805574567',
                 'sellerEmail' =>'your alipay account here',
                 'returnUrl' => 'https://kobeman.com/alipay/callback',
-                'notifyUrl' => 'your notifyUrl here'
+                'notifyUrl' => 'https://kobeman.com/alipay/notify'
             ]
         ]
 	]

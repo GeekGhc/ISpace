@@ -9,6 +9,11 @@ class BroadcastsController extends Controller
 {
     public function musicIndex()
     {
+        return view("broadcasts.index");
+    }
 
+    public function musicPlay($id)
+    {
+        return view("broadcasts.play");
     }
 }

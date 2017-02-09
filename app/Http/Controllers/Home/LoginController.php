@@ -19,11 +19,6 @@ class LoginController extends Controller
         $this->login = $login;
     }
 
-    public function happy()
-    {
-        return view('admin.index');
-    }
-
     public $config = [
         'weibo' => [
             'client_id' => '2630420162',

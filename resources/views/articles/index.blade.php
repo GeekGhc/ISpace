@@ -37,8 +37,8 @@
                         </li>
                     </ul>
                 @endforeach
-                    {{--{{$articles->links()}}--}}
-                    {!! PaginateRoute::renderPageList($articles,false,'pagination',true) !!}
+                    {{$articles->links()}}
+{{--                    {!! PaginateRoute::renderPageList($articles,false,'pagination',true) !!}--}}
             </div>
 
 

@@ -24,7 +24,7 @@ Route::get('/test',function(){
 
 //    dd($disk->privateDownloadUrl('/css/style.css'));
 });
-Route::get('/happy-new-year','Home\LoginController@happy');
+
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
@@ -146,6 +146,14 @@ Route::group(['namespace' => 'Home'],function(){
     //用户之间关注
     Route::get('/api/user/followers/{id}', 'FollowersController@isFollow');
     Route::post('/api/user/follow', 'FollowersController@follow');
+
+    //用户支付
+    //支付宝支付处理
+    Route::get('/alipay/pay',"WebPayController@aliPay");
+    //支付后跳转页面
+    Route::post('/alipay/callback',"WebPayController@aliPayResult");
+    //微信支付
+    Route::any('/wechat/pay', 'WebController@wechatPay');
 });
 
 

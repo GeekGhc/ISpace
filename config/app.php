@@ -187,6 +187,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         Spatie\PaginateRoute\PaginateRouteServiceProvider::class,
+        Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
+        Overtrue\LaravelWechat\ServiceProvider::class,
 
 
     ],
@@ -244,6 +246,8 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'PaginateRoute' => Spatie\PaginateRoute\PaginateRouteFacade::class,
+        'Omnipay' => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
+        'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
 
     ],
 

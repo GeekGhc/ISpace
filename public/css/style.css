@@ -483,3 +483,29 @@ body {
     border-radius: 3px;
     text-decoration: none;
 }*/
+
+/*------------------------------   donate   ------------------------------*/
+.donate-body{
+    margin-bottom: 32px;
+}
+.donate-header{
+    margin-top:26px;
+    margin-bottom: 20px;
+}
+.donate-header p{
+    font-size: 16px;
+    color: #333;
+}
+.tab-content .donate-panel{
+    padding: 20px;
+    text-align: center;
+}
+.donate-panel img{
+    display: inline-block;
+    height: 360px;
+    margin: 0 20px;
+    max-width: 240px;
+}
+.nav-tabs li{
+    cursor: pointer !important;
+}

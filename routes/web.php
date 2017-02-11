@@ -170,3 +170,5 @@ Route::group(['namespace' => 'Home'],function(){
 Route::get('/captcha/{config?}',function(\Mews\Captcha\Captcha $captcha,$config='default'){
     return $captcha->create($config);
 });
+
+Route::get('/donate-to-me','Home\UserController@donate');

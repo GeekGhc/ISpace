@@ -49,6 +49,7 @@
                 <li id="heart"><a href="/lessons">视频</a></li>
                 <li id="article"><a href="/article">文章</a></li>
                 <li id="post"><a href="/discussion">问答</a></li>
+                <li id="donate"><a href="/donate-to-me">捐赠</a></li>
                 <li id="activity"><a href="#">活动</a></li>
             </ul>
 

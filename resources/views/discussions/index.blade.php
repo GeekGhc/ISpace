@@ -46,6 +46,7 @@
                         </dd>
                     </div>
                 @endforeach
+
                     {!! PaginateRoute::renderPageList($discussions,false,'pagination',true) !!}
                 {{--{{$discussions->links()}}--}}
 

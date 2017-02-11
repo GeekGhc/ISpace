@@ -187,4 +187,11 @@ class UserController extends Controller
         return redirect('user/account');
     }
 
+
+    //捐赠
+    public function donate()
+    {
+        return view('users.donate');
+    }
+
 }

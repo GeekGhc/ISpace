@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Music;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,11 +10,13 @@ class BroadcastsController extends Controller
 {
     public function musicIndex()
     {
-        return view("broadcasts.index");
+        $musics = Music::orderBy('song_order','desc')->paginate(10);
+        return view("broadcasts.index",compact('musics'));
     }
 
     public function musicPlay($id)
     {
-        return view("broadcasts.play");
+        $music = Music::find($id);
+        return view("broadcasts.play",compact('music'));
     }
 }

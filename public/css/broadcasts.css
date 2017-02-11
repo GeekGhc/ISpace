@@ -1,35 +1,152 @@
-.broad-body{
-    background: #000;
+/************************** index *********************/
+.broad-body {
+    background: #181818;
     width: 100%;
-    min-height: 600px;
+    min-height: 680px;
     padding: 30px 10px;
 }
 
-.broad-body .broad-header{
+.broad-body .broad-header {
     color: #fff;
-    font-weight:bolder;
+    font-weight: bolder;
     text-align: center;
     padding-bottom: 32px;
+    border-bottom: 1px solid #282828;
 }
-.broad-music-list-item .broad-music-page{
+
+.broad-music-list-item .broad-music-page {
     background: #333;
 }
 
-.broad-music-list-item .broad-music-des{
+.broad-music-list-item .broad-music-des {
     background: #333;
 }
 
 .broad-album-pic .broad-outer-pic {
-    width: 180px;
-    height: 180px;
+    cursor: pointer;
+    width: 160px;
+    height: 160px;
+}
+.broad-album-pic .broad-outer-pic img{
+    transition: transform 1s;
+}
+.broad-album-pic .broad-outer-pic img:hover{
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
 }
 
-.broad-outer-pic img{
+.broad-outer-pic img {
     border-radius: 50%;
-    min-width: 180px;
-    min-height: 180px;
+    min-width: 160px;
+    min-height: 160px;
     display: block;
     max-width: 100%;
     height: auto;
     border: 1px solid #282828;
+}
+
+.broad-music-content {
+    min-width: 0;
+    width: auto;
+    display: block;
+    margin-left: 0;
+    padding-left: 1.5em;
+}
+
+.broad-music-content .meta{
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 24px;
+    margin-top:.5em;
+    letter-spacing: 3px;
+}
+.broad-music-content .singer{
+    margin: .8em 0;
+    color: #eee;
+    font-weight: 700;
+    font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.broad-music-content .singer>span{
+    margin-left: .5em;
+    color: #fff;
+}
+.broad-music-content .description{
+    color: #a0a0a0;
+    font-size: 16px;
+}
+
+.broad-footer{
+    color: #fff;
+    padding: 50px 0 40px 0;
+    text-align: center;
+    background: #282828;
+}
+.broad-footer .broad-host{
+    display: inline-block;
+    margin: 0 20px 50px 20px;
+    vertical-align: top;
+}
+.broad-host .broad-host-avatar{
+    position: relative;
+    border-radius: 100%;
+    display: block;
+    width: 79px;
+    height: 79px;
+    margin: 0 auto;
+    padding: 3px;
+    background: #fff;
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.broad-host-avatar>img {
+    display: block;
+    border-radius: 100%;
+    width: 73px;
+    height: 73px;
+}
+
+
+
+    /************** play **************************/
+.audio-play-panel{
+    margin-top:24px;
+    margin-bottom: 42px;
+}
+.audio-play-panel .audio-play{
+    width: 100%;
+}
+.audio-play .content{
+    color: rgba(0,0,0,.68);;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid rgba(34,36,38,.1);
+    background: 0 0;
+    margin: 0;
+    padding: 1em;
+    box-shadow: none;
+    font-size: 1em;
+    border-radius: 0;
+}
+.audio-play .content .description{
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.aplayer .aplayer-pic{
+    height: 104px !important;
+    width: 106px !important;
+}
+.aplayer .aplayer-info {
+    margin-left: 106px !important;
+    padding: 14px 7px 0 10px;
+    height: 106px;
+    box-sizing: border-box;
 }

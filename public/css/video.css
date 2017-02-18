@@ -271,7 +271,8 @@ horizontal .vjs-menu-content, .vjs-volume-menu-button-horizontal .vjs-menu-conte
 }
 .vjs-default-skin .vjs-play-progress {
     height: 100% !important;
-    background: #66a8cc url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAP0lEQ…wcOg5FZi5iBB82AGzixEglJrd4TVK5XUJpskSTEvpdFzX9AB2pGziSQcvAAAAAAElFTkSuQmCC) -50% 0 repeat;
+    /*background: #66a8cc url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAP0lEQ…wcOg5FZi5iBB82AGzixEglJrd4TVK5XUJpskSTEvpdFzX9AB2pGziSQcvAAAAAAElFTkSuQmCC) -50% 0 repeat;*/
+    background: #66a8cc -50% 0 repeat;
 }
 .video-js .vjs-play-progress:before {
     position: absolute;

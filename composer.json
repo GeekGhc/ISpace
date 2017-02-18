@@ -21,7 +21,7 @@
         "algolia/algoliasearch-client-php": "^1.13",
         "zgldh/qiniu-laravel-storage": "^0.6.0",
         "qiniu/php-sdk": "^7.1",
-        "spatie/laravel-paginateroute": "^2.2",
+        "spatie/laravel-paginateroute": "^2.4",
         "ignited/laravel-omnipay": "2.*",
         "lokielse/omnipay-alipay": "^2.0",
         "overtrue/laravel-wechat": "~3.0"

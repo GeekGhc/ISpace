@@ -8,7 +8,7 @@
     </style>
 @endsection
 @section("content")
-    <div class="container">
+    <div class="container section-content">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="notify-main notify-section-content">

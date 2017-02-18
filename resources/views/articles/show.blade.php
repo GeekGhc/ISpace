@@ -1,19 +1,19 @@
 @extends('app')
 @section('title',$article->title)
 @section('header-css')
-    <link rel="stylesheet" href="/css/article.css">
+   {{-- <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/discussion.css">
-    <link rel="stylesheet" href="/css/comment.css">
+    <link rel="stylesheet" href="/css/comment.css">--}}
     <style>
         body {
             background: #f5f5f1;
         }
     </style>
 @endsection
-@section('header-js')
+{{--@section('header-js')
     <script src="/js/source/vue.js"></script>
     <script src="/js/source/vue-resource.min.js"></script>
-@endsection
+@endsection--}}
 @section('content')
     <div id="app" class="section-content">
         <div class="container">
@@ -55,7 +55,7 @@
                         <span><em>{{$article->user->followers_count}}</em>人关注</span>
                     </div>
                 </div>
-                <h2 class="article-show_title">{{$article->title}}</h2>
+                <h2 class="article-show_title"  style="color: #333">{{$article->title}}</h2>
                 <div class="meta-top">
                     <span>阅读<em>{{$article->view_count}}</em></span>
                     <span>评论<em>{{$article->comment_count}}</em></span>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="container" id="comment-post">
+        <div class="container" id="comment-post" style="margin-bottom: 24px">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
                     <div class="post-show_content article-content">

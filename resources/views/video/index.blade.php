@@ -1,11 +1,10 @@
 @extends('app')
 @section('header-css')
-    <link rel="stylesheet" href="/css/video.css">
+    {{--<link rel="stylesheet" href="/css/video.css">--}}
     <style>
         body {
             background-color: #edf1f2;
         }
-
         .navbar-inverse {
             border-color: transparent;
         }
@@ -20,10 +19,10 @@
                         <div class="row">
                             <div class="video-series-name col-md-12">{{$video_serie->name}}</div>
                             <div class="series-description col-md-8">
-                                <span>简介: </span>
+                                <span style="color: #fff">简介: </span>
                                 <p>{{$video_serie->intro}}</p>
                             </div>
-                            <div class="video-clearfix col-md-3">
+                           {{-- <div class="video-clearfix col-md-3">
                                 <ul>
                                     <li class="static_item" style=" border-right: 1px solid #aaa;padding-left: 0">
                                         <span class="video-item-meta">课程时长</span>
@@ -33,7 +32,7 @@
                                         <span class="video-item-meta">关注人数</span>
                                         <span class="video-item-value">35</span>
                                     </li>
-                                </ul>
+                                </ul>--}}
                             </div>
                         </div>
                     </div>

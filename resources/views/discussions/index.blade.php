@@ -1,8 +1,8 @@
 @extends('app')
 @section('title','帖子-ISpace Community')
-@section('header-css')
+{{--@section('header-css')
     <link rel="stylesheet" href="/css/discussion.css">
-@endsection
+@endsection--}}
 
 @section('content')
     <div class="container section-content">
@@ -46,9 +46,8 @@
                         </dd>
                     </div>
                 @endforeach
-
-                    {!! PaginateRoute::renderPageList($discussions,false,'pagination',true) !!}
-                {{--{{$discussions->links()}}--}}
+{{--                    {!! PaginateRoute::renderPageList($discussions,false,'pagination',true) !!}--}}
+                {{$discussions->links()}}
 
 
             </div>

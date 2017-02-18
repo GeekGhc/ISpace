@@ -1,7 +1,7 @@
 @extends('app')
 @section('title','ISpace 个人主页设置')
 @section('header-css')
-    <link rel="stylesheet" href="/css/source/jquery.Jcrop.css">
+    {{--<link rel="stylesheet" href="/css/source/jquery.Jcrop.css">--}}
     <link rel="stylesheet" href="/css/account.css">
 @endsection
 @section('header-js')

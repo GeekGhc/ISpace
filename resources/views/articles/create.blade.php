@@ -1,9 +1,9 @@
 @extends('app')
 @section('title','发布文章')
-@section('header-css')
+{{--@section('header-css')
     <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/comment.css">
-@endsection
+@endsection--}}
 
 @section('content')
     @include('editor::head')
@@ -21,7 +21,7 @@
                     @endforeach
                 </ul>
             @endif
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1" style="margin-bottom: 24px">
                 {!! Form::open(['url'=>'/article']) !!}
                 <!--- Name Field --->
                 <div class="form-group create-article_title">

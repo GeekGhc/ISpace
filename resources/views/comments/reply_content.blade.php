@@ -5,7 +5,8 @@
             <div class="meta-top">
                 <a class="comment-avatar"><img :src="[comment.user.avatar]"></a>
                 <p class="comment-user-name">
-                    <a :href="nameUrl(comment.user.name)">@{{comment.user.name}}</a></p>
+                    {{--<a :href="nameUrl(comment.user.name)">@{{comment.user.name}}</a></p>--}}
+                    <a>@{{comment.user.name}}</a></p>
                 <span class="reply-time">
                         <time>@{{comment.created_at}}</time>
                 </span>

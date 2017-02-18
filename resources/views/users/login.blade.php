@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="weixin">
-                            <a class="icon-login" href="{{url('/user/login/weixin')}}">
+                            <a class="icon-login" href="#">
                                 <i class="fa fa-weixin"></i>
                             </a>
                         </li>

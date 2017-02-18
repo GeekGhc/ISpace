@@ -1,13 +1,13 @@
 @extends('app')
 @section('title',$profile->user->name.'的主页')
-@section('header-css')
+{{--@section('header-css')
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/search.css">
-@endsection
-@section('header-js')
+@endsection--}}
+{{--@section('header-js')
     <script src="/js/source/vue.js"></script>
     <script src="/js/source/vue-resource.min.js"></script>
-@endsection
+@endsection--}}
 
 @section('content')
     <div class="profile" id="app">
@@ -20,7 +20,9 @@
                 <div class="profile-posts col-md-9 profile-my-content">
                     <h3 class="ui horizontal divider header">
                         <i class="bar chart icon"></i>
-                        @if($user->owns($profile)&&\Auth::check())
+                        @if(!\Auth::check())
+                            他的帖子
+                        @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                             我的帖子
                         @else
                             他的帖子

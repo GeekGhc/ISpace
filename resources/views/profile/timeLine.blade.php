@@ -1,9 +1,9 @@
 @extends('app')
 @section('title',$profile->user->name.'的主页')
-@section('header-css')
+{{--@section('header-css')
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/search.css">
-@endsection
+@endsection--}}
 @section('content')
     <div class="profile">
         @include('common.profile_header')

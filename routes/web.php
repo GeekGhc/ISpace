@@ -119,6 +119,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('/lessons','VideosController@videos');
     Route::get('/series/{series_name}','VideosController@videoSeriesList');
     Route::get('/series/{series_name}/video/{video_index}','VideosController@videoPlay');
+
     //帖子文章
     Route::resource('/discussion','DiscussionsController');
     Route::resource('/article','ArticlesController');

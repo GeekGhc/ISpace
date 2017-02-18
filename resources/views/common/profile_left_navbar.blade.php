@@ -13,7 +13,9 @@
             <li class="item-allCategory">
                 <p>
                     <i class="fa fa-fw fa-th-large" style="color: #1678c2;"></i>
-                    @if($user->owns($profile)&&\Auth::check())
+                    @if(!\Auth::check())
+                        <a href="/u/{{$profile->user->name}}/timeLine">他的时光轴</a>
+                    @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                         <a href="/u/{{$profile->user->name}}/timeLine">我的时光轴</a>
                     @else
                         <a href="/u/{{$profile->user->name}}/timeLine">他的时光轴</a>
@@ -24,7 +26,9 @@
             <li class="item-category">
                 <a id="profile-posts-list" href="/u/{{$profile->user->name}}/posts">
                     <span><i class="fa fa-fw fa-square" style="color: #EF6733;"></i></span>
-                    @if($user->owns($profile)&&\Auth::check())
+                    @if(!\Auth::check())
+                        他的帖子
+                    @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                         我的帖子
                     @else
                         他的帖子
@@ -37,7 +41,9 @@
             <li class="item-category">
                 <a id="profile-articles-list" href="/u/{{$profile->user->name}}/articles">
                     <span><i class="fa fa-fw fa-square" style="color: #7088a9;"></i></span>
-                    @if($user->owns($profile)&&\Auth::check())
+                    @if(!\Auth::check())
+                        他的文章
+                    @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                         我的文章
                     @else
                         他的文章
@@ -50,7 +56,9 @@
             <li class="item-category">
                 <a id="profile-answers-list" href="/u/{{$profile->user->name}}/answers">
                     <span><i class="fa fa-fw fa-square" style="color: #09d7c1;"></i></span>
-                    @if($user->owns($profile)&&\Auth::check())
+                    @if(!\Auth::check())
+                        他的回答
+                    @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                         我的回答
                     @else
                         他的回答
@@ -63,7 +71,9 @@
             <li class="item-category">
                 <a id="profile-followers-list" href="/u/{{$profile->user->name}}/followers">
                     <span><i class="fa fa-fw fa-square" style="color: #5829bb;"></i></span>
-                    @if($user->owns($profile)&&\Auth::check())
+                    @if(!\Auth::check())
+                        他的粉丝
+                    @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                         我的粉丝
                     @else
                         他的粉丝
@@ -76,7 +86,9 @@
             <li class="item-category">
                 <a id="profile-followings-list" href="/u/{{$profile->user->name}}/followings">
                     <span><i class="fa fa-fw fa-square" style="color: #d01919;"></i></span>
-                    @if($user->owns($profile)&&\Auth::check())
+                    @if(!\Auth::check())
+                        他关注的人
+                    @elseif(\Auth::check()&&\Auth::user()->owns($profile))
                         我关注的人
                     @else
                         他关注的人

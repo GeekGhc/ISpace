@@ -1,7 +1,7 @@
 @extends('app')
 @section('title','密码修改-ISpace Community')
 @section('content')
-    <div class="container">
+    <div class="container section-content">
         <div class="row">
             @if(Session::has('password_edit_failed'))
                 <div class="alert alert-danger" role="alert" style="text-align: center">

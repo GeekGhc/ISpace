@@ -1,7 +1,7 @@
 @extends('app')
-@section('header-css')
+{{--@section('header-css')
     <link rel="stylesheet" href="/css/index.css">
-@endsection
+@endsection--}}
 @section('title','ISpace Community')
 @section('content')
     <div class="hero-header">
@@ -39,16 +39,6 @@
                 </div>
             </div>
             @endforeach
-
-            {{--<div class="col-md-3 col-xs-12">
-                <div class="weight-messages">
-                    <a class="weight-messages_item">我的主页</a>
-                    <a class="weight-messages_item">我的文章</a>
-                    <a class="weight-messages_item">我的笔记</a>
-                    <a class="weight-messages_item">我的提问</a>
-                    <a class="weight-messages_item">我的回答</a>
-                </div>
-            </div>--}}
         </div>
     </div>
     </div>

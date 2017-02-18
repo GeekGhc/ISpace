@@ -1,8 +1,8 @@
 @extends('app')
 @section('title','ISpace Community')
 @section('header-css')
-    <link rel="stylesheet" href="/css/search.css">
-    <link rel="stylesheet" href="/css/video.css">
+  {{--  <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/video.css">--}}
     <style>
         body {
             background: #f5f5f1;

@@ -5,22 +5,27 @@
     <title>@yield('title')</title>
     <!-- CSRF Token -->
     <meta id="token" name="token" value="{{ csrf_token() }}">
-    <meta name="google-signin-client_id" content="794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com">
-    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="/css/source/bootstrap.css">
-    <link rel="stylesheet" href="/css/source/semantic.min.css">
-    <link rel="stylesheet" href="/css/source/select2.min.css">
-    <link rel="stylesheet" href="/css/source/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/source/share.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    {{--<link href="http://gehuachun.com/css/style.css?e=1481602090&token=mYCTBTi0IazyX3UvKIy0j4mTkSn9-GNSHDFyg8Fg:Bt20NvFvlJ9yFjMhDC8LkKtDhcM=" rel="stylesheet">--}}
+    <meta name="google-signin-client_id"
+          content="794489703141-4d3uht5o10cbc4ob732rfmjn6ohis9vl.apps.googleusercontent.com">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="{{elixir('css/app.css')}}">
+
+    {{-- <link rel="stylesheet" href="/css/source/bootstrap.css">
+     <link rel="stylesheet" href="/css/source/semantic.min.css">
+     <link rel="stylesheet" href="/css/source/select2.min.css">
+     <link rel="stylesheet" href="/css/source/font-awesome.min.css">
+     <link rel="stylesheet" href="/css/source/share.min.css">
+     <link rel="stylesheet" href="/css/style.css">--}}
     @yield('header-css')
-        <script src="/js/source/jquery-2.1.4.min.js"></script>
-        <script src="/js/source/bootstrap.min.js"></script>
-        <script src="/js/source/social-share.min.js"></script>
-        <script src="/js/source/select2.full.min.js"></script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        @yield('header-js')
+    <script src="{{elixir('/js/app.js')}}"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+     {{--<script src="/js/source/jquery-2.1.4.min.js"></script>
+     <script src="/js/source/bootstrap.min.js"></script>
+     <script src="/js/source/social-share.min.js"></script>
+     <script src="/js/source/select2.full.min.js"></script>--}}
+
+
+    @yield('header-js')
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -59,11 +64,11 @@
                     <a type="submit" id="search" class="btn btn-default search-btn"><i class="search icon"></i></a>
                 </div>--}}
                 <div class="ui search">
-                   <div class="ui icon input  form-group">
-                       <input id="search-content" class="prompt form-control" type="text" placeholder="输入关键字搜索...">
-                       <i class="search icon search-icon" style="color: #007f80;"></i>
-                   </div>
-               </div>
+                    <div class="ui icon input  form-group">
+                        <input id="search-content" class="prompt form-control" type="text" placeholder="输入关键字搜索...">
+                        <i class="search icon search-icon" style="color: #007f80;"></i>
+                    </div>
+                </div>
             </div>
 
             {{--用户登录 信息展示--}}
@@ -83,7 +88,7 @@
                     <li><a href="/user/notifications" class="message-info">
                             <i class="fa fa-bell-o">
                                 @if(Auth::user()->unreadNotifications->count()!==0)
-                                <span class="badge">{{\Auth::user()->unreadNotifications->count()}}</span>
+                                    <span class="badge">{{\Auth::user()->unreadNotifications->count()}}</span>
                                 @endif
                             </i>
                         </a>
@@ -94,7 +99,8 @@
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a id="dLabel" type="button" data-toggle="dropdown" style="padding: 0px 0px 2px;cursor: pointer">
+                        <a id="dLabel" type="button" data-toggle="dropdown"
+                           style="padding: 0px 0px 2px;cursor: pointer">
                             <img src="{{\Auth::User()->avatar}}" class="img-circle" width="44px" height="44px"
                                  style="margin-top: 3px;border: 1px solid #fff;cursor: pointer"
                                  alt="">
@@ -161,7 +167,7 @@
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>个人相关</a></dt>
-                <dd><a>个人博客</a></dd>
+                <dd><a href="https://www.jellybook.me" target="_blank">个人博客</a></dd>
                 <dd><a href="http://weibo.com/2721760737/profile?topnav=1&wvr=6&is_all=1" target="_blank">个人微博</a></dd>
                 <dd><a href="https://github.com/GeekGhc" target="_blank">Github</a></dd>
                 <dd><a href="https://segmentfault.com/u/jellygavin" target="_blank">Segmentfault</a></dd>
@@ -173,10 +179,12 @@
         </div>
     </div>
 </div>
+
 @include('flashy::message')
 {{--@include('flash::message')--}}
 {{--<script src="{{elixir('/js/app.js')}}"></script>--}}
-<script src="/js/index.js"></script>
+
+{{--<script src="/js/index.js"></script>--}}
 @yield('footer-js')
 </body>
 </html>

@@ -1,14 +1,14 @@
 @extends('app')
 @section('title',$video->title)
-@section('header-css')
+{{--@section('header-css')
     <link href="/css/source/video-js.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/video.css">
     <link rel="stylesheet" href="/css/comment.css">
-@endsection
-@section('header-js')
+@endsection--}}
+{{--@section('header-js')
     <script src="/js/source/vue.js"></script>
     <script src="/js/source/vue-resource.min.js"></script>
-@endsection
+@endsection--}}
 @section('content')
 
 <div id="app">
@@ -82,7 +82,7 @@
 
     <div class="container" id="comment-post" style="margin-top: 10px;">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
+            <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12" style="margin-bottom: 24px">
                 {{--发表对帖子的评论--}}
                 @include('comments.reply_form')
                 <div class="comment-list">
@@ -121,9 +121,11 @@
         </div>
     </div>
 </div>
+
 <!-- If you'd like to support IE8 -->
 {{--<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>--}}
 <script src="/js/source/video.min.js"></script>
+
 @include('comments.reply_content')
 
 @if(\Auth::check())
@@ -318,29 +320,6 @@
             liveDisplay:false,
             PlaybackRate:false,
         }
-        /*children : {
-            bigPlayButton : false,
-            textTrackDisplay : false,
-            posterImage: false,
-            errorDisplay : false,
-            controlBar : {
-                captionsButton : false,
-                chaptersButton: false,
-                subtitlesButton:false,
-                liveDisplay:false,
-                playbackRateMenuButton:false
-            }
-        }*/
-      /*  controls: true,
-        bigPlayButton: true,
-        LoadingSpinner:false,
-        textTrackDisplay: true,
-        posterImage: false,
-        errorDisplay: true,
-        VolumeMenuButton:false,
-        controlBar : {
-            CustomControlSpacer:true,
-        }*/
     };
     var player = videojs('ispace-video', options);
 </script>

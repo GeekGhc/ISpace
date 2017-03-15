@@ -71,10 +71,7 @@
                             data-title="ISpace Community {{$discussion->title}}"
                             style="display: inline-block;margin-left: 14px"
 
-                    >                      {{--<a class="social-share-icon icon-weibo" target="_blank"></a>--}}
-                        {{--<a href="#" class="social-share-icon icon-weibo"></a>
-                        <a href="#" class="social-share-icon icon-qq"></a>
-                        <a href="#" class="social-share-icon icon-qzone"></a>--}}
+                    >
                     </div>
                 </div>
 

@@ -28,20 +28,20 @@ Route::get('/test',function(){
 Route::get('/download','Home\SeriesController@videoDownload');
 
 Route::get('/show',function(){
-  /* $music = [
+   $music = [
         'title'=>"一个人",
         'author'=>"夏婉安",
         'song_uri'=>"https://ol7nwmu54.qnssl.com/%E5%A4%8F%E5%A9%89%E5%AE%89%20-%20%E4%B8%80%E4%B8%AA%E4%BA%BA.mp3",
         'song_pic'=>"https://ol7nwmu54.qnssl.com/6064906139059719.jpg",
         'description'=>"你跟我说，你喜欢用网易音乐，为了接近你，我也去用了，并想着在每一首歌下都留下自己的痕迹，这样你看到我的时候，就会想到我了吧"
-    ];*/
-    $music = [
+    ];
+   /* $music = [
         'title'=>"那时候的我",
         'author'=>"刘惜君",
         'song_uri'=>"https://ol7nwmu54.qnssl.com/%E5%88%98%E6%83%9C%E5%90%9B%20-%20%E9%82%A3%E6%97%B6%E5%80%99%E7%9A%84%E6%88%91.mp3",
         'song_pic'=>"https://ol7nwmu54.qnssl.com/24189255827136.jpg",
         'description'=>"这也是非常喜欢的一首刘惜君的歌"
-    ];
+    ];*/
     \App\Music::create($music);
 });
 

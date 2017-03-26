@@ -4,11 +4,12 @@
 ## 前言
 之前暑假在学`ThinkPHP`框架 感觉一个暑假按照着文档来也算是对框架入门了
 
-这学期开始一直在学习`Laravel`框架 在[Laravist](https://www.laravist.com/)站点学习的Laravel
+这学期开始一直在学习`Laravel`框架 在[Laravist](https://www.laravist.com/)站点学习的`Laravel`
 
 收获还是很多的 也十分敬佩**JellyBool**站长的这么用心对待技术
 
 在学习过程中自己也想着开发一个这样的类似的社区 于是我大三上半个学期基本都是边学边写这个社区项目
+
 
 ## 功能
 - 用户登录注册

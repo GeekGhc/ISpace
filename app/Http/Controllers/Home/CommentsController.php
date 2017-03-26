@@ -68,7 +68,6 @@ class CommentsController extends Controller
             ]);
         }else{
             User::find($data['to_user_id'])->notify(new PostReply($askReply));
-
             $timeLine = Timeline::create([
                 'user_id'=>Auth::user()->id,
                 'operation_id'=>$post->id,

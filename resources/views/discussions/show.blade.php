@@ -1,18 +1,12 @@
 @extends('app')
 @section('title',$discussion->title)
 @section('header-css')
-   {{-- <link rel="stylesheet" href="/css/discussion.css">
-    <link rel="stylesheet" href="/css/comment.css">--}}
     <style>
         body{
             background: #f5f5f1;
         }
     </style>
 @endsection
-{{--@section('header-js')
-    <script src="/js/source/vue.js"></script>
-    <script src="/js/source/vue-resource.min.js"></script>
-@endsection--}}
 @section('content')
 
 <div id="app" class="section-content">

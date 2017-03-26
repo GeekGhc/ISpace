@@ -148,7 +148,6 @@
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>网站相关</a></dt>
                 <dd><a>文章教程</a></dd>
-                <dd><a>个人博客</a></dd>
                 <dd><a href="http://hao.shejidaren.com/" target="_blank">资源网站</a></dd>
                 <dd><a>社区规则</a></dd>
             </dl>
@@ -167,7 +166,7 @@
             </dl>
             <dl class="col-sm-2 col-md-2 site-link">
                 <dt><a>个人相关</a></dt>
-                <dd><a href="https://www.jellybook.me" target="_blank">个人博客</a></dd>
+                <dd><a href="http://jellybook.me" target="_blank">个人博客</a></dd>
                 <dd><a href="http://weibo.com/2721760737/profile?topnav=1&wvr=6&is_all=1" target="_blank">个人微博</a></dd>
                 <dd><a href="https://github.com/GeekGhc" target="_blank">Github</a></dd>
                 <dd><a href="https://segmentfault.com/u/jellygavin" target="_blank">Segmentfault</a></dd>

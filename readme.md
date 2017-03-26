@@ -2,9 +2,9 @@
 基于Laravel5.3 开发
 
 ## 前言
-之前暑假在学`ThinkPHP`框架 感觉一个暑假按照着文档来也算是对框架入门了
+之前暑假在学`ThinkPHP`框架 一个暑假按照着文档来也算是对框架入门了
 
-这学期开始一直在学习`Laravel`框架 在[Laravist](https://www.laravist.com/)站点学习的`Laravel`
+这学期开始学习`Laravel`框架 在[Laravist](https://www.laravist.com/)站点学习的`Laravel`
 
 收获还是很多的 也十分敬佩**JellyBool**站长的这么用心对待技术
 
